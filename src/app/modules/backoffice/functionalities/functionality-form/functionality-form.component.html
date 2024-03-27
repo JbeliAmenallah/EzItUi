@@ -1,0 +1,394 @@
+
+
+<p-card>
+    <div class="card">
+        <p-toast></p-toast>
+        <p-steps [model]="items" [readonly]="false" [activeIndex]="activeIndex" (activeIndexChange)="onActiveIndexChange($event)"></p-steps>
+    </div>
+
+    <!-- Contenu spécifique à chaque étape -->
+    <ng-template pTemplate="content">
+        <!-- Étape 1: À propos de la fonctionnalité -->
+        <ng-container *ngIf="activeIndex === 0">
+            <div class="container mt-5">
+                <form [formGroup]="form" class="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="functionalityName">Functionality Name:</label>
+                                <input type="text" pInputText formControlName="functionalityName" id="functionalityName"
+                                    placeholder="Enter the functionality name" class="form-control" />
+                                <div *ngIf="
+                          form.get('functionalityName').hasError('required') &&
+                          form.get('functionalityName').touched
+                        " class="text-danger">
+                                    Functionality name is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="projectId">Select a Project:</label>
+                                <select formControlName="projectId" id="projectId" class="form-control">
+                                    <option disabled selected value="">Select a project</option>
+                                    <option *ngFor="let project of projects" [value]="project.id">
+                                        {{ project.projectName }}
+                                    </option>
+                                </select>
+                                <div *ngIf="form.get('projectId').hasError('required') &&form.get('projectId').touched" class="text-danger">
+                                    project is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="priority">Priority:</label>
+                                <input type="number" formControlName="priority" id="priority" class="form-control"
+                                    placeholder="Enter the duration" />
+                                <div *ngIf="
+                          form.get('priority').hasError('required') &&
+                          form.get('priority').touched
+                        " class="text-danger">
+                                    priority is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="complexityLevel">Complexity Level:</label>
+                                <select formControlName="complexityLevel" id="complexityLevel" class="form-control">
+                                    <option disabled selected value="">Complexity Level</option>
+                                    <option *ngFor="let option of complexityOptions" [value]="option">
+                                        {{ option }}
+                                    </option>
+                                </select>
+                                <div *ngIf="
+                          form.get('complexityLevel').hasError('required') &&
+                          form.get('complexityLevel').touched
+                        " class="text-danger">
+                                    Complexity level is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="status">Status:</label>
+                                <select formControlName="status" id="status" class="form-control">
+                                    <option value="To Do">To Do</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="startDate">startDate:</label>
+                                <p-calendar formControlName="startDate"  [showIcon]="true" inputId="icon"></p-calendar>
+                                <div *ngIf="
+                          form.get('startDate').hasError('startDate') &&
+                          form.get('startDate').touched
+                        " class="text-danger">
+                                    startDate is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="endDate">End date</label>
+                                <p-calendar formControlName="endDate"  [showIcon]="true" inputId="icon"></p-calendar>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="duration">Duration:</label>
+                                <input type="number" formControlName="duration" id="duration" class="form-control"
+                                placeholder="Enter the duration" />
+                            </div>
+                            <div *ngIf="
+                          form.get('duration').hasError('duration') &&
+                          form.get('duration').touched
+                        " class="text-danger">
+                                    duration is required
+                                </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="descriptionFunctionality">Functionality Description:</label>
+                        <textarea rows="5" cols="30" pInputTextarea formControlName="descriptionFunctionality"
+                            id="descriptionFunctionality" placeholder="Enter the description" class="form-control"></textarea>
+                        <div *ngIf="
+                      form.get('descriptionFunctionality').hasError('required') &&
+                      form.get('descriptionFunctionality').touched
+                    " class="text-danger">
+                            Functionality description is required
+                        </div>
+                    </div>
+                    <div class="flex justify-content-end flex-wrap">
+                        <button pButton type="button" [disabled]="!isFormValid"  label="Next" icon="pi pi-chevron-right" class="p-button-rounded p-button-info ml-6" (click)="onNextButtonClick()"></button>
+    
+                    </div>
+                </form>
+        
+            
+            </div>
+         
+                
+        </ng-container>
+      
+
+        <!-- Étape 2: Ajouter un critère de validation de la fonctionnalité -->
+        <ng-container *ngIf="activeIndex === 1 ">
+            <!-- Première div -->
+               
+            <div class="grid mt-6 border-blue-50 border-500 border-3 border-round aboutFunctionality">
+                <!-- Contenu de la première div -->
+                <div class="col col-fixed" style="width:80%">
+                    <!-- <div class="text-center p-3 border-round-sm  font-bold">
+                        <div class="grid p-fluid">
+                            <div class="field mt-2" style="width: 98%;">
+                                <span  class="p-float-label mt-3 ml-8">
+                                    <input type="text" pInputText  />
+                                    <label>Description Criterion </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <h5 >Critère de validation {{nbr}}</h5>
+                    <input type="text"  />
+                </div>
+                <div class="col-fixed" style="width:20%">
+                    <div class="text-center p-3 border-round-sm  font-bold">
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info mr-1" pTooltip="Ajouter une ressource" tooltipPosition="left" (click)="addAnotherCriterion()"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-1"></button>
+                    </div>
+                </div>
+              
+            </div>
+        
+            <!-- Divs supplémentaires ajoutées dynamiquement -->
+            <div *ngFor="let criterion of additionalCriteria; let i = index" class="grid mt-6 border-blue-50 border-500 border-3 border-round aboutFunctionality">
+                <!-- Contenu de la div supplémentaire -->
+                <div class="col col-fixed" style="width:80%">
+                    <!-- <div class="text-center p-3 border-round-sm  font-bold">
+                        <div class="grid p-fluid">
+                            <div class="field mt-2" style="width: 98%;">
+                                <span class="p-float-label mt-3 ml-8">
+                                    <input type="text" pInputText  />
+                                    <label >Description Criterion </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <h5 >Critère de validation {{nbr + i  + 1}}</h5>
+                    <input type="text"  />
+                </div>
+                <div class="col-fixed" style="width:20%">
+                    <div class="text-center p-3 border-round-sm  font-bold">
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info mr-1" pTooltip="Add a validation criterio " tooltipPosition="left" (click)="addAnotherCriterion()"></button>
+                        <!-- Appel de la méthode removeCriterion lors du clic sur le bouton de suppression -->
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-1" pTooltip="remove a validation criterio" tooltipPosition="left" (click)="removeCriterion(i)"></button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="flex justify-content-start flex-wrap">
+                <button pButton type="button" label="Précédent" icon="pi pi-chevron-left" class="p-button-rounded p-button-info mr-1" (click)="onPreviousButtonClick()"></button>
+            </div>
+        </ng-container>
+        
+        
+    </ng-template>
+</p-card>
+
+<!-- <p-card>
+    <div class="card">
+        <p-toast></p-toast>
+        <p-steps [model]="items" [readonly]="false" [activeIndex]="activeIndex" (activeIndexChange)="onActiveIndexChange($event)"></p-steps>
+    </div>
+
+    <ng-template pTemplate="content">
+        <ng-container *ngIf="activeIndex === 0">
+            <div class="container mt-5">
+                <form [formGroup]="form" class="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="functionalityName">Functionality Name:</label>
+                                <input type="text" pInputText formControlName="functionalityName" id="functionalityName"
+                                    placeholder="Enter the functionality name" class="form-control" />
+                                <div *ngIf="
+                          form.get('functionalityName').hasError('required') &&
+                          form.get('functionalityName').touched
+                        " class="text-danger">
+                                    Functionality name is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="projectId">Select a Project:</label>
+                                <select formControlName="projectId" id="projectId" class="form-control">
+                                    <option disabled selected value="">Select a project</option>
+                                    <option *ngFor="let project of projects" [value]="project.id">
+                                        {{ project.projectName }}
+                                    </option>
+                                </select>
+                                <div *ngIf="form.get('projectId').hasError('required') &&form.get('projectId').touched" class="text-danger">
+                                    project is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="priority">Priority:</label>
+                                <input type="number" formControlName="priority" id="priority" class="form-control"
+                                    placeholder="Enter the duration" />
+                                <div *ngIf="
+                          form.get('priority').hasError('required') &&
+                          form.get('priority').touched
+                        " class="text-danger">
+                                    priority is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="complexityLevel">Complexity Level:</label>
+                                <select formControlName="complexityLevel" id="complexityLevel" class="form-control">
+                                    <option disabled selected value="">Complexity Level</option>
+                                    <option *ngFor="let option of complexityOptions" [value]="option">
+                                        {{ option }}
+                                    </option>
+                                </select>
+                                <div *ngIf="
+                          form.get('complexityLevel').hasError('required') &&
+                          form.get('complexityLevel').touched
+                        " class="text-danger">
+                                    Complexity level is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="status">Status:</label>
+                                <select formControlName="status" id="status" class="form-control">
+                                    <option value="To Do">To Do</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                    </div>
+             
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="startDate">startDate:</label>
+                                <p-calendar formControlName="startDate"  [showIcon]="true" inputId="icon"></p-calendar>
+                                <div *ngIf="
+                          form.get('startDate').hasError('startDate') &&
+                          form.get('startDate').touched
+                        " class="text-danger">
+                                    startDate is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="endDate">End date</label>
+                                <p-calendar formControlName="endDate"  [showIcon]="true" inputId="icon"></p-calendar>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="duration">Duration:</label>
+                                <input type="number" formControlName="duration" id="duration" class="form-control"
+                                placeholder="Enter the duration" />
+                            </div>
+                            <div *ngIf="
+                          form.get('duration').hasError('duration') &&
+                          form.get('duration').touched
+                        " class="text-danger">
+                                    duration is required
+                                </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="descriptionFunctionality">Functionality Description:</label>
+                        <textarea rows="5" cols="30" pInputTextarea formControlName="descriptionFunctionality"
+                            id="descriptionFunctionality" placeholder="Enter the description" class="form-control"></textarea>
+                        <div *ngIf="
+                      form.get('descriptionFunctionality').hasError('required') &&
+                      form.get('descriptionFunctionality').touched
+                    " class="text-danger">
+                            Functionality description is required
+                        </div>
+                    </div>
+                    <div class="flex justify-content-end flex-wrap">
+                        <button pButton type="button" [disabled]="!isFormValid"  label="Next" icon="pi pi-chevron-right" class="p-button-rounded p-button-info ml-6" (click)="onNextButtonClick()"></button>
+    
+                    </div>
+                </form>
+        
+            
+            </div>
+         
+                
+        </ng-container>
+      
+
+        <ng-container *ngIf="activeIndex === 1 ">
+               
+            <div class="grid mt-6 border-blue-50 border-500 border-3 border-round aboutFunctionality">
+                <div class="col col-fixed" style="width:80%">
+                    <h5 for="validationCriteria">Critère de validation {{nbr}}</h5>
+                    <input id="validationCriteria" type="text"  formControlName="validationCriteria"/>
+                </div>
+                <div class="col-fixed" style="width:20%">
+                    <div class="text-center p-3 border-round-sm  font-bold">
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info mr-1" pTooltip="Ajouter une ressource" tooltipPosition="left" ></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-1"></button>
+                    </div>
+                </div>
+              
+            </div>
+        
+            <div *ngFor="let criterion of additionalCriteria; let i = index" class="grid mt-6 border-blue-50 border-500 border-3 border-round aboutFunctionality">
+                <div class="col col-fixed" style="width:80%">
+                    <h5 for="validationCriteria">Critère de validation {{nbr +1 + i}}</h5>
+                    <input id="validationCriteria" type="text" formControlName="validationCriteria"/>
+                </div>
+                <div class="col-fixed" style="width:20%">
+                    <div class="text-center p-3 border-round-sm  font-bold">
+                        <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info mr-1" pTooltip="Add a validation criterio " tooltipPosition="left" (click)="addAnotherCriterion()"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-1" pTooltip="remove a validation criterio" tooltipPosition="left" (click)="removeCriterion(i)"></button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="flex justify-content-start flex-wrap">
+                <button pButton type="button" label="Précédent" icon="pi pi-chevron-left" class="p-button-rounded p-button-info mr-1" (click)="onPreviousButtonClick()"></button>
+            </div>
+        </ng-container>
+        
+        
+    </ng-template>
+</p-card> -->
+

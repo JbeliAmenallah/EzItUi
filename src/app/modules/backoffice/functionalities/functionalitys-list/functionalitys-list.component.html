@@ -1,0 +1,136 @@
+
+<p-toast key="toastAddResource" ></p-toast>
+
+<div class="grid">
+    <div class="col-10">
+        <div class="text-center p-3 border-round-sm  font-bold ">
+            <h1 class="first-title-List" style="text-align: center;">List of functionality</h1>
+        </div>
+    </div>
+   
+    <div class="col-2">
+        <div class="text-center p-3 border-round-sm font-bold ">
+            <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/functionalities/add"></button>
+            <ng-template #tooltipContent>
+               <div class="flex align-items-center">
+                   <span> <b>Add a functionality</b> </span>
+               </div>
+            </ng-template>       
+         </div>
+    </div>
+</div>
+
+<div class="card"  style="box-sizing: border-box; ">
+
+    <div class="card flex justify-content-center">
+
+<p-dialog [header]="'Add a resource to the project: ' + (currentFunctionality?.functionalityName || '')" [(visible)]="visible" [style]="{ width: '30vw', height: '350px' }">
+    <div class="modal-body">
+        <label for="resourceId">Select a resource:</label>
+
+        <div class="card flex justify-content-center">
+            <p-dropdown [options]="resources" [(ngModel)]="selectedResource"    placeholder="Select a resource" [editable]="true" optionLabel="firstName"></p-dropdown>
+        </div>
+
+        <p-button icon="pi pi-check" label="Confirm"  (click)="assignResourceToFunctionality()"></p-button>
+    </div>
+</p-dialog> 
+</div>
+    <p-table
+    #dt2
+    [value]="functionalities"
+    dataKey="id"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['functionalityName', 'descriptionFunctionality', 'priority', 'complexityLevel', 'status', 'projectId']"
+    [style]="{ 'max-width': '100rem', 'width': '100%'  }"
+    [scrollable]="true">
+        <ng-template pTemplate="caption">
+            <div class="d-flex "> 
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input #searchInput pInputText type="text" (input)="dt2.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+                </span>
+            </div>
+        </ng-template>
+        
+                <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Complexity Level</th>
+                <th>Status</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Project ID</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                
+                <th>
+                    <p-columnFilter type="text" field="functionalityName"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="descriptionFunctionality"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="priority"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="complexityLevel"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="status"></p-columnFilter>
+                
+                </th>
+                <th>
+                    <p-columnFilter type="date" field="startDate"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="date" field="endDate"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="projectId"></p-columnFilter>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>{{ item.functionalityName }}</td>
+                <td>{{ item.descriptionFunctionality }}</td>
+                <td>{{ item.priority }}</td>
+                <td>{{ item.complexityLevel }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{item.startDate}}</td>
+                <td>{{item.endDate}}</td>
+                <td>{{ item.projectId || 'N/A' }}</td>
+                <td>
+                    <i class="pi pi-pencil  editIcon"  (click)="editItem(item)"></i>
+                    <i class="pi pi-trash  deleteIcon" (click)="deleteItem(item.id)"></i>
+                    <i class="pi pi-user-plus addRecource" (click)="showDialog(item.id)"  pTooltip="Add resource"  tooltipPosition="left"></i>
+                    <i class="pi pi-eye  detailsIcon" (click)="showDetails(item.id)"  pTooltip="Details" tooltipPosition="right"></i>                
+
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">No functionalities found.</td>
+            </tr>
+        </ng-template>  
+      </p-table>
+        
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle" acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+    </p-confirmDialog>
+
+    <p-toast></p-toast>
+</div>
+  
+
+

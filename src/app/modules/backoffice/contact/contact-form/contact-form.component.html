@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" pInputText formControlName="firstName" id="firstName" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.hasError('required')">The first name is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" pInputText formControlName="lastName" id="lastName" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('required')">The last name is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" pInputText formControlName="email" id="email" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">The email is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" pInputText formControlName="address" id="address" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('address')?.touched && form.get('address')?.hasError('required')">The adress is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" pInputText formControlName="phone" id="phone" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">The phone number is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="projectId">Project Name:</label>
+                    <select formControlName="projectId" id="projectId" class="form-control" required>
+                        <option *ngFor="let project of project" [value]="project.id">{{ project.projectName }}</option>
+                    </select>
+                    <small class="p-error" *ngIf="form.get('projectId')?.touched && form.get('projectId')?.hasError('required')">The project is required.</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,122 @@
+
+<div class="grid">
+    <div class="col-10">
+        <div class="text-center p-3 border-round-sm  font-bold ">
+            <h1>List of projects</h1>
+        </div>
+    </div>
+   
+    <div class="col-2">
+        <div class="text-center p-3 border-round-sm font-bold ">
+            <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/projects/add"></button>
+            <ng-template #tooltipContent>
+                <div class="flex align-items-center">
+                    <span> <b>Add project</b> </span>
+                </div>
+            </ng-template>        </div>
+    </div>
+</div>
+
+
+
+<div class="container" >
+
+
+    <p-toast key="toastAddResource" ></p-toast>
+
+ <div class="table-container" >
+    <p-dialog [header]="'Add a resource to '"
+    [(visible)]="visible"
+    [style]="{ 'min-height': '500px' , 'font-family': 'Roboto',  'text-align': 'center' ,   'min-width': '400px'}">        
+        <div class="modal-body">
+            <h1 class="first-title" >{{currentProject?.projectName || ''}}</h1>
+            <div class="card flex justify-content-center">
+                <form [formGroup]="formGroup">
+                    <p-multiSelect [options]="getUnassignedResources()" formControlName="selectedResources" optionLabel="firstName" placeholder="Select Resources" [style]="{'width': '100%'}"></p-multiSelect>
+                </form>
+                <p-button class="buttonaddResourcesToProject" (click)="addResourcesToProject()" icon="pi pi-check" label="Confirm"></p-button>
+
+            </div>
+        </div>
+    </p-dialog>
+    <p-table
+        #dt2
+        [value]="projects"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['projectName', 'description', 'startDate', 'endDate', 'estimatedDuration']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+        [scrollable]="true"  [tableStyle]="{ 'min-width': '60rem' }"
+    >
+
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input  #searchInput pInputText type="text" (input)="dt2.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:20%">Project Name</th>
+                <th style="width:20%">Description</th>
+                <th style="width:12%">Start Date</th>
+                <th style="width:12%">End Date</th>
+                <th style="width:12%">Estimated Duration</th>
+                <th style="width:12%">Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="projectName"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="description"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="date" field="startDate"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="date" field="endDate"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="estimatedDuration"></p-columnFilter>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-project    >
+            <tr>
+                <td>{{ project.projectName }}</td>
+                <td>{{ project.description }}</td>
+                <td>{{ project.startDate }}</td>
+                <td>{{ project.endDate }}</td>
+                <td>{{ project.estimatedDuration }}</td>
+                <td>
+                    
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-text" (click)="editItem(project)"  pTooltip="Edit" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"  (click)="deleteItem(project.id)"  pTooltip="Delete" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-user" class="p-button-rounded p-button-primary p-button-text" (click)="showDialog(project.id)" pTooltip="Add resource" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-text" (click)="moveToDetails(project.id)" pTooltip="View Details" tooltipPosition="left" ></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">No projects found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle" acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+    </p-confirmDialog>
+
+    <p-toast></p-toast>
+</div>
+</div>

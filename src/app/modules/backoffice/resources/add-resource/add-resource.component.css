@@ -1,0 +1,27 @@
+h1.first-title {
+    font-family: roboto;
+    margin-bottom: 50px;
+  }
+  
+  .btn-save{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  margin-top: 15px;
+
+  }
+  .container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+  }
+  
+
+  .gradient-text {
+    font-size: 3rem;
+    background-image: linear-gradient(to right, #b7d9fe, #043680); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    text-align: center; 
+  }

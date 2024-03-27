@@ -1,0 +1,63 @@
+.editIcon:hover{
+    color: rgb(112, 112, 253);
+  }
+  .deleteIcon,.editIcon , .detailsIcon , .addRecource {
+    color: black;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 2px;
+  }
+  .deleteIcon:hover{
+    color: red;
+  }
+  h1.first-title-List {
+    font-family: roboto;
+    margin-bottom: 50px;
+    font-size: 3rem;
+  }
+  .addRecource:hover{
+color: rgb(71, 165, 53);
+  }
+  .detailsIcon:hover{
+    color: rgb(39, 39, 255);
+  }
+  /* Style du bouton */
+button[pButton] {
+  background-color: #007bff; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  padding: 10px 20px; /* Espacement intérieur */
+  font-size: 16px; /* Taille de la police */
+  border-radius: 5px; /* Bordure arrondie */
+  cursor: pointer; /* Curseur de souris */
+}
+
+button[pButton]:hover {
+  background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+/* Style du tooltip */
+.ui-tooltip {
+  background-color: #007bff; /* Couleur de fond */
+  color: #fff; /* Couleur du texte */
+  border-radius: 5px; /* Bordure arrondie */
+  padding: 5px 10px; /* Espacement intérieur */
+  font-size: 14px; /* Taille de la police */
+}
+
+.ui-tooltip-arrow {
+  border-top-color: #007bff; /* Couleur de la pointe du tooltip */
+}
+
+/* Style pour chaque paire d'étiquettes de détail se mettant côte à côte horizontalement */
+.details .detail {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Style pour les étiquettes (labels) avec un fond transparent */
+.details .detail label {
+  background-color: transparent; /* Fond transparent */
+  padding: 5px; /* Espacement autour du texte */
+  margin-right: 10px; /* Marge à droite pour espacement */
+}

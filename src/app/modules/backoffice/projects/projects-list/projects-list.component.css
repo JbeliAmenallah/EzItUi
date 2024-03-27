@@ -1,0 +1,80 @@
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .modifier, .supprimer {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+ 
+  .editIcon:hover{
+    color: rgb(112, 112, 253);
+  }
+  .deleteIcon,  .addRecource ,.editIcon , .eyeIcon{
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 2px;
+  }
+  .eyeIcon:hover{
+    color:blue
+  }
+  .deleteIcon:hover{
+    color: red;
+  }
+  .addRecource:hover{
+    color:green ;
+  }
+  .buttonaddResourcesToProject{
+    position: fixed;
+    display: flex;
+    margin-top: 200px ;
+   margin-left: 150px;
+  }
+  h1.first-title {
+    font-family: roboto;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  
+:host ::ng-deep {
+  .speeddial-linear-demo {
+      .p-speeddial-direction-up {
+          left: calc(50% - 2rem);
+          bottom: 0;
+      }
+
+      .p-speeddial-direction-down {
+          left: calc(50% - 2rem);
+          top: 0;
+      }
+
+      .p-speeddial-direction-left {
+          right: 0;
+          top: calc(50% - 2rem);
+      }
+
+      .p-speeddial-direction-right {
+          left: 0;
+          top: calc(50% - 2rem);
+      }
+  }
+}
+.button-test{
+  width: 60px;
+  height: 60px;
+}

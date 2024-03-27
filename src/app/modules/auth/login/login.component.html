@@ -1,0 +1,39 @@
+<form class="theme-form login-form" [formGroup]="form">
+    <h4>Login</h4>
+    <h6>Connectez-vous à votre compte.</h6>
+    <div class="form-group">
+        <label>Email </label>
+        <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
+            <input class="form-control" type="email" placeholder="app@yourmail.com"
+                   formControlName="email">
+            <div *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['required']"
+                 class="text text-danger mt-1">
+                Email is required
+            </div>
+            <div *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['email']"
+                 class="text text-danger mt-1">
+                Invalid Email
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Mot de passe</label>
+        <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
+            <input class="form-control" [type]="show ? 'text' : 'password'" formControlName="password"
+                   required="" placeholder="*********">
+            <div class="show-hide" (click)="showPassword()" *ngIf="!show"><span class="show"></span>
+            </div>
+            <div class="show-hide" (click)="showPassword()" *ngIf="show"><span class="Hide"></span>
+            </div>
+            <div *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['required']"
+                 class="text text-danger mt-1">
+                Password is required
+            </div>
+        </div>
+    </div>
+
+    <button class="btn  btn-block" [disabled]="!form.valid" (click)="login()"
+            type="button">Connexion
+    </button>
+
+</form>

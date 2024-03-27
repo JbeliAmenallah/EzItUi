@@ -1,0 +1,129 @@
+.form {
+  background-color: #fff;
+  padding: 50px 25px;
+  border-radius: 10px;
+}
+.row {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.col-md-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.form-group {
+  display: grid;
+}
+input {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border: 1px solid #e4e2e7;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  resize: none;
+  border-radius: 3px;
+  border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 20px 32px 20px 10px;
+  appearance: none;
+  background: transparent;
+}
+select {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border: 1px solid #e4e2e7;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  resize: none;
+  border-radius: 3px;
+  border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 20px 32px 20px 10px;
+  appearance: none;
+  background: transparent;
+  position: relative;
+}
+label {
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+.text-danger {
+  color: red;
+  font-size: 12px;
+  margin-top: -20px;
+  margin-bottom: 15px;
+  font-weight: 600px;
+}
+input:focus {
+  border: 1px solid blue;
+}
+input:focus-visible {
+  outline: none;
+}
+textarea:focus {
+  border: 1px solid blue;
+}
+textarea:focus-visible {
+  outline: none;
+}
+input::placeholder {
+  font-family: roboto;
+  /* Remplacez "VotrePolice" par le nom de la police que vous souhaitez utiliser */
+}
+select:focus {
+  border: 1px solid blue;
+}
+select:focus-visible {
+  outline: none;
+}
+select::placeholder {
+  font-family: roboto;
+  /* Remplacez "VotrePolice" par le nom de la police que vous souhaitez utiliser */
+}
+textarea {
+  width: 95%;
+  height: 60px;
+  text-align: left;
+  border: 1px solid #e4e2e7;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  resize: none;
+  border-radius: 3px;
+  border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 20px 32px 20px 10px;
+  appearance: none;
+  background: transparent;
+  position: relative;
+  height: 245px !important;
+}
+textarea::placeholder {
+  font-family: roboto;
+  /* Remplacez "VotrePolice" par le nom de la police que vous souhaitez utiliser */
+}

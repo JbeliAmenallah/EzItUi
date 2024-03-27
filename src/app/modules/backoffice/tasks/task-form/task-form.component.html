@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="taskName">Nom de la tâche :</label>
+                <input type="text" formControlName="taskName" id="taskName" class="form-control"
+                    placeholder="Entrez le nom de la tâche">
+                <div *ngIf="form.get('taskName').hasError('required') && form.get('taskName').touched"
+                    class="text-danger">
+                    Le nom de la tâche est requis
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="duration">Duration:</label>
+                    <input type="number" formControlName="duration" id="duration" class="form-control"
+                        placeholder="Enter the duration">
+                    <div *ngIf="form.get('duration').hasError('required') && form.get('duration').touched"
+                        class="text-danger">
+                        Duration is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="functionalityId">Select a functionality:</label>
+                    <select formControlName="functionalityId" id="functionalityId" class="form-control">
+                        <option disabled selected value="">Select a functionality</option>
+                        <option *ngFor="let functionality of functionalities" [value]="functionality.id">{{
+                            functionality.functionalityName }}</option>
+                    </select>
+                    <div *ngIf="form.get('functionalityId').hasError('required') && form.get('functionalityId').touched"
+                        class="text-danger">
+                        Functionality is required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+
+            <div class="form-group">
+                <label for="description">Description de la tâche :</label>
+                <textarea type="text" formControlName="description" id="description" class="form-control"
+                    placeholder="Entrez la description de la tâche"></textarea>
+                <div *ngIf="form.get('description').hasError('required') && form.get('description').touched"
+                    class="text-danger">
+                    La description de la tâche est requise
+                </div>
+            </div>
+
+
+        </div>
+
+    </form>
+</div>

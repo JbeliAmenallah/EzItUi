@@ -1,0 +1,103 @@
+<div class="card flex justify-content-center" style=" display: flex;
+justify-content: flex-end; margin-bottom: 8px;">
+<button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/tasks/add"></button>
+<ng-template #tooltipContent>
+   <div class="flex align-items-center">
+       <span> <b>Add Task</b> </span>
+   </div>
+</ng-template>
+</div>
+<div class="table-container">
+  <!-- <p-button
+    label="Add a Task"
+    class="btn btn-primary mb-3"
+    routerLink="/tasks/add"></p-button> -->
+
+  <p-table
+    #dt2
+    [value]="tasks"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="[
+      'taskName',
+      'description',
+      'duration',
+      'totalDuration',
+      'functionalityId'
+    ]"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [scrollable]="true"  [tableStyle]="{ 'min-width': '60rem'}"
+  >
+    <ng-template pTemplate="caption">
+      <div class="d-flex">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            #searchInput
+            pInputText
+            type="text"
+            (input)="dt2.filterGlobal(searchInput.value, 'contains')"
+            placeholder="Search keyword"
+            style="width: 200px"
+          />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 15%;">Name</th>
+          <th style="width: 20%;">Description</th>
+          <th style="width: 15%;">Estimated Duration</th>
+          <th style="width: 15%;">Total Duration</th>
+          <th style="width: 15%;">Remaining Time</th>
+          <th style="width: 10%;">Functionality Name</th>
+          <th style="width: 15%;">Actions</th>
+          
+          </tr>
+      <tr>
+        <th> <p-columnFilter type="text" field="taskName"  ></p-columnFilter> </th>
+        <th><p-columnFilter type="text" field="description"></p-columnFilter></th>
+        <th> <p-columnFilter type="text" field="functionalityId"></p-columnFilter> </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-task>
+      <tr>
+        <td>{{ task.taskName }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ formatDuration(task.duration * 3600) }} </td>
+        <td>{{ formatDuration(task.totalDuration)}} </td>
+        <td>{{formatDuration(task.duration * 3600- task.totalDuration ) }} </td>
+        <td>{{ task.functionalities?.functionalityName || "N/A" }}</td>
+        <td>
+          <i class="pi pi-pencil editIcon" (click)="editItem(task)"></i>
+          <i class="pi pi-trash deleteIcon" (click)="deleteItem(task.id)"></i>
+          <!-- <i class="pi pi-eye stopwatchIcon" (click)="moveToDetails(task.id)" pTooltip="View Details"></i> -->
+          <i class="pi pi-eye eyeIcon" (click)="moveToDetails(task.id)" pTooltip="View Details" tooltipPosition="left"></i>
+
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No tasks found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
+  <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle" acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+  </p-confirmDialog>
+
+  <p-toast></p-toast>
+</div>

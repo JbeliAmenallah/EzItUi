@@ -1,0 +1,15 @@
+.editIcon:hover{
+    color: rgb(112, 112, 253);
+  }
+  .deleteIcon,.editIcon , .stopwatchIcon{
+    color: black;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 2px;
+  }
+  .deleteIcon:hover{
+    color: red;
+  }
+  .stopwatchIcon:hover{
+    color: rgb(81, 248, 145);
+  }

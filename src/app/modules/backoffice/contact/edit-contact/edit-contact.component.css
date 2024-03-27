@@ -1,0 +1,27 @@
+h1.first-title {
+  font-family: roboto;
+  margin-bottom: 50px;
+}
+
+.btn-save{
+display: flex;
+justify-content: center; 
+align-items: center; 
+margin-top: 15px;
+
+}
+  .container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+  }
+  
+
+  .gradient-text {
+    font-size: 3rem;
+    background-image: linear-gradient(to right, #b7d9fe, #043680); /* Dégradé de bleu à bleu plus clair */
+    -webkit-background-clip: text; /* Permet d'appliquer le dégradé sur le texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte invisible pour laisser apparaître le dégradé */
+    text-align: center; /* Centre le texte horizontalement */
+  }

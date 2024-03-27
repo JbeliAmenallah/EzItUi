@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+        <div class="form-group">
+            <div class="col-md-14">
+                <label for="groupName">Group Functionality Name:</label>
+                <input type="text" pInputText formControlName="groupName" id="groupName" class="form-control" placeholder="Enter the group functionality name" />
+                <div *ngIf="form.get('groupName')?.touched && form.get('groupName')?.hasError('required')" class="text-danger">This Group Functionality Name is required</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <p-calendar formControlName="startDate" placeholder="Enter the start date"></p-calendar>
+                    <small class="text-danger" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">This field is required</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="duration">Duration:</label>
+                    <p-inputNumber inputId="integeronly" formControlName="duration" id="duration" class="inputNumber" placeholder="Enter the duration per day"></p-inputNumber>
+                    <div class="text-danger" *ngIf="form.get('duration')?.touched && form.get('duration')?.hasError('required')">This field is required</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+                    <p-calendar formControlName="endDate"></p-calendar>
+                    <small class="text-danger" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">This field is required</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <div>
+                    <label for="projectId" class="projectName">Project Name:</label>
+                </div>
+                <select formControlName="projectId" id="projectId" required>
+                    <option *ngFor="let project of projects" [value]="project.id">{{ project.projectName }}</option>
+                </select>
+                <small class="p-error" *ngIf="form.get('projectId')?.touched && form.get('projectId')?.hasError('required')">This field is required.</small>
+            </div>
+        </div>
+    </form>
+</div>

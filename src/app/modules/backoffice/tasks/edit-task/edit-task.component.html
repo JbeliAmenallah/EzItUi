@@ -1,0 +1,10 @@
+<h1 class="first-title">Edit task</h1>
+<p-toast></p-toast>
+
+<app-task-form #form [currentItemForm]="task" *ngIf="task"></app-task-form >
+<div class="buttons">
+    <button class="btn btn-primary" style="margin-left: 650px;" (click)="save()">Save</button>
+</div>
+<!-- <div class="card">
+    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div> -->

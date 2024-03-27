@@ -1,0 +1,85 @@
+.form {
+    background-color: #fff;
+    padding: 10px 25px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .col-md-4 {
+    flex: 1 1 33.33%; 
+    max-width: 33.33%; 
+  }
+  .form-group {
+    display: grid;
+  }
+ 
+  /* Styles pour les cartes personnalisées */
+  .card {
+      border: 1px solid #fffefe; /* Bordure grise */
+      border-radius: 5px; /* Coins arrondis */
+      padding: 10px; /* Espacement interne */
+      margin-bottom: 10px; /* Marge en bas */
+      background-color: #ffffff; /* Couleur de fond grise */
+  }
+
+  .card label {
+      font-weight: bold; /* Texte en gras */
+  }
+
+
+ 
+  /* Utilisation de grid pour la mise en page */
+  .form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Deux colonnes égales */
+      grid-gap: 10px; /* Espacement entre les cartes */
+  }
+
+  /* Styles pour les cartes personnalisées */
+  .card {
+      border: 1px solid #fffafa; /* Bordure grise */
+      border-radius: 5px; /* Coins arrondis */
+      padding: 10px; /* Espacement interne */
+      background-color: #ffffff; /* Couleur de fond grise */
+  }
+
+  .card label {
+      font-weight: bold; /* Texte en gras */
+  }
+
+  .text-danger {
+    color: red;
+    font-size: 15px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    font-weight: 600px;
+  }
+  .custom-dialog .p-dialog-content {
+    background-color: #e5edff; /* Couleur bleue de fond */
+}
+.p-dialog-header {
+  background-color: #e5edff; /* Remplacez "yourBackgroundColor" par la couleur de fond souhaitée */
+}
+
+:host ::ng-deep .custom-dialog .p-dialog-header {
+  background-color: var(--gray-50	);
+}
+
+:host ::ng-deep .custom-dialog .p-dialog-content {
+  background-color: var(--gray-50);
+}
+
+:host ::ng-deep .custom-dialog .p-dialog-footer {
+  background-color: var(--gray-50);
+}
+.custom-functionality-name {
+  color: #ff0000; /* Remplacez #ff0000 par la couleur de votre choix */
+ 
+}

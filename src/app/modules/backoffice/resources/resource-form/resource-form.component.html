@@ -1,0 +1,69 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" pInputText formControlName="firstName" id="firstName" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.hasError('required')">The first name is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" pInputText formControlName="lastName" id="lastName" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('required')">The last name is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" pInputText formControlName="phoneNumber" id="phoneNumber" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('phoneNumber')?.touched && form.get('phoneNumber')?.hasError('required')">The phone number is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" pInputText formControlName="email" id="email" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">The email is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" pInputText formControlName="address" id="address" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('address')?.touched && form.get('address')?.hasError('required')">The address is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="position">Position:</label>
+                    <input type="text" pInputText formControlName="position" id="position" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('position')?.touched && form.get('position')?.hasError('required')">The position is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <input type="text" pInputText formControlName="role" id="role" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('role')?.touched && form.get('role')?.hasError('required')">The role is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="hireDate">Hire Date:</label>
+                    <p-calendar formControlName="hireDate" id="hireDate"  class="form-control" ></p-calendar>
+                    <small class="p-error" *ngIf="form.get('hireDate')?.touched && form.get('hireDate')?.hasError('required')">The hire date is required</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

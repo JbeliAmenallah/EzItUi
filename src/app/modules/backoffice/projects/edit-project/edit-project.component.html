@@ -1,0 +1,12 @@
+<h1 class="first-title">Update project</h1>
+<p-toast></p-toast>
+
+<app-project-form #form [currentItemForm]="project" *ngIf="project"></app-project-form>
+<div class="buttons">
+    <button class="btn btn-primary" style="margin-right: 0px" (click)="save()" style="margin-left: 659px">
+        Save
+    </button>
+</div>
+<!-- <div class="card">
+    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div> -->

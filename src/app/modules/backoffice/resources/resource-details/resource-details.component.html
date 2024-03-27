@@ -1,0 +1,37 @@
+<div *ngIf="visible" class="container">
+    <h1>Details of Resource</h1>
+    <form class="form">
+        <div class="card">
+            <label>First Name:</label>
+            <span>{{ currentResource?.firstName }}</span>
+        </div>
+        <div class="card">
+            <label>Last Name:</label>
+            <span>{{ currentResource?.lastName }}</span>
+        </div>
+        <div class="card">
+            <label>Email:</label>
+            <span>{{ currentResource?.email }}</span>
+        </div>
+        <div class="card">
+            <label>Phone Number:</label>
+            <span>{{ currentResource?.phoneNumber }}</span>
+        </div>
+        <div class="card">
+            <label>Address:</label>
+            <span>{{ currentResource?.address }}</span>
+        </div>
+        <div class="card">
+            <label>Position:</label>
+            <span>{{ currentResource?.position }}</span>
+        </div>
+        <div class="card">
+            <label>Role:</label>
+            <span>{{ currentResource?.role }}</span>
+        </div>
+        <div class="card">
+            <label>Hire Date:</label>
+            <span>{{ currentResource?.hireDate | date }}</span>
+        </div>
+    </form>
+</div>

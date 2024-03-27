@@ -1,0 +1,110 @@
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  
+  .search-container input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  
+  .modifier, .supprimer {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modifier {
+    background-color: #1f8f00; 
+    color: #fff;
+  }
+  
+  .supprimer {
+    background-color: #b90012; 
+    color: #fff;
+  }
+  
+  .modifier:hover  {
+    background-color: #03b925; 
+  }
+  .supprimer:hover{
+    background-color: #ff3700; 
+  
+  }
+  
+  .button-container {
+    margin-top: 20px;
+    margin-left: 50%;
+  }
+  
+  .button-container button {
+    background-color: #344dbd; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #516dc6;
+  }
+  h1.first-title {
+    font-family: roboto;
+    margin-bottom: 50px;
+  }
+  
+
+  .container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+  }
+  
+
+  .gradient-text {
+    font-size: 3rem;
+    background-image: linear-gradient(to right, #b7d9fe, #043680); /* Dégradé de bleu à bleu plus clair */
+    -webkit-background-clip: text; /* Permet d'appliquer le dégradé sur le texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte invisible pour laisser apparaître le dégradé */
+    text-align: center; /* Centre le texte horizontalement */
+  }

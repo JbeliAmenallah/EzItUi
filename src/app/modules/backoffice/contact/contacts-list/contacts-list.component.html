@@ -1,0 +1,96 @@
+<div class="table-container">
+    <div class="card flex justify-content-center" style=" display: flex;
+    justify-content: flex-end;">
+   <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/contacts/add"></button>
+   <ng-template #tooltipContent>
+       <div class="flex align-items-center">
+           <span> <b>Add contact</b> </span>
+       </div>
+   </ng-template>
+   </div>
+
+    <p-table
+        #dt3
+        [value]="contacts"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['lastName', 'firstName', 'email', 'address', 'phone', 'projectId']"
+        [tableStyle]="{ 'min-width': '75rem' }">
+    
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Project ID</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="id"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="lastName"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="firstName"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="email"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="address"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="phone"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="projectId"></p-columnFilter>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-contact>
+            <tr>
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.lastName }}</td>
+                <td>{{ contact.firstName }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.address }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.projectId || 'N/A' }}</td>
+                <td>
+                    <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editItem(contact)"></i>
+                    <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(contact.id)"></i>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No contacts found.</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-end align-items-center">
+                <div class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+                </div>
+            </div>
+        </ng-template>
+    </p-table>
+
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+        acceptButtonStyleClass="p-button-danger p-button-text"
+        rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+    </p-confirmDialog>
+    <p-toast></p-toast>
+</div>

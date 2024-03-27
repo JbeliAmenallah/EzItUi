@@ -1,0 +1,11 @@
+<h1>Edit Group Functionalities</h1>
+
+<app-groupfunctionality-form #form [currentItemForm]="groupfunctionality" *ngIf="groupfunctionality"></app-groupfunctionality-form> 
+
+<div class="buttons">
+    <p-button label="Save" icon="pi pi-check" styleClass="save-button" class="btn-save" (click)="save()"></p-button>
+</div>
+
+<div class="card">
+    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div>

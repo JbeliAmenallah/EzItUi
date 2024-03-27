@@ -1,0 +1,79 @@
+
+
+<div class="card-container">
+  <div class="card card-details">
+    <p-card [header]="'Task Name: ' + task?.taskName">
+   <div class="group-card">
+    <div  class="card-duration-time">
+      <label>Estimated duration</label>
+      <br>
+      <label> <span>{{ task.duration }} hours</span></label>
+    </div>
+    <div class="card-duration-time">
+      <label >Time remaining</label>
+      <br>
+      <label>
+        <span> {{ formatDuration(remainingTimeTest) }}</span></label>
+        <br>
+    </div>
+   </div>
+
+
+
+   <p-card  header="Description">
+    <p class="m-0"> {{task.description}} </p>
+  </p-card>
+    </p-card>
+  </div>
+
+
+  <div class="card card-stopwatch">
+
+    <p-card header="Total time spent on this task" class="p-card-stopwatch">
+      <form [formGroup]="taskDurationForm">
+        <div class="form-group">
+
+          <label for="TotalDuration"></label>
+          <br />
+          <span class="totalDuration"> <i class="pi pi-stopwatch iconStopwatch"></i>
+            {{ formatDuration(totalDurationTest) }}</span>
+
+        </div>
+      </form>
+
+      <form [formGroup]="taskForm" style="margin-top: 10px;">
+        <div class="form-group" *ngIf="visibleInputReason">
+          <label>Choose a stop reason <span class="span-danger">*</span></label>
+          <select class="form-control" id="reasonForStop" formControlName="reasonForStop" required>
+            <option disabled selected value="">Choose a stop reason</option>
+            <option value="coffeeBreak">Coffee break</option>
+            <option value="error">Error</option>
+            <option value="finish">Finish</option>
+            <option value="other">Other</option>
+          </select>
+          <div *ngIf="taskForm.get('reasonForStop').hasError('required') && taskForm.get('reasonForStop').touched"
+            class="text-danger">
+            Stop reason is required.
+          </div>
+        </div>
+      
+        <div class="form-group" *ngIf="taskForm.get('reasonForStop').value === 'other'">
+          <label for="customReason">Enter a custom reason <span class="span-danger">*</span></label>
+          <input type="text" class="form-control" id="customReason" formControlName="customReason">
+        </div>
+        <div *ngIf="taskForm.get('reasonForStop').value === 'other' && (taskForm.get('customReason').hasError('required') && taskForm.get('customReason').touched)"  class="text-danger">
+        A custom reason reason is required.
+      </div>
+      </form>
+      
+      <div class="group-button">
+        <button pButton pRipple label="Start" class="p-button-success  custom-button" (click)="start()"
+          [disabled]="disabledBtn"></button>
+        <button pButton pRipple label="Stop" class="p-button-danger  custom-button" (click)="stop()"
+          [disabled]="!disabledBtn"></button>
+      </div>
+    </p-card>
+  </div>
+  <p-toast key="toast2"></p-toast>
+
+</div>

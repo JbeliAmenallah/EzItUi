@@ -1,0 +1,52 @@
+
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+
+        <div class="form-group">
+            <label for="projectName">Project Name:</label>
+            <input type="text" pInputText formControlName="projectName" id="projectName" placeholder="Enter the project name" class="form-control" />
+            <div *ngIf="form.get('projectName').hasError('required') && form.get('projectName').touched" class="text-danger">
+                Project name is required
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="startDate">Start Date:</label>
+                    <p-calendar formControlName="startDate"></p-calendar>
+                    <div *ngIf="form.get('startDate').hasError('required') && form.get('startDate').touched" class="text-danger">
+                        Start date is required
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="endDate">End Date:</label>
+            <p-calendar formControlName="endDate"></p-calendar>
+            <div *ngIf="form.get('endDate').hasError('required') && form.get('endDate').touched" class="text-danger">
+                End date is required
+            </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="estimatedDuration"> Estimated Duration: in hours</label>
+            <p-inputNumber inputId="estimatedDuration" formControlName="estimatedDuration" id="estimatedDuration" class="form-control" placeholder="Enter the estimated duration"></p-inputNumber>
+            <div *ngIf="form.get('estimatedDuration').hasError('required') && form.get('estimatedDuration').touched" class="text-danger">
+                Estimated duration is required
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Project Description:</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="description" id="description" placeholder="Enter the description" class="form-control"></textarea>
+            <div *ngIf="form.get('description').hasError('required') && form.get('description').touched" class="text-danger">
+                Project description is required
+    </div>
+        </div>
+
+    </form>
+</div>

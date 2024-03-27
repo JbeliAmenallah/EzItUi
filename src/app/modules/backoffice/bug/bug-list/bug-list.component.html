@@ -1,0 +1,69 @@
+<p-toast></p-toast>
+<div class="grid">
+    <div class="col-10">
+        <div class="text-center p-3 border-round-sm  font-bold ">
+            <h1 class="first-title-List" style="text-align: center;">List of bugs</h1>
+        </div>
+    </div>
+   
+    <div class="col-2">
+        <div class="text-center p-3 border-round-sm font-bold ">
+            <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/bugs/add" tooltipPosition="left"></button>
+            
+            <ng-template #tooltipContent>
+               <div class="flex align-items-center">
+                   <span> <b>Add bug</b> </span>
+               </div>
+            </ng-template>       
+         </div>
+    </div>
+</div>
+<div class="card">
+    <p-table
+        #dt2
+        [value]="bugs"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['id', 'description', 'functionalityId']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal($event.target, 'contains')" placeholder="Rechercher" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:22%">ID</th>
+                <th style="width:22%">Description</th>
+                <th style="width:22%">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-bug>
+            <tr>
+                <td>{{ bug.id }}</td>
+                <td>{{ bug.description }}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-text" pTooltip="Edit"  tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"    pTooltip="Delete" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-text"  pTooltip="View Details" tooltipPosition="left" ></button>
+            </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">Aucun bug trouvé.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle" acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+    </p-confirmDialog>
+</div>

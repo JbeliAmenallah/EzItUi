@@ -1,0 +1,138 @@
+.card-container {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.card-details {width: 58%; }
+.card-stopwatch{
+    width: 40%;
+
+}
+.p-card-body {
+    background-color: rgba(153, 202, 229, 0.5);
+  }
+.p-card-stopwatch{
+    background-color: rgba(153, 202, 229, 0.5); 
+  
+}
+.totalDuration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #333; 
+  }
+  .iconStopwatch{
+    font-size: 35px;
+   margin-right: 20px;
+  }
+  .custom-button{
+    margin-right: 10px; 
+    font-size: 14px; 
+    padding: 8px 16px;
+  }
+  .group-button{
+    margin-top: 25px;
+    text-align: center;
+  }
+  .text-danger {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 20px;
+    font-weight: 600px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .span-danger{
+    color:  red;
+    font-size: 18px;
+  }
+  select:focus {
+    border: 1px solid blue;
+  }
+  select:focus-visible {
+    outline: none;
+  }
+  select::placeholder {
+    font-family: roboto;
+    color: #333; 
+
+    
+  }
+
+  select {
+    margin-top: 10px;
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    border: 1px solid #e4e2e7;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    resize: none;
+    border-radius: 3px;
+    border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+    color: var(--gris-1-dbarras, #7b777f);
+    font-family: Lexend Deca;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding:  10px;
+    appearance: none;
+    background: transparent;
+    position: relative;
+  }
+  .group-card{
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 10px;
+  }
+  .card-duration-time {
+    width: 45%;
+    border-radius: 2%;
+    box-shadow: 0 0 10px rgba(182, 180, 180, 0.6); 
+    padding: 20px; 
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-duration-time label {
+    font-weight: bold; 
+  font-size: 16px; 
+  font-family: 'Arial', sans-serif; 
+  color: #585656; 
+}
+.card-duration-time label span {
+    font-size: 20px;
+    color: black;
+}
+.card-details p-card h2 span{
+    color: black;
+  margin-left: 30px;
+  font-size: 30px; 
+  font-family: 'Arial', sans-serif; 
+}
+input {
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  border: 1px solid #e4e2e7;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  resize: none;
+  border-radius: 3px;
+  border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  padding: 20px 32px 20px 10px;
+  appearance: none;
+  background: transparent;
+}

@@ -1,0 +1,256 @@
+<p-toast></p-toast>
+<p-accordion [multiple]="true" [activeIndex]="[0]">
+    <!-- code sara -->
+    <p-accordionTab header="Details of functionality">
+        <div *ngIf="visible" class="container" >
+            <h1>Details of functionality: {{ currentFunctionality?.functionalityName }}</h1>
+            <form class="form">
+                <div class="card">
+                    <label>Description:</label>
+                    <span>{{ currentFunctionality?.descriptionFunctionality }}</span>
+                </div>
+                <div class="card">
+                    <label>Priority:</label>
+                    <span>{{ currentFunctionality?.priority }}</span>
+                </div>
+                <div class="card">
+                    <label>Status:</label>
+                    <span>{{ currentFunctionality?.status }}</span>
+                </div>
+                <div class="card">
+                    <label>Complexity Level:</label>
+                    <span>{{ currentFunctionality?.complexityLevel }}</span>
+                </div>
+                <div class="card">
+                    <label>Start Date:</label>
+                    <span>{{ currentFunctionality?.startDate }}</span>
+                </div>
+                <div class="card">
+                    <label>End Date:</label>
+                    <span>{{ currentFunctionality?.endDate }}</span>
+                </div>
+                <div class="card">
+                    <label>Number of Days Worked:</label>
+                    <span>{{ currentFunctionality?.numberOfDaysWorked }}</span>
+                </div>
+                <div class="card">
+                    <label>Duration:</label>
+                    <span>{{ currentFunctionality?.duration }}</span>
+                </div>
+                <div class="card">
+                    <label>Number of Hours Worked:</label>
+                    <span>{{ currentFunctionality?.numberOfHoursWorked }}</span>
+                </div>
+                <div class="card">
+                    <label>Real Duration:</label>
+                    <span>{{ currentFunctionality?.realDuration }}</span>
+                </div>
+                <div class="card">
+                    <label>Previous Task:</label>
+                    <span>{{ currentFunctionality?.previousTask }}</span>
+                </div>
+                <div class="card">
+                    <label>Next Task:</label>
+                    <span>{{ currentFunctionality?.nextTask }}</span>
+                </div>
+                <div class="card">
+                    <label>Parent Task:</label>
+                    <span>{{ currentFunctionality?.parentTask }}</span>
+                </div>
+                <div class="card">
+                    <label>Project ID:</label>
+                    <span>{{ currentFunctionality?.projectId }}</span>
+                </div>
+                <div class="card">
+                    <label>Resources affected:</label>
+                    <p-timeline [value]="resources">
+                        <ng-template pTemplate="content" let-resource>
+                       
+                          
+                                
+                                    {{ resource.firstName }} {{ resource.lastName }}
+                                
+                         
+                        </ng-template>
+                       
+                    </p-timeline>
+                </div>
+                
+                <div class="card">
+                    <label>Tasks:</label>
+                    <p-timeline [value]="tasks">
+                        <ng-template pTemplate="content" let-task let-i="index">
+                            <div (click)="selectTask(task)">
+                                TaskName: {{ task.taskName }}
+                            </div>
+                            <div *ngIf="selectedTask === task">
+                                <ul>
+                                    <li>Duration: {{ task.duration }}</li>
+                                    <li>Description: {{ task.description }}</li>
+                                    <li>Total Duration: {{ task.totalDuration }}</li>
+                                </ul>
+                                <hr>
+                            </div>
+                        </ng-template>
+                    </p-timeline>
+                </div>
+                
+                
+                
+                
+        
+            </form>
+        </div>
+    </p-accordionTab>
+    <p-accordionTab header="Details of validation critertion  functionality ">
+<p-card class="mt-3">
+<div class="grid">
+    <div class="col-10">
+        <div class="text-center p-3 border-round-sm  font-bold ">
+            <h1 class="first-title-List" style="text-align: center;">List of functionality validation criteria</h1>
+        </div>
+    </div>
+   
+    <div class="col-2">
+        <div class="grid">
+            <div class="col">
+                <div class="text-center p-3 border-round-sm  font-bold ">
+                    <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+"  (click)="showDialog()" tooltipPosition="left"></button>
+                    <ng-template #tooltipContent>
+                       <div class="flex align-items-center">
+                           <span> <b>Add a functionality criteria</b> </span>
+                       </div>
+                    </ng-template>  
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<div class="card">
+    <p-table
+        #dt2
+        [value]="functionalityCriteria"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="[ 'description']"
+    >
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input #searchInput pInputText type="text" (input)="dt2.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+               
+                <th style="width:78%">Description</th>
+                <th style="width:22%">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-criterion>
+            <tr>
+                <td>{{ criterion.description }}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-text" pTooltip="Modifier" (click)="editItem(criterion)" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"  (click)="deleteItem(criterion.id)"  pTooltip="Delete" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-text"  pTooltip="View Details" tooltipPosition="left" ></button>
+            </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">Aucun critère de fonctionnalité trouvé.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle" acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+    </p-confirmDialog>
+    <form [formGroup]="formSaveCriterion" class="form">
+
+        <p-dialog  styleClass="custom-dialog" [(visible)]="visibleDialog" [position]="'right'" [style]="{ width: '50vw' }">
+            <ng-template pTemplate="header">
+                <h3>Ajouter un critère de validation à</h3>
+                <span class='custom-functionality-name' [innerHTML]="currentFunctionality?.functionalityName"></span>
+            </ng-template>
+            <div class="grid">
+                <div class="col">
+                    <div class="p-3 border-round-sm font-bold">
+                        <label for="description">Description <span class="text-danger">*</span> </label>
+                        <textarea class="mt-3" rows="6" id="description" formControlName="description" pInputTextarea style="width: 95%;"></textarea>
+                       
+                    </div>
+                    <div class="text-center"> <!-- Ajout de la classe text-center pour centrer le bouton -->
+                        <button pButton pRipple label="Soumettre" class="p-button-success" (click)="save()"></button>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </form>
+</div>
+</p-card>
+    </p-accordionTab>
+    <p-accordionTab header="Details of Bugs">
+        <p-table
+        #dt2
+        [value]="functionalityCriteria"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="[ 'description']"
+    >
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input #searchInput pInputText type="text" (input)="dt2.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+    </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+               
+                <th style="width:78%">Description</th>
+                <th style="width:22%">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-criterion>
+            <tr>
+                <td>{{ criterion.description }}</td>
+                <td>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-text" pTooltip="Modifier" (click)="editItem(criterion)" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"  (click)="deleteItem(criterion.id)"  pTooltip="Delete" tooltipPosition="left"></button>
+                    <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-info p-button-text"  pTooltip="View Details" tooltipPosition="left" ></button>
+            </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">Aucun critère de fonctionnalité trouvé.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+      
+    </p-accordionTab>
+</p-accordion>
+
+
+
+<!-- code Nawel -->
+
+
+
+

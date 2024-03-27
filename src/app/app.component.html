@@ -1,0 +1,48 @@
+<div class='dashboard'>
+    <div class="dashboard-nav">
+        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"><i
+                    class="fas fa-anchor"></i> <span>BRAND</span></a></header>
+        <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"> <img src="icon/home.svg" alt="">
+                Home </a><a href="#" class="dashboard-nav-item"><img src="icon/mail.svg" alt=""> Boite de reception
+            </a>
+            <div class='dashboard-nav-dropdown'><a href="#!"
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><img src="icon/tache.svg" alt="">
+                    Taches </a>
+                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                        href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                        class="dashboard-nav-dropdown-item">Images</a><a href="#"
+                        class="dashboard-nav-dropdown-item">Video</a></div>
+            </div>
+            <div class='dashboard-nav-dropdown'><a href="#!"
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><img src="icon/users.svg" alt=""> Users
+                </a>
+                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                        href="#" class="dashboard-nav-dropdown-item">Subscribed</a><a href="#"
+                        class="dashboard-nav-dropdown-item">Non-subscribed</a><a href="#"
+                        class="dashboard-nav-dropdown-item">Banned</a><a href="#"
+                        class="dashboard-nav-dropdown-item">New</a></div>
+            </div>
+            <div class='dashboard-nav-dropdown'><a href="#!"
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><img src="icon/file-text.svg" alt="">
+                    Project </a>
+                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
+                        href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                        class="dashboard-nav-dropdown-item"> Projections</a>
+                </div>
+            </div>
+            <a href="#" class="dashboard-nav-item"><img src="icon/settings.svg" alt="">Settings </a>
+            <a href="#" class="dashboard-nav-item"><img src="icon/clock.svg" alt="">Chronomètre </a>
+            <a href="#" class="dashboard-nav-item"><img src="icon/one-user.svg" alt=""> Profile </a>
+            <div class="nav-item-divider"></div>
+            <a href="#" class="dashboard-nav-item logout"><img src="icon/log-out.svg" alt=""> Logout </a>
+        </nav>
+    </div>
+    <div class='dashboard-app'>
+        <header class='dashboard-toolbar'><a  class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+        <div class='dashboard-content'>
+            <div class='container'>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

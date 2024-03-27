@@ -1,0 +1,21 @@
+<div *ngIf="visible" class="container">
+    <h1>Details of Group Functionalities: {{     currentGroupFunctionality?.groupName }}</h1>
+    <form class="form">
+        <div class="card">
+            <label>Duration:</label>
+            <span>{{     currentGroupFunctionality?.duration }}</span>
+        </div>
+        <div class="card">
+            <label>Start Date:</label>
+            <span>{{     currentGroupFunctionality?.startDate }}</span>
+        </div>
+        <div class="card">
+            <label>End Date:</label>
+            <span>{{     currentGroupFunctionality?.endDate }}</span>
+        </div>
+        <div class="card">
+            <label>Project ID:</label>
+            <span>{{     currentGroupFunctionality?.projectId }}</span>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,75 @@
+<p-card>
+    <h1 class="first-title">{{ project?.projectName }}</h1>
+ 
+    <div class="grid">
+       
+        <div class="col">
+            <div class="text-center p-3 border-round-sm bg-blue-50 font-bold">
+                <p-accordion [activeIndex]="0">
+                    <p-accordionTab header="Description">
+                        <p>{{project.description}}</p>
+                    </p-accordionTab>
+                </p-accordion>   
+            </div>
+        </div>
+        <div class="col-fixed" style="width:250px">
+                    <div class="shadow-2 hover:shadow-8 text-center border-round-sm h-6rem surface-overlay p-3 m-3 align-items-center justify-content-center font-bold">
+                        <p class="pdate">Start Date</p>
+                        <span class="pdate">{{ project.startDate }}</span>  
+                    </div>
+                    <div class="shadow-2 hover:shadow-8 text-center border-round-sm h-6rem surface-overlay p-3 m-3 align-items-center justify-content-center font-bold">
+                        <p class="pdate">End Date</p>
+                        <span class="pdate">{{ project.endDate }}</span>  
+                    </div>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col">
+            <div class="text-center p-3 border-round-sm bg-blue-50 font-bold">
+                <div class="container">
+                    <h1 class="font-bold text-3xl text-primary-900">List of Functionalities</h1>
+                    <p-accordion [activeIndex]="0">
+                        <p-accordionTab *ngFor="let functionality of functionalities" [header]="functionality.functionalityName" class="custom-accordion-tab">
+                            <h1 class="text-xl font-bold text-primary-700">List of Tasks</h1>
+                            <div *ngIf="functionality.tasks && functionality.tasks.length > 0">
+                                <p-accordion [activeIndex]="0">
+                                    <p-accordionTab *ngFor="let task of functionality.tasks" [header]="task.taskName">
+                                        
+                                        <div class="grid">
+                                    
+                                            <div class="col">
+                                                <div class="text-center p-3 border-round-sm bg-blue-50 font-bold" style="height: 300px;">
+                                                  
+                                                        <div class="flex">
+                                                            <div class="shadow-2 hover:shadow-8 text-center border-round-sm h-6rem surface-overlay p-3 m-3 align-items-center justify-content-center font-bold">
+                                                                <p>Estimated duration <span>{{ task.duration }} hours</span></p>
+                                                            </div>
+                                                            <div class="shadow-2 hover:shadow-8 text-center border-round-sm h-6rem surface-overlay p-3 m-3 align-items-center justify-content-center font-bold">
+                                                                <p>Total Duration {{ formatDuration(task.totalDuration) }} </p>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-fixed" style="width:200px; height: 200px;">
+                                                <p-chart type="doughnut" [data]="task.chartData" [options]="options"></p-chart>
+            
+                                            </div>
+                                        </div>
+                                    </p-accordionTab>
+                                </p-accordion>
+                            </div>
+                            <div *ngIf="!(functionality.tasks && functionality.tasks.length > 0)">
+                                <p>No tasks found for this functionality.</p>
+                            </div>
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+            </div>
+        </div>
+        <div class="col-fixed" style="width:250px">
+            <div class="border-left-2 border-primary-500 w-12rem h-6rem m-2 surface-overlay font-bold flex align-items-center justify-content-center">
+                <h3 class="font-bold text-primary-900">List of Resources</h3>
+            </div>
+        </div>
+    </div>
+</p-card>

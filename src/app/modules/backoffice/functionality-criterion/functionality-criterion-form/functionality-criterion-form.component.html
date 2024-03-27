@@ -1,0 +1,30 @@
+<p-card>
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <form [formGroup]="form" class="form">
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-6">
+                            <label for="functionalityId">Sélectionnez une fonctionnalité <span class="text-danger">*</span></label>
+                            <p-dropdown [options]="functionalityOptions" formControlName="functionalityId" id="functionalityId" placeholder="Sélectionnez une fonctionnalité" [showClear]="true"></p-dropdown>
+                            <div *ngIf="form.get('functionalityId').hasError('required') &&form.get('functionalityId').touched" class="text-danger">
+                                functionality is required
+                            </div>
+                        </div>
+                        
+                      
+                        <div class="field col-12">
+                            <label for="description">Description <span class="text-danger">*</span> </label>
+                            <textarea rows="4" id="description" formControlName="description"  pInputTextarea></textarea>
+                            <div *ngIf="form.get('description').hasError('required') &&form.get('description').touched" class="text-danger">
+                                Description is required
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</p-card>
+
