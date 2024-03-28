@@ -1,0 +1,89 @@
+<div class="table-container">
+    <!-- Title and Header Section -->
+    <div class="table-header" style="
+    margin-bottom: 30px;">
+      <h2 class="table-title">List of Conges</h2>
+      <div class="header-actions">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            #searchInput
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal(searchInput.value, 'contains')"
+            placeholder="Search keyword"
+            class="p-inputtext"
+          />
+        </span>
+        <button pButton type="button" icon="pi pi-plus" label="Conge" class="p-button-success p-button-rounded" (click)="addConge()"
+          style="margin-left: 10px;">
+        </button>
+      </div>
+    </div>
+  
+    <!-- Table Component -->
+    <!-- Table Component -->
+    <p-table
+      #dt
+      [value]="conges"
+      dataKey="id"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['startDate', 'endDate', 'state', 'contactId']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      [scrollable]="true"
+      class="custom-table"
+    >
+      <!-- Caption Template -->
+      <!-- Header Template -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 15%;">Start Date</th>
+          <th style="width: 15%;">End Date</th>
+          <th style="width: 15%;">State</th>
+          <th style="width: 15%;">Contact ID</th>
+          <th style="width: 15%;">Actions</th>
+        </tr>
+      </ng-template>
+  
+      <!-- Body Template -->
+      <ng-template pTemplate="body" let-conge>
+        <tr [ngClass]="{
+          'pending-row': conge.state === 'Pending',
+          'accepted-row': conge.state === 'Accepted',
+          'rejected-row': conge.state === 'Rejected'
+        }">
+          <td>{{ conge.startDate }}</td>
+          <td>{{ conge.endDate }}</td>
+          <td>{{ conge.state }}</td>
+          <td>{{ conge.contactId }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success" (click)="editItem(conge)">
+            </button>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger " (click)="deleteItem(conge)">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+  
+      <!-- Empty Message Template -->
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No conges found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+  <!-- Add the EditCongeComponent popup dialog -->
+  <app-edit-conge
+    [displayDialog]="displayDialog"
+    [selectedConge]="selectedConge"
+    (onSave)="saveConge()"
+    (onHide)="hideDialog()"
+  ></app-edit-conge>
+  

@@ -1,0 +1,30 @@
+<!-- edit-conge.component.html -->
+<p-dialog header="Edit Conge" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
+  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+  <ng-container *ngIf="selectedConge">
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input id="startDate" pInputText type="text" [(ngModel)]="selectedConge.startDate" class="form-control"
+        placeholder="Start Date" />
+    </div>
+    <div class="form-group">
+      <label for="endDate">End Date</label>
+      <input id="endDate" pInputText type="text" [(ngModel)]="selectedConge.endDate" class="form-control"
+        placeholder="End Date" />
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input id="state" pInputText type="text" [(ngModel)]="selectedConge.state" class="form-control"
+        placeholder="State" />
+    </div>
+    <div class="form-group">
+      <label for="contactId">Contact ID</label>
+      <input id="contactId" pInputText type="text" [(ngModel)]="selectedConge.contactId" class="form-control"
+        placeholder="Contact ID" />
+    </div>
+  </ng-container>
+  <p-footer>
+    <button pButton type="button" label="Save" class="p-button-success" (click)="saveConge()"></button>
+    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
+  </p-footer>
+</p-dialog>

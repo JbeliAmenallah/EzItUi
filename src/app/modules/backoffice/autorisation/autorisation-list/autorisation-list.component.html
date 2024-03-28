@@ -1,0 +1,60 @@
+<div class="table-container">
+  <!-- Title and Header Section -->
+  <div class="table-header">
+    <h2 class="table-title">List of Autorisations</h2>
+    <div class="header-actions">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          #searchInput
+          pInputText
+          type="text"
+          (input)="dt.filterGlobal(searchInput.value, 'contains')"
+          placeholder="Search keyword"
+          class="p-inputtext"
+        />
+      </span>
+      <button pButton type="button" icon="pi pi-plus" label="Autorisation" class="p-button-success p-button-rounded" 
+        style="margin-left: 10px;">
+      </button>
+    </div>
+  </div>
+
+  <!-- Table Component -->
+  <p-table
+    #dt
+    [value]="autorisations"
+    dataKey="autorisationId"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['dateDebut', 'dateFin', 'state', 'contactId']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [scrollable]="true"
+    class="custom-table"
+  >
+    <!-- Header Template -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%;">Start Date</th>
+        <th style="width: 20%;">End Date</th>
+        <th style="width: 15%;">State</th>
+        <th style="width: 15%;">Contact ID</th>
+        <th style="width: 30%;">Actions</th>
+      </tr>
+    </ng-template>
+
+    <!-- Body Template -->
+    <ng-template pTemplate="body" let-autorisation>
+      <tr [ngClass]="{
+        'pending-row': autorisation.state === 'Pending',
+        'accepted-row': autorisation.state === 'Accepted',
+        'rejected-row': autorisation.state === 'Rejected'
+      }">
+        <td>{{ autorisation.dateDebut }}</td>
+        <td>{{ autorisation.dateFin }}</td>
+        <td>{{ autorisation.state }}</td>
+       

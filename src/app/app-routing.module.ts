@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path:'conges',
     loadChildren:()=>import('./modules/backoffice/conge/conge.module').then((m)=>m.CongeModule)
+  },
+  {
+    path:'autorisations',
+    loadChildren:()=>import('./modules/backoffice/autorisation/autorisation.module').then((m)=>m.AutorisationModule)
   }
 
 ];
