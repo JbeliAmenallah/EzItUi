@@ -23,11 +23,12 @@ export class AddcongeComponent {
 
     this.congeService.saveConge(newConge).subscribe(response => {
       // Conge saved successfully, navigate to Conge list or do something else
-      this.router.navigate(['/conges']);
+      this.router.navigate(['/conges/list']);
     }, error => {
       // Handle error
       console.error(error);
       this.messages = [{ severity: 'error', summary: 'Error', detail: 'Failed to save Conge.' }];
     });
   }
+
 }

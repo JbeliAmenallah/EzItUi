@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" formControlName="startDate" id="startDate" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Start date is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" formControlName="endDate" id="endDate" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">End date is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" formControlName="state" id="state" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('state')?.touched && form.get('state')?.hasError('required')">State is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="contactId">Contact ID:</label>
+            <input type="number" formControlName="contactId" id="contactId" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Contact ID is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-12">
+          <button type="submit" class="custom-save-button">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

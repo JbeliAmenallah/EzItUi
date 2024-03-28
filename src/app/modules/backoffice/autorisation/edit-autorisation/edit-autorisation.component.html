@@ -1,0 +1,29 @@
+<p-dialog header="Edit Autorisation" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
+  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+  <ng-container *ngIf="autorisation">
+    <div class="form-group">
+      <label for="dateDebut">Start Date</label>
+      <input id="dateDebut" pInputText type="text" [(ngModel)]="autorisation.dateDebut" class="form-control"
+        placeholder="Start Date" />
+    </div>
+    <div class="form-group">
+      <label for="dateFin">End Date</label>
+      <input id="dateFin" pInputText type="text" [(ngModel)]="autorisation.dateFin" class="form-control"
+        placeholder="End Date" />
+    </div>
+    <div class="form-group">
+      <label for="contactId">Contact ID</label>
+      <input id="contactId" pInputText type="text" [(ngModel)]="autorisation.contactId" class="form-control"
+        placeholder="Contact ID" />
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input id="state" pInputText type="text" [(ngModel)]="autorisation.state" class="form-control"
+        placeholder="State" />
+    </div>
+  </ng-container>
+  <p-footer>
+    <button pButton type="button" label="Save" class="p-button-success" (click)="saveAutorisation()"></button>
+    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
+  </p-footer>
+</p-dialog>

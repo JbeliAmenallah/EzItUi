@@ -1,60 +1,85 @@
 <div class="table-container">
-  <!-- Title and Header Section -->
-  <div class="table-header">
-    <h2 class="table-title">List of Autorisations</h2>
-    <div class="header-actions">
-      <span class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input
-          #searchInput
-          pInputText
-          type="text"
-          (input)="dt.filterGlobal(searchInput.value, 'contains')"
-          placeholder="Search keyword"
-          class="p-inputtext"
-        />
-      </span>
-      <button pButton type="button" icon="pi pi-plus" label="Autorisation" class="p-button-success p-button-rounded" 
-        style="margin-left: 10px;">
-      </button>
+    <!-- Title and Header Section -->
+    <div class="table-header" style="
+    margin-bottom: 30px;">
+      <h2 class="table-title">List of Autorisations</h2>
+      <div class="header-actions">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            #searchInput
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal(searchInput.value, 'contains')"
+            placeholder="Search keyword"
+            class="p-inputtext"
+          />
+        </span>
+        <button pButton type="button" icon="pi pi-plus" label="Autorisation" class="p-button-success p-button-rounded"
+          style="margin-left: 10px;" (click)="addAutorisation()">
+        </button>
+      </div>
     </div>
+  
+    <!-- Table Component -->
+    <p-table
+      #dt
+      [value]="autorisations"
+      dataKey="autorisationId"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['dateDebut', 'dateFin', 'state', 'contactId']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      [scrollable]="true"
+      class="custom-table"
+    >
+      <!-- Header Template -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 20%;">Start Date</th>
+          <th style="width: 20%;">End Date</th>
+          <th style="width: 15%;">State</th>
+          <th style="width: 15%;">Contact ID</th>
+          <th style="width: 30%;">Actions</th>
+        </tr>
+      </ng-template>
+  
+      <!-- Body Template -->
+      <ng-template pTemplate="body" let-autorisation>
+        <tr [ngClass]="{
+          'pending-row': autorisation.state === 'Pending',
+          'accepted-row': autorisation.state === 'Accepted',
+          'rejected-row': autorisation.state === 'Rejected'
+        }">
+          <td>{{ autorisation.dateDebut }}</td>
+          <td>{{ autorisation.dateFin }}</td>
+          <td>{{ autorisation.state }}</td>
+          <td>{{ autorisation.contactId }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success" (click)="editItem(autorisation)">
+            </button>
+            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteAutorisation(autorisation)">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+  
+      <!-- Empty Message Template -->
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No autorisations found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-
-  <!-- Table Component -->
-  <p-table
-    #dt
-    [value]="autorisations"
-    dataKey="autorisationId"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [loading]="loading"
-    [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['dateDebut', 'dateFin', 'state', 'contactId']"
-    [tableStyle]="{ 'min-width': '75rem' }"
-    [scrollable]="true"
-    class="custom-table"
-  >
-    <!-- Header Template -->
-    <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 20%;">Start Date</th>
-        <th style="width: 20%;">End Date</th>
-        <th style="width: 15%;">State</th>
-        <th style="width: 15%;">Contact ID</th>
-        <th style="width: 30%;">Actions</th>
-      </tr>
-    </ng-template>
-
-    <!-- Body Template -->
-    <ng-template pTemplate="body" let-autorisation>
-      <tr [ngClass]="{
-        'pending-row': autorisation.state === 'Pending',
-        'accepted-row': autorisation.state === 'Accepted',
-        'rejected-row': autorisation.state === 'Rejected'
-      }">
-        <td>{{ autorisation.dateDebut }}</td>
-        <td>{{ autorisation.dateFin }}</td>
-        <td>{{ autorisation.state }}</td>
-       
+  <!-- Add the EditAutorisationComponent popup dialog -->
+  <app-edit-autorisation
+  [displayDialog]="displayDialog"
+  [autorisation]="selectedAutorisation"
+  (onSave)="saveAutorisation()"
+  (onHide)="hideDialog()"
+></app-edit-autorisation>
