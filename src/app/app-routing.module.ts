@@ -54,6 +54,22 @@ const routes: Routes = [
   {
     path:'autorisations',
     loadChildren:()=>import('./modules/backoffice/autorisation/autorisation.module').then((m)=>m.AutorisationModule)
+  },
+  {
+    path:'employee',
+    loadChildren:()=>import('./modules/backoffice/employee/employee.module').then((m)=>m.EmployeeModule)
+  },
+  {
+    path:'absence',
+    loadChildren:()=>import('./modules/backoffice/absence/absence.module').then((m)=>m.AbsenceModule)
+  },
+  {
+    path:'financeconfiguration',
+    loadChildren:()=>import('./modules/backoffice/financeconfiguration/financeconfiguration.module').then((m)=>m.FinanceconfigurationModule)
+  },
+  {
+    path:'annee',
+    loadChildren:()=>import('./modules/backoffice/annee/annee.module').then((m)=>m.AnneeModule)
   }
 
 ];

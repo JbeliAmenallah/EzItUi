@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbsenceService } from '../../../../core/http/absence.service';
 
 @Component({
   selector: 'app-conge-form',
@@ -11,17 +12,20 @@ export class CongeFormComponent implements OnInit {
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>(); // Event emitter for form submission
 
   form: FormGroup;
+  employeeOptions: any[] = []; // Array to store employee options
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private absenceService: AbsenceService) {
     this.form = this.formBuilder.group({
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       state: ['', Validators.required],
-      contactId: ['', Validators.required]
+      contactId: [null, Validators.required] // Set default value to null
     });
   }
 
   ngOnInit(): void {
+    this.loadEmployeeOptions(); // Load employee options when component initializes
+
     // If the conge object is provided, patch the form with its values
     if (this.conge) {
       this.form.patchValue({
@@ -33,9 +37,17 @@ export class CongeFormComponent implements OnInit {
     }
   }
 
+  // Method to load employee options
+  loadEmployeeOptions() {
+    this.absenceService.getEmployeeOptions().subscribe(options => {
+      this.employeeOptions = options;
+    });
+  }
+
   // Method to handle form submission
   submitForm() {
     if (this.form.valid) {
+      console.log('Form Data:', this.form.value); // Log form data before submission
       this.onSubmit.emit(this.form.value);
     } else {
       this.form.markAllAsTouched();

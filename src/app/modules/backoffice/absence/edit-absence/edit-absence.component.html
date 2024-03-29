@@ -1,0 +1,33 @@
+<p-dialog header="Edit Absence" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
+  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+  <ng-container *ngIf="selectedAbsence">
+    <div class="form-group">
+      <label for="contactId">Contact ID</label>
+      <!-- Display selectedAbsence's contactId in input -->
+      <input id="contactId" pInputText type="text" [(ngModel)]="selectedAbsence.contactId" class="form-control"
+        placeholder="Contact ID" />
+    </div>
+    <div class="form-group">
+      <label for="dateDebutAbsence">Start Date of Absence</label>
+      <!-- Display selectedAbsence's dateDebutAbsence in input -->
+      <input id="dateDebutAbsence" pInputText type="date" [(ngModel)]="selectedAbsence.dateDebutAbsence" class="form-control"
+        placeholder="Start Date of Absence" />
+    </div>
+    <div class="form-group">
+      <label for="dateFinAbsence">End Date of Absence</label>
+      <!-- Display selectedAbsence's dateFinAbsence in input -->
+      <input id="dateFinAbsence" pInputText type="date" [(ngModel)]="selectedAbsence.dateFinAbsence" class="form-control"
+        placeholder="End Date of Absence" />
+    </div>
+    <div class="form-group">
+      <label for="reason">Reason</label>
+      <!-- Display selectedAbsence's reason in input -->
+      <input id="reason" pInputText type="text" [(ngModel)]="selectedAbsence.reason" class="form-control"
+        placeholder="Reason" />
+    </div>
+  </ng-container>
+  <p-footer>
+    <button pButton type="button" label="Save" class="p-button-success" (click)="saveAbsence()"></button>
+    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
+  </p-footer>
+</p-dialog>

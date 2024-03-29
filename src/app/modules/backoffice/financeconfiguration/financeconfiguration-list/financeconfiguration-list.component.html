@@ -1,0 +1,77 @@
+<div class="table-container">
+    <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
+        <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/financeconfiguration/add"></button>
+        <ng-template #tooltipContent>
+            <div class="flex align-items-center">
+                <span> <b>Add Finance Configuration</b> </span>
+            </div>
+        </ng-template>
+    </div>
+  
+    <p-table
+        #dt3
+        [value]="financeConfigurations"
+        dataKey="id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['libele', 'year', 'taux']"
+        [tableStyle]="{ 'min-width': '75rem' }">
+    
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Libele</th>
+                <th>Year</th>
+                <th>Taux</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="libele"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="year"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="taux"></p-columnFilter>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-financeConfig>
+            <tr>
+                <td>{{ financeConfig.libele }}</td>
+                <td>{{ financeConfig.year }}</td>
+                <td>{{ financeConfig.taux }}</td>
+                <td>
+                    <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editItem(financeConfig.id)"></i>
+                    <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(financeConfig.id)"></i>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">No finance configurations found.</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-end align-items-center">
+                <div class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+                </div>
+            </div>
+        </ng-template>
+    </p-table>
+    <app-financeconfiguration-edit [displayDialog]="displayDialog" [selectedFinanceConfig]="selectedFinanceConfig"
+    (onSave)="saveFinanceConfig()" (onHide)="hideDialog()"></app-financeconfiguration-edit>
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    acceptButtonStyleClass="p-button-danger p-button-text"
+    rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">
+    </p-confirmDialog>
+    <p-toast></p-toast>
+  </div>
+  

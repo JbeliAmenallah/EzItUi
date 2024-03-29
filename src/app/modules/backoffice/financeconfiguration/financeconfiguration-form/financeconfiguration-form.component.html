@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="libele">Libele:</label>
+            <input type="text" pInputText formControlName="libele" id="libele" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libele is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('year')?.touched && form.get('year')?.hasError('required')">Year is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taux">Taux:</label>
+            <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
+            <small class="p-error" *ngIf="form.get('taux')?.touched && form.get('taux')?.hasError('required')">Taux is required</small>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="anneeId">Annee:</label>
+            <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
+            <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">Annee is required</small>
+          </div>
+        </div>
+      </div>
+  
+    </form>
+  </div>
+  

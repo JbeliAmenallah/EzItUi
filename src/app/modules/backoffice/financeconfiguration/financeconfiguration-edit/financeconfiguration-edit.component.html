@@ -1,0 +1,27 @@
+<p-dialog header="Edit Finance Configuration" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
+  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+  <ng-container *ngIf="selectedFinanceConfig">
+    <div class="form-group">
+      <label for="year">Year</label>
+      <!-- Display selectedFinanceConfig's year in input -->
+      <input id="year" pInputText type="number" [(ngModel)]="selectedFinanceConfig.year" class="form-control"
+        placeholder="Year" />
+    </div>
+    <div class="form-group">
+      <label for="libele">Libele</label>
+      <!-- Display selectedFinanceConfig's libele in input -->
+      <input id="libele" pInputText type="text" [(ngModel)]="selectedFinanceConfig.libele" class="form-control"
+        placeholder="Libele" />
+    </div>
+    <div class="form-group">
+      <label for="taux">Taux</label>
+      <!-- Display selectedFinanceConfig's taux in input -->
+      <input id="taux" pInputText type="number" [(ngModel)]="selectedFinanceConfig.taux" class="form-control"
+        placeholder="Taux" />
+    </div>
+  </ng-container>
+  <p-footer>
+    <button pButton type="button" label="Save" class="p-button-success" (click)="saveFinanceConfig()"></button>
+    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
+  </p-footer>
+</p-dialog>

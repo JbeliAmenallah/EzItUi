@@ -1,0 +1,38 @@
+/* edit-conge.component.css */
+
+:host ::ng-deep .ui-dialog-content {
+    padding: 20px; /* Add some padding to the dialog content */
+  }
+  
+  /* Style form elements */
+  :host ::ng-deep .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Label styles */
+  :host ::ng-deep label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  /* Input styles */
+  :host ::ng-deep input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Button styles */
+  :host ::ng-deep .p-button {
+    margin-right: 10px;
+  }
+  
+  /* Footer styles */
+  :host ::ng-deep .p-footer {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
