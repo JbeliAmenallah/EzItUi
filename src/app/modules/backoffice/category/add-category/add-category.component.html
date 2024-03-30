@@ -1,0 +1,15 @@
+<p-dialog header="Add A New Category" [(visible)]="displayAddDialog" [modal]="true" [style]="{ 'width': '400px' }" (onHide)="hideDialog()">
+    <form [formGroup]="form" class="form">
+      <div class="form-group">
+        <label for="libele">Libele</label>
+        <input id="libele" type="text" pInputText formControlName="libele" class="form-control" placeholder="Add The Category Libele"/>
+        <div *ngIf="form.controls['libele'].invalid && (form.controls['libele'].dirty || form.controls['libele'].touched)" class="invalid-feedback">
+          <div *ngIf="form.controls['libele'].hasError('required')">Libele is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button pButton type="button" p-Button label="Save" class="btn btn-primary mr-2" (click)="save()"></button>
+      </div>
+    </form>
+  </p-dialog>
+  

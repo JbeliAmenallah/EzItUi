@@ -70,8 +70,19 @@ const routes: Routes = [
   {
     path:'annee',
     loadChildren:()=>import('./modules/backoffice/annee/annee.module').then((m)=>m.AnneeModule)
+  },
+  {
+    path:'publicholiday',
+    loadChildren:()=>import('./modules/backoffice/publicholiday/publicholiday.module').then((m)=>m.PublicholidayModule)
+  },
+  {
+    path:'grades',
+    loadChildren:()=>import('./modules/backoffice/grade/grade.module').then((m)=>m.GradeModule)
+  },
+  {
+    path:'category',
+    loadChildren:()=>import('./modules/backoffice/category/category.module').then((m)=>m.CategoryModule)
   }
-
 ];
 
 @NgModule({

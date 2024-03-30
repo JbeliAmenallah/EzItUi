@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { SidebarModule } from 'primeng/sidebar';
+import { CategoryListComponent } from './modules/backoffice/category/category-list/category-list.component';
 @NgModule({
   declarations: [
     AppComponent,
+
+
    
   ],
   imports: [

@@ -1,0 +1,21 @@
+.p-field {
+    margin-bottom: 20px;
+  }
+  
+  .p-error {
+    color: red;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

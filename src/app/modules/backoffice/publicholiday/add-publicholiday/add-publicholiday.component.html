@@ -1,0 +1,34 @@
+<div class="p-fluid">
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="p-field">
+        <label for="jour">Jour:</label>
+        <input type="number" pInputText formControlName="jour" id="jour" class="p-inputtext" />
+        <small class="p-error" *ngIf="form.get('jour').hasError('required')">Jour is required</small>
+        <small class="p-error" *ngIf="form.get('jour').hasError('min') || form.get('jour').hasError('max')">Jour must be between 1 and 31</small>
+      </div>
+  
+      <div class="p-field">
+        <label for="mois">Mois:</label>
+        <input type="number" pInputText formControlName="mois" id="mois" class="p-inputtext" />
+        <small class="p-error" *ngIf="form.get('mois').hasError('required')">Mois is required</small>
+        <small class="p-error" *ngIf="form.get('mois').hasError('min') || form.get('mois').hasError('max')">Mois must be between 1 and 12</small>
+      </div>
+  
+      <div class="p-field">
+        <label for="libele">Libele:</label>
+        <input type="text" pInputText formControlName="libele" id="libele" class="p-inputtext" />
+        <small class="p-error" *ngIf="form.get('libele').hasError('required')">Libele is required</small>
+      </div>
+  
+      <div class="p-field">
+        <label for="annee">Annee:</label>
+        <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="annee" optionLabel="libele" optionValue="id"></p-dropdown>
+        <small class="p-error" *ngIf="form.get('anneeId').hasError('required')">Annee is required</small>
+      </div>
+  
+      <div class="p-field">
+        <button type="submit" pButton label="Save" class="p-button-raised p-button-success"></button>
+      </div>
+    </form>
+  </div>
+  

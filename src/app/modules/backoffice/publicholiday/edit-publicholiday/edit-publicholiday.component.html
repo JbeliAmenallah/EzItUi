@@ -1,0 +1,39 @@
+
+<div *ngIf="publicHoliday" class="p-fluid">
+    <form [formGroup]="form" (ngSubmit)="save()" >
+      <div class="p-field">
+        <label for="jour">Jour</label>
+        <input id="jour" type="number" pInputText formControlName="jour" class="p-inputtext" />
+        <div *ngIf="form.controls['jour'].invalid && (form.controls['jour'].dirty || form.controls['jour'].touched)" class="invalid-feedback">
+          <div *ngIf="form.controls['jour'].hasError('required')">Jour is required</div>
+          <div *ngIf="form.controls['jour'].hasError('min') || form.controls['jour'].hasError('max')">Jour must be between 1 and 31</div>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="mois">Mois</label>
+        <input id="mois" type="number" pInputText formControlName="mois" class="p-inputtext" />
+        <div *ngIf="form.controls['mois'].invalid && (form.controls['mois'].dirty || form.controls['mois'].touched)" class="invalid-feedback">
+          <div *ngIf="form.controls['mois'].hasError('required')">Mois is required</div>
+          <div *ngIf="form.controls['mois'].hasError('min') || form.controls['mois'].hasError('max')">Mois must be between 1 and 12</div>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="libele">Libele</label>
+        <input id="libele" type="text" pInputText formControlName="libele" class="p-inputtext" />
+        <div *ngIf="form.controls['libele'].invalid && (form.controls['libele'].dirty || form.controls['libele'].touched)" class="invalid-feedback">
+          <div *ngIf="form.controls['libele'].hasError('required')">Libele is required</div>
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="anneeId">Annee</label>
+        <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="annee" optionLabel="libele" optionValue="id"></p-dropdown>
+        <div *ngIf="form.controls['anneeId'].invalid && (form.controls['anneeId'].dirty || form.controls['anneeId'].touched)" class="invalid-feedback">
+          <div *ngIf="form.controls['anneeId'].hasError('required')">Annee is required</div>
+        </div>
+      </div>
+      <div class="p-field">
+        <button type="submit" pButton class="p-button-raised p-button-success">Save</button>
+      </div>
+    </form>
+  </div>
+  
