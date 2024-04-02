@@ -82,6 +82,14 @@ const routes: Routes = [
   {
     path:'category',
     loadChildren:()=>import('./modules/backoffice/category/category.module').then((m)=>m.CategoryModule)
+  },
+  {
+    path:'groupe',
+    loadChildren:()=>import('./modules/backoffice/groupe/groupe.module').then((m)=>m.GroupeModule)
+  },
+  {
+    path:'entreprise',
+    loadChildren:()=>import ('./modules/backoffice/entreprise/entreprise.module').then((m)=>m.EntrepriseModule)
   }
 ];
 

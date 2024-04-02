@@ -1,0 +1,93 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nom">Nom:</label>
+                    <input type="text" pInputText formControlName="nom" id="nom" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('nom')?.touched && form.get('nom')?.hasError('required')">Le nom est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="matricule">Matricule:</label>
+                    <input type="text" pInputText formControlName="matricule" id="matricule" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('matricule')?.touched && form.get('matricule')?.hasError('required')">Le matricule est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="siegesociale">Siège sociale:</label>
+                    <input type="text" pInputText formControlName="siegesociale" id="siegesociale" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('siegesociale')?.touched && form.get('siegesociale')?.hasError('required')">Le siège sociale est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="raisonSociale">Raison Sociale:</label>
+                    <input type="text" pInputText formControlName="raisonSociale" id="raisonSociale" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('raisonSociale')?.touched && form.get('raisonSociale')?.hasError('required')">La raison sociale est requise</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="adresseDeSiege">Adresse de Siège:</label>
+                    <input type="text" pInputText formControlName="adresseDeSiege" id="adresseDeSiege" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('adresseDeSiege')?.touched && form.get('adresseDeSiege')?.hasError('required')">L'adresse de siège est requise</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="matriculeFiscale">Matricule Fiscale:</label>
+                    <input type="text" pInputText formControlName="matriculeFiscale" id="matriculeFiscale" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('matriculeFiscale')?.touched && form.get('matriculeFiscale')?.hasError('required')">Le matricule fiscale est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="numCnss">Numéro CNSS:</label>
+                    <input type="text" pInputText formControlName="numCnss" id="numCnss" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('numCnss')?.touched && form.get('numCnss')?.hasError('required')">Le numéro CNSS est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="regimeSalariale">Régime Salariale:</label>
+                    <input type="text" pInputText formControlName="regimeSalariale" id="regimeSalariale" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('regimeSalariale')?.touched && form.get('regimeSalariale')?.hasError('required')">Le régime salariale est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nbrJourConge">Nombre de Jours Congé:</label>
+                    <input type="number" pInputText formControlName="nbrJourConge" id="nbrJourConge" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('nbrJourConge')?.touched && form.get('nbrJourConge')?.hasError('required')">Le nombre de jours de congé est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="typePrime">Type Prime:</label>
+                    <input type="text" pInputText formControlName="typePrime" id="typePrime" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('typePrime')?.touched && form.get('typePrime')?.hasError('required')">Le type prime est requis</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="typeDeductions">Type Déductions:</label>
+                    <input type="text" pInputText formControlName="typeDeductions" id="typeDeductions" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('typeDeductions')?.touched && form.get('typeDeductions')?.hasError('required')">Le type déductions est requis</small>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
