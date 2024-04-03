@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Employee } from '../../shared/models/employee';
+import { TypePrime } from '../../shared/models/typeprime';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
-  private apiUrl = 'http://localhost:8080/employee';
+export class TypePrimeService {
+  private apiUrl = 'http://localhost:8080/typeprimes'; 
 
   constructor(private http: HttpClient) {}
 
@@ -23,53 +23,53 @@ export class EmployeeService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  getAllEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl)
+  getAllTypePrimes(): Observable<TypePrime[]> {
+    return this.http.get<TypePrime[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  getEmployeeById(id: number): Observable<Employee> {
+  getTypePrimeById(id: number): Observable<TypePrime> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Employee>(url)
+    return this.http.get<TypePrime>(url)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  addEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.apiUrl, employee)
+  addTypePrime(typePrime: TypePrime): Observable<TypePrime> {
+    return this.http.post<TypePrime>(this.apiUrl, typePrime)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  updateEmployee(id: number, updatedEmployee: Employee): Observable<Employee> {
+  updateTypePrime(id: number, updatedTypePrime: TypePrime): Observable<TypePrime> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.put<Employee>(url, updatedEmployee)
+    return this.http.put<TypePrime>(url, updatedTypePrime)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  patchEmployee(id: number, patchedEmployee: Partial<Employee>): Observable<Employee> {
+  patchTypePrime(id: number, patchedTypePrime: Partial<TypePrime>): Observable<TypePrime> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.patch<Employee>(url, patchedEmployee)
+    return this.http.patch<TypePrime>(url, patchedTypePrime)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  deleteEmployee(contactId: number): Observable<void> {
-    const url = `${this.apiUrl}/${contactId}`;
+  deleteTypePrime(typePrimeId: number): Observable<void> {
+    const url = `${this.apiUrl}/${typePrimeId}`;
     return this.http.delete<void>(url)
       .pipe(
         catchError(this.handleError)
       );
   }
-
-  fetchEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl);
+  fetchTypePrimes(): Observable<TypePrime[]> {
+    return this.http.get<TypePrime[]>(this.apiUrl); 
   }
+ 
 }

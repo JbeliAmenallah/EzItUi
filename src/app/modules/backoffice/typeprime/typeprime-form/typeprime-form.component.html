@@ -1,0 +1,101 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="code">Code:</label>
+                    <input type="text" pInputText formControlName="code" id="code" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('code')?.touched && form.get('code')?.hasError('required')">The code is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="libele">Libele:</label>
+                    <input type="text" pInputText formControlName="libele" id="libele" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">The libele is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cnss">Cnss:</label>
+                    <input type="text" pInputText formControlName="cnss" id="cnss" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('cnss')?.touched && form.get('cnss')?.hasError('required')">The cnss is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="impo">Impo:</label>
+                    <input type="number" pInputText formControlName="impo" id="impo" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('impo')?.touched && form.get('impo')?.hasError('required')">The impo is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="montant">Montant:</label>
+                    <input type="number" pInputText formControlName="montant" id="montant" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">The montant is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" pInputText formControlName="type" id="type" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('type')?.touched && form.get('type')?.hasError('required')">The type is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="abasedesalaire">A base de salaire:</label>
+                    <select class="form-control" formControlName="abasedesalaire" id="abasedesalaire">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            
+            
+            
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categorie">Categorie:</label>
+                    <input type="text" pInputText formControlName="categorie" id="categorie" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('categorie')?.touched && form.get('categorie')?.hasError('required')">The categorie is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="grp">Group:</label>
+                    <input type="text" pInputText formControlName="grp" id="grp" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('grp')?.touched && form.get('grp')?.hasError('required')">The group is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="grade">Grade:</label>
+                    <input type="text" pInputText formControlName="grade" id="grade" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('grade')?.touched && form.get('grade')?.hasError('required')">The grade is required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="obligatoire">Obligatoire:</label>
+                    <select class="form-control" formControlName="obligatoire" id="obligatoire">
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+</div>

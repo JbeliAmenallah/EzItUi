@@ -1,0 +1,41 @@
+/* Style for the container */
+.container {
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+  }
+  
+  /* Style for the form */
+  .form {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style for form groups */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for labels */
+  label {
+    font-weight: bold;
+  }
+  
+  /* Style for input and select elements */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+  }
+  
+  /* Style for error messages */
+  .p-error {
+    color: red;
+    font-size: 12px;
+  }
+  

@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 class="gradient-text">Edit Prime</h1>
+</div>
+
+<app-prime-form #form></app-prime-form>
+
+<div class="buttons">
+    <button pButton type="button" label="Save" icon="pi pi-check" styleClass="custom-save-button btn-save" (click)="save()"></button>
+</div>
+
+<div class="card">
+    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div>

@@ -1,0 +1,106 @@
+.form {
+    background-color: #fff;
+    padding: 50px 25px;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 20px; /* Add gap between columns */
+}
+
+.col-md-6 {
+    flex: 0 0 calc(50% - 20px); /* Adjust column width with gap */
+    max-width: calc(50% - 20px); /* Adjust max-width with gap */
+}
+
+.form-group {
+    display: grid;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group label {
+    margin-right: 10px;
+}
+
+.input-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    border: 1px solid #e4e2e7;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    padding: 20px 32px 20px 10px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    appearance: none;
+    background: transparent;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    height: auto;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    border: 1px solid blue;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+    font-family: 'Roboto', sans-serif;
+}
+
+input:hover,
+select:hover {
+    border: 1px solid #3B82F6;
+}

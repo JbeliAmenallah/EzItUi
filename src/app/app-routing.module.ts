@@ -90,6 +90,14 @@ const routes: Routes = [
   {
     path:'entreprise',
     loadChildren:()=>import ('./modules/backoffice/entreprise/entreprise.module').then((m)=>m.EntrepriseModule)
+  },
+  {
+    path:'typeprime',
+    loadChildren:()=>import ('./modules/backoffice/typeprime/typeprime.module').then((m)=>m.TypeprimeModule)
+  },
+  {
+    path:'prime',
+    loadChildren:()=>import ('./modules/backoffice/prime/prime.module').then((m)=>m.PrimeModule)
   }
 ];
 
