@@ -1,0 +1,121 @@
+.form {
+    background-color: #fff;
+    padding: 50px 25px;
+    border-radius: 10px;
+  }
+  .row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 20px; /* Add gap between columns */
+  }
+  .col-md-6 {
+    flex: 0 0 calc(50% - 20px); /* Adjust column width with gap */
+    max-width: calc(50% - 20px); /* Adjust max-width with gap */
+}
+  .form-group {
+    display: grid;
+  }
+  input {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    border: 1px solid #e4e2e7;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    resize: none;
+    border-radius: 6px;
+    border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+    color: var(--gris-1-dbarras, #7b777f);
+    font-family: Lexend Deca;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 20px 32px 20px 10px;
+    appearance: none;
+    background: transparent;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .col-md-12{
+    width: 100%;
+  }
+  input:hover{
+    border:1px solid #3B82F6}
+    select:hover{
+      border:1px solid #3B82F6}
+  select {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    border: 1px solid #e4e2e7;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    resize: none;
+    border-radius: 3px;
+    border: 1px solid var(--e-4-e-2-e-7, #e4e2e7);
+    color: var(--gris-1-dbarras, #7b777f);
+    font-family: Lexend Deca;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 20px 32px 20px 10px;
+    appearance: none;
+    background: transparent;
+    position: relative;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  label {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .projectName{
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  .text-danger {
+    color: red;
+    font-size: 12px;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    font-weight: 600px;
+  }
+  input:focus {
+    border: 1px solid blue;
+  }
+  input:focus-visible {
+    outline: none;
+  }
+  textarea:focus {
+    border: 1px solid blue;
+  }
+  
+  input::placeholder {
+    font-family: roboto;
+  }
+  select:focus {
+    border: 1px solid blue;
+  }
+  select:focus-visible {
+    outline: none;
+  }
+  select::placeholder {
+    font-family: roboto;
+  }
+  .inputNumber::placeholder {
+    font-family: roboto;
+    font-family: Lexend Deca;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .inputNumber{
+    font-family: Lexend Deca;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
