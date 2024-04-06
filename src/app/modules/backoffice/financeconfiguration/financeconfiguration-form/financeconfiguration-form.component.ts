@@ -10,7 +10,9 @@ import { AnneeService } from '../../../../core/http/annee.service';
 })
 export class FinanceconfigurationFormComponent implements OnInit {
 
-  form: FormGroup;
+  formCnss: FormGroup;
+  formDeduction: FormGroup;
+  formTva: FormGroup;
   anneeOptions: Annee[] = [];
 
   constructor(
@@ -19,34 +21,19 @@ export class FinanceconfigurationFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form = this.createForm();
+    this.formCnss = this.createForm('Cnss');
+    this.formDeduction = this.createForm('Deduction');
+    this.formTva = this.createForm('TVA');
     this.loadAnnees();
   }
 
-  createForm() {
+  createForm(libele: string) {
     return this.formBuilder.group({
-      libele: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      year: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      taux: [
-        null,
-        Validators.compose([Validators.required, Validators.min(0)]),
-      ],
-      anneeId: [
-        null,
-        Validators.compose([Validators.required]),
-      ]
+      libele: [libele],
+      year: [null, Validators.compose([Validators.required])],
+      taux: [null, Validators.compose([Validators.required, Validators.min(0)])],
+      anneeId: [null, Validators.compose([Validators.required])]
     });
-  }
-
-  // Getter for easy access to form controls
-  get f() {
-    return this.form.controls;
   }
 
   loadAnnees() {
@@ -59,6 +46,5 @@ export class FinanceconfigurationFormComponent implements OnInit {
       }
     );
   }
-
 
 }

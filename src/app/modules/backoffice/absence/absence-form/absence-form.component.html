@@ -32,6 +32,16 @@
                     <small class="p-error" *ngIf="form.get('reason')?.touched && form.get('reason')?.hasError('required')">The reason is required</small>
                 </div>
             </div>
+
+            <!-- New field for Justified -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="justified">Justified:</label>
+                    <p-dropdown [options]="justifiedOptions" formControlName="justified" [showClear]="true" placeholder="Select Justified"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('justified')?.touched && form.get('justified')?.hasError('required')">Justification is required</small>
+                </div>
+            </div>
+  
         </div>
     </form>
 </div>

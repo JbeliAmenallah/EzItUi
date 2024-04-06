@@ -1,9 +1,9 @@
 <div class="table-container">
-    <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
+    <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/absence/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Add Absence</b> </span>
+                <span><b>Add Absence</b></span>
             </div>
         </ng-template>
     </div>
@@ -18,8 +18,8 @@
         [loading]="loading"
         [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['contactId', 'dateDebutAbsence', 'dateFinAbsence', 'reason']"
-        [tableStyle]="{ 'min-width': '75rem' }">
+        [globalFilterFields]="['contactId', 'dateDebutAbsence', 'dateFinAbsence', 'reason', 'justified']"
+        [tableStyle]="{ 'min-width': '85rem' }">
 
         <ng-template pTemplate="header">
             <tr>
@@ -28,6 +28,7 @@
                 <th>Date Debut Absence</th>
                 <th>Date Fin Absence</th>
                 <th>Reason</th>
+                <th>Justified</th>
                 <th>Actions</th>
             </tr>
             <tr>
@@ -46,6 +47,9 @@
                 <th>
                     <p-columnFilter type="text" field="reason"></p-columnFilter>
                 </th>
+                <th>
+                    <p-columnFilter type="text" field="justified"></p-columnFilter>
+                </th>
                 <th></th>
             </tr>
         </ng-template>
@@ -56,6 +60,7 @@
                 <td>{{ absence.dateDebutAbsence }}</td>
                 <td>{{ absence.dateFinAbsence }}</td>
                 <td>{{ absence.reason }}</td>
+                <td>{{ absence.justified }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editAbsence(absence)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(absence.absenceId)"></i>
@@ -64,7 +69,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="6">No absences found.</td>
+                <td colspan="7">No absences found.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">

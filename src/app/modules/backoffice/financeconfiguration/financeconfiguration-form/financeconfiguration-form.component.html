@@ -1,39 +1,120 @@
 <div class="container mt-5">
-    <form [formGroup]="form" class="form">
+  <!-- Section for Cnss -->
+  <div class="section">
+    <h4>Cnss</h4>
+    <form [formGroup]="formCnss" class="form">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="libele">Libele:</label>
-            <input type="text" pInputText formControlName="libele" id="libele" class="form-control"/>
-            <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libele is required</small>
+            <label>Libele:</label>
+            <div class="form-control-static">Cnss</div>
           </div>
         </div>
-  
+
         <div class="col-md-6">
           <div class="form-group">
             <label for="year">Year:</label>
             <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
-            <small class="p-error" *ngIf="form.get('year')?.touched && form.get('year')?.hasError('required')">Year is required</small>
+            <small class="p-error" *ngIf="formCnss.get('year')?.touched && formCnss.get('year')?.hasError('required')">Year is required</small>
           </div>
         </div>
-  
+
         <div class="col-md-6">
           <div class="form-group">
             <label for="taux">Taux:</label>
             <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
-            <small class="p-error" *ngIf="form.get('taux')?.touched && form.get('taux')?.hasError('required')">Taux is required</small>
+            <small class="p-error" *ngIf="formCnss.get('taux')?.touched && formCnss.get('taux')?.hasError('required')">Taux is required</small>
           </div>
         </div>
-  
+
         <div class="col-md-6">
           <div class="form-group">
             <label for="anneeId">Annee:</label>
             <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-            <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">Annee is required</small>
+            <small class="p-error" *ngIf="formCnss.get('anneeId')?.touched && formCnss.get('anneeId')?.hasError('required')">Annee is required</small>
           </div>
         </div>
       </div>
-  
+    </form>
+  </div>
+
+  <!-- Section for Deduction -->
+  <div class="section mt-4">
+    <h4>Deduction</h4>
+    <form [formGroup]="formDeduction" class="form">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Libele:</label>
+            <div class="form-control-static">Deduction</div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
+            <small class="p-error" *ngIf="formDeduction.get('year')?.touched && formDeduction.get('year')?.hasError('required')">Year is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taux">Taux:</label>
+            <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
+            <small class="p-error" *ngIf="formDeduction.get('taux')?.touched && formDeduction.get('taux')?.hasError('required')">Taux is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="anneeId">Annee:</label>
+            <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
+            <small class="p-error" *ngIf="formDeduction.get('anneeId')?.touched && formDeduction.get('anneeId')?.hasError('required')">Annee is required</small>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Section for TVA -->
+  <div class="section mt-4">
+    <h4>TVA</h4>
+    <form [formGroup]="formTva" class="form">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Libele:</label>
+            <div class="form-control-static">TVA</div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
+            <small class="p-error" *ngIf="formTva.get('year')?.touched && formTva.get('year')?.hasError('required')">Year is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="taux">Taux:</label>
+            <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
+            <small class="p-error" *ngIf="formTva.get('taux')?.touched && formTva.get('taux')?.hasError('required')">Taux is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="anneeId">Annee:</label>
+            <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
+            <small class="p-error" *ngIf="formTva.get('anneeId')?.touched && formTva.get('anneeId')?.hasError('required')">Annee is required</small>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
   
+  
+</div>

@@ -12,6 +12,10 @@ export class AbsenceFormComponent implements OnInit {
 
   form: FormGroup;
   employeeOptions: any[] = [];
+  justifiedOptions: any[] = [
+    { label: 'Yes', value: 'true' },
+    { label: 'No', value: 'false' }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +42,10 @@ export class AbsenceFormComponent implements OnInit {
         Validators.compose([Validators.required]),
       ],
       reason: [
+        null,
+        Validators.compose([Validators.required]),
+      ],
+      justified: [
         null,
         Validators.compose([Validators.required]),
       ]
