@@ -1,7 +1,8 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { TypePrime } from '../../shared/models/typeprime';
 
 @Injectable({
@@ -68,8 +69,16 @@ export class TypePrimeService {
         catchError(this.handleError)
       );
   }
-  fetchTypePrimes(): Observable<TypePrime[]> {
-    return this.http.get<TypePrime[]>(this.apiUrl); 
-  }
+
+  fetchTypePrimes(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl).pipe(
+        map((typePrimes: any[]) => {
+            return typePrimes.map(typePrime => {
+                return { label: typePrime.code + ' - ' + typePrime.libele, value: typePrime.typePrimeId };
+            });
+        })
+    );
+}
+
  
 }

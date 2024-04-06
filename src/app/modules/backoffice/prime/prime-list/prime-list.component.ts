@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Prime } from '../../../../shared/prime';
 import { PrimeService } from '../../../../core/http/prime.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { HttpErrorResponse } from '@angular/common/http'; // Import HttpErrorResponse
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prime-list',
@@ -18,7 +19,9 @@ export class PrimeListComponent implements OnInit {
   constructor(
     private primeService: PrimeService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router 
+
   ) {}
 
   ngOnInit(): void {
@@ -35,9 +38,12 @@ export class PrimeListComponent implements OnInit {
       (error) => {
         this.loading = false;
         console.error('Error fetching primes:', error);
-        if (error instanceof HttpErrorResponse && error.status === 200) {
-          // Handle the case where the response is not valid JSON
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unexpected response format from the server' });
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 200) {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unexpected response format from the server' });
+          } else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error fetching primes' });
+          }
         } else {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error fetching primes' });
         }
@@ -45,12 +51,13 @@ export class PrimeListComponent implements OnInit {
     );
   }
   
-  editPrime(prime: Prime) {
-    // Set selectedPrime and display the EditPrimeComponent
-    this.selectedPrime = { ...prime }; // Create a copy to avoid modifying original
-    this.displayEditDialog = true;
+  editPrime(prime: Prime): void {
+    console.log(prime);
+    this.router.navigate(['/prime/edit/' + prime.primeId], {
+      state: { data: prime },
+    });
   }
-
+  
   saveEditedPrime() {
     if (this.selectedPrime) {
       this.primeService.updatePrime(this.selectedPrime.primeId, this.selectedPrime).subscribe(
@@ -98,5 +105,4 @@ export class PrimeListComponent implements OnInit {
       }
     });
   }
-  
 }

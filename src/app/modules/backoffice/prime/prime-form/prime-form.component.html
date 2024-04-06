@@ -1,11 +1,22 @@
 <div class="container mt-5">
     <form [formGroup]="form" class="form">
         <div class="row">
+            
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="contact">Contact:</label>
+                    <p-multiSelect [options]="contactOptions" formControlName="contact" [showClear]="true" placeholder="Select Contacts"></p-multiSelect>
+                    <small class="p-error" *ngIf="form.get('contact')?.touched && form.get('contact')?.hasError('required')">At least one contact is required</small>
+                </div>
+            </div>
+            
+
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="year">Year:</label>
                     <input type="number" pInputText formControlName="year" id="year" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('year')?.touched && form.get('year')?.hasError('required')">Year is required</small>
+                    <small class="p-error" *ngIf="form.get('year')?.touched && form.get('year')?.hasError('required')">The year is required</small>
                 </div>
             </div>
 
@@ -13,46 +24,33 @@
                 <div class="form-group">
                     <label for="month">Month:</label>
                     <input type="number" pInputText formControlName="month" id="month" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">Month is required</small>
+                    <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">The month is required</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="montant">Montant:</label>
+                    <label for="montant">Amount:</label>
                     <input type="number" pInputText formControlName="montant" id="montant" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">Montant is required</small>
+                    <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">The amount is required</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="motif">Motif:</label>
+                    <label for="motif">Reason:</label>
                     <input type="text" pInputText formControlName="motif" id="motif" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('motif')?.touched && form.get('motif')?.hasError('required')">Motif is required</small>
+                    <small class="p-error" *ngIf="form.get('motif')?.touched && form.get('motif')?.hasError('required')">The reason is required</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="typePrime">Type Prime:</label>
-                    <select formControlName="typePrime" id="typePrime" class="form-control">
-                        <option *ngFor="let type of typePrime" [value]="type">{{ type.code }}</option>
-                    </select>
-                    <small class="p-error" *ngIf="form.get('typePrime')?.touched && form.get('typePrime')?.hasError('required')">Type Prime is required</small>
+                    <label for="typePrimeId">Type primes:</label>
+                    <p-dropdown [options]="typePrimes" formControlName="typePrime" [showClear]="true" placeholder="Select a type prime"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('typePrimeId')?.touched && form.get('typePrimeId')?.hasError('required')">The type prime is required</small>
                 </div>
             </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="employee">Employee:</label>
-                    <select formControlName="employee" id="employee" class="form-control">
-                        <option *ngFor="let employee of employees" [value]="employee">{{ employee.name }}</option>
-                    </select>
-                    <small class="p-error" *ngIf="form.get('employee')?.touched && form.get('employee')?.hasError('required')">Employee is required</small>
-                </div>
-            </div>
-            
         </div>
     </form>
 </div>

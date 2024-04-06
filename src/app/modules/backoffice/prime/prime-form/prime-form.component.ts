@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TypePrime } from '../../../../shared/models/typeprime';
+import { Prime } from '../../../../shared/prime';
 import { TypePrimeService } from '../../../../core/http/typeprime.service';
-import { PrimeService } from '../../../../core/http/prime.service';
-import { Employee } from '../../../../shared/models/employee';
-import { EmployeeService } from '../../../../core/http/employee.service';
+import { AbsenceService } from '../../../../core/http/absence.service';
 
 @Component({
   selector: 'app-prime-form',
@@ -12,51 +10,76 @@ import { EmployeeService } from '../../../../core/http/employee.service';
   styleUrls: ['./prime-form.component.css']
 })
 export class PrimeFormComponent implements OnInit {
-  form: FormGroup;
-  employees: Employee[] = [];
-  typePrime: TypePrime[] = [];
 
+  form: FormGroup;
+  contactOptions: any[] = []; 
+  typePrimes: any[] = []; 
   constructor(
-    private fb: FormBuilder,
-    private primeService: PrimeService,
-    private employeeService: EmployeeService,
-    private typePrimeService: TypePrimeService
+    private formBuilder: FormBuilder,
+    private absenceService : AbsenceService,
+    private typePrimeService : TypePrimeService,
   ) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      year: [null, Validators.required],
-      month: [null, Validators.required],
-      montant: [null, Validators.required],
-      motif: [null, Validators.required],
-      typePrime: [null, Validators.required],
-      employee: [null, Validators.required]
-    });
-
+    this.form = this.createForm();
+    this.loadContactOptions(); 
     this.fetchTypePrimes();
-    this.loadEmployees();
   }
 
-  loadEmployees(): void {
-    this.employeeService.fetchEmployees().subscribe(
-      (employees) => {
-        this.employees = employees;
+  createForm() {
+    return this.formBuilder.group({
+      primeId: [
+        null,
+        Validators.compose([Validators.required]),
+      ],
+      contact: [
+        [],
+        Validators.compose([Validators.required]),
+      ],
+      year: [
+        null,
+        Validators.compose([Validators.required]),
+      ],
+      month: [
+        null,
+        Validators.compose([Validators.required]),
+      ],
+      montant: [
+        null,
+        Validators.compose([Validators.required]),
+      ],
+      motif: [
+        null,
+        Validators.compose([Validators.required]),
+      ],
+      typePrime: [
+        null,
+        Validators.compose([Validators.required]),
+      ]
+    });
+  }
+
+  loadContactOptions() { 
+    this.absenceService.getEmployeeOptions().subscribe( 
+      options => {
+        this.contactOptions = options; 
+        console.log('Contact Options:', this.contactOptions); 
       },
-      (error) => {
-        console.error('Error fetching employees:', error);
+      error => {
+        console.error('Error fetching contact options:', error); 
       }
     );
   }
-
+  
   fetchTypePrimes() {
     this.typePrimeService.fetchTypePrimes().subscribe(
-      (typePrimes) => {
-        this.typePrime = typePrimes;
+      options => {
+        this.typePrimes = options;
+        console.log('type prime Options:', this.typePrimes); 
       },
-      (error) => {
+      error => {
         console.error('Error fetching type primes:', error);
       }
     );
   }
-
 }

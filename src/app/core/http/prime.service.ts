@@ -7,7 +7,7 @@ import { Prime } from '../../shared/prime';
   providedIn: 'root'
 })
 export class PrimeService {
-  private apiUrl = 'api/primes'; // Adjust this URL according to your backend API
+  private apiUrl = ' http://localhost:8080/primes'; 
 
   constructor(private http: HttpClient) {}
 

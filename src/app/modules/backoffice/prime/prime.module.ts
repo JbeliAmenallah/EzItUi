@@ -8,6 +8,8 @@ import { PrimeListComponent } from './prime-list/prime-list.component';
 import { EditPrimeComponent } from './edit-prime/edit-prime.component';
 import { MessageService,ConfirmationService } from 'primeng/api';
 import { SharedModule } from '../../../shared/shared.module';
+import { MultiSelectModule } from 'primeng/multiselect';
+
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { SharedModule } from '../../../shared/shared.module';
     CommonModule,
     PrimeRoutingModule,
       SharedModule,
+      MultiSelectModule,
     
   ],
   providers:[
