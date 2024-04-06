@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="gradient-text">Edit Enfant</h1>
+</div>
+
+<app-enfant-form [currentEnfant]="enfant" *ngIf="enfant"></app-enfant-form>
+
+<div class="buttons">
+    <p-button label="Save" icon="pi pi-check" styleClass="custom-save-button" class="btn-save" (click)="save()"></p-button>
+</div>
+
+<div class="card">
+    <div *ngFor="let msg of messages">
+        <div class="alert" [ngClass]="{'alert-success': msg.severity === 'success', 'alert-danger': msg.severity === 'error'}">
+            {{ msg.summary }}: {{ msg.detail }}
+        </div>
+    </div>
+</div>

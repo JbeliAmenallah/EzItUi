@@ -27,7 +27,8 @@ export class AddAbsenceComponent implements OnInit {
       contactId: null,
       dateDebutAbsence: null,
       dateFinAbsence: null,
-      reason: ''
+      reason: '',
+      justified:false
     };
   }
 
@@ -37,6 +38,7 @@ export class AddAbsenceComponent implements OnInit {
       this.absence.dateDebutAbsence = this.absenceForm.form.get('dateDebutAbsence')?.value;
       this.absence.dateFinAbsence = this.absenceForm.form.get('dateFinAbsence')?.value;
       this.absence.reason = this.absenceForm.form.get('reason')?.value;
+      this.absence.justified=this.absenceForm.form.get('justified')?.value;
 
       this.service.addAbsence(this.absence).subscribe(
         (data) => {

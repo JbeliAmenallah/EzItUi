@@ -4,5 +4,6 @@ export interface Absence {
     dateDebutAbsence?: Date;
     dateFinAbsence?: Date;
     reason?: string;
+    justified?:boolean;
   }
   

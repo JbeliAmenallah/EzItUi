@@ -13,6 +13,11 @@ export class EditAbsenceComponent {
   @Output() onSave: EventEmitter<any> = new EventEmitter();
   @Output() onHide: EventEmitter<any> = new EventEmitter();
 
+  justifiedOptions: any[] = [
+    { label: 'Yes', value: 'true' },
+    { label: 'No', value: 'false' }
+  ];
+
   saveAbsence() {
     // Emit the onSave event to notify the parent component
     this.onSave.emit();

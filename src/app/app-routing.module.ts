@@ -98,6 +98,10 @@ const routes: Routes = [
   {
     path:'prime',
     loadChildren:()=>import ('./modules/backoffice/prime/prime.module').then((m)=>m.PrimeModule)
+  },
+  {
+    path:'enfant',
+    loadChildren:()=>import('./modules/backoffice/enfant/enfant.module').then((m)=>m.EnfantModule)
   }
 ];
 

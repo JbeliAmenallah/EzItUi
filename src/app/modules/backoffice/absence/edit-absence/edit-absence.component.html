@@ -1,5 +1,5 @@
 <p-dialog header="Edit Absence" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
-  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+  [modal]="true" [contentStyle]="{ 'overflow': 'visible' }">
   <ng-container *ngIf="selectedAbsence">
     <div class="form-group">
       <label for="contactId">Contact ID</label>
@@ -24,6 +24,12 @@
       <!-- Display selectedAbsence's reason in input -->
       <input id="reason" pInputText type="text" [(ngModel)]="selectedAbsence.reason" class="form-control"
         placeholder="Reason" />
+    </div>
+    <div class="form-group">
+      <label for="justified">Justified</label>
+      <p-dropdown id="justified" [options]="justifiedOptions" [(ngModel)]="selectedAbsence.justified" optionLabel="label" optionValue="value"
+        placeholder="Select Justified" class="form-control" [style]="{ 'width': '100%', 'max-width': '300px' }">
+      </p-dropdown>
     </div>
   </ng-container>
   <p-footer>

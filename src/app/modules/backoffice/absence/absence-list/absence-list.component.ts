@@ -48,7 +48,9 @@ export class AbsenceListComponent implements OnInit {
   saveEditedAbsence() {
     if (this.selectedAbsence) {
       this.absenceService.updateAbsence(this.selectedAbsence.absenceId, this.selectedAbsence).subscribe(
+        
         () => {
+          console.log(this.selectedAbsence)
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Absence updated successfully' });
           this.displayEditDialog = false;
           this.getAbsences(); // Refresh the list
