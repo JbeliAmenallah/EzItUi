@@ -102,6 +102,10 @@ const routes: Routes = [
   {
     path:'enfant',
     loadChildren:()=>import('./modules/backoffice/enfant/enfant.module').then((m)=>m.EnfantModule)
+  },
+  {
+    path:'salary',
+    loadChildren:()=>import('./modules/backoffice/salary/salary.module').then((m)=>m.SalaryModule)
   }
 ];
 
