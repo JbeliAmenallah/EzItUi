@@ -16,7 +16,8 @@ import { SharedModule } from '../../../shared/shared.module';
 import { EditCongeComponent } from './edit-conge/edit-conge.component';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmationService } from 'primeng/api'; // Import ConfirmationService
-import { MessageService } from 'primeng/api'; // Import MessageService
+import { MessageService } from 'primeng/api';
+import { DemandeCongeComponent } from './demande-conge/demande-conge.component'; // Import MessageService
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MessageService } from 'primeng/api'; // Import MessageService
     AddcongeComponent,
     CongeFormComponent,
     CongeListComponent,
-    EditCongeComponent
+    EditCongeComponent,
+    DemandeCongeComponent
   ],
   imports: [
     CommonModule,

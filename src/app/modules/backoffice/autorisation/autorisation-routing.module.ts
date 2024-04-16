@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AutorisationListComponent } from './autorisation-list/autorisation-list.component';
 import { EditAutorisationComponent } from './edit-autorisation/edit-autorisation.component';
 import { AddAutorisationComponent } from './add-autorisation/add-autorisation.component';
+import { DemandeAutorisationComponent } from './demande-autorisation/demande-autorisation.component';
 const routes: Routes = [
   {
-    path:'',
+    path:'list',
     component:AutorisationListComponent,
     
   },{
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
     path:'add',
     component:AddAutorisationComponent
+  }
+  ,
+  {
+    path:'demande',
+    component:DemandeAutorisationComponent
   }
 ];
 

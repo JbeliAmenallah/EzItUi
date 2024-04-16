@@ -1,85 +1,84 @@
-/* Add this CSS to your component's CSS file or global styles */
 .table-container {
-    margin-top: 20px;
-  }
-  
-  .custom-table .p-table-thead > tr > th,
-  .custom-table .p-table-tbody > tr > td {
-    text-align: center;
-    vertical-align: middle;
-    font-size: 14px;
-    padding: 8px;
-  }
-  
-  .custom-table .p-table-thead > tr > th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-  }
-  
-  .custom-table .p-table-tbody > tr:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .pending-row {
-    background-color: #e7dec2; /* Yellow for Pending */
-  }
-  
-  .accepted-row {
-    background-color: #a9e9b8; /* Green for Accepted */
-  }
-  
-  .rejected-row {
-    background-color: #f8c2c7; /* Red for Rejected */
-  }
-  
-  .custom-table .p-button {
-    margin: 0 5px;
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-  
-  .custom-table .p-inputtext {
-    width: 100%;
-    padding: 6px 10px;
-    font-size: 14px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .custom-table .p-inputicon-left {
-    margin-right: 5px;
-  }
-  
-  .custom-table .p-paginator {
-    margin-top: 20px;
-  }
-  
-  .custom-table .p-button-success {
-    background-color: #b4f3c3 !important;
-    border-color: #000000 !important;
-  }
-  
-  .custom-table .p-button-danger {
-    background-color: #f3bbc0 !important;
-    border-color: #000000 !important;
-  }
-  .custom-table .p-button-success:hover{
-    background-color: #4eec73 !important;
-  }
-  .custom-table .p-button-danger:hover{
-    background-color: #ec5b5b !important;
-  }
-  /* Responsiveness for smaller screens */
-  @media screen and (max-width: 768px) {
-    .custom-table .p-table-thead > tr > th,
-    .custom-table .p-table-tbody > tr > td {
-      font-size: 12px;
-      padding: 6px;
-    }
-  
-    .custom-table .p-button {
-      font-size: 10px;
-      padding: 4px 8px;
-    }
-  }
-  
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.table-title {
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions .p-input-icon-left input {
+  width: 250px;
+  margin-right: 10px;
+}
+
+.header-actions button {
+  margin-left: 10px;
+}
+
+.custom-table {
+  min-width: 75rem;
+}
+
+.pending-row {
+  background-color: #ffecb3; /* Light yellow */
+}
+
+.accepted-row {
+  background-color: #c8e6c9; /* Light green */
+}
+
+.rejected-row {
+  background-color: #ffcdd2; /* Light red */
+}
+
+/* Adjust table column widths */
+th {
+  text-align: left;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 20%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 20%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 15%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 15%;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 30%;
+}
+
+/* Style for empty message */
+.empty-message td {
+  text-align: center;
+  padding: 10px 0;
+}
+
+

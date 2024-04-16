@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <form [formGroup]="form" class="form">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" pInputText formControlName="firstName" id="firstName" class="form-control" placeholder="Enter your first name" />
+            <small class="p-error" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.hasError('required')">First name is required</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" pInputText formControlName="lastName" id="lastName" class="form-control" placeholder="Enter your last name" />
+            <small class="p-error" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('required')">Last name is required</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <p-calendar formControlName="startDate" id="startDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+            <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Start date is required</small>
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <p-calendar formControlName="endDate" id="endDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
+            <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">End date is required</small>
+        </div>
+
+        <div class="text-right">
+            <button type="button" pButton class="btn btn-primary mt-3" (click)="submitLeaveRequest()" label="Submit"></button>
+        </div>
+    </form>
+</div>
+
+<div class="messages-container">
+    <div class="card">
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+    </div>
+</div>

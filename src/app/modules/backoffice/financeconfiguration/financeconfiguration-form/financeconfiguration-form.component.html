@@ -116,5 +116,150 @@
     </form>
   </div>
   
+  <!-- Section for ERPP -->
+<div class="section mt-4">
+  <h4>ERPP</h4>
+  <form [formGroup]="formErpp" class="form">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Libele:</label>
+          <div class="form-control-static">ERPP</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="erppYear">Year:</label>
+          <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
+          <small class="p-error" *ngIf="formErpp.get('year')?.touched && formErpp.get('year')?.hasError('required')">Year is required</small>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="erppValue0">Salary under 5000:</label>
+          <input type="text" pInputText formControlName="erppValue0" id="erppValue0" class="form-control" />
+          <small class="p-error" *ngIf="formErpp.get('erppValue0')?.touched && formErpp.get('erppValue0')?.hasError('required')">Value is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="erppValue1">Salary between 5000-20000:</label>
+          <input type="text" pInputText formControlName="erppValue1" id="erppValue1" class="form-control" />
+          <small class="p-error" *ngIf="formErpp.get('erppValue1')?.touched && formErpp.get('erppValue1')?.hasError('required')">Value 1 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="erppValue2">Salary between 20000-30000:</label>
+          <input type="text" pInputText formControlName="erppValue2" id="erppValue2" class="form-control" />
+          <small class="p-error" *ngIf="formErpp.get('erppValue2')?.touched && formErpp.get('erppValue2')?.hasError('required')">Value 2 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="erppValue3">Salary between 30000-50000:</label>
+          <input type="text" pInputText formControlName="erppValue3" id="erppValue3" class="form-control" />
+          <small class="p-error" *ngIf="formErpp.get('erppValue3')?.touched && formErpp.get('erppValue3')?.hasError('required')">Value 3 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="erppValue3">Salary over 50000:</label>
+          <input type="text" pInputText formControlName="erppValue3" id="erppValue3" class="form-control" />
+          <small class="p-error" *ngIf="formErpp.get('erppValue3')?.touched && formErpp.get('erppValue3')?.hasError('required')">Value 3 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="anneeId">Annee:</label>
+          <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
+          <small class="p-error" *ngIf="formTva.get('anneeId')?.touched && formTva.get('anneeId')?.hasError('required')">Annee is required</small>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<!-- Section for Css -->
+<div class="section mt-4">
+  <h4>CSS</h4>
+  <form [formGroup]="formCss" class="form">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Libele:</label>
+          <div class="form-control-static">CSS</div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cssYear">Year:</label>
+          <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
+          <small class="p-error" *ngIf="formCss.get('cssYear')?.touched && formCss.get('cssYear')?.hasError('required')">Year is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cssValue0">Salary under 5000:</label>
+          <input type="text" pInputText formControlName="cssValue0" id="cssValue0" class="form-control" />
+          <small class="p-error" *ngIf="formErpp.get('cssValue0')?.touched && formErpp.get('erppValue0')?.hasError('required')">Value is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cssValue1">Salary between 5000-20000:</label>
+          <input type="text" pInputText formControlName="cssValue1" id="cssValue1" class="form-control"/>
+          <small class="p-error" *ngIf="formCss.get('cssValue1')?.touched && formCss.get('cssValue1')?.hasError('required')">Value 1 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cssValue2">Salary between 20000-30000:</label>
+          <input type="text" pInputText formControlName="cssValue2" id="cssValue2" class="form-control"/>
+          <small class="p-error" *ngIf="formCss.get('cssValue2')?.touched && formCss.get('cssValue2')?.hasError('required')">Value 2 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cssValue3">Salary between 30000-50000:</label>
+          <input type="text" pInputText formControlName="cssValue3" id="cssValue3" class="form-control"/>
+          <small class="p-error" *ngIf="formCss.get('cssValue3')?.touched && formCss.get('cssValue3')?.hasError('required')">Value 3 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="cssValue4">Salary over 50000:</label>
+          <input type="text" pInputText formControlName="cssValue4" id="cssValue4" class="form-control"/>
+          <small class="p-error" *ngIf="formCss.get('cssValue4')?.touched && formCss.get('cssValue4')?.hasError('required')">Value 4 is required</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="anneeId">Annee:</label>
+          <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
+          <small class="p-error" *ngIf="formTva.get('anneeId')?.touched && formTva.get('anneeId')?.hasError('required')">Annee is required</small>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
   
 </div>

@@ -39,4 +39,10 @@ export class CongeService {
   getCongesByContactId(contactId: number): Observable<Conge[]> {
     return this.http.get<Conge[]>(`${this.baseUrl}/byContact/${contactId}`);
   }
+
+  // Submit Leave Request
+  submitLeaveRequest(formData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/demande`, formData);
+  }
+  
 }

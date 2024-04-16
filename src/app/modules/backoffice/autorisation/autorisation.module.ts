@@ -16,13 +16,15 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmationService } from 'primeng/api'; // Import ConfirmationService
 import { MessageService } from 'primeng/api';
 import { EditAutorisationComponent } from './edit-autorisation/edit-autorisation.component';
-import { AddAutorisationComponent } from './add-autorisation/add-autorisation.component'; // Import MessageService
+import { AddAutorisationComponent } from './add-autorisation/add-autorisation.component';
+import { DemandeAutorisationComponent } from './demande-autorisation/demande-autorisation.component'; // Import MessageService
 
 @NgModule({
   declarations: [
     AutorisationListComponent,
     EditAutorisationComponent,
-    AddAutorisationComponent
+    AddAutorisationComponent,
+    DemandeAutorisationComponent
   ],
   imports: [
     CommonModule,

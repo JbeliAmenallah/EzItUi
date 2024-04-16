@@ -13,6 +13,9 @@ export class FinanceconfigurationFormComponent implements OnInit {
   formCnss: FormGroup;
   formDeduction: FormGroup;
   formTva: FormGroup;
+  formErpp: FormGroup; 
+  formCss: FormGroup; 
+
   anneeOptions: Annee[] = [];
 
   constructor(
@@ -24,18 +27,31 @@ export class FinanceconfigurationFormComponent implements OnInit {
     this.formCnss = this.createForm('Cnss');
     this.formDeduction = this.createForm('Deduction');
     this.formTva = this.createForm('TVA');
+    this.formErpp = this.createForm('Erpp');
+    this.formCss = this.createForm('Css');
+
     this.loadAnnees();
   }
 
   createForm(libele: string) {
     return this.formBuilder.group({
       libele: [libele],
-      year: [null, Validators.compose([Validators.required])],
+      year: [null, Validators.required],
       taux: [null, Validators.compose([Validators.required, Validators.min(0)])],
-      anneeId: [null, Validators.compose([Validators.required])]
+      anneeId: [null, Validators.required],
+      cssValue0: [null, Validators.required], 
+      cssValue1: [null, Validators.required], 
+      cssValue2: [null, Validators.required], 
+      cssValue3: [null, Validators.required],
+      cssValue4: [null, Validators.required],
+      erppValue0: [null, Validators.required],
+      erppValue1: [null, Validators.required],
+      erppValue2: [null, Validators.required], 
+      erppValue3: [null, Validators.required], 
+      erppValue4: [null, Validators.required],
     });
   }
-
+  
   loadAnnees() {
     this.anneeService.getAllAnnees().subscribe(
       (annees: Annee[]) => {
@@ -46,5 +62,4 @@ export class FinanceconfigurationFormComponent implements OnInit {
       }
     );
   }
-
 }

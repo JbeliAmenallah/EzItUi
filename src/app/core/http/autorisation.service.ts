@@ -43,4 +43,9 @@ export class AutorisationService {
     const url = `${this.apiUrl}/duration-more-than-two-hours`;
     return this.http.get<Autorisation[]>(url);
   }
+  
+  submitAutorisationRequest(formData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/demande`, formData);
+  }
+  
 }
