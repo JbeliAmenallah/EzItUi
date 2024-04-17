@@ -6,14 +6,7 @@ import { Prime } from '../../shared/prime';
 @Injectable({
   providedIn: 'root'
 })
-<<<<<<< HEAD
 export class PrimeService {  private apiUrl = ' http://localhost:8080/primes'; 
-=======
-export class PrimeService {
-
-  private apiUrl = ' http://localhost:8080/primes'; 
-
->>>>>>> fa75ecebad26646197d6b8fff1e60694150787dd
 
   
   constructor(private http: HttpClient) {}

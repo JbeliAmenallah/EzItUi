@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { Autorisation } from '../../shared/models/autorisation';
 
 @Injectable({
@@ -44,8 +44,23 @@ export class AutorisationService {
     return this.http.get<Autorisation[]>(url);
   }
   
+
   submitAutorisationRequest(formData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/demande`, formData);
+    const formattedData = {
+      dateDebut: formData.startDate,
+      dateFin: formData.endDate,
+      contactId: formData.contactId
+    };
+
+    console.log('Sending request:', formattedData); // Log the data being sent
+
+    return this.http.post<any>(`${this.apiUrl}/demande`, formattedData).pipe(
+      tap(response => console.log('Received response:', response)), // Log the response
+      catchError(error => {
+        console.error('Error submitting autorisation request:', error); // Log any errors
+        throw error; // Rethrow the error
+      })
+    );
   }
   
 }
