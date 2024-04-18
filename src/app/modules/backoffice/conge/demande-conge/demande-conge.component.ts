@@ -19,8 +19,6 @@ export class DemandeCongeComponent {
     private messageService: MessageService
   ) {
     this.form = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required]
     });
