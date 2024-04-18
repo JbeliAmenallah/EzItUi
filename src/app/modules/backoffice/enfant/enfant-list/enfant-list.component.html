@@ -18,7 +18,7 @@
         [loading]="loading"
         [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['name', 'familyName', 'age', 'disabled', 'educationGrade']"
+        [globalFilterFields]="['name', 'familyName', 'age', 'disabled','bourse', 'educationGrade']"
         [tableStyle]="{ 'min-width': '75rem' }">
 
         <ng-template pTemplate="header">
@@ -28,6 +28,7 @@
                 <th>Family Name</th>
                 <th>Age</th>
                 <th>Disabled</th>
+                <th>Bourse</th>
                 <th>Education Grade</th>
                 <th>Contact ID</th>
                 <th>Actions</th>
@@ -49,6 +50,9 @@
                     <p-columnFilter type="text" field="disabled"></p-columnFilter>
                 </th>
                 <th>
+                    <p-columnFilter type="text" field="Bourse"></p-columnFilter>
+                </th>
+                <th>
                     <p-columnFilter type="text" field="educationGrade"></p-columnFilter>
                 </th>
                 <th>
@@ -64,6 +68,7 @@
                 <td>{{ enfant.familyName }}</td>
                 <td>{{ enfant.age }}</td>
                 <td>{{ enfant.disabled }}</td>
+                <td>{{enfant.bourse}}</td>
                 <td>{{ enfant.educationGrade }}</td>
                 <td>{{ enfant.contactId }}</td>
                 <td>

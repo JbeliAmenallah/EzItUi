@@ -31,6 +31,7 @@ export class EnfantAddComponent implements OnInit {
       familyName: '',
       age: null,
       disabled: false,
+      bourse:false,
       educationGrade: '',
       contactId: null
       // Add other properties as needed
@@ -45,6 +46,7 @@ export class EnfantAddComponent implements OnInit {
       this.enfant.familyName = this.enfantForm.form.get('familyName')?.value;
       this.enfant.age = this.enfantForm.form.get('age')?.value;
       this.enfant.disabled = this.enfantForm.form.get('disabled')?.value;
+      this.enfant.bourse=this.enfantForm.form.get('bourse').value;
       this.enfant.educationGrade = this.enfantForm.form.get('educationGrade')?.value;
       this.enfant.contactId = this.enfantForm.form.get('contactId')?.value;
       // Assign other form values as needed

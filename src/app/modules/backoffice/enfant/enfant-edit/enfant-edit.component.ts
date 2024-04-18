@@ -59,6 +59,7 @@ export class EditEnfantComponent implements OnInit {
       familyName: [this.enfant.familyName, Validators.required],
       age: [this.enfant.age, Validators.required],
       disabled: [this.enfant.disabled, Validators.required],
+      bourse:[this.enfant.bourse,Validators.required],
       educationGrade: [this.enfant.educationGrade, Validators.required],
       contactId: [this.enfant.contactId, Validators.required]
     });
@@ -76,6 +77,7 @@ save() {
         familyName: this.enfantForm.form.get('familyName').value,
         age: this.enfantForm.form.get('age').value,
         disabled: this.enfantForm.form.get('disabled').value,
+        bourse:this.enfantForm.form.get('bourse').value,
         educationGrade: this.enfantForm.form.get('educationGrade').value,
         contactId: this.enfantForm.form.get('contactId').value
       });
