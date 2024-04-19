@@ -33,6 +33,7 @@ export class CongeService {
   // Get All Conges
   getAllConges(): Observable<Conge[]> {
     return this.http.get<Conge[]>(`${this.baseUrl}`);
+    console.log("aa")
   }
 
   // Get Conges by Contact ID
