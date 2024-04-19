@@ -48,6 +48,11 @@ export class EnfantFormComponent implements OnInit {
         this.currentEnfant ? this.currentEnfant.disabled : null,
         Validators.compose([Validators.required]),
       ],
+      bourse:[
+        this.currentEnfant ? this.currentEnfant.bourse : null,
+        Validators.compose([Validators.required])
+      ]
+      ,
       educationGrade: [
         this.currentEnfant ? this.currentEnfant.educationGrade : null,
         Validators.compose([Validators.required]),

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { AutorisationService } from '../../../../core/http/autorisation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-demande-autorisation',
@@ -12,6 +13,7 @@ import { AutorisationService } from '../../../../core/http/autorisation.service'
 export class DemandeAutorisationComponent {
   form: FormGroup;
   messages: any[] = []; 
+  router: Router;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -19,8 +21,6 @@ export class DemandeAutorisationComponent {
     private messageService: MessageService
   ) {
     this.form = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required]
     });
@@ -37,6 +37,7 @@ export class DemandeAutorisationComponent {
                 console.log('Received response:', response);
                 console.log('Autorisation request submitted successfully:', response);
                 this.messages = [{severity:'success', summary:'Autorisation request submitted successfully', detail: 'State: ' + response.state}];
+                this.router.navigate(['/autorisations/list']);
             },
             (error) => {
                 console.error('Error submitting autorisation request:', error);

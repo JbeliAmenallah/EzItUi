@@ -32,7 +32,13 @@
                     <small class="p-error" *ngIf="form.get('disabled')?.touched && form.get('disabled')?.hasError('required')">Please select disabled status</small>
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="bourse">Bourse:</label>
+                    <p-dropdown [options]="disabledOptions" formControlName="bourse" [showClear]="true" placeholder="Select"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('bourse')?.touched && form.get('bourse')?.hasError('required')">Please select Bourse status</small>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="educationGrade">Education Grade:</label>

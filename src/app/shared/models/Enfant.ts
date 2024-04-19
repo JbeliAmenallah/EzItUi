@@ -4,6 +4,7 @@ export interface Enfant {
     familyName?: string;
     age?: number;
     disabled?: boolean;
+    bourse?:boolean;
     educationGrade?: string;
     contactId?: number;
   }

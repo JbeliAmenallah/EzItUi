@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { Conge } from '../../shared/models/conge';
 
 @Injectable({
@@ -40,9 +40,10 @@ export class CongeService {
     return this.http.get<Conge[]>(`${this.baseUrl}/byContact/${contactId}`);
   }
 
-  // Submit Leave Request
+  //Submit Leave Request
   submitLeaveRequest(formData: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/demande`, formData);
   }
   
+
 }
