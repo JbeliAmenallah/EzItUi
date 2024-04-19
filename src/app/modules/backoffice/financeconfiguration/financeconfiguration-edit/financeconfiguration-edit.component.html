@@ -1,27 +1,17 @@
-<p-dialog header="Edit Finance Configuration" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
-  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
-  <ng-container *ngIf="selectedFinanceConfig">
-    <div class="form-group">
-      <label for="year">Year</label>
-      <!-- Display selectedFinanceConfig's year in input -->
-      <input id="year" pInputText type="number" [(ngModel)]="selectedFinanceConfig.year" class="form-control"
-        placeholder="Year" />
+<p-dialog header="Edit Finance Configuration" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '80%', 'max-width': '600px' }">
+  <ng-container *ngIf="displayDialog">
+    <div class="container">
+      <h1 class="gradient-text">Edit Finance Configuration</h1>
     </div>
-    <div class="form-group">
-      <label for="libele">Libele</label>
-      <!-- Display selectedFinanceConfig's libele in input -->
-      <input id="libele" pInputText type="text" [(ngModel)]="selectedFinanceConfig.libele" class="form-control"
-        placeholder="Libele" />
+
+    <app-finance-configuration-form [formGroup]="formFinance"></app-finance-configuration-form>
+    
+    <div class="buttons">
+      <button type="button" class="p-button p-button-success custom-save-button btn-save" (click)="save()">Save</button>
     </div>
-    <div class="form-group">
-      <label for="taux">Taux</label>
-      <!-- Display selectedFinanceConfig's taux in input -->
-      <input id="taux" pInputText type="number" [(ngModel)]="selectedFinanceConfig.taux" class="form-control"
-        placeholder="Taux" />
+
+    <div class="card">
+      <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
     </div>
   </ng-container>
-  <p-footer>
-    <button pButton type="button" label="Save" class="p-button-success" (click)="saveFinanceConfig()"></button>
-    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
-  </p-footer>
 </p-dialog>

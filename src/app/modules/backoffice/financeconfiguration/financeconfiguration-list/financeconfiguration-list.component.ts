@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FinanceConfiguration } from '../../../../shared/models/financeConfiguration';
 import { FinanceConfigurationService } from '../../../../core/http/financeConfiguration.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-finance-configurations-list',
@@ -25,32 +26,43 @@ export class FinanceConfigurationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getList();
+  
   }
 
   getList(): void {
+    this.loading = true; 
     this.financeConfigService.getAllFinanceConfigurations().subscribe(
       (items: FinanceConfiguration[]) => {
         this.financeConfigurations = items.reverse();
+        this.loading = false; 
+      },
+      (error) => {
+        console.error('Error fetching finance configurations:', error);
+        this.loading = false; 
       }
     );
   }
 
   editItem(id: number): void {
+    console.log('Editing item with id:', id); 
     this.financeConfigService.getFinanceConfigurationById(id).subscribe(
       (financeConfig: FinanceConfiguration) => {
         this.selectedFinanceConfig = { ...financeConfig };
         this.displayDialog = true;
+        console.log(financeConfig); 
+
       },
       (error) => {
         console.error('Error fetching finance configuration:', error);
       }
     );
   }
+  
 
   saveFinanceConfig(): void {
     this.financeConfigService.updateFinanceConfiguration(this.selectedFinanceConfig.id, this.selectedFinanceConfig).subscribe(
       () => {
-        this.getList();
+        this.getList(); 
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Finance Configuration updated successfully' });
         this.hideDialog();
       },
@@ -78,7 +90,7 @@ export class FinanceConfigurationListComponent implements OnInit {
       accept: () => {
         this.financeConfigService.deleteFinanceConfiguration(id).subscribe(
           () => {
-            this.getList();
+            this.getList(); 
             this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Finance Configuration deleted successfully' });
           },
           (error) => {

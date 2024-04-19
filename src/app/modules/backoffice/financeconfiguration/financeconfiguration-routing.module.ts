@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FinanceConfigurationListComponent } from './financeconfiguration-list/financeconfiguration-list.component';
 import { FinanceconfigurationFormComponent } from './financeconfiguration-form/financeconfiguration-form.component';
 import { FinanceconfigurationAddComponent } from './financeconfiguration-add/financeconfiguration-add.component';
+import { FinanceconfigurationEditComponent } from './financeconfiguration-edit/financeconfiguration-edit.component';
 const routes: Routes = [
   {
     path:'list',
@@ -15,8 +16,13 @@ const routes: Routes = [
   {
     path:'add',
     component:FinanceconfigurationAddComponent
+  },
+  {
+    path:'edit',
+    component:FinanceconfigurationEditComponent
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

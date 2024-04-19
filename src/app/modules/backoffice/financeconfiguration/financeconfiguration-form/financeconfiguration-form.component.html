@@ -1,265 +1,121 @@
 <div class="container mt-5">
-  <!-- Section for Cnss -->
   <div class="section">
-    <h4>Cnss</h4>
-    <form [formGroup]="formCnss" class="form">
+    <form [formGroup]="formFinance" class="form">
       <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Libele:</label>
-            <div class="form-control-static">Cnss</div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="year">Year:</label>
-            <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
-            <small class="p-error" *ngIf="formCnss.get('year')?.touched && formCnss.get('year')?.hasError('required')">Year is required</small>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taux">Taux:</label>
-            <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
-            <small class="p-error" *ngIf="formCnss.get('taux')?.touched && formCnss.get('taux')?.hasError('required')">Taux is required</small>
-          </div>
-        </div>
 
         <div class="col-md-6">
           <div class="form-group">
             <label for="anneeId">Annee:</label>
             <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-            <small class="p-error" *ngIf="formCnss.get('anneeId')?.touched && formCnss.get('anneeId')?.hasError('required')">Annee is required</small>
+            <small class="p-error" *ngIf="formFinance.get('anneeId')?.touched && formFinance.get('anneeId')?.hasError('required')">Annee is required</small>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="cnss">CNSS:</label>
+            <input type="number" pInputText formControlName="cnss" id="cnss" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('cnss')?.touched && formFinance.get('cnss')?.hasError('required')">CNSS is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="css1">CSS1:</label>
+            <input type="number" pInputText formControlName="css1" id="css1" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="css2">CSS2:</label>
+            <input type="number" pInputText formControlName="css2" id="css2" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('css2')?.touched && formFinance.get('css2')?.hasError('required')">CSS2 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="css3">CSS3:</label>
+            <input type="number" pInputText formControlName="css3" id="css3" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('css3')?.touched && formFinance.get('css3')?.hasError('required')">CSS3 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="css4">CSS4:</label>
+            <input type="number" pInputText formControlName="css4" id="css4" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('css4')?.touched && formFinance.get('css4')?.hasError('required')">CSS4 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="css5">CSS5:</label>
+            <input type="number" pInputText formControlName="css5" id="css5" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('css5')?.touched && formFinance.get('css5')?.hasError('required')">CSS5 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="tva">TVA:</label>
+            <input type="number" pInputText formControlName="tva" id="tva" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('tva')?.touched && formFinance.get('tva')?.hasError('required')">TVA is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="deduction">Deduction:</label>
+            <input type="number" pInputText formControlName="deduction" id="deduction" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('deduction')?.touched && formFinance.get('deduction')?.hasError('required')">Deduction is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="irpp1">IRPP1:</label>
+            <input type="number" pInputText formControlName="irpp1" id="irpp1" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('irpp1')?.touched && formFinance.get('irpp1')?.hasError('required')">IRPP1 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="irpp2">IRPP2:</label>
+            <input type="number" pInputText formControlName="irpp2" id="irpp2" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('irpp2')?.touched && formFinance.get('irpp2')?.hasError('required')">IRPP2 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="irpp3">IRPP3:</label>
+            <input type="number" pInputText formControlName="irpp3" id="irpp3" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('irpp3')?.touched && formFinance.get('irpp3')?.hasError('required')">IRPP3 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="irpp4">IRPP4:</label>
+            <input type="number" pInputText formControlName="irpp4" id="irpp4" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('irpp4')?.touched && formFinance.get('irpp4')?.hasError('required')">IRPP4 is required</small>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="irpp5">IRPP5:</label>
+            <input type="number" pInputText formControlName="irpp5" id="irpp5" class="form-control"/>
+            <small class="p-error" *ngIf="formFinance.get('irpp5')?.touched && formFinance.get('irpp5')?.hasError('required')">IRPP5 is required</small>
+          </div>
+        </div>
+
+
       </div>
     </form>
   </div>
-
-  <!-- Section for Deduction -->
-  <div class="section mt-4">
-    <h4>Deduction</h4>
-    <form [formGroup]="formDeduction" class="form">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Libele:</label>
-            <div class="form-control-static">Deduction</div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="year">Year:</label>
-            <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
-            <small class="p-error" *ngIf="formDeduction.get('year')?.touched && formDeduction.get('year')?.hasError('required')">Year is required</small>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taux">Taux:</label>
-            <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
-            <small class="p-error" *ngIf="formDeduction.get('taux')?.touched && formDeduction.get('taux')?.hasError('required')">Taux is required</small>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="anneeId">Annee:</label>
-            <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-            <small class="p-error" *ngIf="formDeduction.get('anneeId')?.touched && formDeduction.get('anneeId')?.hasError('required')">Annee is required</small>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!-- Section for TVA -->
-  <div class="section mt-4">
-    <h4>TVA</h4>
-    <form [formGroup]="formTva" class="form">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Libele:</label>
-            <div class="form-control-static">TVA</div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="year">Year:</label>
-            <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
-            <small class="p-error" *ngIf="formTva.get('year')?.touched && formTva.get('year')?.hasError('required')">Year is required</small>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="taux">Taux:</label>
-            <input type="number" pInputText formControlName="taux" id="taux" class="form-control"/>
-            <small class="p-error" *ngIf="formTva.get('taux')?.touched && formTva.get('taux')?.hasError('required')">Taux is required</small>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="anneeId">Annee:</label>
-            <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-            <small class="p-error" *ngIf="formTva.get('anneeId')?.touched && formTva.get('anneeId')?.hasError('required')">Annee is required</small>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  
-  <!-- Section for ERPP -->
-<div class="section mt-4">
-  <h4>ERPP</h4>
-  <form [formGroup]="formErpp" class="form">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Libele:</label>
-          <div class="form-control-static">ERPP</div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="erppYear">Year:</label>
-          <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
-          <small class="p-error" *ngIf="formErpp.get('year')?.touched && formErpp.get('year')?.hasError('required')">Year is required</small>
-        </div>
-      </div>
-
-      
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="erppValue0">Salary under 5000:</label>
-          <input type="text" pInputText formControlName="erppValue0" id="erppValue0" class="form-control" />
-          <small class="p-error" *ngIf="formErpp.get('erppValue0')?.touched && formErpp.get('erppValue0')?.hasError('required')">Value is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="erppValue1">Salary between 5000-20000:</label>
-          <input type="text" pInputText formControlName="erppValue1" id="erppValue1" class="form-control" />
-          <small class="p-error" *ngIf="formErpp.get('erppValue1')?.touched && formErpp.get('erppValue1')?.hasError('required')">Value 1 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="erppValue2">Salary between 20000-30000:</label>
-          <input type="text" pInputText formControlName="erppValue2" id="erppValue2" class="form-control" />
-          <small class="p-error" *ngIf="formErpp.get('erppValue2')?.touched && formErpp.get('erppValue2')?.hasError('required')">Value 2 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="erppValue3">Salary between 30000-50000:</label>
-          <input type="text" pInputText formControlName="erppValue3" id="erppValue3" class="form-control" />
-          <small class="p-error" *ngIf="formErpp.get('erppValue3')?.touched && formErpp.get('erppValue3')?.hasError('required')">Value 3 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="erppValue3">Salary over 50000:</label>
-          <input type="text" pInputText formControlName="erppValue3" id="erppValue3" class="form-control" />
-          <small class="p-error" *ngIf="formErpp.get('erppValue3')?.touched && formErpp.get('erppValue3')?.hasError('required')">Value 3 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="anneeId">Annee:</label>
-          <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-          <small class="p-error" *ngIf="formTva.get('anneeId')?.touched && formTva.get('anneeId')?.hasError('required')">Annee is required</small>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-<!-- Section for Css -->
-<div class="section mt-4">
-  <h4>CSS</h4>
-  <form [formGroup]="formCss" class="form">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Libele:</label>
-          <div class="form-control-static">CSS</div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cssYear">Year:</label>
-          <input type="text" pInputText formControlName="year" id="year" class="form-control"/>
-          <small class="p-error" *ngIf="formCss.get('cssYear')?.touched && formCss.get('cssYear')?.hasError('required')">Year is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cssValue0">Salary under 5000:</label>
-          <input type="text" pInputText formControlName="cssValue0" id="cssValue0" class="form-control" />
-          <small class="p-error" *ngIf="formErpp.get('cssValue0')?.touched && formErpp.get('erppValue0')?.hasError('required')">Value is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cssValue1">Salary between 5000-20000:</label>
-          <input type="text" pInputText formControlName="cssValue1" id="cssValue1" class="form-control"/>
-          <small class="p-error" *ngIf="formCss.get('cssValue1')?.touched && formCss.get('cssValue1')?.hasError('required')">Value 1 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cssValue2">Salary between 20000-30000:</label>
-          <input type="text" pInputText formControlName="cssValue2" id="cssValue2" class="form-control"/>
-          <small class="p-error" *ngIf="formCss.get('cssValue2')?.touched && formCss.get('cssValue2')?.hasError('required')">Value 2 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cssValue3">Salary between 30000-50000:</label>
-          <input type="text" pInputText formControlName="cssValue3" id="cssValue3" class="form-control"/>
-          <small class="p-error" *ngIf="formCss.get('cssValue3')?.touched && formCss.get('cssValue3')?.hasError('required')">Value 3 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="cssValue4">Salary over 50000:</label>
-          <input type="text" pInputText formControlName="cssValue4" id="cssValue4" class="form-control"/>
-          <small class="p-error" *ngIf="formCss.get('cssValue4')?.touched && formCss.get('cssValue4')?.hasError('required')">Value 4 is required</small>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="anneeId">Annee:</label>
-          <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-          <small class="p-error" *ngIf="formTva.get('anneeId')?.touched && formTva.get('anneeId')?.hasError('required')">Annee is required</small>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-  
 </div>

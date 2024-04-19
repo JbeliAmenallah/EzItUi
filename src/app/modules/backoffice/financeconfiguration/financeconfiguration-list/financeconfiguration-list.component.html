@@ -1,13 +1,13 @@
 <div class="table-container">
-    <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
+    <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/financeconfiguration/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Add Finance Configuration</b> </span>
+                <span><b>Add Finance Configuration</b></span>
             </div>
         </ng-template>
     </div>
-  
+
     <p-table
         #dt3
         [value]="financeConfigurations"
@@ -18,34 +18,40 @@
         [loading]="loading"
         [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['libele', 'year', 'taux']"
+        [globalFilterFields]="['cnss', 'css1', 'css2', 'css3', 'css4', 'css5', 'tva', 'irpp1', 'irpp2', 'irpp3', 'irpp4', 'irpp5']"
         [tableStyle]="{ 'min-width': '75rem' }">
-    
+
         <ng-template pTemplate="header">
             <tr>
-                <th>Libele</th>
-                <th>Year</th>
-                <th>Taux</th>
+                <th>CNSS</th>
+                <th>CSS1</th>
+                <th>CSS2</th>
+                <th>CSS3</th>
+                <th>CSS4</th>
+                <th>CSS5</th>
+                <th>TVA</th>
+                <th>IRPP1</th>
+                <th>IRPP2</th>
+                <th>IRPP3</th>
+                <th>IRPP4</th>
+                <th>IRPP5</th>
                 <th>Actions</th>
-            </tr>
-            <tr>
-                <th>
-                    <p-columnFilter type="text" field="libele"></p-columnFilter>
-                </th>
-                <th>
-                    <p-columnFilter type="text" field="year"></p-columnFilter>
-                </th>
-                <th>
-                    <p-columnFilter type="text" field="taux"></p-columnFilter>
-                </th>
-                <th></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-financeConfig>
             <tr>
-                <td>{{ financeConfig.libele }}</td>
-                <td>{{ financeConfig.year }}</td>
-                <td>{{ financeConfig.taux }}</td>
+                <td>{{ financeConfig.cnss }}</td>
+                <td>{{ financeConfig.css1 }}</td>
+                <td>{{ financeConfig.css2 }}</td>
+                <td>{{ financeConfig.css3 }}</td>
+                <td>{{ financeConfig.css4 }}</td>
+                <td>{{ financeConfig.css5 }}</td>
+                <td>{{ financeConfig.tva }}</td>
+                <td>{{ financeConfig.irpp1 }}</td>
+                <td>{{ financeConfig.irpp2 }}</td>
+                <td>{{ financeConfig.irpp3 }}</td>
+                <td>{{ financeConfig.irpp4 }}</td>
+                <td>{{ financeConfig.irpp5 }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editItem(financeConfig.id)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(financeConfig.id)"></i>
@@ -54,7 +60,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="4">No finance configurations found.</td>
+                <td colspan="13">No finance configurations found.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">
@@ -69,9 +75,8 @@
     <app-financeconfiguration-edit [displayDialog]="displayDialog" [selectedFinanceConfig]="selectedFinanceConfig"
     (onSave)="saveFinanceConfig()" (onHide)="hideDialog()"></app-financeconfiguration-edit>
     <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
-    acceptButtonStyleClass="p-button-danger p-button-text"
-    rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">
+        acceptButtonStyleClass="p-button-danger p-button-text"
+        rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">
     </p-confirmDialog>
     <p-toast></p-toast>
-  </div>
-  
+</div>

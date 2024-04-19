@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Annee } from '../../../../shared/models/annee';
 import { AnneeService } from '../../../../core/http/annee.service';
+import { FinanceConfiguration } from '../../../../shared/models/financeConfiguration';
 
 @Component({
   selector: 'app-finance-configuration-form',
@@ -10,12 +11,9 @@ import { AnneeService } from '../../../../core/http/annee.service';
 })
 export class FinanceconfigurationFormComponent implements OnInit {
 
-  formCnss: FormGroup;
-  formDeduction: FormGroup;
-  formTva: FormGroup;
-  formErpp: FormGroup; 
-  formCss: FormGroup; 
+  @Input() financeConfig: FinanceConfiguration;
 
+  formFinance: FormGroup; 
   anneeOptions: Annee[] = [];
 
   constructor(
@@ -24,31 +22,26 @@ export class FinanceconfigurationFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formCnss = this.createForm('Cnss');
-    this.formDeduction = this.createForm('Deduction');
-    this.formTva = this.createForm('TVA');
-    this.formErpp = this.createForm('Erpp');
-    this.formCss = this.createForm('Css');
-
+    this.formFinance = this.createForm('Finance configuration'); 
     this.loadAnnees();
   }
 
   createForm(libele: string) {
     return this.formBuilder.group({
-      libele: [libele],
-      year: [null, Validators.required],
-      taux: [null, Validators.compose([Validators.required, Validators.min(0)])],
       anneeId: [null, Validators.required],
-      cssValue0: [null, Validators.required], 
-      cssValue1: [null, Validators.required], 
-      cssValue2: [null, Validators.required], 
-      cssValue3: [null, Validators.required],
-      cssValue4: [null, Validators.required],
-      erppValue0: [null, Validators.required],
-      erppValue1: [null, Validators.required],
-      erppValue2: [null, Validators.required], 
-      erppValue3: [null, Validators.required], 
-      erppValue4: [null, Validators.required],
+      cnss: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      css1: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      css2: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      css3: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      css4: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      css5: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      tva: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      deduction: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      irpp1: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      irpp2: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      irpp3: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      irpp4: [null, Validators.compose([Validators.required, Validators.min(0)])], 
+      irpp5: [null, Validators.compose([Validators.required, Validators.min(0)])], 
     });
   }
   

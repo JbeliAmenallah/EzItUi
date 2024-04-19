@@ -22,111 +22,41 @@ export class FinanceconfigurationAddComponent {
   ) {}
 
   save() {
-    console.log("Inside save function");
-    if (true) { 
-      const cssConfigurations = [
-        {
-          libele: 'CSS : Salary under 5000:',
-          year: this.financeForm.formCss.get('year').value,
-          cssValue0: this.financeForm.formCss.get('cssValue0').value,
-          anneeId: this.financeForm.formCss.get('anneeId').value,
-          taux: this.financeForm.formCss.get('cssValue0') ? this.financeForm.formCss.get('cssValue0').value : null,
+    const selectedAnneeId: number = this.financeForm.formFinance.get('anneeId')?.value;
+    if (selectedAnneeId) { 
+      const financeConfiguration = {
+        cnss: this.financeForm.formFinance.get('cnss')?.value,
+        year: selectedAnneeId,
+        css1: this.financeForm.formFinance.get('css1')?.value,
+        css2: this.financeForm.formFinance.get('css2')?.value,
+        css3: this.financeForm.formFinance.get('css3')?.value,
+        css4: this.financeForm.formFinance.get('css4')?.value,
+        css5: this.financeForm.formFinance.get('css5')?.value,
+        tva: this.financeForm.formFinance.get('tva')?.value,
+        deduction: this.financeForm.formFinance.get('deduction')?.value,
+        irpp1: this.financeForm.formFinance.get('irpp1')?.value,
+        irpp2: this.financeForm.formFinance.get('irpp2')?.value,
+        irpp3: this.financeForm.formFinance.get('irpp3')?.value,
+        irpp4: this.financeForm.formFinance.get('irpp4')?.value,
+        irpp5: this.financeForm.formFinance.get('irpp5')?.value
+      };
+  
+      console.log('Finance Configuration Object:', financeConfiguration); 
+  
+      this.financeConfigService.createFinanceConfiguration(financeConfiguration).subscribe(
+        () => {
+          setTimeout(() => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The finance configuration has been successfully added.' });
+          }, 100);
+          this.router.navigate(['/financeconfiguration/list']);
         },
-        {
-          libele: 'CSS : Salary between 5000-20000:',
-          year: this.financeForm.formCss.get('year').value,
-          cssValue1: this.financeForm.formCss.get('cssValue1').value,
-          anneeId: this.financeForm.formCss.get('anneeId').value,
-          taux: this.financeForm.formCss.get('cssValue1') ? this.financeForm.formCss.get('cssValue1').value : null,
-        },
-        {
-          libele: 'CSS : Salary between 20000-30000:',
-          year: this.financeForm.formCss.get('year').value,
-          cssValue2: this.financeForm.formCss.get('cssValue2').value,
-          anneeId: this.financeForm.formCss.get('anneeId').value,
-          taux: this.financeForm.formCss.get('cssValue2') ? this.financeForm.formCss.get('cssValue2').value : null,
-        },
-        {
-          libele: 'CSS : Salary between 30000-50000:',
-          year: this.financeForm.formCss.get('year').value,
-          cssValue3: this.financeForm.formCss.get('cssValue3').value,
-          anneeId: this.financeForm.formCss.get('anneeId').value,
-          taux: this.financeForm.formCss.get('cssValue3') ? this.financeForm.formCss.get('cssValue3').value : null,
-        },
-        {
-          libele: 'CSS : Salary over 50000:',
-          year: this.financeForm.formCss.get('year').value,
-          cssValue4: this.financeForm.formCss.get('cssValue4').value,
-          anneeId: this.financeForm.formCss.get('anneeId').value,
-          taux: this.financeForm.formCss.get('cssValue4') ? this.financeForm.formCss.get('cssValue4').value : null,
+        (error) => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the finance configuration.' });
         }
-      ];
-  
-      const erppConfigurations = [
-        {
-          libele: 'ERPP : Salary under 5000:',
-          year: this.financeForm.formErpp.get('year').value,
-          erppValue0: this.financeForm.formErpp.get('erppValue0').value,
-          anneeId: this.financeForm.formErpp.get('anneeId').value,
-          taux: this.financeForm.formErpp.get('erppValue0') ? this.financeForm.formErpp.get('erppValue0').value : null,
-        },
-        {
-          libele: 'ERPP : Salary between 5000-20000:',
-          year: this.financeForm.formErpp.get('year').value,
-          erppValue1: this.financeForm.formErpp.get('erppValue1').value,
-          anneeId: this.financeForm.formErpp.get('anneeId').value,
-          taux: this.financeForm.formErpp.get('erppValue1') ? this.financeForm.formErpp.get('erppValue1').value : null,
-        },
-        {
-          libele: 'ERPP : Salary between 20000-30000:',
-          year: this.financeForm.formErpp.get('year').value,
-          erppValue2: this.financeForm.formErpp.get('erppValue2').value,
-          anneeId: this.financeForm.formErpp.get('anneeId').value,
-          taux: this.financeForm.formErpp.get('erppValue2') ? this.financeForm.formErpp.get('erppValue2').value : null,
-        },
-        {
-          libele: 'ERPP : Salary between 30000-50000:',
-          year: this.financeForm.formErpp.get('year').value,
-          erppValue3: this.financeForm.formErpp.get('erppValue3').value,
-          anneeId: this.financeForm.formErpp.get('anneeId').value,
-          taux: this.financeForm.formErpp.get('erppValue3') ? this.financeForm.formErpp.get('erppValue3').value : null,
-        },
-        {
-          libele: 'ERPP : Salary over 50000:',
-          year: this.financeForm.formErpp.get('year').value,
-          erppValue4: this.financeForm.formErpp.get('erppValue4').value,
-          anneeId: this.financeForm.formErpp.get('anneeId').value,
-          taux: this.financeForm.formErpp.get('erppValue4') ? this.financeForm.formErpp.get('erppValue4').value : null,
-        }
-      ];
-  
-      // Merge CSS and ERPP configurations
-      const allConfigurations = [...cssConfigurations, ...erppConfigurations];
-  
-      // Create each configuration
-      allConfigurations.forEach(config => {
-        this.financeConfigService.createFinanceConfiguration(config).subscribe(
-          () => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Config has been successfully added.' });
-            // Optionally handle navigation after all configurations are saved
-            this.router.navigate(['/financeconfiguration/list']);
-          },
-          (error) => {
-            console.error('Error adding Finance Configuration:', error);
-            this.messages = [{ severity: 'error', summary: 'Error', detail: 'An error occurred while adding Finance Configuration.' }];
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'An error occurred while adding Finance Configuration.' });
-          }
-        );
-      });
+      );
     } else {
-      console.error('Form is invalid');
-      this.messages = [{ severity: 'error', summary: 'Error', detail: 'Please fill all required fields correctly.' }];
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill all required fields correctly.' });
+      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please select an Annee.' });
     }
   }
-  
-  
-  
-  
   
 }
