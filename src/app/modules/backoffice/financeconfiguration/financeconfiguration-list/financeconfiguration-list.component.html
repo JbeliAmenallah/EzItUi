@@ -35,6 +35,7 @@
                 <th>IRPP3</th>
                 <th>IRPP4</th>
                 <th>IRPP5</th>
+                <th>deduction</th>
                 <th>Actions</th>
             </tr>
         </ng-template>
@@ -52,6 +53,8 @@
                 <td>{{ financeConfig.irpp3 }}</td>
                 <td>{{ financeConfig.irpp4 }}</td>
                 <td>{{ financeConfig.irpp5 }}</td>
+                <td>{{ financeConfig.deduction }}</td>
+
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editItem(financeConfig.id)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(financeConfig.id)"></i>
@@ -72,8 +75,6 @@
             </div>
         </ng-template>
     </p-table>
-    <app-financeconfiguration-edit [displayDialog]="displayDialog" [selectedFinanceConfig]="selectedFinanceConfig"
-    (onSave)="saveFinanceConfig()" (onHide)="hideDialog()"></app-financeconfiguration-edit>
     <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
         acceptButtonStyleClass="p-button-danger p-button-text"
         rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">

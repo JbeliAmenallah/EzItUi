@@ -26,7 +26,7 @@ export class FinanceconfigurationAddComponent {
     if (selectedAnneeId) { 
       const financeConfiguration = {
         cnss: this.financeForm.formFinance.get('cnss')?.value,
-        year: selectedAnneeId,
+        anneeId: selectedAnneeId,
         css1: this.financeForm.formFinance.get('css1')?.value,
         css2: this.financeForm.formFinance.get('css2')?.value,
         css3: this.financeForm.formFinance.get('css3')?.value,

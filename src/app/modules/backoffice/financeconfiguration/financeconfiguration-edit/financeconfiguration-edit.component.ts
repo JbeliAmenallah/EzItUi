@@ -1,43 +1,84 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FinanceConfiguration } from '../../../../shared/models/financeConfiguration';
-import { Message } from 'primeng/api';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'; // Import FormGroup and FormBuilder
+import { FinanceConfigurationService } from '../../../../core/http/financeConfiguration.service';
 
 @Component({
   selector: 'app-financeconfiguration-edit',
   templateUrl: './financeconfiguration-edit.component.html',
   styleUrls: ['./financeconfiguration-edit.component.css']
 })
-export class FinanceconfigurationEditComponent {
-  formFinance: FormGroup; // Define formFinance property
+export class FinanceConfigurationEditComponent implements OnInit {
+  financeConfig: FinanceConfiguration;
+  editForm: FormGroup;
+  loading: boolean = false;
+  error: string = null;
+  
+  @Input() formFinance: FormGroup; 
 
-  @Input() displayDialog: boolean;
-  @Input() selectedFinanceConfig: FinanceConfiguration;
-  @Output() onSave: EventEmitter<FinanceConfiguration> = new EventEmitter<FinanceConfiguration>();
-  @Output() onHide: EventEmitter<void> = new EventEmitter<void>();
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private financeConfigService: FinanceConfigurationService
+  ) { }
 
-  messages: Message[] = [];
-
-  constructor(private formBuilder: FormBuilder) { // Inject FormBuilder in constructor
-    this.formFinance = this.createForm(); // Initialize formFinance in the constructor
+  ngOnInit(): void {
+    this.loadFinanceConfiguration();
   }
 
-  // Method to create the form
-  createForm(): FormGroup {
-    return this.formBuilder.group({
-      // Define your form controls with their initial values and validators here
-      anneeId: [null, Validators.required],
-      cnss: [null, Validators.compose([Validators.required, Validators.min(0)])],
-      // Add other form controls here
+  loadFinanceConfiguration(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.loading = true;
+    this.financeConfigService.getFinanceConfigurationById(id).subscribe(
+      (financeConfig: FinanceConfiguration) => {
+        this.financeConfig = financeConfig;
+        this.loading = false;
+        this.initForm();
+      },
+      (error) => {
+        console.error('Error fetching finance configuration:', error);
+        this.error = 'Failed to fetch finance configuration. Please try again.';
+        this.loading = false;
+      }
+    );
+  }
+
+  initForm(): void {
+    this.editForm = this.formBuilder.group({
+      cnss: [this.financeConfig.cnss],
+      css1: [this.financeConfig.css1],
+      css2: [this.financeConfig.css2],
+      css3: [this.financeConfig.css3],
+      css4: [this.financeConfig.css4],
+      css5: [this.financeConfig.css5],
+      irpp1: [this.financeConfig.irpp1],
+      irpp2: [this.financeConfig.irpp2],
+      irpp3: [this.financeConfig.irpp3],
+      irpp4: [this.financeConfig.irpp4],
+      irpp5: [this.financeConfig.irpp5],
+      tva: [this.financeConfig.tva],
+      deduction: [this.financeConfig.deduction],
     });
   }
 
-  save() {
-    this.onSave.emit(this.selectedFinanceConfig);
-    console.log(this.selectedFinanceConfig);
+  onSubmit(): void {
+    if (this.editForm.valid) {
+      const updatedFinanceConfig: FinanceConfiguration = { ...this.editForm.value };
+      this.financeConfigService.updateFinanceConfiguration(this.financeConfig.id, updatedFinanceConfig).subscribe(
+        () => {
+          this.router.navigate(['/financeconfiguration/list']);
+        },
+        (error) => {
+          console.error('Error updating finance configuration:', error);
+          this.error = 'Failed to update finance configuration. Please try again.';
+        }
+      );
+    }
   }
 
-  hideDialog() {
-    this.onHide.emit();
+  onCancel(): void {
+    this.router.navigate(['/financeconfiguration/list']);
   }
 }

@@ -1,17 +1,14 @@
-<p-dialog header="Edit Finance Configuration" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '80%', 'max-width': '600px' }">
-  <ng-container *ngIf="displayDialog">
-    <div class="container">
-      <h1 class="gradient-text">Edit Finance Configuration</h1>
+<div class="container mt-5">
+    <div class="section">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+        <app-finance-configuration-form [formFinance]="editForm"></app-finance-configuration-form>
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" pButton label="Submit" class="p-button p-button-primary"></button>
+            <button type="button" pButton label="Cancel" class="p-button p-button-secondary" (click)="onCancel()"></button>
+          </div>
+        </div>
+      </form>
     </div>
-
-    <app-finance-configuration-form [formGroup]="formFinance"></app-finance-configuration-form>
-    
-    <div class="buttons">
-      <button type="button" class="p-button p-button-success custom-save-button btn-save" (click)="save()">Save</button>
-    </div>
-
-    <div class="card">
-      <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
-    </div>
-  </ng-container>
-</p-dialog>
+  </div>
+  

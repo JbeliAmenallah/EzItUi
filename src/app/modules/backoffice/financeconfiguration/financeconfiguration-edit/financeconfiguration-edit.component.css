@@ -1,0 +1,31 @@
+.p-fluid {
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+  }
+  
+  .form-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    gap: 20px; /* Add space between the columns */
+  }
+  
+  .p-field {
+    margin-bottom: 20px; /* Add space between each form field */
+  }
+  
+  .p-inputtext {
+    width: 100%; /* Make the input fields fill their container */
+    padding: 0.5rem; /* Add padding to the input fields */
+    font-size: 1rem; /* Adjust font size as needed */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Distribute buttons evenly */
+    margin-top: 20px; /* Add space between the buttons and form fields */
+  }
+  
+  .p-button {
+    width: 48%; /* Adjust the width of the buttons */
+  }
+  

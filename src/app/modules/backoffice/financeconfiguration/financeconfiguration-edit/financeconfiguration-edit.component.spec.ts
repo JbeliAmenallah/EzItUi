@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FinanceconfigurationEditComponent } from './financeconfiguration-edit.component';
+import { FinanceConfigurationEditComponent } from './financeconfiguration-edit.component';
 
 describe('FinanceconfigurationEditComponent', () => {
-  let component: FinanceconfigurationEditComponent;
-  let fixture: ComponentFixture<FinanceconfigurationEditComponent>;
+  let component: FinanceConfigurationEditComponent;
+  let fixture: ComponentFixture<FinanceConfigurationEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FinanceconfigurationEditComponent]
+      declarations: [FinanceConfigurationEditComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FinanceconfigurationEditComponent);
+    fixture = TestBed.createComponent(FinanceConfigurationEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

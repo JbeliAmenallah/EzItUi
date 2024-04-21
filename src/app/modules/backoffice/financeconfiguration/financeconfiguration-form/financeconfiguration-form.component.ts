@@ -10,10 +10,9 @@ import { FinanceConfiguration } from '../../../../shared/models/financeConfigura
   styleUrls: ['./financeconfiguration-form.component.css']
 })
 export class FinanceconfigurationFormComponent implements OnInit {
-
+  @Input() formFinance: FormGroup; 
   @Input() financeConfig: FinanceConfiguration;
 
-  formFinance: FormGroup; 
   anneeOptions: Annee[] = [];
 
   constructor(

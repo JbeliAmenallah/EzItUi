@@ -43,21 +43,6 @@ export class FinanceConfigurationListComponent implements OnInit {
     );
   }
 
-  editItem(id: number): void {
-    console.log('Editing item with id:', id); 
-    this.financeConfigService.getFinanceConfigurationById(id).subscribe(
-      (financeConfig: FinanceConfiguration) => {
-        this.selectedFinanceConfig = { ...financeConfig };
-        this.displayDialog = true;
-        console.log(financeConfig); 
-
-      },
-      (error) => {
-        console.error('Error fetching finance configuration:', error);
-      }
-    );
-  }
-  
 
   saveFinanceConfig(): void {
     this.financeConfigService.updateFinanceConfiguration(this.selectedFinanceConfig.id, this.selectedFinanceConfig).subscribe(
@@ -105,4 +90,7 @@ export class FinanceConfigurationListComponent implements OnInit {
     });
   }
 
+  editItem(id: number): void {
+    this.router.navigate(['/financeconfiguration/edit', id]);
+  }
 }
