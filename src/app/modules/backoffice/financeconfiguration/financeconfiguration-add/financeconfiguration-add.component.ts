@@ -3,6 +3,7 @@ import { FinanceconfigurationFormComponent } from '../financeconfiguration-form/
 import { FinanceConfigurationService } from '../../../../core/http/financeConfiguration.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { FinanceConfiguration } from '../../../../shared/models/financeConfiguration';
 
 @Component({
   selector: 'app-financeconfiguration-add',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class FinanceconfigurationAddComponent {
   @ViewChild(FinanceconfigurationFormComponent) financeForm: FinanceconfigurationFormComponent;
   messages: any[] = [];
+  financeConfiguration: FinanceConfiguration;
 
 
   constructor(
@@ -20,7 +22,42 @@ export class FinanceconfigurationAddComponent {
     private router: Router,
     
   ) {}
+  ngOnInit(): void {
+    this.loadFinanceConfigurationOfCurrentOrPreviousYear();
+  }
 
+  loadFinanceConfigurationOfCurrentOrPreviousYear() {
+    this.financeConfigService.getFinanceConfigurationOfCurrentOrPreviousYear().subscribe(
+      (financeConfig: FinanceConfiguration) => {
+        this.financeConfiguration = financeConfig;
+        this.populateFormWithFinanceConfiguration();
+      },
+      (error) => {
+        console.error('Error loading finance configuration:', error);
+      }
+    );
+  }
+
+  populateFormWithFinanceConfiguration() {
+    if (this.financeConfiguration) {
+      this.financeForm.formFinance.patchValue({
+        anneeId: this.financeConfiguration.anneeId,
+        cnss: this.financeConfiguration.cnss,
+        css1: this.financeConfiguration.css1,
+        css2: this.financeConfiguration.css2,
+        css3: this.financeConfiguration.css3,
+        css4: this.financeConfiguration.css4,
+        css5: this.financeConfiguration.css5,
+        tva: this.financeConfiguration.tva,
+        deduction: this.financeConfiguration.deduction,
+        irpp1: this.financeConfiguration.irpp1,
+        irpp2: this.financeConfiguration.irpp2,
+        irpp3: this.financeConfiguration.irpp3,
+        irpp4: this.financeConfiguration.irpp4,
+        irpp5: this.financeConfiguration.irpp5
+      });
+    }
+  }
   save() {
     const selectedAnneeId: number = this.financeForm.formFinance.get('anneeId')?.value;
     if (selectedAnneeId) { 

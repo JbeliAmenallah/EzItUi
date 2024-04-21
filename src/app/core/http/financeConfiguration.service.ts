@@ -38,4 +38,9 @@ export class FinanceConfigurationService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
   }
+  getFinanceConfigurationOfCurrentOrPreviousYear(): Observable<FinanceConfiguration> {
+    // Update the API URL to point to the endpoint for the current or previous year's finance configuration
+    const currentOrPreviousYearUrl = `${this.apiUrl}/current-or-previous`;
+    return this.http.get<FinanceConfiguration>(currentOrPreviousYearUrl);
+  }
 }
