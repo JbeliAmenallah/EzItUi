@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 class="gradient-text">Add Deduction</h1>
+</div>
+
+<app-deduction-form></app-deduction-form>
+
+<div class="buttons">
+    <button type="button" class="p-button p-button-success custom-save-button btn-save" (click)="save()">Save</button>
+</div>
+
+<div class="card">
+    <p-messages [(value)]="messages" [closable]="true"></p-messages>
+</div>

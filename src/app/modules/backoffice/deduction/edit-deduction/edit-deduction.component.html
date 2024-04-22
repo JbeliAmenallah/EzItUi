@@ -1,0 +1,14 @@
+<div class="container">
+    <h1 class="gradient-text">Edit Deduction</h1>
+  </div>
+  
+  <app-deduction-form #form [currentItemForm]="deduction" *ngIf="deduction"></app-deduction-form>
+  
+  <div class="buttons">
+    <p-button label="Save" icon="pi pi-check" styleClass="custom-save-button" class="btn-save" (click)="update()"></p-button>
+  </div>
+  
+  <div class="card">
+    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+  </div>
+  

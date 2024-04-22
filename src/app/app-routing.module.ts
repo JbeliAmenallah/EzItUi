@@ -106,6 +106,10 @@ const routes: Routes = [
   {
     path:'salary',
     loadChildren:()=>import('./modules/backoffice/salary/salary.module').then((m)=>m.SalaryModule)
+  },
+  {
+    path:'deduction',
+    loadChildren:()=>import ('./modules/backoffice/deduction/deduction.module').then((m)=>m.DeductionModule)
   }
 ];
 

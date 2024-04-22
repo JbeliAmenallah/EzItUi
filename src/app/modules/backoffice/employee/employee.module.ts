@@ -9,6 +9,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 
@@ -18,7 +19,8 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     EmployeesListComponent,
     AddEmployeeComponent,
     EmployeeFormComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     CommonModule,

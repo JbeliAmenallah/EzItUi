@@ -1,0 +1,67 @@
+body {
+    background-color: #545454;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+  }
+  
+  .container {
+    height: 100vh;
+  }
+  
+  .card {
+    width: 380px;
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    background-color: #fff;
+    position: relative;
+    height: auto; /* Adjust height as needed */
+  }
+  
+  .upper img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .profile img {
+    height: 80px;
+    width: 80px;
+    margin-top: 2px;
+  }
+  
+  .profile {
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 45px); /* Center the profile image */
+    height: 90px;
+    width: 90px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+  }
+  
+  .follow {
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 35px;
+  }
+  
+  .stats span {
+    font-size: 29px;
+  }
+  
+  .text-muted {
+    color: #6c757d; /* Adjust text-muted color */
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Adjust primary button color */
+    border-color: #007bff; /* Adjust primary button border color */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Adjust primary button hover color */
+    border-color: #0056b3; /* Adjust primary button border hover color */
+  }
+  

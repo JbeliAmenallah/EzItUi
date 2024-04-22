@@ -1,0 +1,58 @@
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="card">
+      <div class="upper">
+        <!-- Placeholder image -->
+        <img src="https://via.placeholder.com/380x100" class="img-fluid" alt="Header Image">
+      </div>
+      <div class="user text-center">
+        <div class="profile">
+          <!-- Placeholder profile image -->
+          <img src="https://via.placeholder.com/80" class="rounded-circle" width="80" alt="Profile Image">
+        </div>
+      </div>
+      <div class="mt-5 text-center">
+        <h4 class="mb-0">{{ employee.name }}</h4>
+        <span class="text-muted d-block mb-2">{{ employee.location }}</span>
+        <button class="btn btn-primary btn-sm follow">Follow</button>
+        <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+          <div class="stats">
+            <h6 class="mb-0">Username</h6>
+            <span>{{ employee.username }}</span>
+          </div>
+          <div class="stats">
+            <h6 class="mb-0">Email</h6>
+            <span>{{ employee.email }}</span>
+          </div>
+          <div class="stats">
+            <h6 class="mb-0">Phone</h6>
+            <span>{{ employee.phone }}</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+          <div class="stats">
+            <h6 class="mb-0">Roles</h6>
+            <span>{{ employee.roles }}</span>
+          </div>
+          <div class="stats">
+            <h6 class="mb-0">Number of Children</h6>
+            <span>{{ employee.nbEnfant }}</span>
+          </div>
+          <div class="stats">
+            <h6 class="mb-0">Chef de Famille</h6>
+            <span>{{ employee.chefDefamille ? 'Yes' : 'No' }}</span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+          <div class="stats">
+            <h6 class="mb-0">Base Salary</h6>
+            <span>{{ employee.salaireDeBASE }}</span>
+          </div>
+          <div class="stats">
+            <h6 class="mb-0">Recruitment Date</h6>
+            <span>{{ employee.dateRecrutemnt | date: 'yyyy-MM-dd' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -13,6 +13,7 @@ export class EmployeesListComponent implements OnInit {
 
   employees: Employee[];
   loading: boolean = false;
+  selectedEmployee: Employee;
 
   constructor(
     private employeeService: EmployeeService,
@@ -42,6 +43,21 @@ export class EmployeesListComponent implements OnInit {
 
   }
 
+  openDetails(employee: Employee): void {
+    // Find the employee by ID from the list of employees
+    const selectedEmployee = this.employees.find(emp => emp.contactId === employee.contactId);
+    console.log("Selected Employee:", selectedEmployee); // Log selected employee
+    if (selectedEmployee) {
+      this.selectedEmployee = selectedEmployee;
+      this.router.navigate(['/employee/details/', selectedEmployee.contactId], {
+        state: { data: selectedEmployee }
+      });
+    } else {
+      console.error("Employee not found in the list.");
+    }
+  }
+  
+  
   deleteItem(contactId: number) {
     console.log("Deleting employee with contactId:", contactId);
     this.confirmationService.confirm({

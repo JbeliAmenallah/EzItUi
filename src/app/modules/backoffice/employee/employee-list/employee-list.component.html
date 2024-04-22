@@ -89,6 +89,7 @@
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)"  (click)="editItem(employee)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(employee.contactId)" ></i>
+                    <i class="pi pi-info-circle" style="font-size: 1.9rem; color: rgb(0, 123, 255)" (click)="openDetails(employee)"></i>    
                 </td>
             </tr>
         </ng-template>
@@ -106,6 +107,7 @@
             </div>
         </ng-template>
     </p-table>
+    <app-employee-details [employee]="selectedEmployee"></app-employee-details>
     <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
     acceptButtonStyleClass="p-button-danger p-button-text"
     rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
