@@ -7,6 +7,8 @@ import {CoreModule} from "./core/core.module";
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { CategoryListComponent } from './modules/backoffice/category/category-list/category-list.component';
+import { ChartModule, ColumnSeries, Category, Tooltip } from '@syncfusion/ej2-angular-charts'; // Import Syncfusion ChartModule
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { CategoryListComponent } from './modules/backoffice/category/category-li
     AppRoutingModule,
     CoreModule ,
     ConfirmDialogModule,
-    SidebarModule
+    SidebarModule,
+    ChartModule  // Include ChartModule in imports array
+
   ],
   providers: [
     provideClientHydration() 

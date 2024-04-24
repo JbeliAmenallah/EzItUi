@@ -10,6 +10,8 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { ChartModule } from 'angular-highcharts';
+
 
 
 
@@ -26,7 +28,8 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     CommonModule,
     EmployeeRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartModule
   ],
   providers: [
     ConfirmationService, 

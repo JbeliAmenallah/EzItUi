@@ -1,67 +1,47 @@
-body {
-    background-color: #545454;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-  }
-  
-  .container {
-    height: 100vh;
-  }
-  
-  .card {
-    width: 380px;
-    border: none;
-    border-radius: 15px;
-    padding: 8px;
-    background-color: #fff;
-    position: relative;
-    height: auto; /* Adjust height as needed */
-  }
-  
-  .upper img {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  
-  .profile img {
-    height: 80px;
-    width: 80px;
-    margin-top: 2px;
-  }
-  
-  .profile {
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 45px); /* Center the profile image */
-    height: 90px;
-    width: 90px;
-    border: 3px solid #fff;
-    border-radius: 50%;
-  }
-  
-  .follow {
-    border-radius: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 35px;
-  }
-  
-  .stats span {
-    font-size: 29px;
-  }
-  
-  .text-muted {
-    color: #6c757d; /* Adjust text-muted color */
-  }
-  
-  .btn-primary {
-    background-color: #007bff; /* Adjust primary button color */
-    border-color: #007bff; /* Adjust primary button border color */
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3; /* Adjust primary button hover color */
-    border-color: #0056b3; /* Adjust primary button border hover color */
-  }
-  
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.section {
+  flex: 1 1 auto; /* Allow sections to grow and shrink */
+  min-width: 250px; /* Minimum width for each section */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+}
+
+.info, .children, .absences {
+  margin-left: 20px; /* Adjust indentation for nested sections */
+}
+
+.info div, .children div, .absences div {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.info i, .children i, .absences i {
+  margin-right: 10px;
+}
+
+.charts-section {
+  flex-basis: 100%; /* Take up full width */
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart {
+  width: calc(50% - 10px); /* 50% width with spacing */
+  max-width: 200px; /* Set the maximum width to prevent excessive stretching */
+  height: 150px; /* Set a fixed height for the charts */
+}
