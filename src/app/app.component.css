@@ -571,3 +571,48 @@ a.dashboard-nav-item:hover {
     left: -15px;
   }
 }
+/* Existing CSS */
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 120px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  right: 0; /* Adjust the position to align with the profile icon */
+  margin-top: 8px; /* Add margin to separate from the profile icon */
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #ccc; /* Add a grey line between menu elements */
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none; /* Remove the bottom border from the last menu element */
+}
+
+.dropdown-content a i {
+  margin-right: 10px; /* Add some spacing between the icon and the text */
+}
+
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+}
+
+.show {
+  display: block;
+}
+
+
+
