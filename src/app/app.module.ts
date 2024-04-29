@@ -8,6 +8,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { CategoryListComponent } from './modules/backoffice/category/category-list/category-list.component';
 import { ChartModule, ColumnSeries, Category, Tooltip } from '@syncfusion/ej2-angular-charts'; // Import Syncfusion ChartModule
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ChartModule, ColumnSeries, Category, Tooltip } from '@syncfusion/ej2-an
     CoreModule ,
     ConfirmDialogModule,
     SidebarModule,
-    ChartModule  // Include ChartModule in imports array
+    ChartModule ,
+    FontAwesomeModule // Include ChartModule in imports array
 
   ],
   providers: [

@@ -1,8 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeicons/primeicons.css";
+@import 'primeng/resources/themes/lara-light-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.scss';
 
+.table-container {
+  padding: 40px;
+  width: 100%;
+  padding-top: 0px;
+}
 
- 
+.repos .p-datatable .p-datatable-header {
+  background: transparent !important;
+  color: #374151 !important;
+  border: 1px solid #e5e7eb !important;
+  border-width: 1px 0 1px 0 !important;
+  padding: 10px 0px !important;
+  font-weight: 700 !important;
+}
+.filtres .p-fluid .p-inputtext {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+.repos .p-paginator .p-paginator-current {
+  background-color: transparent;
+  border: 0 none;
+  color: #2563eb;
+  min-width: 3rem;
+  height: 3rem;
+  margin: 0.143rem;
+  padding: 0 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: auto;
+}
+.repos
+  button.p-column-filter-clear-button.p-link.p-hidden-space.ng-star-inserted {
+  display: none;
+}
+.repos
+  button.p-column-filter-clear-button.p-link.p-hidden-space.ng-star-inserted {
+  display: none;
+}
+.repos .p-datatable-scrollable > .p-datatable-wrapper {
+  margin-bottom: 10px;
+  position: relative;
+
+  /* border: 1px solid #000; */
+  border-radius: 15px;
+}
+.repos .p-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+.repos .p-paginator .p-paginator-current {
+  background-color: transparent;
+  border: 0 none;
+  color: #2563eb;
+  min-width: 3rem;
+  height: 3rem;
+  margin: 0.143rem;
+  padding: 0 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: auto;
+}

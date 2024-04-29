@@ -1,44 +1,90 @@
 <div class='dashboard'>
     <div class="dashboard-nav">
-        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"><i
-                    class="fas fa-anchor"></i> <span>BRAND</span></a></header>
-        <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"> <img src="icon/home.svg" alt="">
-                Home </a><a href="#" class="dashboard-nav-item"><img src="icon/mail.svg" alt=""> Boite de reception
+        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"> <img
+                    src="../assets/logo-createch-light.png" alt="" width="150px"></a></header>
+        <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"> <span class="material-symbols-outlined">
+                    home
+                </span>
+                <span class="menu-close">Home</span> </a>
+            <a href="#" class="dashboard-nav-item">
+                <span class="material-symbols-outlined">
+                    mail
+                </span>
+                <span class="menu-close">Boite
+                    de reception</span>
             </a>
             <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><img src="icon/tache.svg" alt="">
-                    Taches </a>
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+                        task
+                    </span>
+                    <span class="menu-close">Taches </span> </a>
                 <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
                         href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
                         class="dashboard-nav-dropdown-item">Images</a><a href="#"
                         class="dashboard-nav-dropdown-item">Video</a></div>
             </div>
-            <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><img src="icon/users.svg" alt=""> Users
+            <div class='dashboard-nav-dropdown'><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span
+                        class="material-symbols-outlined">
+                        group
+                    </span>
+                    <span class="menu-close">Users</span>
                 </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-                        href="#" class="dashboard-nav-dropdown-item">Subscribed</a><a href="#"
-                        class="dashboard-nav-dropdown-item">Non-subscribed</a><a href="#"
-                        class="dashboard-nav-dropdown-item">Banned</a><a href="#"
-                        class="dashboard-nav-dropdown-item">New</a></div>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="#" class="dashboard-nav-dropdown-item"> <span class="material-symbols-outlined">
+                            add_circle
+                        </span>Ajouter user</a>
+                    <a href="#" class="dashboard-nav-dropdown-item"><span class="material-symbols-outlined">
+                            list
+                        </span>liste users</a>
+                </div>
             </div>
             <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><img src="icon/file-text.svg" alt="">
-                    Project </a>
+                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+                        fact_check
+                    </span>
+                    <span class="menu-close">Project</span> </a>
                 <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
                         href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
                         class="dashboard-nav-dropdown-item"> Projections</a>
                 </div>
             </div>
-            <a href="#" class="dashboard-nav-item"><img src="icon/settings.svg" alt="">Settings </a>
-            <a href="#" class="dashboard-nav-item"><img src="icon/clock.svg" alt="">Chronomètre </a>
-            <a href="#" class="dashboard-nav-item"><img src="icon/one-user.svg" alt=""> Profile </a>
+            <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
+                    settings
+                </span> <span class="menu-close">Settings </span></a>
+            <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
+                    timer
+                </span><span class="menu-close">Chronomètre</span> </a>
+            <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
+                    person
+                </span> <span class="menu-close">Profile</span> </a>
             <div class="nav-item-divider"></div>
-            <a href="#" class="dashboard-nav-item logout"><img src="icon/log-out.svg" alt=""> Logout </a>
+            <div class="titre-menu ml-4 mb-3">Spaces</div>
+            <a href="#" class="dashboard-nav-item"> <span class="logo-space-design">D</span><span>Design</span> </a>
+            <a href="#" class="dashboard-nav-item"> <span class="logo-space-dev">V</span><span>développement</span> </a>
+            <a href="#" class="dashboard-nav-item"> <span class="logo-space-RH">H</span><span>RH</span> </a>
+            <a href="#" class="dashboard-nav-item"> <span class="logo-space-finance">F</span><span>finance</span> </a>
+            <a href="#" class="dashboard-nav-item logout"><img src="../assets/log-out.svg" alt=""><span>Logout</span>
+            </a>
         </nav>
     </div>
     <div class='dashboard-app'>
-        <header class='dashboard-toolbar'><a  class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+        <header class='dashboard-toolbar'><a class="menu-toggle"><i class="fas fa-bars"></i></a>
+
+            <div class="icons-left">
+                <div class="icon mr-2"><img src="../assets/bell.svg" alt=""></div>
+
+                <div class="icon mr-2"><img src="../assets/mail.svg" alt=""></div>
+
+                <div class="popup" id="popup">
+                    Contenu du popup
+                </div>
+                <div class="icon mr-2"> <img src="../assets/user.png" alt="" width="30px">
+                
+                
+                </div>
+            </div>
+
+        </header>
         <div class='dashboard-content'>
             <div class='container'>
                 <router-outlet></router-outlet>
