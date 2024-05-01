@@ -1,30 +1,15 @@
-
 <div class="table-container">
-    <!-- Title and Header Section -->
-    <div class="table-header" style="
-    margin-bottom: 30px;">
-      <h2 class="table-title">List of Autorisations</h2>
-      <div class="header-actions">
-        <span class="p-input-icon-left">
-          <i class="pi pi-search"></i>
-          <input
-            #searchInput
-            pInputText
-            type="text"
-            (input)="dt.filterGlobal(searchInput.value, 'contains')"
-            placeholder="Search keyword"
-            class="p-inputtext"
-          />
-        </span>
-        <button pButton type="button" icon="pi pi-plus" label="Autorisation" class="p-button-success p-button-rounded"
-          style="margin-left: 10px;" (click)="addAutorisation()">
-        </button>
-      </div>
-    </div>
-  
-    <!-- Table Component -->
-    <p-table
-      #dt
+  <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
+      <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/autorisation/add"></button>
+      <ng-template #tooltipContent>
+          <div class="flex align-items-center">
+              <span><b>Add Autorisation</b></span>
+          </div>
+      </ng-template>
+  </div>
+
+  <p-table
+      #dt 
       [value]="autorisations"
       dataKey="autorisationId"
       [rows]="10"
@@ -33,54 +18,65 @@
       [loading]="loading"
       [paginator]="true"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [globalFilterFields]="['dateDebut', 'dateFin', 'state', 'contactId']"
-      [tableStyle]="{ 'min-width': '75rem' }"
-      [scrollable]="true"
-      class="custom-table"
-    >
-      <!-- Header Template -->
+      [globalFilterFields]="['startDate', 'endDate', 'state', 'contactId']"
+      [tableStyle]="{ 'min-width': '75rem' }">
+
       <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 20%;">Start Date</th>
-          <th style="width: 20%;">End Date</th>
-          <th style="width: 15%;">State</th>
-          <th style="width: 15%;">Contact ID</th>
-          <th style="width: 30%;">Actions</th>
-        </tr>
+          <tr>
+              <th>Autorisation ID</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>State</th>
+              <th>Actions</th>
+          </tr>
+          <tr>
+              <th>
+                  <p-columnFilter type="text" field="autorisationId"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="startDate"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="endDate"></p-columnFilter>
+              </th>
+              <th>
+                  <p-columnFilter type="text" field="state"></p-columnFilter>
+              </th>
+              <th></th>
+          </tr>
       </ng-template>
-  
-      <!-- Body Template -->
+
       <ng-template pTemplate="body" let-autorisation>
-        <tr [ngClass]="{
-          'pending-row': autorisation.state === 'Pending',
-          'accepted-row': autorisation.state === 'Accepted',
-          'rejected-row': autorisation.state === 'Rejected'
-        }">
-          <td>{{ autorisation.dateDebut }}</td>
-          <td>{{ autorisation.dateFin }}</td>
-          <td>{{ autorisation.state }}</td>
-          <td>{{ autorisation.contactId }}</td>
-          <td>
-            <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success" (click)="editItem(autorisation)">
-            </button>
-            <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteAutorisation(autorisation)">
-            </button>
-          </td>
-        </tr>
+          <tr>
+              <td>{{ autorisation.autorisationId }}</td>
+              <td>{{ autorisation.dateDebut }}</td>
+              <td>{{ autorisation.dateFin }}</td>
+              <td>{{ autorisation.state }}</td>
+              <td>
+                  <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editItem(autorisation)"></i>
+                  <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(autorisation.autorisationId)"></i>
+              </td>
+          </tr>
       </ng-template>
-  
-      <!-- Empty Message Template -->
+
       <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="5">No autorisations found.</td>
-        </tr>
+          <tr>
+              <td colspan="5">No autorisations found.</td>
+          </tr>
       </ng-template>
-    </p-table>
-  </div>
-  <!-- Add the EditAutorisationComponent popup dialog -->
-  <app-edit-autorisation
-  [displayDialog]="displayDialog"
-  [autorisation]="selectedAutorisation"
-  (onSave)="saveAutorisation()"
-  (onHide)="hideDialog()"
-></app-edit-autorisation>
+
+  </p-table>
+    <!-- Add the EditAutorisationComponent popup dialog -->
+    <app-edit-autorisation
+    [displayDialog]="displayDialog"
+    [autorisation]="selectedAutorisation"
+    (onSave)="saveAutorisation()"
+    (onHide)="hideDialog()"
+  ></app-edit-autorisation>
+  <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+      acceptButtonStyleClass="p-button-danger p-button-text"
+      rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
+  </p-confirmDialog>
+  <p-toast></p-toast>
+
+</div>

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Autorisation } from '../../../../shared/models/autorisation';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-autorisation',
@@ -10,16 +11,24 @@ export class EditAutorisationComponent {
 
   @Input() displayDialog: boolean;
   @Input() autorisation: Autorisation;
-  @Output() onSave: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onSave: EventEmitter<Autorisation> = new EventEmitter<Autorisation>();
   @Output() onHide: EventEmitter<void> = new EventEmitter<void>();
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      startDate: [null, Validators.required],
+      endDate: [null, Validators.required],
+      contactId: [null, Validators.required],
+      state: [null, Validators.required]
+    });
+  }
 
   saveAutorisation() {
-    // Call the onSave event emitter to notify the parent component
-    this.onSave.emit();
+      this.onSave.emit();
   }
 
   hideDialog() {
-    // Call the onHide event emitter to notify the parent component
     this.onHide.emit();
   }
 
