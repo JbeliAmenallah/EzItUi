@@ -45,6 +45,7 @@ export class AutorisationListComponent implements OnInit {
     this.displayDialog = true;
     console.log("clicked")
   }
+  
   saveAutorisation() {
     if (!this.selectedAutorisation) {
       console.error('No autorisation selected.');
