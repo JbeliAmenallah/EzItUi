@@ -1,4 +1,6 @@
 <div class="table-container">
+    <h1 class="gradient-text">Groupes List</h1>
+
     <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+"
             (click)="showAddDialog()"></button>
@@ -64,7 +66,6 @@
     <!-- Add the EditGroupeComponent popup dialog -->
     <app-edit-groupe [groupe]="selectedGroupe" (onSave)="saveEditedGroupe($event)" [displayEditDialog]="displayEditDialog"
         (hideDialog)="hideEditDialog()"></app-edit-groupe>
-     Add the Add GroupeComponent popup dialog 
         <app-add-groupe  [displayAddDialog]="displayAddDialog"  (onSave)="saveNewGroupe($event)" ></app-add-groupe>
     <p-toast></p-toast>
 </div>

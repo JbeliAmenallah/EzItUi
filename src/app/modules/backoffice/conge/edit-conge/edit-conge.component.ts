@@ -10,6 +10,7 @@ export class EditCongeComponent {
 
   @Input() displayDialog: boolean;
   @Input() selectedConge: Conge;
+  
   @Output() onSave: EventEmitter<any> = new EventEmitter();
   @Output() onHide: EventEmitter<any> = new EventEmitter();
 

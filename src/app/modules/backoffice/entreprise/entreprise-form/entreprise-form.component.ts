@@ -24,52 +24,19 @@ export class EntrepriseFormComponent implements OnInit {
     }
   }
 
-  createForm() {
+  createForm(): FormGroup {
     return this.formBuilder.group({
-      nom: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      matricule: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      siegesociale: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      raisonSociale: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      adresseDeSiege: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      matriculeFiscale: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      numCnss: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      regimeSalariale: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      nbrJourConge: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      typePrime: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      typeDeductions: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
+      nom: [null, Validators.required],
+      matricule: [null, Validators.required],
+      siegesociale: [null, Validators.required],
+      raisonSociale: [null, Validators.required],
+      adresseDeSiege: [null, Validators.required],
+      matriculeFiscale: [null, Validators.required],
+      numCnss: [null, Validators.required],
+      regimeSalariale: [null, Validators.required],
+      nbrJourConge: [null, Validators.required],
+      typePrime: [null, Validators.required],
+      typeDeductions: [null, Validators.required],
     });
   }
 

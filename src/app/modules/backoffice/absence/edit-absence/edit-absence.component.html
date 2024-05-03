@@ -1,39 +1,17 @@
-<p-dialog header="Edit Absence" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
-  [modal]="true" [contentStyle]="{ 'overflow': 'visible' }">
-  <ng-container *ngIf="selectedAbsence">
-    <div class="form-group">
-      <label for="contactId">Contact ID</label>
-      <!-- Display selectedAbsence's contactId in input -->
-      <input id="contactId" pInputText type="text" [(ngModel)]="selectedAbsence.contactId" class="form-control"
-        placeholder="Contact ID" />
-    </div>
-    <div class="form-group">
-      <label for="dateDebutAbsence">Start Date of Absence</label>
-      <!-- Display selectedAbsence's dateDebutAbsence in input -->
-      <input id="dateDebutAbsence" pInputText type="date" [(ngModel)]="selectedAbsence.dateDebutAbsence" class="form-control"
-        placeholder="Start Date of Absence" />
-    </div>
-    <div class="form-group">
-      <label for="dateFinAbsence">End Date of Absence</label>
-      <!-- Display selectedAbsence's dateFinAbsence in input -->
-      <input id="dateFinAbsence" pInputText type="date" [(ngModel)]="selectedAbsence.dateFinAbsence" class="form-control"
-        placeholder="End Date of Absence" />
-    </div>
-    <div class="form-group">
-      <label for="reason">Reason</label>
-      <!-- Display selectedAbsence's reason in input -->
-      <input id="reason" pInputText type="text" [(ngModel)]="selectedAbsence.reason" class="form-control"
-        placeholder="Reason" />
-    </div>
-    <div class="form-group">
-      <label for="justified">Justified</label>
-      <p-dropdown id="justified" [options]="justifiedOptions" [(ngModel)]="selectedAbsence.justified" optionLabel="label" optionValue="value"
-        placeholder="Select Justified" class="form-control" [style]="{ 'width': '100%', 'max-width': '300px' }">
-      </p-dropdown>
-    </div>
-  </ng-container>
-  <p-footer>
-    <button pButton type="button" label="Save" class="p-button-success" (click)="saveAbsence()"></button>
-    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
-  </p-footer>
-</p-dialog>
+<div class="container mt-5">
+  <h1 class="gradient-text">Edit Absence</h1>
+  <div class="section">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+      <app-absence-form [form]="editForm"></app-absence-form>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" pButton label="Submit" class="p-button p-button-primary"></button>
+          <button type="button" pButton label="Cancel" class="p-button p-button-secondary" (click)="onCancel()"></button>
+        </div>
+      </div>
+      <div class="card">
+        <p-messages [(value)]="messages"></p-messages>
+      </div>
+    </form>
+  </div>
+</div>

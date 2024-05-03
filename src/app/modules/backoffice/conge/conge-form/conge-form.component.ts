@@ -13,6 +13,7 @@ export class CongeFormComponent implements OnInit {
 
   form: FormGroup;
   employeeOptions: any[] = []; // Array to store employee options
+  stateOptions: any[] = []; // Array to store state options
 
   constructor(private formBuilder: FormBuilder, private absenceService: AbsenceService) {
     this.form = this.formBuilder.group({
@@ -25,6 +26,7 @@ export class CongeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEmployeeOptions(); // Load employee options when component initializes
+    this.initStateOptions(); // Initialize state options
 
     // If the conge object is provided, patch the form with its values
     if (this.conge) {
@@ -42,6 +44,15 @@ export class CongeFormComponent implements OnInit {
     this.absenceService.getEmployeeOptions().subscribe(options => {
       this.employeeOptions = options;
     });
+  }
+
+  // Method to initialize state options
+  initStateOptions() {
+    this.stateOptions = [
+      { label: 'Accepted', value: 'Accepted' },
+      { label: 'Pending', value: 'Pending' },
+      { label: 'Rejected', value: 'Rejected' }
+    ];
   }
 
   // Method to handle form submission

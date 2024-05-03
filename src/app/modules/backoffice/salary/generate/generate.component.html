@@ -1,35 +1,45 @@
-<form [formGroup]="generateForm" class="generate-form mt-4">
+<div class="container mt-5">
+  <h2 class="gradient-text">Salary Generation</h2>
+
+  <form [formGroup]="generateForm" class="form">
 
     <!-- Year Input -->
-    <div class="form-group row">
-      <label for="yearInput" class="col-sm-2 col-form-label">Year:</label>
-      <div class="col-sm-10">
-        <input id="yearInput" formControlName="yearInput" type="number" class="form-control" placeholder="Enter Year">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="yearInput">Year:</label>
+          <input id="yearInput" formControlName="yearInput" type="number" class="form-control" placeholder="Enter Year">
+        </div>
       </div>
     </div>
-  
+
     <!-- Month Input -->
-    <div class="form-group row">
-      <label for="monthInput" class="col-sm-2 col-form-label">Month:</label>
-      <div class="col-sm-10">
-        <input id="monthInput" formControlName="monthInput" type="number" class="form-control" placeholder="Enter Month">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="monthInput">Month:</label>
+          <input id="monthInput" formControlName="monthInput" type="number" class="form-control" placeholder="Enter Month">
+        </div>
       </div>
     </div>
-  
+
     <!-- MultiSelect for Contacts -->
-    <div class="form-group row">
-      <label for="contact" class="col-sm-2 col-form-label">Contacts:</label>
-      <div class="col-sm-10">
-        <p-multiSelect formControlName="contact" [options]="contactOptions" [showClear]="true" placeholder="Select Contacts"></p-multiSelect>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="contact">Contacts:</label>
+          <p-multiSelect formControlName="contact" [options]="contactOptions" [style]="{ 'width': '100%' }" defaultLabel="Select Contacts"></p-multiSelect>
+        </div>
       </div>
     </div>
-  
+
     <!-- Button to Generate Salary -->
-    <div class="form-group row">
-      <div class="col-sm-10 offset-sm-2">
-        <button pButton type="button" class="btn btn-primary" (click)="generateSalary()" [disabled]="generateForm.invalid">Generate Salary</button>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <button pButton type="button" class="btn btn-primary" (click)="generateSalary()" [disabled]="generateForm.invalid">Generate Salary</button>
+        </div>
       </div>
     </div>
-  
   </form>
-  
+</div>

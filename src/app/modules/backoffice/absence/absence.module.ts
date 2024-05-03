@@ -8,7 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AbsenceFormComponent } from './absence-form/absence-form.component';
 import { ConfirmationService,MessageService } from 'primeng/api';
 import { AddAbsenceComponent } from './add-absence/add-absence.component';
-import { EditAbsenceComponent } from './edit-absence/edit-absence.component';@NgModule({
+import { EditAbsenceComponent } from './edit-absence/edit-absence.component';
+
+
+
+@NgModule({
   declarations: [
     AbsenceListComponent,
     AbsenceFormComponent,
@@ -19,14 +23,15 @@ import { EditAbsenceComponent } from './edit-absence/edit-absence.component';@Ng
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    AbsenceRoutingModule // Add ReactiveFormsModule to imports
+    AbsenceRoutingModule,
 
   ],
   
   providers:[
     MessageService,
-    ConfirmationService
+    ConfirmationService,
 
+    
   ]
   
 })

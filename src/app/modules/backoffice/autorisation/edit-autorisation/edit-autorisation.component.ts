@@ -11,6 +11,12 @@ export class EditAutorisationComponent {
 
   @Input() displayDialog: boolean;
   @Input() autorisation: Autorisation;
+  stateOptions = [
+    { label: 'Accepted', value: 'Accepted' },
+    { label: 'Pending', value: 'Pending' },
+    { label: 'Rejected', value: 'Rejected' }
+    ];
+    
   @Output() onSave: EventEmitter<Autorisation> = new EventEmitter<Autorisation>();
   @Output() onHide: EventEmitter<void> = new EventEmitter<void>();
   form: FormGroup;

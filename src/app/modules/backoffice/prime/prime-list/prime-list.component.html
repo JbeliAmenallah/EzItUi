@@ -1,4 +1,6 @@
 <div class="table-container">
+    <h1 class="gradient-text">Primes List</h1>
+
     <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/prime/add"></button>
         <ng-template #tooltipContent>
@@ -46,7 +48,6 @@
                 <th>
                     <p-columnFilter type="text" field="motif"></p-columnFilter>
                 </th>
-<<<<<<< HEAD
                 <th>
                     <p-columnFilter type="text" field="contact.name"></p-columnFilter>
                 </th>
@@ -56,8 +57,6 @@
                 <th>
                     
                 </th>
-=======
->>>>>>> fa75ecebad26646197d6b8fff1e60694150787dd
                 <th></th>
             </tr>
         </ng-template>
@@ -68,11 +67,8 @@
                 <td>{{ prime.month }}</td>
                 <td>{{ prime.montant }}</td>
                 <td>{{ prime.motif }}</td>
-<<<<<<< HEAD
                 <td>{{ prime?.contact?.name }}</td>
                 <td>{{ prime.typePrime }}</td>
-=======
->>>>>>> fa75ecebad26646197d6b8fff1e60694150787dd
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editPrime(prime)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(prime.primeId)"></i>

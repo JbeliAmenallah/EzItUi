@@ -44,6 +44,11 @@ export class AutorisationService {
     return this.http.get<Autorisation[]>(url);
   }
   
+  getAutorisationById(id: number): Observable<Autorisation> {
+    const url = `${this.apiUrl}/autorisations/${id}`;
+    return this.http.get<Autorisation>(url);
+  }
+
 
   submitAutorisationRequest(formData: any): Observable<any> {
     const formattedData = {

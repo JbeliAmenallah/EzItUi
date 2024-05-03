@@ -56,20 +56,23 @@ export class EntreprisesListComponent implements OnInit {
         if (entrepriseId !== undefined) {
           this.entrepriseService.deleteEntreprise(entrepriseId).subscribe(
             () => {
-              this.getList();
               this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Entreprise deleted successfully' });
+              this.getList(); 
             },
             (error) => {
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Entreprise deleted successfully' });
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to delete entreprise' });
             }
           );
         }
-        else{console.log(entrepriseId)}
+        else {
+          console.log(entrepriseId);
+        }
       },
       reject: () => {
         this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
       }
     });
   }
+  
 
 }

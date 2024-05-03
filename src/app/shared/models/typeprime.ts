@@ -3,8 +3,8 @@ export interface TypePrime {
   typePrimeId?: number;
   code?: string;
   libele?: string;
-  cnss?: string;
-  impo?: number;
+  cnss?: boolean;
+  impo?:boolean;
   montant?: number;
   type?: string;
   abasedesalaire?: boolean;

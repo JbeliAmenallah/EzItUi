@@ -5,109 +5,139 @@ import { AutorisationService } from '../../../../core/http/autorisation.service'
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { AbsenceService } from '../../../../core/http/absence.service';
+import { DialogModule } from 'primeng/dialog';
+
 
 @Component({
-  selector: 'app-add-autorisation',
-  templateUrl: './add-autorisation.component.html',
-  styleUrls: ['./add-autorisation.component.css']
+selector: 'app-add-autorisation',
+templateUrl: './add-autorisation.component.html',
+styleUrls: ['./add-autorisation.component.css']
 })
 export class AddAutorisationComponent {
-  form: FormGroup;
-  messages: any[] = [];
-  employeeOptions: any[] = []; // Array to store employee options
+form: FormGroup;
+displayConfirmation: boolean = false; 
 
-  constructor(
-    private fb: FormBuilder,
-    private autorisationService: AutorisationService,
-    private router: Router,
-    private absenceService: AbsenceService
-  ) {
-    this.loadEmployeeOptions();
-    this.form = this.fb.group({
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      state: ['', Validators.required],
-      contactId: ['', Validators.required]
-    });
-  }
+messages: any[] = [];
+employeeOptions: any[] = [];
+stateOptions = [
+{ label: 'Accepted', value: 'Accepted' },
+{ label: 'Pending', value: 'Pending' },
+{ label: 'Rejected', value: 'Rejected' }
+];
+constructor(
+private fb: FormBuilder,
+private autorisationService: AutorisationService,
+private router: Router,
+private absenceService: AbsenceService
+) {
+this.loadEmployeeOptions();
+this.form = this.fb.group({
+startDate: ['', Validators.required],
+endDate: ['', Validators.required],
+state: ['', Validators.required],
+contactId: ['', Validators.required]
+});
+}
 
-  loadEmployeeOptions() {
-    this.absenceService.getEmployeeOptions().subscribe(options => {
-      this.employeeOptions = options;
-    });
-  }
+ngOnInit(): void {
+this.loadEmployeeOptions();
+this.initStateOptions();
+this.form = this.fb.group({
+startDate: ['', Validators.required],
+endDate: ['', Validators.required],
+state: ['', Validators.required],
+contactId: ['', Validators.required]
+});
+}
 
-  onSubmit() {
-    if (this.form.valid) {
-      const autorisationData = this.prepareAutorisationData(this.form.value);
+initStateOptions() {
+if (this.stateOptions.length === 0) {
+this.stateOptions = [
+{ label: 'Accepted', value: 'Accepted' },
+{ label: 'Pending', value: 'Pending' },
+{ label: 'Rejected', value: 'Rejected' }
+];
+}
+}
 
-      if (true) {
-    
-        this.autorisationService.saveAutorisation(autorisationData).subscribe(
-          () => {
-            console.log(autorisationData)
-            this.router.navigate(['/autorisations/list']);
-          },
-          (error) => {
-            console.error(error);
-            this.messages = [{ severity: 'error', summary: 'Error', detail: 'Failed to save Autorisation.' }];
-          }
-        );
-      } else {
-        console.error("Selected employee is invalid or does not have a contactId property.");
-        // Optionally, you can show a message to the user indicating that an invalid employee was selected.
-      }
-    } else {
-      // Mark all fields as touched to display error messages
-      this.form.markAllAsTouched();
-    }
-  }
-  
-  
+loadEmployeeOptions() {
+this.absenceService.getEmployeeOptions().subscribe(options => {
+this.employeeOptions = options;
+});
+}
 
-  private prepareAutorisationData(formData: any): any {
-    console.log('Form Data:', formData);
-    console.log('Employee Options:', this.employeeOptions);
-  
-    // Format startDate and endDate as LocalDateTime strings
-    const dateDebut = new Date(formData.startDate);
-    const dateFin = new Date(formData.endDate);
-  
-    // Access the value property of the contactId object
-    const contactId = formData.contactId.value;
-    console.log(contactId)
-    return {
-      dateDebut: this.formatLocalDateTime(dateDebut),
-      dateFin: this.formatLocalDateTime(dateFin),
-      contactId: contactId,
-      state: formData.state
-    };
-  }
-  
+onSubmit() {
+console.log('Form:', this.form.value);
 
-  private formatLocalDateTime(date: Date): string {
-    const year = date.getFullYear();
-    const month = this.padNumber(date.getMonth() + 1);
-    const day = this.padNumber(date.getDate());
-    const hours = this.padNumber(date.getHours());
-    const minutes = this.padNumber(date.getMinutes());
-    const seconds = this.padNumber(date.getSeconds());
+if (this.form.valid) {
+const autorisationData = this.prepareAutorisationData(this.form.value);
 
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
-  }
+console.log('Autorisation Data:', autorisationData);
 
-  private padNumber(num: number): string {
-    return num < 10 ? '0' + num : num.toString();
-  }
+this.autorisationService.saveAutorisation(autorisationData).subscribe(
+() => {
+console.log('Autorisation saved successfully');
+this.router.navigate(['/autorisations/list']);
+},
+(error) => {
+console.error('Error saving autorisation:', error);
+this.messages = [{ severity: 'error', summary: 'Error', detail: 'Failed to save Autorisation.' }];
+}
+);
+} else {
+console.log('Form is invalid');
+this.form.markAllAsTouched();
+}
+}
 
-  markAllAsTouched() {
-    Object.values(this.form.controls).forEach(control => {
-      control.markAsTouched();
-    });
-  }
+private prepareAutorisationData(formData: any): any {
+console.log('Form Data:', formData);
+console.log('Employee Options:', this.employeeOptions);
 
-  // Function to get form controls for easier access in the template
-  get f() {
-    return this.form.controls;
-  }
+// Format startDate and endDate as LocalDateTime strings
+const dateDebut = new Date(formData.startDate);
+const dateFin = new Date(formData.endDate);
+
+// Access the value property of the contactId object
+const contactId = formData.contactId.value;
+console.log(contactId);
+
+// Get the selected state value as a string
+const state = formData.state.value; // Assuming the value property holds the selected state string
+
+return {
+dateDebut: this.formatLocalDateTime(dateDebut),
+dateFin: this.formatLocalDateTime(dateFin),
+contactId: contactId,
+state: state // Assign the selected state string
+};
+}
+
+
+private formatLocalDateTime(date: Date): string {
+const year = date.getFullYear();
+const month = this.padNumber(date.getMonth() + 1);
+const day = this.padNumber(date.getDate());
+const hours = this.padNumber(date.getHours());
+const minutes = this.padNumber(date.getMinutes());
+const seconds = this.padNumber(date.getSeconds());
+
+return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+}
+
+private padNumber(num: number): string {
+return num < 10 ? '0' + num : num.toString();
+}
+
+markAllAsTouched() {
+Object.values(this.form.controls).forEach(control => {
+control.markAsTouched();
+});
+}
+
+// Function to get form controls for easier access in the template
+get f() {
+return this.form.controls;
+}
+
 }

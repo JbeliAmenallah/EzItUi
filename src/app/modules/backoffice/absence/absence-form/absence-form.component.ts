@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Absence } from '../../../../shared/models/absence';
 import { AbsenceService } from '../../../../core/http/absence.service';
@@ -10,7 +10,9 @@ import { AbsenceService } from '../../../../core/http/absence.service';
 })
 export class AbsenceFormComponent implements OnInit {
 
-  form: FormGroup;
+  @Input() form: FormGroup; 
+
+
   employeeOptions: any[] = [];
   justifiedOptions: any[] = [
     { label: 'Yes', value: 'true' },

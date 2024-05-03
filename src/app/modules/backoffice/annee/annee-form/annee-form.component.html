@@ -1,14 +1,13 @@
 <form [formGroup]="form" class="form">
-    <div class="form-group">
-      <label for="dateDebutExercice">Date Debut Exercice:</label>
-      <input type="date" formControlName="dateDebutExercice" id="dateDebutExercice" class="form-control"/>
-      <small class="p-error" *ngIf="form.get('dateDebutExercice')?.touched && form.get('dateDebutExercice')?.hasError('required')">Date Debut Exercice is required</small>
-    </div>
-  
-    <div class="form-group">
-      <label for="libele">Libele:</label>
-      <input type="text" formControlName="libele" id="libele" class="form-control"/>
-      <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libele is required</small>
-    </div>
-  </form>
-  
+  <div class="form-group">
+    <label for="dateDebutExercice">Date Debut Exercice:</label>
+    <p-calendar formControlName="dateDebutExercice" id="dateDebutExercice" class="form-control" dateFormat="yy-mm-dd"></p-calendar>
+    <small class="p-error" *ngIf="form.get('dateDebutExercice')?.touched && form.get('dateDebutExercice')?.hasError('required')">Date Debut Exercice is required</small>
+  </div>
+
+  <div class="form-group">
+    <label for="libele">Libele:</label>
+    <input type="text" formControlName="libele" id="libele" class="form-control"/>
+    <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libele is required</small>
+  </div>
+</form>

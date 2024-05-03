@@ -12,8 +12,9 @@ export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
   loading: boolean = true;
   displayAddDialog: boolean = false;
-  selectedCategory: Category;
+  selectedCategory: Category | null = null; // Initialize selectedCategory with null
   displayEditDialog: boolean = false;
+
 
 
   constructor(

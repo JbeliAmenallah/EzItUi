@@ -27,8 +27,8 @@ export class AddTypeprimeComponent implements OnInit {
 
       code: '',
       libele: '',
-      cnss: '',
-      impo: null,
+      cnss: false,
+      impo: false,
       montant:null ,
       type: '',
       abasedesalaire: false,
@@ -43,8 +43,8 @@ export class AddTypeprimeComponent implements OnInit {
     if (this.typeprimeForm.form.valid) {
       this.typeprime.code = this.typeprimeForm.form.get('code')?.value;
       this.typeprime.libele = this.typeprimeForm.form.get('libele')?.value;
-      this.typeprime.cnss = this.typeprimeForm.form.get('cnss')?.value;
-      this.typeprime.impo = this.typeprimeForm.form.get('impo')?.value;
+      this.typeprime.cnss = this.typeprimeForm.form.get('cnss')?.value === 'true';
+      this.typeprime.impo = this.typeprimeForm.form.get('impo')?.value === 'true';
       this.typeprime.montant = this.typeprimeForm.form.get('montant')?.value;
       this.typeprime.type = this.typeprimeForm.form.get('type')?.value;
       this.typeprime.abasedesalaire = this.typeprimeForm.form.get('abasedesalaire')?.value === 'true';
@@ -52,7 +52,7 @@ export class AddTypeprimeComponent implements OnInit {
       this.typeprime.grp = this.typeprimeForm.form.get('grp')?.value;
       this.typeprime.grade = this.typeprimeForm.form.get('grade')?.value;
       this.typeprime.obligatoire = this.typeprimeForm.form.get('obligatoire')?.value === 'true';
-
+  
       this.service.addTypePrime(this.typeprime).subscribe(
         (data) => {
           setTimeout(() => {
@@ -67,6 +67,7 @@ export class AddTypeprimeComponent implements OnInit {
     } else {
       this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
     }
-}
+  }
+  
 
 }

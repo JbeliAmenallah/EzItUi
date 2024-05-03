@@ -13,6 +13,17 @@ export class TypePrimeFormComponent implements OnInit {
   form: FormGroup;
   @Input() currentItemForm: TypePrime;
 
+  types: any[] = [
+    { label: 'Select', value: '' },
+    { label: 'Type 1', value: 'type1' },
+    { label: 'Type 2', value: 'type2' }
+  ];
+
+  yesNoOptions: any[] = [
+    { label: 'Yes', value: 'true' },
+    { label: 'No', value: 'false' }
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private typePrimeService: TypePrimeService // Update this to your TypePrime service
@@ -29,91 +40,34 @@ export class TypePrimeFormComponent implements OnInit {
 
   createForm() {
     return this.formBuilder.group({
-      code: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      libele: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      cnss: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      impo: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      montant: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      type: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
+      code: [null, Validators.required],
+      libele: [null, Validators.required],
+      cnss: [null],
+      impo: [null],
+      montant: [null, Validators.required],
+      type: [null, Validators.required],
       abasedesalaire: [false],
-      categorie: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      grp: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
-      grade: [
-        null,
-        Validators.compose([Validators.required]),
-      ],
+      categorie: [],
+      grp: [],
+      grade: [],
       obligatoire: [false],
     });
   }
-
+  
   updateForm() {
     return this.formBuilder.group({
-      code: [
-        this.currentItemForm.code,
-        Validators.compose([Validators.required]),
-      ],
-      libele: [
-        this.currentItemForm.libele,
-        Validators.compose([Validators.required]),
-      ],
-      cnss: [
-        this.currentItemForm.cnss,
-        Validators.compose([Validators.required]),
-      ],
-      impo: [
-        this.currentItemForm.impo,
-        Validators.compose([Validators.required]),
-      ],
-      montant: [
-        this.currentItemForm.montant,
-        Validators.compose([Validators.required]),
-      ],
-      type: [
-        this.currentItemForm.type,
-        Validators.compose([Validators.required]),
-      ],
-      abasedesalaire: [
-        this.currentItemForm.abasedesalaire || false,
-      ],
-      categorie: [
-        this.currentItemForm.categorie,
-        Validators.compose([Validators.required]),
-      ],
-      grp: [
-        this.currentItemForm.grp,
-        Validators.compose([Validators.required]),
-      ],
-      grade: [
-        this.currentItemForm.grade,
-        Validators.compose([Validators.required]),
-      ],
-      obligatoire: [
-        this.currentItemForm.obligatoire || false,
-      ],
+      code: [this.currentItemForm.code, Validators.required],
+      libele: [this.currentItemForm.libele, Validators.required],
+      cnss: [this.currentItemForm.cnss],
+      impo: [this.currentItemForm.impo],
+      montant: [this.currentItemForm.montant, Validators.required],
+      type: [this.currentItemForm.type, Validators.required],
+      abasedesalaire: [this.currentItemForm.abasedesalaire || false],
+      categorie: [this.currentItemForm.categorie],
+      grp: [this.currentItemForm.grp],
+      grade: [this.currentItemForm.grade],
+      obligatoire: [this.currentItemForm.obligatoire || false],
     });
   }
+  
 }

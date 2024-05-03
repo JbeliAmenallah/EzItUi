@@ -1,6 +1,5 @@
-<!-- edit-conge.component.html -->
-<p-dialog header="Edit Conge" [visible]="displayDialog" [responsive]="true" [style]="{ width: '400px' }"
-  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+<p-dialog header="Edit Conge" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width.px': '400' }"
+  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }" (onHide)="hideDialog()">
   <ng-container *ngIf="selectedConge">
     <div class="form-group">
       <label for="startDate">Start Date</label>

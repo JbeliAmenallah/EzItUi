@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbsenceService } from '../../../../core/http/absence.service';
 import { Absence } from '../../../../shared/models/absence';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-absence-list',
@@ -17,7 +18,8 @@ export class AbsenceListComponent implements OnInit {
   constructor(
     private absenceService: AbsenceService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -27,30 +29,27 @@ export class AbsenceListComponent implements OnInit {
   getAbsences() {
     this.loading = true;
     this.absenceService.getAllAbsences().subscribe(
-      (data) => {
+      (data: Absence[]) => { // Specify the type of 'data' received
         this.absences = data;
         this.loading = false;
       },
       (error) => {
         this.loading = false;
         console.error('Error fetching absences:', error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error fetching absences' }); // Add error message
       }
     );
   }
-
+  
   editAbsence(absence: Absence) {
-    // Set selectedAbsence and display the EditAbsenceComponent
-    console.log("clicked")
-    this.selectedAbsence = { ...absence }; // Create a copy to avoid modifying original
-    this.displayEditDialog = true;
+    this.router.navigate(['absence/edit', absence.absenceId]);
   }
+  
 
   saveEditedAbsence() {
     if (this.selectedAbsence) {
       this.absenceService.updateAbsence(this.selectedAbsence.absenceId, this.selectedAbsence).subscribe(
-        
         () => {
-          console.log(this.selectedAbsence)
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Absence updated successfully' });
           this.displayEditDialog = false;
           this.getAbsences(); // Refresh the list

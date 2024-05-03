@@ -1,4 +1,5 @@
 <div class="table-container">
+    <h1 class="gradient-text">Annee List</h1>
     <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/annee/add"></button>
         <ng-template #tooltipContent>
@@ -44,7 +45,7 @@
         <ng-template pTemplate="body" let-annee>
             <tr>
                 <td>{{ annee.id }}</td>
-                <td>{{ annee.dateDebutExercice }}</td>
+                <td>{{ annee.dateDebutExercice | date:'dd MMMM yyyy ' }}</td>
                 <td>{{ annee.libele }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editAnnee(annee)"></i>

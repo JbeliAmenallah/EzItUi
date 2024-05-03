@@ -35,11 +35,12 @@ export class AddAbsenceComponent implements OnInit {
   save() {
     if (this.absenceForm.form.valid) {
       this.absence.contactId = this.absenceForm.form.get('contactId')?.value;
-      this.absence.dateDebutAbsence = this.absenceForm.form.get('dateDebutAbsence')?.value;
-      this.absence.dateFinAbsence = this.absenceForm.form.get('dateFinAbsence')?.value;
+      // Convert date-time values to ISO string format
+      this.absence.dateDebutAbsence = new Date(this.absenceForm.form.get('dateDebutAbsence')?.value).toISOString();
+      this.absence.dateFinAbsence = new Date(this.absenceForm.form.get('dateFinAbsence')?.value).toISOString();
       this.absence.reason = this.absenceForm.form.get('reason')?.value;
-      this.absence.justified=this.absenceForm.form.get('justified')?.value;
-
+      this.absence.justified = this.absenceForm.form.get('justified')?.value;
+  
       this.service.addAbsence(this.absence).subscribe(
         (data) => {
           setTimeout(() => {
@@ -55,4 +56,5 @@ export class AddAbsenceComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
     }
   }
+  
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from '../../../../core/http/category.service';
 import { Category } from '../../../../shared/models/category';
+
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
@@ -13,19 +13,15 @@ export class EditCategoryComponent implements OnInit {
   @Input() displayEditDialog: boolean = false;
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.createForm();
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.form.patchValue({
-      libele: this.category?.libele || ''
-    });
+    this.initializeForm();
   }
 
-  createForm() {
-    return this.formBuilder.group({
-      libele: [null, Validators.required]
+  initializeForm(): void {
+    this.form = this.formBuilder.group({
+      libele: [this.category ? this.category.libele : null, Validators.required]
     });
   }
 
@@ -38,12 +34,11 @@ export class EditCategoryComponent implements OnInit {
       this.onSave.emit(editedCategory);
       this.hideDialog();
     } else {
-      // Form is invalid, display validation errors
       this.markFormGroupTouched(this.form);
     }
   }
 
-  markFormGroupTouched(formGroup: FormGroup) {
+  markFormGroupTouched(formGroup: FormGroup): void {
     Object.values(formGroup.controls).forEach(control => {
       control.markAsTouched();
 

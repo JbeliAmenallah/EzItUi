@@ -81,22 +81,32 @@ saveConge() {
   addConge() {
     this.router.navigate(['/conges/add']);
   }
-  deleteItem(conge: Conge) {
-    if (confirm('Are you sure you want to delete this conge?')) {
-      this.deleteConge(conge.congeId);
-    }
-  }
 
-  deleteConge(congeId: number) {
-    this.congeService.deleteConge(congeId).subscribe(
-      () => {
-        this.getList();
-        // Optionally, show a success message
+  deleteItem(id: number) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete this item?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: "p-button-danger p-button-text",
+      rejectButtonStyleClass: "p-button-text p-button-text",
+      acceptIcon: "pi pi-check",
+      rejectIcon: "pi pi-times",
+      accept: () => {
+        if (id !== undefined) {
+          this.congeService.deleteConge(id).subscribe(
+            () => {
+              this.getList();
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact deleted successfully' });
+            },
+            (error) => {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting contact' });
+            }
+          );
+        }
       },
-      (error) => {
-        console.error('Error deleting conge:', error);
-        // Optionally, show an error message
+      reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
       }
-    );
+    });
   }
 }

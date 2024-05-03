@@ -3,27 +3,27 @@
       <div class="p-field">
         <label for="jour">Jour:</label>
         <input type="number" pInputText formControlName="jour" id="jour" class="p-inputtext" />
-        <small class="p-error" *ngIf="form.get('jour').hasError('required')">Jour is required</small>
-        <small class="p-error" *ngIf="form.get('jour').hasError('min') || form.get('jour').hasError('max')">Jour must be between 1 and 31</small>
+        <small class="p-error" *ngIf="form.get('jour')?.touched && form.get('jour')?.hasError('required')">Day is required</small>
+        <small class="p-error" *ngIf="form.get('jour').hasError('min') || form.get('jour').hasError('max')">Day must be between 1 and 31</small>
       </div>
   
       <div class="p-field">
         <label for="mois">Mois:</label>
         <input type="number" pInputText formControlName="mois" id="mois" class="p-inputtext" />
-        <small class="p-error" *ngIf="form.get('mois').hasError('required')">Mois is required</small>
-        <small class="p-error" *ngIf="form.get('mois').hasError('min') || form.get('mois').hasError('max')">Mois must be between 1 and 12</small>
+        <small class="p-error" *ngIf="form.get('mois')?.touched && form.get('mois')?.hasError('required')">Month is required</small>
+        <small class="p-error" *ngIf="form.get('mois').hasError('min') || form.get('mois').hasError('max')">Month must be between 1 and 12</small>
       </div>
   
       <div class="p-field">
         <label for="libele">Libele:</label>
         <input type="text" pInputText formControlName="libele" id="libele" class="p-inputtext" />
-        <small class="p-error" *ngIf="form.get('libele').hasError('required')">Libele is required</small>
+        <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libele is required</small>
       </div>
   
       <div class="p-field">
         <label for="annee">Annee:</label>
         <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="annee" optionLabel="libele" optionValue="id"></p-dropdown>
-        <small class="p-error" *ngIf="form.get('anneeId').hasError('required')">Annee is required</small>
+        <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">Year is required</small>
       </div>
   
       <div class="p-field">

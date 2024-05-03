@@ -18,6 +18,8 @@ export class EditGradeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('Grade received:', this.grade); // Log the grade received
+    console.log('Display edit dialog:', this.displayEditDialog); // Log the displayEditDialog value
     this.form.patchValue({
       libele: this.grade?.libele || ''
     });
@@ -30,18 +32,21 @@ export class EditGradeComponent implements OnInit {
   }
 
   save(): void {
+    console.log('Saving...'); // Log when the save method is called
     if (this.form.valid) {
       const editedGrade: Grade = {
         ...this.grade,
         libele: this.form.controls['libele'].value
       };
+      console.log('Edited grade:', editedGrade); // Log the edited grade
       this.onSave.emit(editedGrade);
-      this.hideDialog();
+      this.hideDialog(); // Hide the dialog after emitting onSave event
     } else {
-      // Form is invalid, display validation errors
       this.markFormGroupTouched(this.form);
+      // Do not hide the dialog if the form is invalid
     }
   }
+  
 
   markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {
@@ -54,10 +59,12 @@ export class EditGradeComponent implements OnInit {
   }
 
   showDialog(): void {
+    console.log('Showing dialog...'); // Log when showDialog is called
     this.displayEditDialog = true;
   }
 
   hideDialog(): void {
+    console.log('Hiding dialog...'); // Log when hideDialog is called
     this.displayEditDialog = false;
   }
 }
