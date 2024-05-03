@@ -73,21 +73,32 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+          <!-- <div class="col-md-6">
                 <div class="form-group">
                     <label for="regime">Regime:</label>
                     <input type="text" pInputText formControlName="regime" id="regime" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">The regime is required</small>
                 </div>
+            </div>--> 
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="entrepriseId">Entreprise:</label>
+                    <p-dropdown [options]="entrepriseOptions" formControlName="entrepriseId"[showClear]="true" placeholder="Select" optionLabel="nom" optionValue="entrepriseId" ></p-dropdown>
+                </div>
             </div>
-
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="chefDefamille">Chef de Famille:</label>
                     <input type="checkbox" pInputCheckbox formControlName="chefDefamille" id="chefDefamille" class="form-control"/>
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="regime">Regime:</label>
+                    <p-dropdown [options]="regimeOptions" formControlName="regime" id="regime" [showClear]="true" placeholder="Select" class="form-control"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">Please select Regime </small>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="salaireDeBASE">Base Salary:</label>

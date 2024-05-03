@@ -21,6 +21,7 @@ export interface Employee {
   conges?: Conge[];
   cotisations?: Cotisation[];
   enfants?: Enfant[];
+  entreprise?:any;
 }
 
 interface Absence {

@@ -16,6 +16,9 @@
   .form-group {
     display: grid;
   }
+  .card {
+    margin-top: 20px;
+  }
   input {
     width: 100%;
     height: 60px;

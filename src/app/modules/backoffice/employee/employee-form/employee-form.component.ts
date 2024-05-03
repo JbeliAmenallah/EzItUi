@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Employee } from '../../../../shared/models/employee';
 import { EmployeeService } from '../../../../core/http/employee.service';
+import { EntrepriseService } from '../../../../core/http/entreprise.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -13,10 +14,16 @@ export class EmployeeFormComponent implements OnInit {
   form: FormGroup;
   @Input() currentItemForm: Employee; // Change this to match your component's input
   // Add other necessary variables here
+  entrepriseOptions: any[] = [];
+  regimeOptions: any[] = [
+    { label: 'regime1', value: 'regime1' },
+    { label: 'regime2', value: 'regime2' }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
-    private employeeService: EmployeeService // Update this to your Employee service
+    private employeeService: EmployeeService, // Update this to your Employee service
+    private entrepriseService:EntrepriseService
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +32,19 @@ export class EmployeeFormComponent implements OnInit {
     } else {
       this.form = this.updateForm();
     }
+    this.loadEntrepriseOptions();
     // Other initialization logic if needed
+  }
+  loadEntrepriseOptions() {
+    this.entrepriseService.getAllEntreprises().subscribe(
+      options => {
+        this.entrepriseOptions = options;
+        console.log(this.entrepriseOptions)
+      },
+      error => {
+        console.error('Error fetching employee options:', error);
+      }
+    );
   }
 
   createForm() {
@@ -87,6 +106,10 @@ export class EmployeeFormComponent implements OnInit {
         null,
         Validators.compose([Validators.required]),
       ],
+      entrepriseId :[
+        null,
+        Validators.compose([Validators.required])
+      ]
     });
   }
 

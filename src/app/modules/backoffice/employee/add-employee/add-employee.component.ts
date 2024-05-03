@@ -38,28 +38,35 @@ export class AddEmployeeComponent implements OnInit {
       salaireDeBASE: null,
       numCompte: '',
       modeDePaiement: '',
-      dateRecrutemnt: null
+      dateRecrutemnt: null,
+      entreprise:null
     };
   }
 
   save() {
     if (this.employeeForm.form.valid) {
-      this.employee.name = this.employeeForm.form.get('name')?.value;
-      this.employee.username = this.employeeForm.form.get('username')?.value;
-      this.employee.email = this.employeeForm.form.get('email')?.value;
-      this.employee.location = this.employeeForm.form.get('location')?.value;
-      this.employee.phone = this.employeeForm.form.get('phone')?.value;
-      this.employee.fax = this.employeeForm.form.get('fax')?.value;
-      this.employee.password = this.employeeForm.form.get('password')?.value;
-      this.employee.roles = this.employeeForm.form.get('roles')?.value;
-      this.employee.nbEnfant = this.employeeForm.form.get('nbEnfant')?.value;
-      this.employee.regime = this.employeeForm.form.get('regime')?.value;
-      this.employee.chefDefamille = this.employeeForm.form.get('chefDefamille')?.value;
-      this.employee.salaireDeBASE = this.employeeForm.form.get('salaireDeBASE')?.value;
-      this.employee.numCompte = this.employeeForm.form.get('numCompte')?.value;
-      this.employee.modeDePaiement = this.employeeForm.form.get('modeDePaiement')?.value;
-      this.employee.dateRecrutemnt = this.employeeForm.form.get('dateRecrutemnt')?.value;
-
+      
+      // Populate the employee object from the form fields
+      this.employee = {
+        name: this.employeeForm.form.get('name')?.value,
+        username: this.employeeForm.form.get('username')?.value,
+        email: this.employeeForm.form.get('email')?.value,
+        location: this.employeeForm.form.get('location')?.value,
+        phone: this.employeeForm.form.get('phone')?.value,
+        fax: this.employeeForm.form.get('fax')?.value,
+        password: this.employeeForm.form.get('password')?.value,
+        roles: this.employeeForm.form.get('roles')?.value,
+        nbEnfant: this.employeeForm.form.get('nbEnfant')?.value,
+        regime: this.employeeForm.form.get('regime')?.value,
+        chefDefamille: this.employeeForm.form.get('chefDefamille')?.value,
+        salaireDeBASE: this.employeeForm.form.get('salaireDeBASE')?.value,
+        numCompte: this.employeeForm.form.get('numCompte')?.value,
+        modeDePaiement: this.employeeForm.form.get('modeDePaiement')?.value,
+        dateRecrutemnt: this.employeeForm.form.get('dateRecrutemnt')?.value,
+        entreprise: { entrepriseId: this.employeeForm.form.get('entrepriseId')?.value } // Set entreprise as an object
+      };
+      console.log(this.employee)
+      // Call the service to add the employee
       this.service.addEmployee(this.employee).subscribe(
         (data) => {
           setTimeout(() => {
@@ -71,8 +78,18 @@ export class AddEmployeeComponent implements OnInit {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the employee.' });
         }
       );
-    } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+    }  else {
+      console.log(this.employeeForm.form.valid);
+      setTimeout(() => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.' });
+        
+      }, 100);
+      this.messages=[];
+      console.log("Form is not valid.");
     }
+    
   }
+  
+  
+  
 }
