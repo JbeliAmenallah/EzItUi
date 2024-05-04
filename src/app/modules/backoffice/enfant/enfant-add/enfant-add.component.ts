@@ -63,8 +63,8 @@ export class EnfantAddComponent implements OnInit {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the enfant.' });
         }
       );
-    } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+    } else  (error) => {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form Should be Valid ! ' || 'An error occurred while saving the enfant.' });
     }
   }
 }
