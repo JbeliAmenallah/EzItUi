@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Prime } from '../../../../shared/prime';
+import { Prime } from '../../../../shared/models/prime';
 import { TypePrimeService } from '../../../../core/http/typeprime.service';
 import { AbsenceService } from '../../../../core/http/absence.service';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Prime } from '../../shared/prime';
+import { Prime } from '../../shared/models/prime';
 
 @Injectable({
   providedIn: 'root'

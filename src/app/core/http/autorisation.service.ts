@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
 import { Autorisation } from '../../shared/models/autorisation';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -67,5 +68,6 @@ export class AutorisationService {
       })
     );
   }
+  
   
 }

@@ -32,6 +32,16 @@ export class EditAbsenceComponent implements OnInit {
   ngOnInit(): void {
     this.loadAbsence();
     this.initializeForm(); 
+    
+    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+      if (messages && Array.isArray(messages)) {
+        this.messages = messages; // Update messages array
+      } else {
+        // If messages is not an array, handle it accordingly
+        console.error('Received invalid messages:', messages);
+        this.messages = []; // Reset messages array
+      }
+    });
   }
 
   loadAbsence(): void {
@@ -61,11 +71,11 @@ initializeForm(): void {
   const dateFinAbsence = this.absence ? new Date(this.absence.dateFinAbsence) : null;
 
   this.editForm = this.formBuilder.group({
-      contactId: [this.absence ? this.absence.contactId : null],
-      dateDebutAbsence: [dateDebutAbsence], 
-      dateFinAbsence: [dateFinAbsence], 
-      reason: [this.absence ? this.absence.reason : null],
-      justified: [this.absence ? this.absence.justified : null]
+      contactId: [this.absence ? this.absence.contactId : null, Validators.required ],
+      dateDebutAbsence: [dateDebutAbsence ,Validators.required ], 
+      dateFinAbsence: [dateFinAbsence, Validators.required ], 
+      reason: [this.absence ? this.absence.reason : null,Validators.required ],
+      justified: [this.absence ? this.absence.justified : null,Validators.required ]
   });
 }
 
@@ -81,9 +91,13 @@ onSubmit(): void {
     console.log('Updated Absence:', updatedAbsence);
     this.absenceService.updateAbsence(this.absence.absenceId, updatedAbsence).subscribe(
       () => {
-        console.log('Absence updated successfully');
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Absence updated successfully' });
-        this.router.navigate(['/absence/list']);
+        setTimeout(() => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The absence has been successfully updated.' });
+          setTimeout(() => {
+              this.router.navigate(['/absence/list']);
+          }, 100); 
+      }, 10);
+      
       },
       (error) => {
         console.error('Error updating absence:', error);

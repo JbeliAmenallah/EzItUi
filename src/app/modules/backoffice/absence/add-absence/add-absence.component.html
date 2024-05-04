@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="gradient-text">Add Absence</h1>
 </div>
-
+<div>
 <app-absence-form #form> </app-absence-form>
 
 <div class="buttons">
@@ -9,5 +9,7 @@
 </div>
 
 <div class="card">
-    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+    <p-messages [(value)]="messages" [enableService]="true" [closable]="true"></p-messages>
+    <p-toast></p-toast>
+</div>
 </div>

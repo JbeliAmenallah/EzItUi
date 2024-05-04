@@ -6,19 +6,22 @@ import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { AbsenceService } from '../../../../core/http/absence.service';
 import { DialogModule } from 'primeng/dialog';
-
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
 selector: 'app-add-autorisation',
 templateUrl: './add-autorisation.component.html',
-styleUrls: ['./add-autorisation.component.css']
+styleUrls: ['./add-autorisation.component.css'],
+providers: [MessageService] 
+
 })
 export class AddAutorisationComponent {
 form: FormGroup;
 displayConfirmation: boolean = false; 
 
-messages: any[] = [];
+messages: Message[] = [];
 employeeOptions: any[] = [];
+displayDialog: boolean = false;
 stateOptions = [
 { label: 'Accepted', value: 'Accepted' },
 { label: 'Pending', value: 'Pending' },
@@ -28,7 +31,9 @@ constructor(
 private fb: FormBuilder,
 private autorisationService: AutorisationService,
 private router: Router,
-private absenceService: AbsenceService
+private absenceService: AbsenceService,
+private messageService: MessageService ,
+
 ) {
 this.loadEmployeeOptions();
 this.form = this.fb.group({
@@ -39,16 +44,28 @@ contactId: ['', Validators.required]
 });
 }
 
+
 ngOnInit(): void {
-this.loadEmployeeOptions();
-this.initStateOptions();
-this.form = this.fb.group({
-startDate: ['', Validators.required],
-endDate: ['', Validators.required],
-state: ['', Validators.required],
-contactId: ['', Validators.required]
-});
-}
+    this.loadEmployeeOptions();
+    this.initStateOptions();
+    this.form = this.fb.group({
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      state: ['', Validators.required],
+      contactId: ['', Validators.required]
+    });
+  
+    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+      if (messages && Array.isArray(messages)) {
+        this.messages = messages; // Update messages array
+      } else {
+        // If messages is not an array, handle it accordingly
+        console.error('Received invalid messages:', messages);
+        this.messages = []; // Reset messages array
+      }
+    });
+  }
+  
 
 initStateOptions() {
 if (this.stateOptions.length === 0) {
@@ -67,28 +84,43 @@ this.employeeOptions = options;
 }
 
 onSubmit() {
-console.log('Form:', this.form.value);
+  console.log('Form:', this.form.value);
 
-if (this.form.valid) {
-const autorisationData = this.prepareAutorisationData(this.form.value);
+  if (this.form.valid) {
+    const autorisationData = this.prepareAutorisationData(this.form.value);
 
-console.log('Autorisation Data:', autorisationData);
+    console.log('Autorisation Data:', autorisationData);
 
-this.autorisationService.saveAutorisation(autorisationData).subscribe(
-() => {
-console.log('Autorisation saved successfully');
-this.router.navigate(['/autorisations/list']);
-},
-(error) => {
-console.error('Error saving autorisation:', error);
-this.messages = [{ severity: 'error', summary: 'Error', detail: 'Failed to save Autorisation.' }];
+    this.autorisationService.saveAutorisation(autorisationData).subscribe(
+      () => {
+        setTimeout(() => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Autorisation has been successfully added.' });
+          setTimeout(() => {
+              this.router.navigate(['/autorisations/list']);
+          }, 100); 
+      }, 10);
+      },
+      (error) => {
+        console.error('Error saving autorisation:', error);
+        if (error.status === 400) {
+          const validationErrors = error.error;
+          for (const key in validationErrors) {
+            if (validationErrors.hasOwnProperty(key)) {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: validationErrors[key] });
+            }
+          }
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save Autorisation.' });
+        }
+      }
+    );
+  } else {
+    console.log('Form is invalid');
+    this.form.markAllAsTouched();
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill out all required fields.' });
+  }
 }
-);
-} else {
-console.log('Form is invalid');
-this.form.markAllAsTouched();
-}
-}
+
 
 private prepareAutorisationData(formData: any): any {
 console.log('Form Data:', formData);

@@ -61,14 +61,18 @@ export class AddEmployeeComponent implements OnInit {
       this.employee.dateRecrutemnt = this.employeeForm.form.get('dateRecrutemnt')?.value;
 
       this.service.addEmployee(this.employee).subscribe(
-        (data) => {
+        () => {
           setTimeout(() => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully added.' });
           }, 100);
           this.router.navigate(['/employee/list']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the employee.' });
+          let errorMessage = 'An error occurred while saving the employee.';
+          if (error && error.error && error.error.message) {
+            errorMessage = error.error.message; 
+          }
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
         }
       );
     } else {

@@ -13,11 +13,11 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { DialogModule } from 'primeng/dialog';
-import { ConfirmationService } from 'primeng/api'; // Import ConfirmationService
+import { ConfirmationService } from 'primeng/api'; 
 import { MessageService } from 'primeng/api';
 import { EditAutorisationComponent } from './edit-autorisation/edit-autorisation.component';
 import { AddAutorisationComponent } from './add-autorisation/add-autorisation.component';
-import { DemandeAutorisationComponent } from './demande-autorisation/demande-autorisation.component'; // Import MessageService
+import { DemandeAutorisationComponent } from './demande-autorisation/demande-autorisation.component'; 
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { DemandeAutorisationComponent } from './demande-autorisation/demande-aut
   ],
   providers: [
     ConfirmationService,
-    MessageService // Add ConfirmationService to providers
+    MessageService,
   ]
 })
 export class AutorisationModule { }

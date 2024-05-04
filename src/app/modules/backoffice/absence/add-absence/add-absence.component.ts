@@ -30,12 +30,20 @@ export class AddAbsenceComponent implements OnInit {
       reason: '',
       justified:false
     };
+    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+      if (messages && Array.isArray(messages)) {
+        this.messages = messages; // Update messages array
+      } else {
+        // If messages is not an array, handle it accordingly
+        console.error('Received invalid messages:', messages);
+        this.messages = []; // Reset messages array
+      }
+    });
   }
 
   save() {
     if (this.absenceForm.form.valid) {
       this.absence.contactId = this.absenceForm.form.get('contactId')?.value;
-      // Convert date-time values to ISO string format
       this.absence.dateDebutAbsence = new Date(this.absenceForm.form.get('dateDebutAbsence')?.value).toISOString();
       this.absence.dateFinAbsence = new Date(this.absenceForm.form.get('dateFinAbsence')?.value).toISOString();
       this.absence.reason = this.absenceForm.form.get('reason')?.value;
@@ -45,8 +53,11 @@ export class AddAbsenceComponent implements OnInit {
         (data) => {
           setTimeout(() => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The absence has been successfully added.' });
-          }, 100);
-          this.router.navigate(['/absence/list']);
+            setTimeout(() => {
+                this.router.navigate(['/absence/list']);
+            }, 100); // Delay navigation by 1 second
+        }, 10);
+        
         },
         (error) => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the absence.' });

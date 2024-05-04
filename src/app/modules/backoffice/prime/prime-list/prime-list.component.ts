@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Prime } from '../../../../shared/prime';
+import { Prime } from '../../../../shared/models/prime';
 import { PrimeService } from '../../../../core/http/prime.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -33,6 +33,7 @@ export class PrimeListComponent implements OnInit {
     this.primeService.getAllPrimes().subscribe(
       (data) => {
         this.primes = data;
+        console.log(this.primes)
         this.loading = false;
       },
       (error) => {
