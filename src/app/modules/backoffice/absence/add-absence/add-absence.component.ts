@@ -32,11 +32,9 @@ export class AddAbsenceComponent implements OnInit {
     };
     this.messageService.messageObserver.subscribe((messages: Message[]) => {
       if (messages && Array.isArray(messages)) {
-        this.messages = messages; // Update messages array
+        this.messages = messages; 
       } else {
-        // If messages is not an array, handle it accordingly
-        console.error('Received invalid messages:', messages);
-        this.messages = []; // Reset messages array
+        this.messages = []; 
       }
     });
   }

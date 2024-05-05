@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PrimeFormComponent } from '../prime-form/prime-form.component';
 import { PrimeService } from '../../../../core/http/prime.service';
-import { Prime } from '../../../../shared/models/prime';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
+import { Prime } from '../../../../shared/models/prime';
 
 @Component({
   selector: 'app-edit-prime',

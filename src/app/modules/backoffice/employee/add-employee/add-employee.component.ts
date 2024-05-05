@@ -34,18 +34,16 @@ export class AddEmployeeComponent implements OnInit {
       roles: '',
       nbEnfant: null,
       regime: '',
-      chefDefamille: false,
+      chefDefamille: null,
       salaireDeBASE: null,
       numCompte: '',
       modeDePaiement: '',
-      dateRecrutemnt: null,
-      entreprise:null
+      dateRecrutemnt: null
     };
   }
 
   save() {
     if (this.employeeForm.form.valid) {
-      
       // Populate the employee object from the form fields
       this.employee = {
         name: this.employeeForm.form.get('name')?.value,
@@ -63,16 +61,17 @@ export class AddEmployeeComponent implements OnInit {
         numCompte: this.employeeForm.form.get('numCompte')?.value,
         modeDePaiement: this.employeeForm.form.get('modeDePaiement')?.value,
         dateRecrutemnt: this.employeeForm.form.get('dateRecrutemnt')?.value,
-        entreprise: { entrepriseId: this.employeeForm.form.get('entrepriseId')?.value } // Set entreprise as an object
+        entreprise: { entrepriseId: this.employeeForm.form.get('entrepriseId')?.value } 
       };
       console.log(this.employee)
-      // Call the service to add the employee
       this.service.addEmployee(this.employee).subscribe(
         () => {
           setTimeout(() => {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully added.' });
-          }, 100);
-          this.router.navigate(['/employee/list']);
+            setTimeout(() => {
+                this.router.navigate(['/employee/list']);
+            }, 1000); 
+        }, 10);
         },
         (error) => {
           let errorMessage = 'An error occurred while saving the employee.';
@@ -83,17 +82,7 @@ export class AddEmployeeComponent implements OnInit {
         }
       );
     }  else {
-      console.log(this.employeeForm.form.valid);
-      setTimeout(() => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.' });
-        
-      }, 100);
-      this.messages=[];
-      console.log("Form is not valid.");
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.' });
     }
-    
   }
-  
-  
-  
 }

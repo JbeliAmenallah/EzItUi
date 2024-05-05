@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Prime } from '../../../../shared/models/prime';
 import { PrimeService } from '../../../../core/http/prime.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Prime } from '../../../../shared/models/prime';
 
 @Component({
   selector: 'app-prime-list',

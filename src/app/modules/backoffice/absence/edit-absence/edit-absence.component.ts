@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Absence } from '../../../../shared/models/absence';
 import { AbsenceService } from '../../../../core/http/absence.service';
-import { Message, MessageService } from 'primeng/api'; 
+import { Message, MessageService, SelectItem } from 'primeng/api'; 
 
 
 @Component({
@@ -37,11 +37,10 @@ export class EditAbsenceComponent implements OnInit {
       if (messages && Array.isArray(messages)) {
         this.messages = messages; // Update messages array
       } else {
-        // If messages is not an array, handle it accordingly
-        console.error('Received invalid messages:', messages);
         this.messages = []; // Reset messages array
       }
     });
+    
   }
 
   loadAbsence(): void {
@@ -70,14 +69,19 @@ initializeForm(): void {
   const dateDebutAbsence = this.absence ? new Date(this.absence.dateDebutAbsence) : null;
   const dateFinAbsence = this.absence ? new Date(this.absence.dateFinAbsence) : null;
 
-  this.editForm = this.formBuilder.group({
-      contactId: [this.absence ? this.absence.contactId : null, Validators.required ],
-      dateDebutAbsence: [dateDebutAbsence ,Validators.required ], 
-      dateFinAbsence: [dateFinAbsence, Validators.required ], 
-      reason: [this.absence ? this.absence.reason : null,Validators.required ],
-      justified: [this.absence ? this.absence.justified : null,Validators.required ]
-  });
+  // Convert justified value to boolean if it's a string
+  const justifiedValue = this.absence ? this.absence.justified.toString() : null;
+console.log(justifiedValue)
+this.editForm = this.formBuilder.group({
+    contactId: [this.absence ? this.absence.contactId : null],
+    dateDebutAbsence: [dateDebutAbsence], 
+    dateFinAbsence: [dateFinAbsence], 
+    reason: [this.absence ? this.absence.reason : null],
+    justified: [justifiedValue]
+});
+
 }
+
 
 
 onSubmit(): void {

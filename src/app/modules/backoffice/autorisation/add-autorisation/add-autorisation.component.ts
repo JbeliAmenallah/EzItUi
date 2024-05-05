@@ -93,16 +93,16 @@ onSubmit() {
 
     this.autorisationService.saveAutorisation(autorisationData).subscribe(
       () => {
-        setTimeout(() => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Autorisation has been successfully added.' });
-          setTimeout(() => {
-              this.router.navigate(['/autorisations/list']);
-          }, 100); 
-      }, 10);
+        // Handle success
+        console.log('Success');
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Autorisation has been successfully added.' });
+        this.router.navigate(['/autorisations/list']);
       },
       (error) => {
+        // Handle error
         console.error('Error saving autorisation:', error);
         if (error.status === 400) {
+          // Validation errors
           const validationErrors = error.error;
           for (const key in validationErrors) {
             if (validationErrors.hasOwnProperty(key)) {
@@ -110,6 +110,7 @@ onSubmit() {
             }
           }
         } else {
+          // Other errors
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save Autorisation.' });
         }
       }
@@ -120,6 +121,7 @@ onSubmit() {
     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill out all required fields.' });
   }
 }
+
 
 
 private prepareAutorisationData(formData: any): any {
