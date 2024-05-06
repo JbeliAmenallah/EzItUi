@@ -15,12 +15,10 @@ export class EditCongeComponent {
   @Output() onHide: EventEmitter<any> = new EventEmitter();
 
   saveConge() {
-    // Emit the onSave event to notify the parent component
     this.onSave.emit();
   }
 
   hideDialog() {
-    // Emit the onHide event to notify the parent component
     this.onHide.emit();
   }
 }

@@ -44,16 +44,16 @@ export class AddContactComponent implements OnInit {
       this.service.create(this.contact).subscribe(
         (data) => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The category has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employé a été ajouté avec succès.' });
           }, 100);
           this.router.navigate(['/contacts']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the category.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement de l’employé' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation ', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
 }

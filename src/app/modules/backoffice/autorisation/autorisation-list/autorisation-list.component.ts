@@ -35,7 +35,7 @@ export class AutorisationListComponent implements OnInit {
         console.log(items)
       },
       (error) => {
-        console.error('Error fetching autorisations:', error);
+        console.error('Erreur lors de la récupération des autorisations :', error);
       }
     );
   }
@@ -48,24 +48,24 @@ export class AutorisationListComponent implements OnInit {
   
   saveAutorisation() {
     if (!this.selectedAutorisation) {
-      console.error('No autorisation selected.');
+      console.error('Aucune autorisation sélectionnée.');
       return;
     }
   
     this.autorisationService.updateAutorisation(this.selectedAutorisation.autorisationId, this.selectedAutorisation).subscribe(
       () => {
         this.getList();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Autorisation updated successfully' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Autorisation mise à jour avec succès' });
         this.hideDialog();
       },
       (error) => {
         if (error.status === 400 && error.error && error.error.message) {
           // Handle specific validation errors from the server
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message });
         } else {
           // Handle other errors
-          console.error('Error updating autorisation:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating autorisation' });
+          console.error('Erreur lors de la mise à jour de l’autorisation :', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de l’autorisation' });
         }
       }
     );
@@ -78,8 +78,8 @@ export class AutorisationListComponent implements OnInit {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this item?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cet élément ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -90,16 +90,16 @@ export class AutorisationListComponent implements OnInit {
           this.autorisationService.deleteAutorisation(id).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact deleted successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Autorisation supprimée avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting contact' });
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Erreur lors de la suppression d’une autorisation ' });
             }
           );
         }
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejeté', detail: 'Vous avez rejeté' });
       }
     });
   }

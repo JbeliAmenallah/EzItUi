@@ -7,11 +7,11 @@ import { CongeService } from '../../../../core/http/conge.service';
   selector: 'app-demande-conge',
   templateUrl: './demande-conge.component.html',
   styleUrls: ['./demande-conge.component.css'],
-  providers: [MessageService] // Provide the MessageService
+  providers: [MessageService] 
 })
 export class DemandeCongeComponent {
   form: FormGroup;
-  messages: any[] = []; // Define messages array
+  messages: any[] = []; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,10 +29,10 @@ export class DemandeCongeComponent {
       this.congeService.submitLeaveRequest(this.form.value).subscribe(
         (response) => {
           console.log('Leave request submitted successfully:', response);
-          this.messages = [{severity:'success', summary:'Leave request submitted successfully', detail: 'State: ' + response.state}];
+          this.messages = [{severity:'succès', summary:'Demande de congé soumise avec succès', detail: 'État: ' + response.state}];
         },
         (error) => {
-          console.error('Error submitting leave request:', error);
+          console.error('Erreur lors de l’envoi de la demande de congé :', error);
         }
       );
     } else {

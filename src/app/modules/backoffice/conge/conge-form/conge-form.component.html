@@ -5,33 +5,33 @@
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="startDate">Start Date:</label>
+              <label for="startDate">Date de début :</label>
               <p-calendar formControlName="startDate" id="startDate" class="form-control" showIcon="true"></p-calendar>
-              <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Start date is required</small>
+              <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date de début est requise </small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="endDate">End Date:</label>
+              <label for="endDate">Date de fin :</label>
               <p-calendar formControlName="endDate" id="endDate" class="form-control" showIcon="true"></p-calendar>
-              <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">End date is required</small>
+              <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date de fin est requise</small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="state">State:</label>
-              <p-dropdown formControlName="state" id="state" [options]="stateOptions" placeholder="Select State" [showClear]="true"></p-dropdown>
-              <small class="p-error" *ngIf="form.get('state')?.touched && form.get('state')?.hasError('required')">State is required</small>
+              <label for="state">État:</label>
+              <p-dropdown formControlName="state" id="state" [options]="stateOptions" placeholder="Selectionner un état" [showClear]="true"></p-dropdown>
+              <small class="p-error" *ngIf="form.get('state')?.touched && form.get('state')?.hasError('required')">État est requis</small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="employee">Employee:</label>
-              <p-dropdown formControlName="contactId" id="contactId" [options]="employeeOptions" optionLabel="label" placeholder="Select an employee" [showClear]="true"></p-dropdown>
-              <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Employee is required</small>
+              <label for="employee">Employé :</label>
+              <p-dropdown formControlName="contactId" id="contactId" [options]="employeeOptions" optionLabel="label" placeholder="Selectionner un employé" [showClear]="true"></p-dropdown>
+              <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Employé est requis</small>
             </div>
           </div>
   

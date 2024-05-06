@@ -5,11 +5,11 @@
       <app-absence-form [form]="editForm"></app-absence-form>
       <div class="row">
         <div class="col-md-12">
-          <button type="submit" pButton label="Submit" class="p-button p-button-primary"></button>
-          <button type="button" pButton label="Cancel" class="p-button p-button-secondary" (click)="onCancel()"></button>
+          <button type="submit" pButton label="Envoyer" class="p-button p-button-primary"></button>
+          <button type="button" pButton label="Annuler" class="p-button p-button-secondary" (click)="onCancel()"></button>
         </div>
       </div>
-      <div class="card">
+      <div class="">
         <p-messages [(value)]="messages" [enableService]="true" [closable]="true"></p-messages>
         <p-toast></p-toast>
     </div>

@@ -1,6 +1,5 @@
 export interface Annee {
-    id?: number;
-    dateDebutExercice: string;
-    libele: string;
-  }
-  
+  id?: number;
+  dateDebutExercice: Date; 
+  libele: string;
+}

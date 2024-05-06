@@ -35,9 +35,9 @@ export class DeductionListComponent implements OnInit {
         this.loading = false;
       },
       (error) => {
-        console.error('Error fetching deductions:', error);
+        console.error('Erreur lors de l’extraction des déductions :', error);
         this.loading = false;
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to fetch deductions' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Impossible d’extraire les déductions' });
       }
     );
   }
@@ -52,12 +52,12 @@ export class DeductionListComponent implements OnInit {
     this.deductionService.updateDeduction(this.selectedDeduction.id, this.selectedDeduction).subscribe(
       () => {
         this.getAllDeductions();
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Deduction updated successfully' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Déduction mise à jour réussie' });
         this.hideDialog();
       },
       (error) => {
         console.error('Error updating deduction:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating deduction' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la déduction' });
       }
     );
   }
@@ -69,8 +69,8 @@ export class DeductionListComponent implements OnInit {
 
   deleteItem(id: number): void {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this deduction?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cette déduction ??',
+      header: 'Supprimer la confirmation',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -80,16 +80,16 @@ export class DeductionListComponent implements OnInit {
         this.deductionService.deleteDeduction(id).subscribe(
           () => {
             this.getAllDeductions();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Deduction deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'La déduction a été supprimée avec succès' });
           },
           (error) => {
             console.error('Error deleting deduction:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting deduction' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de la déduction' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'Deletion cancelled' });
+        this.messageService.add({ severity: 'warn', summary: 'Rejeté', detail: 'Suppression annulée' });
       }
     });
   }

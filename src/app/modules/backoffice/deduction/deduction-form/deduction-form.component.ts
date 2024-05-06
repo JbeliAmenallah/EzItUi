@@ -16,8 +16,8 @@ export class DeductionFormComponent implements OnInit {
   formDeduction: FormGroup; 
   anneeOptions: Annee[] = [];
   typeCalculOptions: any[] = [
-    { label: 'Percentage', value: 'Percentage' },
-    { label: 'Value', value: 'Value' }
+{ label: 'Pourcentage', value: 'Pourcentage' },
+{ label: 'Valeur', value: 'Valeur' }
   ];
 
   constructor(
@@ -62,7 +62,7 @@ export class DeductionFormComponent implements OnInit {
         this.anneeOptions = annees;
       },
       (error) => {
-        console.error('Error loading Annees:', error);
+        console.error('Erreur de chargement des annees :', error);
       }
     );
   }

@@ -15,8 +15,9 @@ export class AbsenceFormComponent implements OnInit {
 
   employeeOptions: any[] = [];
   justifiedOptions: any[] = [
-    { label: 'Yes', value: 'true' },
-    { label: 'No', value: 'false' }
+    { label: 'Oui', value: 'true' },
+    { label: 'Non', value: 'false' }
+    
   ];
 
   constructor(
@@ -76,7 +77,7 @@ export class AbsenceFormComponent implements OnInit {
         console.log('Employee Options:', this.employeeOptions); // Log options for troubleshooting
       },
       error => {
-        console.error('Error fetching employee options:', error); // Log any errors
+        console.error('Erreur lors de l’extraction des options de l’employée :', error); // Log any errors
       }
     );
   }

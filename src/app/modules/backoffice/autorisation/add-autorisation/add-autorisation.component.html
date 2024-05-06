@@ -5,43 +5,43 @@
   <div class="row">
   <div class="col-md-6">
   <div class="form-group">
-  <label for="startDate">Start Date and Time:</label>
+  <label for="startDate">Date et heure de début :</label>
   <p-calendar formControlName="startDate" id="startDate" class="form-control" [showTime]="true"></p-calendar>
-  <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Start date is required</small>
+  <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date et heure de début est requise </small>
   </div>
   </div>
   
   <div class="col-md-6">
   <div class="form-group">
-  <label for="endDate">End Date and Time:</label>
+  <label for="endDate">Date et heure de fin :</label>
   <p-calendar formControlName="endDate" id="endDate" class="form-control" [showTime]="true"></p-calendar>
-  <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">End date is required</small>
+  <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date et heure de fin est requise</small>
   </div>
   </div>
   
   <div class="col-md-6">
   <div class="form-group">
-  <label for="state">State:</label>
-  <p-dropdown formControlName="state" id="state" [options]="stateOptions" optionLabel="label" placeholder="Select a State" class="form-control"></p-dropdown>
-  <small class="p-error" *ngIf="form.get('state')?.touched && form.get('state')?.hasError('required')">State is required</small>
+  <label for="state">État:</label>
+  <p-dropdown formControlName="state" id="state" [options]="stateOptions" optionLabel="label" placeholder="Selectionner un état " class="form-control"></p-dropdown>
+  <small class="p-error" *ngIf="form.get('state')?.touched && form.get('state')?.hasError('required')">État est requis</small>
   </div>
   </div>
   
   
   <div class="col-md-6">
   <div class="form-group">
-  <label for="employee">Employee:</label>
-  <p-dropdown formControlName="contactId" [options]="employeeOptions" optionLabel="label" placeholder="Select an employee" [showClear]="true" appendTo="body"></p-dropdown>
-  <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Employee is required</small>
+  <label for="employee">Employé:</label>
+  <p-dropdown formControlName="contactId" [options]="employeeOptions" optionLabel="label" placeholder="Selectionner un employé" [showClear]="true" appendTo="body"></p-dropdown>
+  <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Employé est requis</small>
   </div>
   </div>
   
   <div class="col-md-12">
-  <p-button type="button" label="Submit" class="custom-save-button" (click)="onSubmit()"></p-button>
+  <p-button type="button" label="Envoyer" class="custom-save-button" (click)="onSubmit()"></p-button>
   </div>
   </div>
   </form>
-  <div class="card">
+  <div class="">
     <p-messages [(value)]="messages" [closable]="true"></p-messages>
   </div>
   <p-toast position="top-right"></p-toast>

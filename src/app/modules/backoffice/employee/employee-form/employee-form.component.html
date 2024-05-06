@@ -3,73 +3,73 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Name:</label>
+                    <label for="name">Nom et prénom :</label>
                     <input type="text" pInputText formControlName="name" id="name" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">The name is required</small>
+                    <small class="p-error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">Le nom est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="username">Username:</label>
+                    <label for="username">Nom d’utilisateur:</label>
                     <input type="text" pInputText formControlName="username" id="username" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">The username is required</small>
+                    <small class="p-error" *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">Le nom d’utilisateur est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Email:</label>
+                    <label for="email">Email :</label>
                     <input type="email" pInputText formControlName="email" id="email" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">The email is required</small>
+                    <small class="p-error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">L’adresse e-mail est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="location">Location:</label>
+                    <label for="location">Emplacement:</label>
                     <input type="text" pInputText formControlName="location" id="location" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('location')?.touched && form.get('location')?.hasError('required')">The location is required</small>
+                    <small class="p-error" *ngIf="form.get('location')?.touched && form.get('location')?.hasError('required')">L’emplacement est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="phone">Phone:</label>
+                    <label for="phone">Numéro de téléphone:</label>
                     <input type="tel" pInputText formControlName="phone" id="phone" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">The phone is required</small>
+                    <small class="p-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">Le Numéro de téléphone est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="fax">Fax:</label>
+                    <label for="fax">Fax :</label>
                     <input type="text" pInputText formControlName="fax" id="fax" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('fax')?.touched && form.get('fax')?.hasError('required')">The fax is required</small>
+                    <small class="p-error" *ngIf="form.get('fax')?.touched && form.get('fax')?.hasError('required')">Le fax est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password">Mot de passe :</label>
                     <input type="password" pInputText formControlName="password" id="password" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">The password is required</small>
+                    <small class="p-error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">Le mot de passe est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="roles">Roles:</label>
+                    <label for="roles">Roles :</label>
                     <input type="text" pInputText formControlName="roles" id="roles" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('roles')?.touched && form.get('roles')?.hasError('required')">The roles are required</small>
+                    <small class="p-error" *ngIf="form.get('roles')?.touched && form.get('roles')?.hasError('required')">Le role est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nbEnfant">Number of Children:</label>
+                    <label for="nbEnfant">Nombre d'enfants :</label>
                     <input type="number" pInputText formControlName="nbEnfant" id="nbEnfant" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('nbEnfant')?.touched && form.get('nbEnfant')?.hasError('required')">The number of children is required</small>
+                    <small class="p-error" *ngIf="form.get('nbEnfant')?.touched && form.get('nbEnfant')?.hasError('required')">Le nombre d'enfants est obligatoire</small>
                 </div>
             </div>
 
@@ -82,53 +82,53 @@
             </div>--> 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="entrepriseId">Entreprise:</label>
-                    <p-dropdown [options]="entrepriseOptions" formControlName="entrepriseId"[showClear]="true" placeholder="Select" optionLabel="nom" optionValue="entrepriseId" ></p-dropdown>
+                    <label for="entrepriseId">Entreprise :</label>
+                    <p-dropdown [options]="entrepriseOptions" formControlName="entrepriseId"[showClear]="true" placeholder="Selectionner une entreprise"optionLabel="nom" optionValue="entrepriseId" ></p-dropdown>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="chefDefamille">Chef de Famille:</label>
-                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Select a Chef" class="form-control"></p-dropdown>
+                    <label for="chefDefamille">Chef de Famille :</label>
+                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Selectionner un Chef" class="form-control"></p-dropdown>
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="regime">Regime:</label>
+                    <label for="regime">Regime :</label>
                     <p-dropdown [options]="regimeOptions" formControlName="regime" id="regime" [showClear]="true" placeholder="Select" class="form-control"></p-dropdown>
-                    <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">Please select Regime </small>
+                    <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">Regime est obligatoire</small>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="salaireDeBASE">Base Salary:</label>
+                    <label for="salaireDeBASE">Salaire de base :</label>
                     <input type="number" pInputText formControlName="salaireDeBASE" id="salaireDeBASE" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('salaireDeBASE')?.touched && form.get('salaireDeBASE')?.hasError('required')">The base salary is required</small>
+                    <small class="p-error" *ngIf="form.get('salaireDeBASE')?.touched && form.get('salaireDeBASE')?.hasError('required')">Le salaire de base est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="numCompte">Account Number:</label>
+                    <label for="numCompte">Numéro de compte: </label>
                     <input type="text" pInputText formControlName="numCompte" id="numCompte" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('numCompte')?.touched && form.get('numCompte')?.hasError('required')">The account number is required</small>
+                    <small class="p-error" *ngIf="form.get('numCompte')?.touched && form.get('numCompte')?.hasError('required')">Le numéro de compte est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="modeDePaiement">Payment Mode:</label>
+                    <label for="modeDePaiement">Mode de paiement:</label>
                     <input type="text" pInputText formControlName="modeDePaiement" id="modeDePaiement" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('modeDePaiement')?.touched && form.get('modeDePaiement')?.hasError('required')">The payment mode is required</small>
+                    <small class="p-error" *ngIf="form.get('modeDePaiement')?.touched && form.get('modeDePaiement')?.hasError('required')">Le mode de paiement est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="dateRecrutemnt">Recruitment Date:</label>
+                    <label for="dateRecrutemnt">Date de recrutement :</label>
                     <p-calendar formControlName="dateRecrutemnt" id="dateRecrutemnt" [showIcon]="true" [inputStyleClass]="'form-control'"></p-calendar>
-                    <small class="p-error" *ngIf="form.get('dateRecrutemnt')?.touched && form.get('dateRecrutemnt')?.hasError('required')">The recruitment date is required</small>
+                    <small class="p-error" *ngIf="form.get('dateRecrutemnt')?.touched && form.get('dateRecrutemnt')?.hasError('required')">La date de recrutement est obligatoire</small>
                 </div>
             </div>
             

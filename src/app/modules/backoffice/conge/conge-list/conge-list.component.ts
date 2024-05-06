@@ -37,7 +37,7 @@ export class CongeListComponent implements OnInit {
         this.conges = items;
       },
       (error) => {
-        console.error('Error fetching conges:', error);
+        console.error('Erreur lors de la récupération des congés :', error);
       }
     );
   }
@@ -56,15 +56,15 @@ saveConge() {
       this.congeService.updateConge(this.selectedConge.congeId, this.selectedConge).subscribe(
           () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Conge updated successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Conge a été mis à jour avec succès' });
               this.hideDialog();
           },
           (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating conge' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de conge' });
           }
       );
   } else {
-      console.error('Selected Conge or Conge ID is undefined.');
+      console.error('Le conge ou l’ID de conge sélectionné n’est pas défini.');
   }
 }
 
@@ -84,8 +84,8 @@ saveConge() {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this item?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cet élément ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -96,16 +96,16 @@ saveConge() {
           this.congeService.deleteConge(id).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact deleted successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact supprimé avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting contact' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d’un contact' });
             }
           );
         }
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }

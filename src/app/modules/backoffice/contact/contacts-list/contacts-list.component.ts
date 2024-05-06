@@ -41,8 +41,8 @@ export class ContactsListComponent implements OnInit {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this item?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cet élément ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -53,16 +53,16 @@ export class ContactsListComponent implements OnInit {
           this.service.delete(id).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact deleted successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact supprimé avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting contact' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d’un contact' });
             }
           );
         }
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }

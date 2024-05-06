@@ -55,7 +55,7 @@ export class EditContactComponent implements OnInit {
         console.log(item);
       },
       error: (error) => {
-        console.error("An error occurred while reading the contact:", error);
+        console.error("Une erreur s’est produite lors de la lecture du contact :", error);
         this.goToList();
       }
     });
@@ -76,16 +76,16 @@ export class EditContactComponent implements OnInit {
       this.service.update(this.contact).subscribe(
         (data) => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The functionality has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employée a été mise à jour avec succès' });
           }, 100);
           this.router.navigate(['/contacts']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the functionality.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de la mise à jour de l’employé.' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
   }

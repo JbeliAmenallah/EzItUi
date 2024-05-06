@@ -3,7 +3,7 @@
       <div class="row">
           <div class="col-md-6">
               <div class="form-group">
-                  <label for="contactId">Employé':</label>
+                  <label for="contactId">Employé:</label>
                   <p-dropdown [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-dropdown>
                   <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
               </div>
@@ -11,33 +11,33 @@
 
           <div class="col-md-6">
             <div class="form-group">
-                <label for="dateDebutAbsence">Start Date of Absence:</label>
+                <label for="dateDebutAbsence">Date de début de l’absence :</label>
                 <p-calendar formControlName="dateDebutAbsence" id="dateDebutAbsence" [showIcon]="true"  [showTime]="true " class="form-control"></p-calendar>
-                <small class="p-error" *ngIf="form.get('dateDebutAbsence')?.touched && form.get('dateDebutAbsence')?.hasError('required')">The start date of absence is required</small>
+                <small class="p-error" *ngIf="form.get('dateDebutAbsence')?.touched && form.get('dateDebutAbsence')?.hasError('required')">La date de début de l’absence est requise</small>
             </div>
         </div>
         
         <div class="col-md-6">
             <div class="form-group">
-                <label for="dateFinAbsence">End Date of Absence:</label>
+                <label for="dateFinAbsence">Date de fin de l’absence :</label>
                 <p-calendar formControlName="dateFinAbsence" id="dateFinAbsence" [showIcon]="true" [showTime]="true " class="form-control"></p-calendar>
-                <small class="p-error" *ngIf="form.get('dateFinAbsence')?.touched && form.get('dateFinAbsence')?.hasError('required')">The end date of absence is required</small>
+                <small class="p-error" *ngIf="form.get('dateFinAbsence')?.touched && form.get('dateFinAbsence')?.hasError('required')">La date de fin d’absence est requise</small>
             </div>
         </div>
 
           <div class="col-md-6">
               <div class="form-group">
-                  <label for="reason">Reason:</label>
+                  <label for="reason">Raison:</label>
                   <input type="text" pInputText formControlName="reason" id="reason" class="form-control"/>
-                  <small class="p-error" *ngIf="form.get('reason')?.touched && form.get('reason')?.hasError('required')">The reason is required</small>
+                  <small class="p-error" *ngIf="form.get('reason')?.touched && form.get('reason')?.hasError('required')">La raison est obligatoire</small>
               </div>
           </div>
 
           <div class="col-md-6">
             <div class="form-group">
-                <label for="justified">Justified:</label>
+                <label for="justified">Justifiée :</label>
                 <p-dropdown [options]="justifiedOptions" formControlName="justified" [showClear]="true" placeholder="Select Justified"></p-dropdown>
-                <small class="p-error" *ngIf="form.get('justified')?.touched && form.get('justified')?.hasError('required')">Justification is required</small>
+                <small class="p-error" *ngIf="form.get('justified')?.touched && form.get('justified')?.hasError('required')">Une justification est requise</small>
             </div>
         </div>
       </div>

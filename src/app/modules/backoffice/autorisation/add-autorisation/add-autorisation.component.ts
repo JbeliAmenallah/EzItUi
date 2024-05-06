@@ -23,10 +23,11 @@ messages: Message[] = [];
 employeeOptions: any[] = [];
 displayDialog: boolean = false;
 stateOptions = [
-{ label: 'Accepted', value: 'Accepted' },
-{ label: 'Pending', value: 'Pending' },
-{ label: 'Rejected', value: 'Rejected' }
+  { label: 'Accepté', value: 'Accepté' },
+  { label: 'En attente', value: 'En attente' },
+  { label: 'Rejeté', value: 'Rejeté' }
 ];
+
 constructor(
 private fb: FormBuilder,
 private autorisationService: AutorisationService,
@@ -60,7 +61,7 @@ ngOnInit(): void {
         this.messages = messages; // Update messages array
       } else {
         // If messages is not an array, handle it accordingly
-        console.error('Received invalid messages:', messages);
+        console.error('Messages non valides reçus :', messages);
         this.messages = []; // Reset messages array
       }
     });
@@ -70,9 +71,9 @@ ngOnInit(): void {
 initStateOptions() {
 if (this.stateOptions.length === 0) {
 this.stateOptions = [
-{ label: 'Accepted', value: 'Accepted' },
-{ label: 'Pending', value: 'Pending' },
-{ label: 'Rejected', value: 'Rejected' }
+  { label: 'Accepté', value: 'Accepté' },
+  { label: 'En attente', value: 'En attente' },
+  { label: 'Rejeté', value: 'Rejeté' }
 ];
 }
 }
@@ -94,31 +95,34 @@ onSubmit() {
     this.autorisationService.saveAutorisation(autorisationData).subscribe(
       () => {
         // Handle success
-        console.log('Success');
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Autorisation has been successfully added.' });
-        this.router.navigate(['/autorisations/list']);
-      },
+        setTimeout(() => {
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’autorisationa été ajoutée avec succès.' });
+          setTimeout(() => {
+              this.router.navigate(['/autorisations/list']);
+          }, 100); // Delay navigation by 1 second
+      }, 10);
+    },
       (error) => {
         // Handle error
-        console.error('Error saving autorisation:', error);
+        console.error('Erreur lors de l’enregistrement de l’autorisation :', error);
         if (error.status === 400) {
           // Validation errors
           const validationErrors = error.error;
           for (const key in validationErrors) {
             if (validationErrors.hasOwnProperty(key)) {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: validationErrors[key] });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: validationErrors[key] });
             }
           }
         } else {
           // Other errors
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save Autorisation.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Echec de l’enregistrement de l’autorisation.' });
         }
       }
     );
   } else {
     console.log('Form is invalid');
     this.form.markAllAsTouched();
-    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill out all required fields.' });
+    this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Veuillez remplir tous les champs obligatoires.' });
   }
 }
 

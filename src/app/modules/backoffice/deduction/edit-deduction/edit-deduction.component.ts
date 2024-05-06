@@ -55,7 +55,7 @@ export class EditDeductionComponent implements OnInit {
         this.messages = messages; // Update messages array
       } else {
         // If messages is not an array, handle it accordingly
-        console.error('Received invalid messages:', messages);
+        console.error('Messages non valides reçus :', messages);
         this.messages = []; // Reset messages array
       }
     });
@@ -68,7 +68,7 @@ export class EditDeductionComponent implements OnInit {
         console.log(deduction);
       },
       error: (error) => {
-        console.error("An error occurred while getting the deduction:", error);
+        console.error("Une erreur s’est produite lors de l’obtention de la déduction :", error);
       }
     });
   }
@@ -79,18 +79,18 @@ export class EditDeductionComponent implements OnInit {
       this.deductionService.updateDeduction(this.deductionId, updatedDeduction).subscribe(
         () => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Deduction has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'La déduction a été ajoutée avec succès.' });
             setTimeout(() => {
                 this.router.navigate(['/deduction/list']);
             }, 100); // Delay navigation by 1 second
         }, 10);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while updating the deduction.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de la mise à jour de la déduction.' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation ', detail: ' Veuillez remplir tous les champs obligatoires.' });
     }
   }
 }

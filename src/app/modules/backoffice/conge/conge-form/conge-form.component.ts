@@ -49,9 +49,9 @@ export class CongeFormComponent implements OnInit {
   // Method to initialize state options
   initStateOptions() {
     this.stateOptions = [
-      { label: 'Accepted', value: 'Accepted' },
-      { label: 'Pending', value: 'Pending' },
-      { label: 'Rejected', value: 'Rejected' }
+      { label: 'Accepté', value: 'Accepté' },
+      { label: 'En attente', value: 'En attente' },
+      { label: 'Rejeté', value: 'Rejeté' }
     ];
   }
 

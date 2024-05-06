@@ -40,8 +40,8 @@ export class DemandeAutorisationComponent {
                 this.router.navigate(['/autorisations/list']);
             },
             (error) => {
-                console.error('Error submitting autorisation request:', error);
-                this.messages = [{severity:'error', summary:'Error submitting autorisation request', detail: error.message || 'Unknown error'}];
+                console.error('Erreur lors de l’envoi de la demande d’autorisation :', error);
+                this.messages = [{severity:'error', summary:'Erreur lors de l’envoi de la demande d’autorisation', detail: error.message || 'Erreur inconnue'}];
             }
         );
     } else {

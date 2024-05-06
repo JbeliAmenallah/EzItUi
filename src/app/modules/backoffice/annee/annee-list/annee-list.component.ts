@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Annee } from '../../../../shared/models/annee';
 import { AnneeService } from '../../../../core/http/annee.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -8,6 +8,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   templateUrl: './annee-list.component.html',
   styleUrls: ['./annee-list.component.css']
 })
+
 export class AnneeListComponent implements OnInit {
   annees: Annee[] = [];
   loading: boolean = true;
@@ -39,8 +40,11 @@ export class AnneeListComponent implements OnInit {
   }
 
   editAnnee(annee: Annee) {
-    // Set selectedAnnee and display the EditAnneeComponent
-    this.selectedAnnee = { ...annee }; // Create a copy to avoid modifying original
+    this.selectedAnnee = { ...annee };
+    // Convert 'dateDebutExercice' property to Date object if it's not already
+    if (typeof this.selectedAnnee.dateDebutExercice === 'string') {
+      this.selectedAnnee.dateDebutExercice = new Date(this.selectedAnnee.dateDebutExercice);
+    }
     this.displayEditDialog = true;
   }
 
@@ -91,5 +95,4 @@ export class AnneeListComponent implements OnInit {
       }
     });
   }
-
 }

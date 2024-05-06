@@ -1,17 +1,17 @@
 <div class="container mt-5">
-    <h2 class="table-title">Conges Request</h2>
+    <h2 class="table-title">Demande de congés</h2>
 
     <form [formGroup]="form" class="form">    
         <div class="form-group">
-            <label for="startDate">Start Date:</label>
+            <label for="startDate">Date de début :</label>
             <p-calendar formControlName="startDate" id="startDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
-            <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Start date is required</small>
+            <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date de début est requise</small>
         </div>
 
         <div class="form-group">
             <label for="endDate">End Date:</label>
             <p-calendar formControlName="endDate" id="endDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
-            <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">End date is required</small>
+            <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date de fin est requise</small>
         </div>
 
         <div class="text-right">
@@ -21,7 +21,7 @@
 </div>
 
 <div class="messages-container">
-    <div class="card">
+    <div class="">
         <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
     </div>
 </div>

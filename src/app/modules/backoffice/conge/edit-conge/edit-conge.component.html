@@ -2,17 +2,17 @@
   [modal]="true" [contentStyle]="{ 'overflow': 'auto' }" (onHide)="hideDialog()">
   <ng-container *ngIf="selectedConge">
     <div class="form-group">
-      <label for="startDate">Start Date</label>
+      <label for="startDate">Date de début :</label>
       <input id="startDate" pInputText type="text" [(ngModel)]="selectedConge.startDate" class="form-control"
         placeholder="Start Date" />
     </div>
     <div class="form-group">
-      <label for="endDate">End Date</label>
+      <label for="endDate">Date de fin :</label>
       <input id="endDate" pInputText type="text" [(ngModel)]="selectedConge.endDate" class="form-control"
         placeholder="End Date" />
     </div>
     <div class="form-group">
-      <label for="state">State</label>
+      <label for="state">État : </label>
       <input id="state" pInputText type="text" [(ngModel)]="selectedConge.state" class="form-control"
         placeholder="State" />
     </div>
@@ -23,7 +23,7 @@
     </div>
   </ng-container>
   <p-footer>
-    <p-button type="button" icon="pi pi-check" label="Save" class="p-button-success" (click)="saveConge()"></p-button>
+    <p-button type="button" icon="pi pi-check" label="Enregistrer" class="p-button-success" (click)="saveConge()"></p-button>
 
   </p-footer>
   

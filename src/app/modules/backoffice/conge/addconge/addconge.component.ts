@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./addconge.component.css']
 })
 export class AddcongeComponent {
-  messages: any[] = []; // Declare messages property
+  messages: any[] = [];
 
   constructor(
     private congeService: CongeService, 
@@ -20,9 +20,8 @@ export class AddcongeComponent {
   ) {}
 
   save(congeData: any) {
-    // Ensure contactId is not null or empty
     if (!congeData.contactId || !congeData.contactId.value) {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Contact ID is required.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'L’ID de contact est requis.' });
       return;
     }
   
@@ -38,15 +37,15 @@ export class AddcongeComponent {
     this.congeService.saveConge(newConge).subscribe(
       () => {
         setTimeout(() => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The  Conge has been successfully added.' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le Conge a été ajouté avec succès.' });
           setTimeout(() => {
               this.router.navigate(['/conges/list']);
-          }, 100); // Delay navigation by 1 second
+          }, 100);
       }, 10);
       }, 
       (error) => {
-        console.error('Error saving conge:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save Conge.' });
+        console.error('Erreur lors de l’enregistrement de la conge:', error);
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Echec de l’enregistrement de Conge.' });
       }
     );
   }

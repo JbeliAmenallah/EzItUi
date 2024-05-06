@@ -1,11 +1,11 @@
 <div class="table-container">
-    <h1 class="gradient-text">Employees List</h1>
+    <h1 class="gradient-text"> Liste des employés</h1>
 
     <div class="flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/employee/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Add Employee</b> </span>
+                <span> <b>Ajouter un employé</b> </span>
             </div>
         </ng-template>
     </div>
@@ -19,23 +19,23 @@
         [rowsPerPageOptions]="[10, 25, 50]"
         [loading]="loading"
         [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
         [globalFilterFields]="['contactId','name', 'username', 'email', 'location', 'phone', 'fax', 'roles', 'nbEnfant', 'regime', 'chefDefamille', 'salaireDeBASE', 'numCompte', 'modeDePaiement', 'dateRecrutemnt']"
         [tableStyle]="{ 'min-width': '75rem' }">
     
         <ng-template pTemplate="header">
             <tr>
                 <th>contactId</th>
-                <th>Name</th>
-                <th>Username</th>
+                <th>Nom et prénom</th>
+                <th>Nom d’utilisateur</th>
                 <th>Email</th>
-                <th>Location</th>
-                <th>Phone</th>
+                <th>Emplacement</th>
+                <th>Numéro de téléphone</th>
                 <th>Roles</th>
-                <th>Number of Children</th>
+                <th>Nombre d’enfants</th>
                 <th>Chef de Famille</th>
-                <th>Base Salary</th>
-                <th>Recruitment Date</th>
+                <th>Salaire de base</th>
+                <th>Date de recrutement</th>
                 <th>Actions</th>
             </tr>
             <tr>
@@ -87,7 +87,7 @@
                 <td>{{ employee.nbEnfant }}</td>
                 <td>{{ employee.chefDefamille ? 'Yes' : 'No' }}</td>
                 <td>{{ employee.salaireDeBASE }}</td>
-                <td>{{ employee.dateRecrutemnt | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ employee.dateRecrutemnt | date: 'dd/MM/yyyy' }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)"  (click)="editItem(employee)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(employee.contactId)" ></i>
@@ -97,19 +97,19 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="16">No employees found.</td>
+                <td colspan="16">Aucun employé n’a été trouvé.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">
             <div class="flex justify-content-end align-items-center">
                 <div class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Mot-clé de recherche" style="width: 400px;" />
                 </div>
             </div>
         </ng-template>
     </p-table>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
     acceptButtonStyleClass="p-button-danger p-button-text"
     rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
 </p-confirmDialog>

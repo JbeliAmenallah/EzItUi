@@ -4,33 +4,33 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="anneeId">Annee:</label>
+              <label for="anneeId">Annee :</label>
               <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="anneeId" optionLabel="libele" optionValue="id" placeholder="Select an Annee"></p-dropdown>
-              <small class="p-error" *ngIf="formDeduction.get('anneeId')?.touched && formDeduction.get('anneeId')?.hasError('required')">Annee is required</small>
+              <small class="p-error" *ngIf="formDeduction.get('anneeId')?.touched && formDeduction.get('anneeId')?.hasError('required')">Annee est requise</small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="libelle">Libelle:</label>
+              <label for="libelle">Libele :</label>
               <input type="text" pInputText formControlName="libelle" id="libelle" class="form-control"/>
-              <small class="p-error" *ngIf="formDeduction.get('libelle')?.touched && formDeduction.get('libelle')?.hasError('required')">Libelle is required</small>
+              <small class="p-error" *ngIf="formDeduction.get('libelle')?.touched && formDeduction.get('libelle')?.hasError('required')">Libele est requis</small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="description">Description:</label>
+              <label for="description">Description :</label>
               <textarea pInputTextarea formControlName="description" id="description" class="form-control"></textarea>
-              <small class="p-error" *ngIf="formDeduction.get('description')?.touched && formDeduction.get('description')?.hasError('required')">Description is required</small>
+              <small class="p-error" *ngIf="formDeduction.get('description')?.touched && formDeduction.get('description')?.hasError('required')">Description est requise</small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="etat">Etat:</label>
+              <label for="etat">Etat :</label>
               <input type="text" pInputText formControlName="etat" id="etat" class="form-control"/>
-              <small class="p-error" *ngIf="formDeduction.get('etat')?.touched && formDeduction.get('etat')?.hasError('required')">Etat is required</small>
+              <small class="p-error" *ngIf="formDeduction.get('etat')?.touched && formDeduction.get('etat')?.hasError('required')">Etat est requis</small>
             </div>
           </div>
   
@@ -38,15 +38,15 @@
             <div class="form-group">
               <label for="typecalcul">Type Calcul:</label>
               <p-dropdown [options]="typeCalculOptions" formControlName="typecalcul" id="typecalcul"  placeholder="Select Type Calcul"></p-dropdown>
-              <small class="p-error" *ngIf="formDeduction.get('typecalcul')?.touched && formDeduction.get('typecalcul')?.hasError('required')">Type Calcul is required</small>
+              <small class="p-error" *ngIf="formDeduction.get('typecalcul')?.touched && formDeduction.get('typecalcul')?.hasError('required')">Type Calcul est requis </small>
             </div>
           </div>
   
           <div class="col-md-6">
             <div class="form-group">
-              <label for="valeur">Valeur:</label>
+              <label for="valeur">Valeur :</label>
               <input type="number" pInputText formControlName="valeur" id="valeur" class="form-control"/>
-              <small class="p-error" *ngIf="formDeduction.get('valeur')?.touched && formDeduction.get('valeur')?.hasError('required')">Valeur is required</small>
+              <small class="p-error" *ngIf="formDeduction.get('valeur')?.touched && formDeduction.get('valeur')?.hasError('required')">Valeur est requise</small>
             </div>
           </div>
   

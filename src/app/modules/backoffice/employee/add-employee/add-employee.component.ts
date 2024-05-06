@@ -67,22 +67,22 @@ export class AddEmployeeComponent implements OnInit {
       this.service.addEmployee(this.employee).subscribe(
         () => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employée a été ajoutée avec succès.' });
             setTimeout(() => {
                 this.router.navigate(['/employee/list']);
             }, 1000); 
         }, 10);
         },
         (error) => {
-          let errorMessage = 'An error occurred while saving the employee.';
+          let errorMessage = 'Une erreur s’est produite lors de l’enregistrement de l’employé.';
           if (error && error.error && error.error.message) {
             errorMessage = error.error.message; 
           }
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: errorMessage });
         }
       );
     }  else {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'La forme n’est pas valable.' });
     }
   }
 }

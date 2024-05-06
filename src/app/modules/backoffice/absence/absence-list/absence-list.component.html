@@ -20,7 +20,7 @@
         [rowsPerPageOptions]="[10, 25, 50]"
         [loading]="loading"
         [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
         [globalFilterFields]="['contactId', 'dateDebutAbsence', 'dateFinAbsence', 'reason', 'justified']"
         [tableStyle]="{ 'min-width': '85rem' }">
 
@@ -30,8 +30,8 @@
                 <th>Contact ID</th>
                 <th>Date Debut Absence</th>
                 <th>Date Fin Absence</th>
-                <th>Reason</th>
-                <th>Justified</th>
+                <th>Raison</th>
+                <th>Justifiée</th>
                 <th>Actions</th>
             </tr>
             <tr>
@@ -60,8 +60,8 @@
             <tr>
                 <td>{{ absence.absenceId }}</td>
                 <td>{{ absence.contactId }}</td>
-                <td>{{ absence.dateDebutAbsence | date:'dd MMMM yyyy HH:mm' }}</td>
-                <td>{{ absence.dateFinAbsence | date:'dd MMMM yyyy HH:mm' }}</td>
+                <td>{{ absence.dateDebutAbsence | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ absence.dateFinAbsence | date:'dd/MM/yyyy HH:mm' }}</td>
                 <td>{{ absence.reason }}</td>
                 <td>{{ absence.justified }}</td>
                 <td>

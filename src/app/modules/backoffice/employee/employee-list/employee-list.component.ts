@@ -53,7 +53,7 @@ export class EmployeesListComponent implements OnInit {
         state: { data: selectedEmployee }
       });
     } else {
-      console.error("Employee not found in the list.");
+      console.error("Employé introuvable dans la liste.");
     }
   }
   
@@ -61,8 +61,8 @@ export class EmployeesListComponent implements OnInit {
   deleteItem(contactId: number) {
     console.log("Deleting employee with contactId:", contactId);
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this employee?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûr de vouloir supprimer cet employé ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -73,17 +73,17 @@ export class EmployeesListComponent implements OnInit {
           this.employeeService.deleteEmployee(contactId).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Employee deleted successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'L’employé a été supprimé avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting employee' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d’un employé' });
             }
           );
         }
         else{console.log(contactId)}
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }

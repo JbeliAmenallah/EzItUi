@@ -1,4 +1,3 @@
-<!-- annee-edit.component.html -->
 <p-dialog header="Edit Annee" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }" [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
   <ng-template pTemplate="content">
     <div class="form-group">
@@ -12,7 +11,7 @@
     </div>
   </ng-template>
   <p-footer>
-    <button pButton type="button" label="Save" class="p-button-success" (click)="saveAnnee()"></button>
-    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
+    <button pButton type="button" label="Envoyer" class="p-button-success" (click)="saveAnnee()"></button>
+    <button pButton type="button" label="Annuler" class="p-button-secondary" (click)="hideDialog()"></button>
   </p-footer>
 </p-dialog>

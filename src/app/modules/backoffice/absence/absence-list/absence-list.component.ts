@@ -35,8 +35,8 @@ export class AbsenceListComponent implements OnInit {
       },
       (error) => {
         this.loading = false;
-        console.error('Error fetching absences:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error fetching absences' }); // Add error message
+        console.error('Erreur lors de la récupération des absences :', error);
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la récupération des absences' }); 
       }
     );
   }
@@ -50,13 +50,13 @@ export class AbsenceListComponent implements OnInit {
     if (this.selectedAbsence) {
       this.absenceService.updateAbsence(this.selectedAbsence.absenceId, this.selectedAbsence).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Absence updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Absence mise à jour avec succès' });
           this.displayEditDialog = false;
           this.getAbsences(); // Refresh the list
         },
         (error) => {
           console.error('Error updating absence:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating absence' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de l’absence' });
         }
       );
     }
@@ -69,8 +69,8 @@ export class AbsenceListComponent implements OnInit {
 
   deleteItem(absenceId: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this absence?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûre de vouloir supprimer cette absence ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -80,16 +80,16 @@ export class AbsenceListComponent implements OnInit {
         this.absenceService.deleteAbsence(absenceId).subscribe(
           () => {
             this.getAbsences();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Absence deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'L’absence a été supprimée avec succès' });
           },
           (error) => {
             console.error('Error deleting absence:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting absence' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de l’absence' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }
