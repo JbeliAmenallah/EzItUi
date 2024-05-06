@@ -48,6 +48,7 @@ export class AddEntrepriseComponent implements OnInit {
       this.entreprise.numCnss = this.entrepriseForm.form.get('numCnss')?.value;
       this.entreprise.regimeSalariale = this.entrepriseForm.form.get('regimeSalariale')?.value;
       this.entreprise.nbrJourConge = this.entrepriseForm.form.get('nbrJourConge')?.value;
+
       this.service.createEntreprise(this.entreprise).subscribe(
         (data) => {
           setTimeout(() => {
@@ -64,3 +65,4 @@ export class AddEntrepriseComponent implements OnInit {
     }
   }
 }
+

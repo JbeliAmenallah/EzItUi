@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Autorisation } from '../../../../shared/models/autorisation';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './edit-autorisation.component.html',
   styleUrls: ['./edit-autorisation.component.css']
 })
-export class EditAutorisationComponent {
+export class EditAutorisationComponent implements OnInit {
 
   @Input() displayDialog: boolean;
   @Input() autorisation: Autorisation;
@@ -15,23 +15,33 @@ export class EditAutorisationComponent {
     { label: 'Accepted', value: 'Accepted' },
     { label: 'Pending', value: 'Pending' },
     { label: 'Rejected', value: 'Rejected' }
-    ];
-    
+  ];
+
   @Output() onSave: EventEmitter<Autorisation> = new EventEmitter<Autorisation>();
   @Output() onHide: EventEmitter<void> = new EventEmitter<void>();
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      startDate: [null, Validators.required],
-      endDate: [null, Validators.required],
-      contactId: [null, Validators.required],
-      state: [null, Validators.required]
-    });
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.initForm();
   }
 
+  initForm() {
+    const dateDebutAutorisation = this.autorisation ? new Date(this.autorisation.dateDebut) : null;
+    const dateFinAutorisation = this.autorisation ? new Date(this.autorisation.dateFin) : null;
+
+    this.form = this.formBuilder.group({
+      dateDebutAutorisation: [dateDebutAutorisation, Validators.required], 
+      dateFinAutorisation: [dateFinAutorisation,Validators.required], 
+      contactId: [this.autorisation.contactId, Validators.required], 
+      state: [this.autorisation.state, Validators.required]
+    });
+  }
+ 
+
   saveAutorisation() {
-      this.onSave.emit();
+    this.onSave.emit(this.autorisation);
   }
 
   hideDialog() {
