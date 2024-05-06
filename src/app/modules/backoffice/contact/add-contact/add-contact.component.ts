@@ -49,11 +49,22 @@ export class AddContactComponent implements OnInit {
           this.router.navigate(['/contacts']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the category.' });
+          if (error.status === 400) {
+            // Handle validation errors
+            const validationErrors = error.error;
+            for (const key in validationErrors) {
+              if (validationErrors.hasOwnProperty(key)) {
+                this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: validationErrors[key] });
+              }
+            }
+          } else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the category.' });
+          }
         }
       );
     } else {
       this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
     }
   }
+  
 }

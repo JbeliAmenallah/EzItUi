@@ -16,6 +16,7 @@ export class AddEmployeeComponent implements OnInit {
   private employee: Employee;
   messages: Message[] = [];
 
+
   constructor(
     private service: EmployeeService,
     private router: Router,
@@ -41,10 +42,8 @@ export class AddEmployeeComponent implements OnInit {
       dateRecrutemnt: null
     };
   }
-
   save() {
     if (this.employeeForm.form.valid) {
-      // Populate the employee object from the form fields
       this.employee = {
         name: this.employeeForm.form.get('name')?.value,
         username: this.employeeForm.form.get('username')?.value,
@@ -66,23 +65,27 @@ export class AddEmployeeComponent implements OnInit {
       console.log(this.employee)
       this.service.addEmployee(this.employee).subscribe(
         () => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully added.', life: 1000 });
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully added.' });
-            setTimeout(() => {
-                this.router.navigate(['/employee/list']);
-            }, 1000); 
-        }, 10);
+            this.router.navigate(['/employee/list']);
+          }, 1000); 
         },
         (error) => {
-          let errorMessage = 'An error occurred while saving the employee.';
-          if (error && error.error && error.error.message) {
-            errorMessage = error.error.message; 
+          console.error('Error saving employee:', error);
+
+          if (Array.isArray(error)) {
+            error.forEach(err => {
+              this.messageService.add({ severity: 'error', summary: 'Fields Are not valid', detail: err.message});
+            });
+          } else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save employee.' });
           }
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
         }
       );
-    }  else {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.' });
+    } else {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.', life: 1000 });
     }
   }
+  
+  
 }

@@ -4,6 +4,7 @@ import { Employee } from '../../../../shared/models/employee';
 import { EmployeeService } from '../../../../core/http/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
+import { Entreprise } from '../../../../shared/models/Entreprise';
 
 @Component({
   selector: 'app-edit-employee',
@@ -47,6 +48,8 @@ export class EditEmployeeComponent implements OnInit {
     this.getEmployee();
   }
 
+
+
   getEmployee() {
     this.service.getEmployeeById(this.contactId).subscribe({
       next: (item: Employee) => {
@@ -82,20 +85,33 @@ export class EditEmployeeComponent implements OnInit {
       this.employee.numCompte = this.employeeForm.form.get('numCompte')?.value;
       this.employee.modeDePaiement = this.employeeForm.form.get('modeDePaiement')?.value;
       this.employee.dateRecrutemnt = this.employeeForm.form.get('dateRecrutemnt')?.value;
-      
+
+
+      Entreprise :{ entrepriseId: this.employeeForm.form.get('entrepriseId')?.value };
+      console.log(Entreprise)
+      this.employee.entreprise=Entreprise;
+      console.log(this.employee)
       this.service.updateEmployee(this.contactId, this.employee).subscribe(
         (data) => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully updated.', life: 3000 });
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully updated.' });
+            this.router.navigate(['/employee/list']);
           }, 100);
-          this.router.navigate(['/employee/list']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while updating the employee.' });
+          console.error('Error updating employee:', error);
+  
+          if (Array.isArray(error)) {
+            error.forEach(err => {
+              this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: err.message, life: 3000 });
+            });
+          } else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to update employee.', life: 3000 });
+          }
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.',life:1500});
     }
   }
 }

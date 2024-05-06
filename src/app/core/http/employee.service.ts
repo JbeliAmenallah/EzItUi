@@ -12,16 +12,7 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    return throwError('Something bad happened; please try again later.');
-  }
+ 
 
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl)
@@ -52,9 +43,25 @@ export class EmployeeService {
       );
   }
 
-  updateEmployee(id: number, updatedEmployee: Employee): Observable<Employee> {
+  private handleError(error: HttpErrorResponse) {
+    console.error('Error:', error);
+    if (error.status === 400 && error.error && error.error.message === 'Validation Error') {
+      const validationErrors = error.error.errors;
+      const formattedErrors = Object.entries(validationErrors).map(([field, errorMessage]) => ({
+        field,
+        message: errorMessage
+      }));
+      return throwError(formattedErrors);
+    } else {
+      return throwError('Something bad happened; please try again later.');
+    }
+  }
+
+
+
+  updateEmployee(id: number, employee: Employee): Observable<Employee> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.put<Employee>(url, updatedEmployee)
+    return this.http.put<Employee>(url, employee)
       .pipe(
         catchError(this.handleError)
       );
