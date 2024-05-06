@@ -76,10 +76,6 @@ export class EditEntrepriseComponent implements OnInit {
       this.entreprise.numCnss = this.entrepriseForm.form.get('numCnss')?.value;
       this.entreprise.regimeSalariale = this.entrepriseForm.form.get('regimeSalariale')?.value;
       this.entreprise.nbrJourConge = this.entrepriseForm.form.get('nbrJourConge')?.value;
-<<<<<<< HEAD
-
-=======
->>>>>>> d14d4fefa4db62a38a7037e69242b5b96bdd34b3
 
       this.service.updateEntreprise(this.entrepriseId, this.entreprise).subscribe(
         (data) => {
