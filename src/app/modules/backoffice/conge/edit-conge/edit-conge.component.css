@@ -118,3 +118,8 @@ select::placeholder {
   font-weight: 400;
   line-height: normal;
 }
+
+:host >>> p-button{
+  display: flex;
+  justify-content: center;
+}

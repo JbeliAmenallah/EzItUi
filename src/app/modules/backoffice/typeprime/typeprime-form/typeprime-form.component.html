@@ -32,10 +32,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="abasedesalaire">A base de salaire:</label>
-                    <select class="form-control" formControlName="abasedesalaire" id="abasedesalaire">
+                    <p-dropdown formControlName="abasedesalaire" id="abasedesalaire" class="form-control">
                         <option value="true">Yes</option>
                         <option value="false">No</option>
-                    </select>
+                    </p-dropdown>
                 </div>
             </div>
 
@@ -75,16 +75,17 @@
                 </div>
             </div>
 
-            <!-- Obligatoire -->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="obligatoire">Obligatoire:</label>
-                    <select class="form-control" formControlName="obligatoire" id="obligatoire">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                </div>
-            </div>
+<!-- Obligatoire -->
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="obligatoire">Obligatoire:</label>
+        <p-dropdown formControlName="obligatoire" id="obligatoire" class="form-control">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </p-dropdown>
+    </div>
+</div>
+
 
             <!-- CNSS -->
            <!-- CNSS -->
