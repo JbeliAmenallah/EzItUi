@@ -119,3 +119,18 @@ select::placeholder {
   line-height: normal;
 }
 
+.btn-primary {
+  padding: 10px 20px;
+  margin: 0;
+  font-size: 14px; 
+
+}
+.card {
+  margin-top: 20px;
+}
+.messages-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}

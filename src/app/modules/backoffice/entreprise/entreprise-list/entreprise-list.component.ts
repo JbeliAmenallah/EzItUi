@@ -53,20 +53,16 @@ export class EntreprisesListComponent implements OnInit {
       acceptIcon: "pi pi-check",
       rejectIcon: "pi pi-times",
       accept: () => {
-        if (entrepriseId !== undefined) {
-          this.entrepriseService.deleteEntreprise(entrepriseId).subscribe(
-            () => {
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Entreprise deleted successfully' });
-              this.getList(); 
-            },
-            (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to delete entreprise' });
-            }
-          );
-        }
-        else {
-          console.log(entrepriseId);
-        }
+        this.entrepriseService.deleteEntreprise(entrepriseId).subscribe(
+          () => {
+            this.getList();
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Entreprise deleted successfully' });
+          },
+          (error) => {
+            console.error('Error deleting entreprise:', error);
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting entreprise' });
+          }
+        );
       },
       reject: () => {
         this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });

@@ -1,4 +1,5 @@
-<p-dialog header="Edit Annee" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }"[modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+<!-- annee-edit.component.html -->
+<p-dialog header="Edit Annee" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }" [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
   <ng-template pTemplate="content">
     <div class="form-group">
       <label for="dateDebutExercice">Start Date of Exercise</label>
@@ -9,11 +10,9 @@
       <label for="libele">Libele</label>
       <input id="libele" pInputText type="text" [(ngModel)]="selectedAnnee.libele" class="form-control" placeholder="Libele" />
     </div>
-
   </ng-template>
   <p-footer>
     <button pButton type="button" label="Save" class="p-button-success" (click)="saveAnnee()"></button>
     <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
   </p-footer>
-  
 </p-dialog>

@@ -33,9 +33,7 @@ export class AddEntrepriseComponent implements OnInit {
       matriculeFiscale: '',
       numCnss: '',
       regimeSalariale: '',
-      nbrJourConge: null,
-      typePrime: '',
-      typeDeductions: '',
+      nbrJourConge: null
     };
   }
 
@@ -50,8 +48,6 @@ export class AddEntrepriseComponent implements OnInit {
       this.entreprise.numCnss = this.entrepriseForm.form.get('numCnss')?.value;
       this.entreprise.regimeSalariale = this.entrepriseForm.form.get('regimeSalariale')?.value;
       this.entreprise.nbrJourConge = this.entrepriseForm.form.get('nbrJourConge')?.value;
-      this.entreprise.typePrime = this.entrepriseForm.form.get('typePrime')?.value;
-      this.entreprise.typeDeductions = this.entrepriseForm.form.get('typeDeductions')?.value;
 
       this.service.createEntreprise(this.entreprise).subscribe(
         (data) => {
@@ -69,3 +65,4 @@ export class AddEntrepriseComponent implements OnInit {
     }
   }
 }
+

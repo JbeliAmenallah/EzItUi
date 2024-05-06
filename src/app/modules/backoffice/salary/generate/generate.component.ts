@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SalaryService } from '../../../../core/http/salary.service';
 import { AbsenceService } from '../../../../core/http/absence.service';
 import { forkJoin } from 'rxjs';
+import { Message } from 'primeng/api';
+
 
 @Component({
   selector: 'app-generate',
@@ -12,12 +14,14 @@ import { forkJoin } from 'rxjs';
 export class GenerateComponent implements OnInit {
 
   generateForm: FormGroup;
-  contactOptions: any[]; // Assuming your contacts have a 'name' property
+  contactOptions: any[]; 
+  messages: any[] = []; // Property to hold messages
 
   constructor(
     private fb: FormBuilder,
     private salaryService: SalaryService,
-    private absenceService: AbsenceService
+    private absenceService: AbsenceService,
+
   ) { }
 
   ngOnInit() {
@@ -85,41 +89,36 @@ export class GenerateComponent implements OnInit {
       contactId: contactId,
       year: year,
       month: month,
-      filePath: 'filePath' // Replace with the actual file path
+      filePath: 'filePath' 
     };
   
-    // Call the appropriate service method based on contactId
     if (contactId !== null) {
       this.salaryService.generateSalaryForContact(payload).subscribe(
         () => {
           console.log('Salary generated for selected contact!');
-          // Handle success
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Salary generated for selected contact!',life: 1000 }];
         },
         (error) => {
           console.error('Error generating salary for selected contact:', error);
-          // Handle error
+          this.messages = [{ severity: 'error', summary: 'Error', detail: 'Error generating salary for selected contact!' ,life: 1000}];
         }
       );
     } else {
       this.salaryService.generateSalaryForAllContacts(year, month).subscribe(
         () => {
           console.log('Salary generated for all selected contacts!');
-          // Handle success
+        this.messages = [{ severity: 'success', summary: 'Success', detail: 'Salary generated for all selected contacts!' ,life: 1000}];
+          
         },
         (error) => {
           console.error('Error generating salary for all selected contacts:', error);
-          // Handle error
+          this.messages = [{ severity: 'error', summary: 'Error', detail: 'Error generating salary for all selected contacts!',life: 1000 }];
         }
       );
     }
   }
-  
-  
-  
-  
-  
-  
 
+  
   // Helper method to mark all form controls as touched
   markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach(control => {

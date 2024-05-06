@@ -35,8 +35,6 @@ export class EntrepriseFormComponent implements OnInit {
       numCnss: [null, Validators.required],
       regimeSalariale: [null, Validators.required],
       nbrJourConge: [null, Validators.required],
-      typePrime: [null, Validators.required],
-      typeDeductions: [null, Validators.required],
     });
   }
 
@@ -76,14 +74,6 @@ export class EntrepriseFormComponent implements OnInit {
       ],
       nbrJourConge: [
         this.currentItemForm.nbrJourConge,
-        Validators.compose([Validators.required]),
-      ],
-      typePrime: [
-        this.currentItemForm.typePrime,
-        Validators.compose([Validators.required]),
-      ],
-      typeDeductions: [
-        this.currentItemForm.typeDeductions,
         Validators.compose([Validators.required]),
       ],
     });
