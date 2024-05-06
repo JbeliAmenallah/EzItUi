@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Absence } from '../../../../shared/models/absence';
 import { AbsenceService } from '../../../../core/http/absence.service';
-import { Message, MessageService } from 'primeng/api'; 
+import { Message, MessageService, SelectItem } from 'primeng/api'; 
 
 
 @Component({
@@ -32,6 +32,15 @@ export class EditAbsenceComponent implements OnInit {
   ngOnInit(): void {
     this.loadAbsence();
     this.initializeForm(); 
+    
+    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+      if (messages && Array.isArray(messages)) {
+        this.messages = messages; // Update messages array
+      } else {
+        this.messages = []; // Reset messages array
+      }
+    });
+    
   }
 
   loadAbsence(): void {
@@ -62,7 +71,7 @@ initializeForm(): void {
 
   // Convert justified value to boolean if it's a string
   const justifiedValue = this.absence ? this.absence.justified.toString() : null;
-  console.log(justifiedValue)
+console.log(justifiedValue)
 this.editForm = this.formBuilder.group({
     contactId: [this.absence ? this.absence.contactId : null],
     dateDebutAbsence: [dateDebutAbsence], 
@@ -86,9 +95,13 @@ onSubmit(): void {
     console.log('Updated Absence:', updatedAbsence);
     this.absenceService.updateAbsence(this.absence.absenceId, updatedAbsence).subscribe(
       () => {
-        console.log('Absence updated successfully');
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Absence updated successfully' });
-        this.router.navigate(['/absence/list']);
+        setTimeout(() => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The absence has been successfully updated.' });
+          setTimeout(() => {
+              this.router.navigate(['/absence/list']);
+          }, 100); 
+      }, 10);
+      
       },
       (error) => {
         console.error('Error updating absence:', error);

@@ -30,7 +30,9 @@
                 <th>Month</th>
                 <th>Montant</th>
                 <th>Motif</th>
+                <th>Type Prime Id</th>
                 <th>Actions</th>
+                <th></th>
             </tr>
             <tr>
                 <th>
@@ -49,15 +51,11 @@
                     <p-columnFilter type="text" field="motif"></p-columnFilter>
                 </th>
                 <th>
-                    <p-columnFilter type="text" field="contact.name"></p-columnFilter>
-                </th>
-                <th>
-                    <p-columnFilter type="text" field="typePrime"></p-columnFilter>
-                </th>
-                <th>
-                    
+                    <p-columnFilter type="text" field="typePrimeId"></p-columnFilter>
                 </th>
                 <th></th>
+                <th></th>
+
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-prime>
@@ -67,8 +65,8 @@
                 <td>{{ prime.month }}</td>
                 <td>{{ prime.montant }}</td>
                 <td>{{ prime.motif }}</td>
-                <td>{{ prime?.contact?.name }}</td>
-                <td>{{ prime.typePrime }}</td>
+                <td>{{ prime.typePrimeId }}</td>
+                <td></td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)" (click)="editPrime(prime)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deleteItem(prime.primeId)"></i>

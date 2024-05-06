@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Deduction } from '../../../../shared/models/deduction';
 import { DeductionService } from '../../../../core/http/deduction.service';
-import { MessageService } from 'primeng/api';
+import { Message, MessageService } from 'primeng/api';
 import { DeductionFormComponent } from '../deduction-form/deduction-form.component';
 
 @Component({
@@ -50,6 +50,15 @@ export class EditDeductionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDeduction();
+    this.messageService.messageObserver.subscribe((messages: Message[]) => {
+      if (messages && Array.isArray(messages)) {
+        this.messages = messages; // Update messages array
+      } else {
+        // If messages is not an array, handle it accordingly
+        console.error('Received invalid messages:', messages);
+        this.messages = []; // Reset messages array
+      }
+    });
   }
 
   getDeduction() {
@@ -69,8 +78,12 @@ export class EditDeductionComponent implements OnInit {
       const updatedDeduction = { ...this.deduction, ...this.deductionFormComponent.formDeduction.value };
       this.deductionService.updateDeduction(this.deductionId, updatedDeduction).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The deduction has been successfully updated.' });
-          this.router.navigate(['/deduction/list']);
+          setTimeout(() => {
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Deduction has been successfully added.' });
+            setTimeout(() => {
+                this.router.navigate(['/deduction/list']);
+            }, 100); // Delay navigation by 1 second
+        }, 10);
         },
         (error) => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while updating the deduction.' });

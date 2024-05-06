@@ -3,7 +3,7 @@ import { PrimeFormComponent } from '../prime-form/prime-form.component';
 import { PrimeService } from '../../../../core/http/prime.service';
 import { Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
-import { Prime } from '../../../../shared/prime';
+import { Prime } from '../../../../shared/models/prime';
 
 @Component({
   selector: 'app-add-prime',

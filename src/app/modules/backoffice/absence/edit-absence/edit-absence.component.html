@@ -10,8 +10,9 @@
         </div>
       </div>
       <div class="card">
-        <p-messages [(value)]="messages"></p-messages>
-      </div>
+        <p-messages [(value)]="messages" [enableService]="true" [closable]="true"></p-messages>
+        <p-toast></p-toast>
+    </div>
     </form>
   </div>
 </div>

@@ -94,4 +94,5 @@ export class AbsenceService {
     const url = `${this.apiUrl}/${id}`; 
     return this.http.get<Absence>(url);
   }
+  
 }

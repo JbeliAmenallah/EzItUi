@@ -89,9 +89,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="chefDefamille">Chef de Famille:</label>
-                    <input type="checkbox" pInputCheckbox formControlName="chefDefamille" id="chefDefamille" class="form-control"/>
+                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Select a Chef" class="form-control"></p-dropdown>
                 </div>
             </div>
+            
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="regime">Regime:</label>
@@ -126,10 +127,11 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="dateRecrutemnt">Recruitment Date:</label>
-                    <input type="date" pInputText formControlName="dateRecrutemnt" id="dateRecrutemnt" class="form-control"/>
+                    <p-calendar formControlName="dateRecrutemnt" id="dateRecrutemnt" [showIcon]="true" [inputStyleClass]="'form-control'"></p-calendar>
                     <small class="p-error" *ngIf="form.get('dateRecrutemnt')?.touched && form.get('dateRecrutemnt')?.hasError('required')">The recruitment date is required</small>
                 </div>
             </div>
+            
         </div>
     </form>
 </div>

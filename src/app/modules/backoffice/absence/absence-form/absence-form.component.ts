@@ -27,8 +27,23 @@ export class AbsenceFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.createForm();
     this.loadEmployeeOptions();
+  
+    console.log('Initial justified value:', this.form.get('justified').value);
+  
+    // Pre-select justified field if a value is available
+    if (this.form.get('justified').value !== null) {
+      const justifiedValue = this.form.get('justified').value;
+      console.log('Received justified value:', justifiedValue);
+      
+      const option = this.justifiedOptions.find(option => option.value === justifiedValue);
+      console.log('Matching option:', option);
+  
+      if (option) {
+        this.form.get('justified').setValue(option.value);
+      }
+    }
   }
-
+  
   createForm() {
     return this.formBuilder.group({
       contactId: [
@@ -65,4 +80,5 @@ export class AbsenceFormComponent implements OnInit {
       }
     );
   }
+  
 }

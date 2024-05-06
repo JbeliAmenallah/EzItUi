@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { PrimeFormComponent } from '../prime-form/prime-form.component';
 import { PrimeService } from '../../../../core/http/prime.service';
-import { Prime } from '../../../../shared/prime';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
+import { Prime } from '../../../../shared/models/prime';
 
 @Component({
   selector: 'app-edit-prime',
@@ -22,7 +22,13 @@ export class EditPrimeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     if (this.route.snapshot.paramMap.get('id') !== undefined) {
       this.primeId = this.route.snapshot.paramMap.get('id');
       this.getPrime();
@@ -34,7 +40,7 @@ export class EditPrimeComponent implements OnInit {
         } else if (this.router.getCurrentNavigation() != null) {
           const extrasState = this.router.getCurrentNavigation()?.extras.state;
           if (extrasState !== undefined && extrasState['data'] !== undefined) {
-            this.primeForm = extrasState['data'];
+            this.prime = extrasState['data'];
           } else {
             this.router.navigate(['/prime/list']);
           }
@@ -43,22 +49,37 @@ export class EditPrimeComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.getPrime();
-  }
-
   getPrime() {
-    this.primeService.getPrimeById(this.primeId).subscribe({
-      next: (item: Prime) => {
-        this.prime = item;
-        console.log(item);
-      },
-      error: (error) => {
-        console.error("An error occurred while getting the prime:", error);
-        this.goToList();
-      }
+  this.primeService.getPrimeById(this.primeId).subscribe({
+    next: (item: Prime) => {
+      console.log("Retrieved prime:", item);
+      this.prime = item;
+      // Assigning the retrieved prime object to the form
+      this.patchFormWithPrimeData(item);
+    },
+    error: (error) => {
+      console.error("An error occurred while getting the prime:", error);
+      this.goToList();
+    }
+  });
+}
+
+patchFormWithPrimeData(prime: Prime) {
+  if (this.primeForm && this.primeForm.form) {
+    console.log("Patch form with prime data:", prime);
+    this.primeForm.form.patchValue({
+      contactId: prime.contactId,
+      year: prime.year,
+      month: prime.month,
+      montant: prime.montant,
+      motif: prime.motif,
+      typePrimeId: prime.typePrimeId
     });
+  } else {
+    console.error("Prime form or form control not available.");
   }
+}
+
 
   goToList() {
     this.router.navigate(['/prime/list']);
