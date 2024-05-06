@@ -4,6 +4,7 @@ import { Employee } from '../../../../shared/models/employee';
 import { EmployeeService } from '../../../../core/http/employee.service';
 import { EntrepriseService } from '../../../../core/http/entreprise.service';
 import { SelectItem } from 'primeng/api';
+import { isDate } from 'util/types';
 
 @Component({
   selector: 'app-employee-form',
@@ -19,6 +20,7 @@ export class EmployeeFormComponent implements OnInit {
     { label: 'regime1', value: 'regime1' },
     { label: 'regime2', value: 'regime2' }
   ];
+  
   chefOptions: any[] = [
     {label: 'No', value: false},
     {label: 'Yes', value: true}
@@ -28,11 +30,13 @@ export class EmployeeFormComponent implements OnInit {
     private employeeService: EmployeeService,
     private entrepriseService: EntrepriseService
   ) { }
-
+  
   ngOnInit(): void {
     if (this.currentItemForm === undefined) {
       this.form = this.createForm();
     } else {
+      var da=new Date(this.currentItemForm.dateRecrutemnt);
+      console.log(this.currentItemForm.dateRecrutemnt)
       this.form = this.updateForm();
     }
     this.loadEntrepriseOptions();
@@ -48,6 +52,8 @@ export class EmployeeFormComponent implements OnInit {
       }
     );
   }
+
+
 
   createForm() {
     return this.formBuilder.group({
@@ -71,6 +77,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   updateForm() {
+    let date=new Date(this.currentItemForm.dateRecrutemnt)
     return this.formBuilder.group({
       name: [this.currentItemForm.name, Validators.compose([Validators.required])],
       username: [this.currentItemForm.username, Validators.compose([Validators.required])],
@@ -86,7 +93,8 @@ export class EmployeeFormComponent implements OnInit {
       salaireDeBASE: [this.currentItemForm.salaireDeBASE, Validators.compose([Validators.required])],
       numCompte: [this.currentItemForm.numCompte, Validators.compose([Validators.required])],
       modeDePaiement: [this.currentItemForm.modeDePaiement, Validators.compose([Validators.required])],
-      dateRecrutemnt: [this.currentItemForm.dateRecrutemnt, Validators.compose([Validators.required])]
+      dateRecrutemnt: [date, Validators.compose([Validators.required])],
+      entrepriseId: [this.currentItemForm.entreprise.entrepriseId, Validators.compose([Validators.required])]
     });
   }
 }

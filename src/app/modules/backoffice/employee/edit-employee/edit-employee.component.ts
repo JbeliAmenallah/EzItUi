@@ -4,6 +4,7 @@ import { Employee } from '../../../../shared/models/employee';
 import { EmployeeService } from '../../../../core/http/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
+import { Entreprise } from '../../../../shared/models/Entreprise';
 
 @Component({
   selector: 'app-edit-employee',
@@ -47,6 +48,8 @@ export class EditEmployeeComponent implements OnInit {
     this.getEmployee();
   }
 
+
+
   getEmployee() {
     this.service.getEmployeeById(this.contactId).subscribe({
       next: (item: Employee) => {
@@ -82,20 +85,45 @@ export class EditEmployeeComponent implements OnInit {
       this.employee.numCompte = this.employeeForm.form.get('numCompte')?.value;
       this.employee.modeDePaiement = this.employeeForm.form.get('modeDePaiement')?.value;
       this.employee.dateRecrutemnt = this.employeeForm.form.get('dateRecrutemnt')?.value;
-      
+
+
+      Entreprise :{ entrepriseId: this.employeeForm.form.get('entrepriseId')?.value };
+      console.log(Entreprise)
+      this.employee.entreprise=Entreprise;
+      console.log(this.employee)
       this.service.updateEmployee(this.contactId, this.employee).subscribe(
         (data) => {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully updated.', life: 3000 });
           setTimeout(() => {
+<<<<<<< HEAD
             this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employé a été mis à jour avec succès.' });
+=======
+            this.router.navigate(['/employee/list']);
+>>>>>>> 9dc06f90856821207aeb1cd8b9b3edbaab2b629b
           }, 100);
-          this.router.navigate(['/employee/list']);
         },
         (error) => {
+<<<<<<< HEAD
           this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de la mise à jour de l’employé.' });
         }
       );
     } else {
       this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });
+=======
+          console.error('Error updating employee:', error);
+  
+          if (Array.isArray(error)) {
+            error.forEach(err => {
+              this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: err.message, life: 3000 });
+            });
+          } else {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to update employee.', life: 3000 });
+          }
+        }
+      );
+    } else {
+      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.',life:1500});
+>>>>>>> 9dc06f90856821207aeb1cd8b9b3edbaab2b629b
     }
   }
 }
