@@ -30,6 +30,13 @@ export class EmployeeService {
       );
   }
 
+  getEmployeesAddedThisYear(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/employees-added-this-year`);
+  }
+
+   // Method to get the count of employees
+
+
   getEmployeeById(id: number): Observable<Employee> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Employee>(url)

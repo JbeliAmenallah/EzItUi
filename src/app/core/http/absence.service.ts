@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Absence } from '../../shared/models/absence';
@@ -24,7 +24,13 @@ export class AbsenceService {
     }
     return throwError('Something bad happened; please try again later.');
   }
-
+  countAbsencesByYear(year: number): Observable<number> {
+    const url = `${this.apiUrl}/count-by-year`;
+    const params = new HttpParams().set('year', year.toString());
+    return this.http.get<number>(url, { params }).pipe(
+      catchError(this.handleError)
+    );
+  }
   getAllAbsences(): Observable<Absence[]> {
     return this.http.get<Absence[]>(this.apiUrl).pipe(
       catchError(this.handleError)

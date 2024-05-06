@@ -1,66 +1,45 @@
-<div class="container">
-  <!-- Employee Information Section -->
-  <div class="section">
-    <h2><i class="fas fa-user"></i> Employee Information</h2>
-    <div class="info">
-      <div><i class="fas fa-user"></i> Name: {{ employee.name }}</div>
-      <div><i class="fas fa-at"></i> Email: {{ employee.email }}</div>
-      <div><i class="fas fa-map-marker-alt"></i> Location: {{ employee.location }}</div>
-      <!-- Add more employee information here -->
+<div class="grid">
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+        <div class="flex justify-content-between mb-3">
+            <div>
+                <span class="block text-500 font-medium mb-3">Employees</span>
+                <div class="text-900 font-medium text-xl">{{ employeeCount }}</div>
+            </div>
+            <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+              <a [routerLink]="['/employee/list']" class="dashboard-nav-item">
+                <i class="pi pi-user text-blue-500 text-xl" style="cursor: pointer;"></i>
+              </a>
+            </div>
+        </div>
+        <span class="text-green-500 font-medium"> {{ employeeCountThisYear }}-New &nbsp;  </span>
+        <span class="text-400 font-medium">Employees Added This Year <span class="text-red-500 font-bold">{{ sinceYearText }}</span> </span>
     </div>
   </div>
-
-  <!-- Children Section -->
-  <div class="section">
-    <h2><i class="fas fa-child"></i> Children</h2>
-    <div class="children">
-      <div *ngFor="let child of employee.enfants">
-        <div><i class="fas fa-child"></i> Name: {{ child.name }}</div>
-        <div><i class="fas fa-birthday-cake"></i> Age: {{ child.age }}</div>
-        <!-- Add more child information here -->
-      </div>
+  
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+        <div class="flex justify-content-between mb-3">
+            <div>
+                <span class="block text-500 font-medium mb-3">Absence Count</span>
+                <div class="text-900 font-medium text-xl">{{ absenceCount }}</div>
+            </div>
+            <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+              <a [routerLink]="['/absence/list']" class="dashboard-nav-item">
+                <i class="pi pi-user-minus text-orange-500 text-xl" style="cursor: pointer;"></i>
+              </a>
+            </div>
+            
+        </div>
+        <span class="text-green-500 font-medium">
+          {{ percentageChange > 0 ? '+' + percentageChange + '%' : (percentageChange < 0 ? percentageChange + '%' : 'No change') }}
+          <span class="text-400 font-medium">{{ changeText }}</span>
+        </span>
+        <span class="text-red-500 font-bold">{{ prevyear }}</span>
     </div>
   </div>
-
-  <!-- Absences Section -->
-  <div class="section">
-    <h2><i class="fas fa-calendar-times"></i> Absences</h2>
-    <div class="absences">
-      <div *ngFor="let absence of employee.absences">
-        <div><i class="fas fa-calendar-times"></i> Reason: {{ absence.reason }}</div>
-        <div><i class="far fa-calendar-alt"></i> Start Date: {{ absence.dateDebutAbsence | date }}</div>
-        <!-- Add more absence information here -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Charts Section -->
-  <div class="section charts-section">
-    <h2><i class="fas fa-chart-bar"></i> Charts</h2>
-    <div class="chart-container">
-      
-      <div class="section">
-        <div  class="" [chart]="chart1"></div>
-      </div>
-      
-      <!-- Primes Chart -->
-      <canvas id="primesChart" class="chart"></canvas>
-    </div>
-  </div>
-  <div class="section">
-    <h2><i class="fas fa-calendar-check"></i> Autorisations</h2>
-    <div class="autorisations">
-      <!-- Canvas for Chart -->
-      <canvas id="myChart" class="chart"></canvas>
-      
-      <!-- List of Autorisations -->
-      <div *ngFor="let autorisation of employee.autorisations">
-        <div><i class="fas fa-calendar-check"></i> Date: {{ autorisation.dateDebut }}</div>
-        <div><i class="fas fa-info-circle"></i> Description: {{ autorisation.state }}</div>
-        <!-- Add more autorisation information here -->
-      </div>
-    </div>
-
-    
-
+  
+  
+  
 </div>
+

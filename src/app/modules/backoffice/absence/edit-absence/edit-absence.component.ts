@@ -60,14 +60,19 @@ initializeForm(): void {
   const dateDebutAbsence = this.absence ? new Date(this.absence.dateDebutAbsence) : null;
   const dateFinAbsence = this.absence ? new Date(this.absence.dateFinAbsence) : null;
 
-  this.editForm = this.formBuilder.group({
-      contactId: [this.absence ? this.absence.contactId : null],
-      dateDebutAbsence: [dateDebutAbsence], 
-      dateFinAbsence: [dateFinAbsence], 
-      reason: [this.absence ? this.absence.reason : null],
-      justified: [this.absence ? this.absence.justified : null]
-  });
+  // Convert justified value to boolean if it's a string
+  const justifiedValue = this.absence ? this.absence.justified.toString() : null;
+  console.log(justifiedValue)
+this.editForm = this.formBuilder.group({
+    contactId: [this.absence ? this.absence.contactId : null],
+    dateDebutAbsence: [dateDebutAbsence], 
+    dateFinAbsence: [dateFinAbsence], 
+    reason: [this.absence ? this.absence.reason : null],
+    justified: [justifiedValue]
+});
+
 }
+
 
 
 onSubmit(): void {

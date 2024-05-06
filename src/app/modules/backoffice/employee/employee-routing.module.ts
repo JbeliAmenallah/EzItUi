@@ -23,7 +23,7 @@ const routes: Routes = [
     component:EditEmployeeComponent
   },
   {
-    path:'details/:id',
+    path:'details',
     component:EmployeeDetailsComponent
 
   }

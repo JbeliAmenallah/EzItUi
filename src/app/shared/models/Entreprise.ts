@@ -9,7 +9,5 @@ export class Entreprise {
     numCnss: string;
     regimeSalariale: string;
     nbrJourConge: number;
-    typePrime: string;
-    typeDeductions: string;
   }
   

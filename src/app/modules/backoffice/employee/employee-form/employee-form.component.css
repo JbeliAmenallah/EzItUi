@@ -1,7 +1,7 @@
 .form {
     background-color: #fff;
     padding: 50px 25px;
-    border-radius: 10px;
+    border-radius: 20px;
   }
   .row {
     display: flex;
@@ -16,9 +16,7 @@
   .form-group {
     display: grid;
   }
-  .card {
-    margin-top: 20px;
-  }
+
   input {
     width: 100%;
     height: 60px;

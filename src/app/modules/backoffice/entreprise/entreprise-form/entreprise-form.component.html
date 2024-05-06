@@ -73,21 +73,6 @@
                 </div>
             </div>
          
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="typePrime">Type Prime:</label>
-                    <input type="text" pInputText formControlName="typePrime" id="typePrime" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('typePrime')?.touched && form.get('typePrime')?.hasError('required')">Le type prime est requis</small>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="typeDeductions">Type Déductions:</label>
-                    <input type="text" pInputText formControlName="typeDeductions" id="typeDeductions" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('typeDeductions')?.touched && form.get('typeDeductions')?.hasError('required')">Le type déductions est requis</small>
-                </div>
-            </div>
         </div>
     </form>
 </div>
