@@ -17,7 +17,7 @@ export class AddEntrepriseComponent implements OnInit {
   messages: Message[] = [];
 
   constructor(
-    private service: EntrepriseService, // Update to your Entreprise service
+    private service: EntrepriseService, 
     private router: Router,
     private messageService: MessageService 
   ) { }
@@ -52,16 +52,16 @@ export class AddEntrepriseComponent implements OnInit {
       this.service.createEntreprise(this.entreprise).subscribe(
         (data) => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The entreprise has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’entreprise a été ajoutée avec succès.' });
           }, 100);
-          this.router.navigate(['/entreprise/list']); // Update route to entreprise list
+          this.router.navigate(['/entreprise/list']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the entreprise.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement de l’entreprise.' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validtion', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
 }

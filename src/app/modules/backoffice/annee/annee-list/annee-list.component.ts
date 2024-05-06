@@ -33,7 +33,7 @@ export class AnneeListComponent implements OnInit {
       },
       (error) => {
         this.loading = false;
-        console.error('Error fetching annees:', error);
+        console.error('Erreur lors de la récupération des annees :', error);
       }
     );
   }
@@ -48,13 +48,13 @@ export class AnneeListComponent implements OnInit {
     if (this.selectedAnnee) {
       this.anneeService.updateAnnee(this.selectedAnnee.id, this.selectedAnnee).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Annee updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Annee a été mise à jour avec succès' });
           this.displayEditDialog = false;
           this.getAnnees(); // Refresh the list
         },
         (error) => {
-          console.error('Error updating annee:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating annee' });
+          console.error('Erreur lors de la mise à jour de l’année :', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour d’annee' });
         }
       );
     }
@@ -67,8 +67,8 @@ export class AnneeListComponent implements OnInit {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this annee?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûr de vouloir supprimer cette année ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -78,17 +78,18 @@ export class AnneeListComponent implements OnInit {
         this.anneeService.deleteAnnee(id).subscribe(
           () => {
             this.getAnnees();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Annee deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Année supprimée avec succès' });
           },
           (error) => {
-            console.error('Error deleting annee:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting annee' });
+            console.error('Erreur lors de la suppression de l\'année :', error);
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de l\'année' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejetée', detail: 'Vous avez rejeté' });
       }
     });
   }
+
 }

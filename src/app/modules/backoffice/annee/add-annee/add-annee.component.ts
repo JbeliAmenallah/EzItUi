@@ -37,26 +37,27 @@ export class AddAnneeComponent implements OnInit {
 
       console.log("New Annee:", newAnnee);
 
-      // Now proceed with saving
-      this.anneeService.createAnnee(newAnnee).subscribe(
-        () => {
-          console.log('Annee added successfully!');
-          this.messages.push({ severity: 'success', summary: 'Success', detail: 'Annee added successfully!' });
-          this.form.form.reset();
+      // Maintenant, procédez à l'enregistrement
+this.anneeService.createAnnee(newAnnee).subscribe(
+  () => {
+    console.log('Année ajoutée avec succès !');
+    this.messages.push({ severity: 'success', summary: 'Succès', detail: 'Année ajoutée avec succès !' });
+    this.form.form.reset();
 
-          setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Annee has been successfully added.' });
-          }, 100);
-          this.router.navigate(['/annee/list']);
-        },
-        (error) => {
-          console.error('Error adding Annee:', error);
-          this.messages.push({ severity: 'error', summary: 'Error', detail: 'An error occurred while adding Annee.' });
-        }
-      );
-    } else {
-      console.log("Form is invalid");
-      this.messages.push({ severity: 'error', summary: 'Error', detail: 'Please fill all required fields.' });
-    }
+    setTimeout(() => {
+      this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L\'année a été ajoutée avec succès.' });
+    }, 100);
+    this.router.navigate(['/annee/list']);
+  },
+  (error) => {
+    console.error('Erreur lors de l\'ajout de l\'année :', error);
+    this.messages.push({ severity: 'error', summary: 'Erreur', detail: 'Une erreur s\'est produite lors de l\'ajout de l\'année.' });
+  }
+);
+} else {
+  console.log("Le formulaire est invalide");
+  this.messages.push({ severity: 'error', summary: 'Erreur', detail: 'Veuillez remplir tous les champs requis.' });
+}
+
   }
 }

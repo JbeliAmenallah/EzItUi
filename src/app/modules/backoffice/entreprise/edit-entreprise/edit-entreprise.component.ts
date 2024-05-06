@@ -54,7 +54,7 @@ export class EditEntrepriseComponent implements OnInit {
         console.log(item);
       },
       error: (error) => {
-        console.error("An error occurred while getting the entreprise:", error);
+        console.error("Une erreur s’est produite lors de l’obtention de l’entreprise :", error);
         this.goToList();
       }
     });
@@ -80,16 +80,16 @@ export class EditEntrepriseComponent implements OnInit {
       this.service.updateEntreprise(this.entrepriseId, this.entreprise).subscribe(
         (data) => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The entreprise has been successfully updated.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’entreprise a été mise à jour avec succès.' });
           }, 100);
           this.router.navigate(['/entreprise/list']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while updating the entreprise.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de la mise à jour de l’entreprise.' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
 }

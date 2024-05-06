@@ -35,9 +35,9 @@ export class EditAbsenceComponent implements OnInit {
     
     this.messageService.messageObserver.subscribe((messages: Message[]) => {
       if (messages && Array.isArray(messages)) {
-        this.messages = messages; // Update messages array
+        this.messages = messages; 
       } else {
-        this.messages = []; // Reset messages array
+        this.messages = []; 
       }
     });
     
@@ -54,7 +54,7 @@ export class EditAbsenceComponent implements OnInit {
       this.loading = false;
     },
     (error) => {
-      this.errorMessage = 'Failed to fetch absence. Please try again.';
+      this.errorMessage = 'Impossible d’aller chercher l’absence. Veuillez réessayer.';
       this.loading = false;
     }
   );
@@ -96,7 +96,7 @@ onSubmit(): void {
     this.absenceService.updateAbsence(this.absence.absenceId, updatedAbsence).subscribe(
       () => {
         setTimeout(() => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The absence has been successfully updated.' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’absence a été mise à jour avec succès.' });
           setTimeout(() => {
               this.router.navigate(['/absence/list']);
           }, 100); 
@@ -105,7 +105,7 @@ onSubmit(): void {
       },
       (error) => {
         console.error('Error updating absence:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to update absence. Please try again.' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Impossible de mettre à jour l’absence. Veuillez réessayer.' });
       }
     );
   } else {
