@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { ChartModule } from 'angular-highcharts';
+import { StyleClassModule } from 'primeng/styleclass';
 
 
 
@@ -29,7 +30,8 @@ import { ChartModule } from 'angular-highcharts';
     EmployeeRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    ChartModule
+    ChartModule,
+    StyleClassModule
   ],
   providers: [
     ConfirmationService, 
