@@ -50,7 +50,7 @@ export class AddAbsenceComponent implements OnInit {
       this.service.addAbsence(this.absence).subscribe(
         (data) => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The absence has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’absence a été ajoutée avec succès.' });
             setTimeout(() => {
                 this.router.navigate(['/absence/list']);
             }, 100); // Delay navigation by 1 second
@@ -58,11 +58,11 @@ export class AddAbsenceComponent implements OnInit {
         
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the absence.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement de l’absence.' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
   

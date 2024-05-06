@@ -3,9 +3,9 @@
       <div class="row">
           <div class="col-md-6">
               <div class="form-group">
-                  <label for="contactId">Employee:</label>
-                  <p-dropdown [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Select an Employee"></p-dropdown>
-                  <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">The employee is required</small>
+                  <label for="contactId">Employé':</label>
+                  <p-dropdown [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-dropdown>
+                  <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
               </div>
           </div>
 

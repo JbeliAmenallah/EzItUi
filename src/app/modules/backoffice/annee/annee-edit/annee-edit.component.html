@@ -2,7 +2,7 @@
 <p-dialog header="Edit Annee" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }" [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
   <ng-template pTemplate="content">
     <div class="form-group">
-      <label for="dateDebutExercice">Start Date of Exercise</label>
+      <label for="dateDebutExercice">Date de début de l’exercice</label>
       <p-calendar id="dateDebutExercice" [(ngModel)]="selectedAnnee.dateDebutExercice" class="form-control" placeholder="Start Date of Exercise" dateFormat="yy-mm-dd"></p-calendar>
     </div>
 

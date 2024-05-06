@@ -1,11 +1,10 @@
 <div class="table-container">
-    <h1 class="gradient-text">Entreprises List</h1>
-
-    <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
+    <h1 class="gradient-text">Entreprises Liste</h1>
+    <div class=" flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/entreprise/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Add Entreprise</b> </span>
+                <span> <b>Ajouter une Entreprise</b> </span>
             </div>
         </ng-template>
     </div>
@@ -85,7 +84,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="16">No entreprises found.</td>
+                <td colspan="16">Aucune entreprise trouvée.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">

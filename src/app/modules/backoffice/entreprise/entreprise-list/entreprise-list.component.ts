@@ -43,10 +43,10 @@ export class EntreprisesListComponent implements OnInit {
   }
 
   deleteItem(entrepriseId: number) {
-    console.log("Deleting entreprise with entrepriseId:", entrepriseId);
+    console.log("Suppression d’entreprise avec entrepriseId :", entrepriseId);
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this entreprise?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûr de vouloir supprimer cette entreprise ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -56,16 +56,16 @@ export class EntreprisesListComponent implements OnInit {
         this.entrepriseService.deleteEntreprise(entrepriseId).subscribe(
           () => {
             this.getList();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Entreprise deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'L’entreprise a été supprimée avec succès' });
           },
           (error) => {
             console.error('Error deleting entreprise:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting entreprise' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de l’entreprise' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejeté', detail: 'Vous avez rejeté' });
       }
     });
   }
