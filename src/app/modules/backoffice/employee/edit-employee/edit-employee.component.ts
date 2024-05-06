@@ -95,21 +95,10 @@ export class EditEmployeeComponent implements OnInit {
         (data) => {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully updated.', life: 3000 });
           setTimeout(() => {
-<<<<<<< HEAD
-            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employé a été mis à jour avec succès.' });
-=======
             this.router.navigate(['/employee/list']);
->>>>>>> 9dc06f90856821207aeb1cd8b9b3edbaab2b629b
           }, 100);
         },
         (error) => {
-<<<<<<< HEAD
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de la mise à jour de l’employé.' });
-        }
-      );
-    } else {
-      this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });
-=======
           console.error('Error updating employee:', error);
   
           if (Array.isArray(error)) {
@@ -123,7 +112,6 @@ export class EditEmployeeComponent implements OnInit {
       );
     } else {
       this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.',life:1500});
->>>>>>> 9dc06f90856821207aeb1cd8b9b3edbaab2b629b
     }
   }
 }

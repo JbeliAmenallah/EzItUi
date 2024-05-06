@@ -49,9 +49,6 @@ export class AddContactComponent implements OnInit {
           this.router.navigate(['/contacts']);
         },
         (error) => {
-<<<<<<< HEAD
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement de l’employé' });
-=======
           if (error.status === 400) {
             // Handle validation errors
             const validationErrors = error.error;
@@ -63,7 +60,6 @@ export class AddContactComponent implements OnInit {
           } else {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the category.' });
           }
->>>>>>> 9dc06f90856821207aeb1cd8b9b3edbaab2b629b
         }
       );
     } else {

@@ -89,14 +89,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="chefDefamille">Chef de Famille :</label>
-                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Selectionner un Chef" class="form-control"></p-dropdown>
+                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Selectionner " class="form-control"></p-dropdown>
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="regime">Regime :</label>
-                    <p-dropdown [options]="regimeOptions" formControlName="regime" id="regime" [showClear]="true" placeholder="Select" class="form-control"></p-dropdown>
+                    <p-dropdown [options]="regimeOptions" formControlName="regime" id="regime" [showClear]="true" placeholder="Selectionner" class="form-control"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">Regime est obligatoire</small>
                 </div>
             </div>
