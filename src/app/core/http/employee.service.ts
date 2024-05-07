@@ -42,6 +42,9 @@ export class EmployeeService {
         catchError(this.handleError)
       );
   }
+  getAverageBaseSalary(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/average-base-salary`);
+  }
 
   private handleError(error: HttpErrorResponse) {
     console.error('Error:', error);

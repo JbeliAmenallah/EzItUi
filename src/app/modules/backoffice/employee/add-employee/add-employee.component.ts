@@ -72,7 +72,6 @@ export class AddEmployeeComponent implements OnInit {
         },
         (error) => {
           console.error('Error saving employee:', error);
-
           if (Array.isArray(error)) {
             error.forEach(err => {
               this.messageService.add({ severity: 'error', summary: 'Fields Are not valid', detail: err.message});

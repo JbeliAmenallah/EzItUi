@@ -58,8 +58,17 @@ export class AddAbsenceComponent implements OnInit {
         
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement de l’absence.' });
+          if (typeof error === 'object' && error !== null) {
+            // Handle the validation error response
+            for (const [field, message] of Object.entries(error)) {
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: `${field}: ${message}` });
+            }
+          } else {
+            // Handle other errors
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error });
+          }
         }
+        
       );
     } else {
       this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });

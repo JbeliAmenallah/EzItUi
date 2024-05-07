@@ -50,14 +50,34 @@ export class AbsenceService {
 
   addAbsence(absence: Absence): Observable<Absence> {
     return this.http.post<Absence>(this.apiUrl, absence).pipe(
-      catchError(this.handleError)
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      })
     );
   }
-
+  private handlarError(error: HttpErrorResponse) {
+    console.error('Error:', error);
+    if (error.status === 400 && error.error && error.error.message === 'Validation Error') {
+      const validationErrors = error.error.errors;
+      const formattedErrors = Object.entries(validationErrors).map(([field, errorMessage]) => ({
+        field,
+        message: errorMessage
+      }));
+      return throwError(formattedErrors);
+    } else {
+      return throwError('Something bad happened; please try again later.');
+    }
+  }
   updateAbsence(id: number, updatedAbsence: Absence): Observable<Absence> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<Absence>(url, updatedAbsence).pipe(
-      catchError(this.handleError)
+      catchError(this.handlarError)
     );
   }
 
