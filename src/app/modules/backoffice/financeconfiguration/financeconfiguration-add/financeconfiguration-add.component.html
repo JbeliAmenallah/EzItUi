@@ -1,13 +1,13 @@
 <div class="container">
-    <h1 class="gradient-text">Add Finance Configuration</h1>
+    <h1 class="gradient-text">Ajouter une configuration financière</h1>
 </div>
 
 <app-finance-configuration-form></app-finance-configuration-form>
 
 <div class="buttons">
-    <button type="button" class="p-button p-button-success custom-save-button btn-save" (click)="save()">Save</button>
+    <button type="button" pButton pRipple class="p-button p-button-primary custom-save-button btn-save" (click)="save()">Enregistrer</button>
 </div>
 
-<div class="card">
+<div class="messages-container">
     <p-messages [(value)]="messages" [closable]="true"></p-messages>
 </div>

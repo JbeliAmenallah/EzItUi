@@ -23,6 +23,9 @@ export class FinanceconfigurationFormComponent implements OnInit {
   ngOnInit(): void {
     this.formFinance = this.createForm('Finance configuration'); 
     this.loadAnnees();
+    if (this.financeConfig && this.financeConfig.anneeId) {
+      this.formFinance.get('anneeId').setValue(this.financeConfig.anneeId);
+    }
   }
 
   createForm(libele: string) {

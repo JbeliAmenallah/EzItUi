@@ -8,7 +8,14 @@
                   <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
               </div>
           </div>
-
+          
+          <div class="col-md-6">
+            <div class="form-group">
+                <label for="reason">Raison:</label>
+                <input type="text" pInputText formControlName="reason" id="reason" class="form-control"/>
+                <small class="p-error" *ngIf="form.get('reason')?.touched && form.get('reason')?.hasError('required')">La raison est obligatoire</small>
+            </div>
+        </div>
           <div class="col-md-6">
             <div class="form-group">
                 <label for="dateDebutAbsence">Date de début de l’absence :</label>
@@ -25,13 +32,6 @@
             </div>
         </div>
 
-          <div class="col-md-6">
-              <div class="form-group">
-                  <label for="reason">Raison:</label>
-                  <input type="text" pInputText formControlName="reason" id="reason" class="form-control"/>
-                  <small class="p-error" *ngIf="form.get('reason')?.touched && form.get('reason')?.hasError('required')">La raison est obligatoire</small>
-              </div>
-          </div>
 
           <div class="col-md-6">
             <div class="form-group">

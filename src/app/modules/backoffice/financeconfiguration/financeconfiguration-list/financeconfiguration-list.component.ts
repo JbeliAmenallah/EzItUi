@@ -37,7 +37,7 @@ export class FinanceConfigurationListComponent implements OnInit {
         this.loading = false; 
       },
       (error) => {
-        console.error('Error fetching finance configurations:', error);
+        console.error('Erreur lors de l’extraction des configurations financières:', error);
         this.loading = false; 
       }
     );
@@ -48,12 +48,12 @@ export class FinanceConfigurationListComponent implements OnInit {
     this.financeConfigService.updateFinanceConfiguration(this.selectedFinanceConfig.id, this.selectedFinanceConfig).subscribe(
       () => {
         this.getList(); 
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Finance Configuration updated successfully' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Configuration financière mise à jour avec succès' });
         this.hideDialog();
       },
       (error) => {
-        console.error('Error updating finance configuration:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating finance configuration' });
+        console.error('Erreur lors de la mise à jour de la configuration financière :', error);
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la configuration financière' });
       }
     );
   }
@@ -65,8 +65,8 @@ export class FinanceConfigurationListComponent implements OnInit {
 
   deleteItem(id: number): void {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this finance configuration?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cette configuration financière ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -76,16 +76,16 @@ export class FinanceConfigurationListComponent implements OnInit {
         this.financeConfigService.deleteFinanceConfiguration(id).subscribe(
           () => {
             this.getList(); 
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Finance Configuration deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Configuration financière supprimée avec succès' });
           },
           (error) => {
-            console.error('Error deleting finance configuration:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting finance configuration' });
+            console.error('Erreur lors de la suppression de la configuration financière :', error);
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de la configuration financière' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'Deletion cancelled' });
+        this.messageService.add({ severity: 'warn', summary: 'Rejté', detail: 'Suppression annulée' });
       }
     });
   }

@@ -35,12 +35,16 @@ export class AddPrimeComponent implements OnInit {
 
   save() {
     const selectedContactIds: number[] = this.primeForm.form.get('contact')?.value;
-    if (selectedContactIds && selectedContactIds.length > 0) { 
+    const selectedAnneeId: number = this.primeForm.form.get('year')?.value;
+    const month = new Date(this.primeForm.form.get('month')?.value).getMonth() + 1;
+
+
+    if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId) { 
       selectedContactIds.forEach(contactId => {
         const prime = {
           contactId: contactId,
-          year: this.primeForm.form.get('year')?.value,
-          month: this.primeForm.form.get('month')?.value,
+          year: selectedAnneeId,
+          month: month,
           montant: this.primeForm.form.get('montant')?.value,
           motif: this.primeForm.form.get('motif')?.value,
           typePrimeId: this.primeForm.form.get('typePrime')?.value

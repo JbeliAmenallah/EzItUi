@@ -42,12 +42,12 @@ export class EditEnfantComponent implements OnInit {
           console.log(this.enfant);
         },
         error: (error) => {
-          console.error("An error occurred while getting the enfant:", error);
+          console.error("Une erreur s’est produite lors de l’obtention de l’enfant :", error);
           this.goToList();
         }
       });
     } else {
-      console.error("Enfant ID not provided in URL");
+      console.error("L’identifiant de l’enfant n’est pas fourni dans l’URL");
       this.goToList();
     }
   }
@@ -87,20 +87,20 @@ save() {
   
       this.service.updateEnfant(this.enfantId, enfantData).subscribe(
         (data) => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully updated.' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: ' L’employé a été mis à jour avec succès. ' });
           setTimeout(() => {
             this.goToList(); 
           }, 1000);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while updating the enfant.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de la mise à jour de l’enfant.' });
         }
       );
 
       // Clear messages after displaying
       this.messages = [];
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
 

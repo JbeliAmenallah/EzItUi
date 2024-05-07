@@ -118,3 +118,9 @@ select::placeholder {
   font-weight: 400;
   line-height: normal;
 }
+.messages-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's on top of other elements */
+}

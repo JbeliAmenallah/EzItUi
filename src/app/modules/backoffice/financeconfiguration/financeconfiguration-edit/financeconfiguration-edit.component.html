@@ -1,14 +1,18 @@
 <div class="container mt-5">
-    <div class="section">
-      <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
-        <app-finance-configuration-form [formFinance]="editForm"></app-finance-configuration-form>
-        <div class="row">
-          <div class="col-md-12">
-            <button type="submit" pButton label="Submit" class="p-button p-button-primary"></button>
-            <button type="button" pButton label="Cancel" class="p-button p-button-secondary" (click)="onCancel()"></button>
-          </div>
+  <h1 class="gradient-text">Modifier une configuration financière</h1>
+
+  <div class="section">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form">
+      <app-finance-configuration-form [formFinance]="editForm" [financeConfig]="financeConfig"></app-finance-configuration-form>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="submit" pButton label="Envoyer" class="p-button p-button-primary"></button>
+          <button type="button" pButton label="Annuler" class="p-button p-button-secondary" (click)="onCancel()"></button>
         </div>
-      </form>
+      </div>
+      <div class="messages-container">
+        <p-messages [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
     </div>
+    </form>
   </div>
-  
+</div>

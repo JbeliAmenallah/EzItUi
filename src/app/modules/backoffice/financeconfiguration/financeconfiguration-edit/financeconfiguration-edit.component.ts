@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FinanceConfiguration } from '../../../../shared/models/financeConfiguration';
 import { FinanceConfigurationService } from '../../../../core/http/financeConfiguration.service';
+import { AnneeService } from '../../../../core/http/annee.service';
+import { Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-financeconfiguration-edit',
@@ -14,6 +16,9 @@ export class FinanceConfigurationEditComponent implements OnInit {
   editForm: FormGroup;
   loading: boolean = false;
   error: string = null;
+  messages: Message[] = [];
+
+
   
   @Input() formFinance: FormGroup; 
 
@@ -21,11 +26,15 @@ export class FinanceConfigurationEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private financeConfigService: FinanceConfigurationService
+    private financeConfigService: FinanceConfigurationService,
+    private anneeService: AnneeService,
+    private messageService: MessageService,
+
   ) { }
 
   ngOnInit(): void {
     this.loadFinanceConfiguration();
+
   }
 
   loadFinanceConfiguration(): void {
@@ -47,6 +56,7 @@ export class FinanceConfigurationEditComponent implements OnInit {
 
   initForm(): void {
     this.editForm = this.formBuilder.group({
+      anneeId:[this.financeConfig.anneeId],
       cnss: [this.financeConfig.cnss],
       css1: [this.financeConfig.css1],
       css2: [this.financeConfig.css2],
@@ -67,12 +77,16 @@ export class FinanceConfigurationEditComponent implements OnInit {
     if (this.editForm.valid) {
       const updatedFinanceConfig: FinanceConfiguration = { ...this.editForm.value };
       this.financeConfigService.updateFinanceConfiguration(this.financeConfig.id, updatedFinanceConfig).subscribe(
-        () => {
-          this.router.navigate(['/financeconfiguration/list']);
+        () => {setTimeout(() => {
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'La configuration financière a été ajoutée avec succès.' });
+          setTimeout(() => {
+            this.router.navigate(['/financeconfiguration/list']);
+          }, 1000); 
+      }, 10);
         },
         (error) => {
-          console.error('Error updating finance configuration:', error);
-          this.error = 'Failed to update finance configuration. Please try again.';
+          console.error('Erreur lors de la mise à jour de la configuration financière :', error);
+          this.error = 'Echec de la mise à jour de la configuration financière. Veuillez réessayer.';
         }
       );
     }

@@ -5,45 +5,46 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="contact">Contact:</label>
+                    <label for="contact">Employé :</label>
                     <p-multiSelect [options]="contactOptions" formControlName="contact" [showClear]="true" placeholder="Select Contacts"></p-multiSelect>
-                    <small class="p-error" *ngIf="form.get('contact')?.touched && form.get('contact')?.hasError('required')">At least one contact is required</small>
+                    <small class="p-error" *ngIf="form.get('contact')?.touched && form.get('contact')?.hasError('required')">Au moins un employé est requis</small>
                 </div>
             </div>
             
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="year">Year:</label>
-                    <input type="number" pInputText formControlName="year" id="year" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('year')?.touched && form.get('year')?.hasError('required')">The year is required</small>
-                </div>
+                    <label for="year">Année :</label>
+                    <p-dropdown [options]="anneeOptions" formControlName="year" id="year" optionLabel="libele" optionValue="id" placeholder="Selectionner une année"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">L'année est obligatoire</small>
+                  </div>
             </div>
+            
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="month">Month:</label>
-                    <input type="number" pInputText formControlName="month" id="month" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">The month is required</small>
+                    <label for="month">Mois :</label>
+                    <p-calendar formControlName="month" id="month" [monthNavigator]="true"  [yearNavigator]="false" dateFormat="mm" [showIcon]="true"></p-calendar>
+                    <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">Le mois est requis</small>
                 </div>
             </div>
+            
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="montant">Amount:</label>
+                    <label for="montant">Montant :</label>
                     <input type="number" pInputText formControlName="montant" id="montant" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">The amount is required</small>
+                    <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">Le montant est requis</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="motif">Reason:</label>
+                    <label for="motif">Raison:</label>
                     <input type="text" pInputText formControlName="motif" id="motif" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('motif')?.touched && form.get('motif')?.hasError('required')">The reason is required</small>
+                    <small class="p-error" *ngIf="form.get('motif')?.touched && form.get('motif')?.hasError('required')">La raison est requise</small>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="typePrimeId">Type primes:</label>
@@ -51,6 +52,7 @@
                     <small class="p-error" *ngIf="form.get('typePrimeId')?.touched && form.get('typePrimeId')?.hasError('required')">The type prime is required</small>
                 </div>
             </div>
+
         </div>
     </form>
 </div>

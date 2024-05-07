@@ -1,11 +1,11 @@
 <div class="table-container">
-    <h1 class="gradient-text">Enfants List</h1>
+    <h1 class="gradient-text">Liste des enfants</h1>
 
-    <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
+    <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/enfant/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Add Enfant</b> </span>
+                <span> <b>Ajouter un enfant</b> </span>
             </div>
         </ng-template>
     </div>
@@ -19,19 +19,19 @@
         [rowsPerPageOptions]="[10, 25, 50]"
         [loading]="loading"
         [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
         [globalFilterFields]="['name', 'familyName', 'age', 'disabled','bourse', 'educationGrade']"
         [tableStyle]="{ 'min-width': '75rem' }">
 
         <ng-template pTemplate="header">
             <tr>
                 <th>Enfant ID</th>
-                <th>Name</th>
-                <th>Family Name</th>
-                <th>Age</th>
-                <th>Disabled</th>
+                <th>Nom</th>
+                <th>Nom de famille</th>
+                <th>Âge</th>
+                <th>Handicapé</th>
                 <th>Bourse</th>
-                <th>Education Grade</th>
+                <th>Niveau d’éducation</th>
                 <th>Contact ID</th>
                 <th>Actions</th>
             </tr>
@@ -82,19 +82,18 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="8">No enfants found.</td>
-            </tr>
+                <td colspan="8">Aucune enfant n’a été trouvée.</td><td></td>
         </ng-template>
         <ng-template pTemplate="caption">
             <div class="flex justify-content-end align-items-center">
                 <div class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Mot-clé de recherche" style="width: 400px;" />
                 </div>
             </div>
         </ng-template>
     </p-table>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
     acceptButtonStyleClass="p-button-danger p-button-text"
     rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
 </p-confirmDialog>

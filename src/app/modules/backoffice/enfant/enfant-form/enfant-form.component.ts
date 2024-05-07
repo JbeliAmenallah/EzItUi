@@ -70,7 +70,7 @@ export class EnfantFormComponent implements OnInit {
         this.employeeOptions = options;
       },
       error => {
-        console.error('Error fetching employee options:', error);
+        console.error('Erreur lors de la récupération des options de l’employé :', error);
       }
     );
   }

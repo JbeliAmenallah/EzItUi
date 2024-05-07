@@ -1,11 +1,11 @@
 <div class="table-container">
-    <h1 class="gradient-text">Primes List</h1>
+    <h1 class="gradient-text"> Liste des primes</h1>
 
-    <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
+    <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/prime/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span><b>Add prime</b></span>
+                <span><b>Ajouter un prime</b></span>
             </div>
         </ng-template>
     </div>
@@ -19,7 +19,7 @@
         [rowsPerPageOptions]="[10, 25, 50]"
         [loading]="loading"
         [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
         [globalFilterFields]="['primeId', 'year', 'month', 'montant', 'motif', 'contact.name']"
         [tableStyle]="{ 'min-width': '75rem' }">
 
@@ -75,14 +75,14 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="8">No primes found.</td>
+                <td colspan="8">Aucun nombre premier n’a été trouvé.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">
             <div class="flex justify-content-end align-items-center">
                 <div class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+                    <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Mot-clé de recherche" style="width: 400px;" />
                 </div>
             </div>
         </ng-template>

@@ -43,8 +43,8 @@ export class EnfantListComponent implements OnInit {
   deleteItem(enfantId: number) {
     console.log("Deleting enfant with ID:", enfantId);
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this enfant?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûr de vouloir supprimer cet enfant ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -55,16 +55,16 @@ export class EnfantListComponent implements OnInit {
           this.enfantService.deleteEnfant(enfantId).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Enfant deleted successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Enfant supprimé avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting enfant' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de l’enfant' });
             }
           );
         }
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejeté', detail: 'Vous avez rejeté' });
       }
     });
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EnfantFormComponent } from '../enfant-form/enfant-form.component'; // Assuming this component exists
+import { EnfantFormComponent } from '../enfant-form/enfant-form.component'; 
 import { Enfant } from '../../../../shared/models/Enfant';
-import { EnfantService } from '../../../../core/http/enfant.service'; // Assuming this service exists
-import { ContactService } from '../../../../core/http/contact.service'; // Assuming this service exists for fetching contact details
+import { EnfantService } from '../../../../core/http/enfant.service'; 
+import { ContactService } from '../../../../core/http/contact.service'; 
 import { Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
 
@@ -18,8 +18,8 @@ export class EnfantAddComponent implements OnInit {
   messages: Message[] = [];
 
   constructor(
-    private enfantService: EnfantService, // Assuming this service exists
-    private contactService: ContactService, // Assuming this service exists for fetching contact details
+    private enfantService: EnfantService, 
+    private contactService: ContactService, 
     private router: Router,
     private messageService: MessageService
   ) { }
@@ -34,37 +34,41 @@ export class EnfantAddComponent implements OnInit {
       bourse:false,
       educationGrade: '',
       contactId: null
-      // Add other properties as needed
     };
   }
 
   save() {
+    console.log('Form Valid:', this.enfantForm.form.valid);
+  
     if (this.enfantForm.form.valid) {
-      // Assign form values to enfant object
       this.enfant.id = this.enfantForm.form.get('id')?.value;
       this.enfant.name = this.enfantForm.form.get('name')?.value;
       this.enfant.familyName = this.enfantForm.form.get('familyName')?.value;
       this.enfant.age = this.enfantForm.form.get('age')?.value;
       this.enfant.disabled = this.enfantForm.form.get('disabled')?.value;
-      this.enfant.bourse=this.enfantForm.form.get('bourse').value;
+      this.enfant.bourse = this.enfantForm.form.get('bourse').value;
       this.enfant.educationGrade = this.enfantForm.form.get('educationGrade')?.value;
       this.enfant.contactId = this.enfantForm.form.get('contactId')?.value;
-      // Assign other form values as needed
-        console.log(this.enfant)
-      // Call the service to add the enfant
+      console.log('Enfant Object:', this.enfant);
+  
       this.enfantService.createEnfant(this.enfant).subscribe(
         (data) => {
+          console.log('Enfant creation successful:', data);
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The enfant has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’enfant a été ajouté avec succès.' });
           }, 100);
-          this.router.navigate(['/enfant/list']); // Navigate to list page after successful addition
+          this.router.navigate(['/enfant/list']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the enfant.' });
+          console.error('Erreur de création d’enfant :', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement de l’enfant.' });
         }
       );
-    } else  (error) => {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form Should be Valid ! ' || 'An error occurred while saving the enfant.' });
+    } else {
+      console.log('Form Invalid');
+      this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Le formulaire doit être valide.' });
     }
   }
+  
+  
 }
