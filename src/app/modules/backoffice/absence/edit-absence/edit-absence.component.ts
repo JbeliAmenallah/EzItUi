@@ -103,15 +103,15 @@ export class EditAbsenceComponent implements OnInit {
           }, 10);
 
         },
-
         (error) => {
-          console.error('Error saving employee:', error);
-          if (Array.isArray(error)) {
-            error.forEach(err => {
-              this.messageService.add({ severity: 'error', summary: 'Fields Are not valid', detail: err.message });
-            });
+          if (typeof error === 'object' && error !== null) {
+            // Handle the validation error response
+            for (const [field, message] of Object.entries(error)) {
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: `${field}: ${message}` });
+            }
           } else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save employee.' });
+            // Handle other errors
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error });
           }
         }
 

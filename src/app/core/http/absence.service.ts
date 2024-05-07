@@ -31,6 +31,8 @@ export class AbsenceService {
       catchError(this.handleError)
     );
   }
+
+
   getAllAbsences(): Observable<Absence[]> {
     return this.http.get<Absence[]>(this.apiUrl).pipe(
       catchError(this.handleError)
@@ -61,7 +63,7 @@ export class AbsenceService {
       })
     );
   }
-  private handlarError(error: HttpErrorResponse) {
+ /* private handlarError(error: HttpErrorResponse) {
     console.error('Error:', error);
     if (error.status === 400 && error.error && error.error.message === 'Validation Error') {
       const validationErrors = error.error.errors;
@@ -73,11 +75,19 @@ export class AbsenceService {
     } else {
       return throwError('Something bad happened; please try again later.');
     }
-  }
+  }*/
   updateAbsence(id: number, updatedAbsence: Absence): Observable<Absence> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<Absence>(url, updatedAbsence).pipe(
-      catchError(this.handlarError)
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      })
     );
   }
 
