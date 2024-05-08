@@ -44,8 +44,15 @@ export class AddcongeComponent {
       }, 10);
       }, 
       (error) => {
-        console.error('Erreur lors de l’enregistrement de la conge:', error);
-        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Echec de l’enregistrement de Conge.' });
+        if (typeof error === 'object' && error !== null) {
+          // Handle the validation error response
+          for (const [field, message] of Object.entries(error)) {
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: `${field}: ${message}` });
+          }
+        } else {
+          // Handle other errors
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error });
+        }
       }
     );
   }

@@ -1,26 +1,15 @@
 
 <div class="table-container">
-  <!-- Title and Header Section -->
-  <div class="table-header" style="margin-bottom: 30px;">
-    <h2 class="table-title">List des congés</h2>
-    <div class="header-actions">
-      <span class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input
-          #searchInput
-          pInputText
-          type="text"
-          (input)="dt.filterGlobal(searchInput.value, 'contains')"
-          placeholder="Mot-clé de recherche"
-          class="p-inputtext"
-        />
-      </span>
-      <button pButton type="button" icon="pi pi-plus" label="Ajouter congé" class="p-button-primary p-button-rounded" (click)="addConge()"
-      style="margin-left: 10px; ">
-</button>
+  
 
-    </div>
-  </div>
+  <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
+    <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/conges/add"></button>
+    <ng-template #tooltipContent>
+        <div class="flex align-items-center">
+            <span><b>Ajouter un Conge</b></span>
+        </div>
+    </ng-template>
+</div>
 
   <!-- Table Component -->
   <p-table
@@ -47,6 +36,22 @@
         <th style="width: 15%;">Contact ID</th>
         <th style="width: 15%;">Actions</th>
       </tr>
+      <tr>
+        <th>
+            <p-columnFilter type="text" field="startDate"></p-columnFilter>
+        </th>
+        <th>
+            <p-columnFilter type="text" field="endDate"></p-columnFilter>
+        </th>
+        <th>
+            <p-columnFilter type="text" field="state"></p-columnFilter>
+        </th>
+        <th>
+            <p-columnFilter type="text" field="contactId"></p-columnFilter>
+        </th>
+
+        <th></th>
+    </tr>
     </ng-template>
 
     <!-- Body Template -->

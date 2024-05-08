@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Conge } from '../../shared/models/conge';
 
 @Injectable({
@@ -12,7 +12,19 @@ export class CongeService {
   constructor(private http: HttpClient) { }
   // Save Conge
   saveConge(conge: Conge): Observable<Conge> {
-    return this.http.post<Conge>(`${this.baseUrl}`, conge);
+    return this.http.post<Conge>(`${this.baseUrl}`, conge).pipe(
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      }
+    )
+    );
+  
   }
 
   // Get Conge by ID
@@ -33,7 +45,18 @@ export class CongeService {
   
   // Update Conge
   updateConge(congeId: number, conge: Conge): Observable<Conge> {
-    return this.http.put<Conge>(`${this.baseUrl}/${congeId}`, conge);
+    return this.http.put<Conge>(`${this.baseUrl}/${congeId}`, conge).pipe(
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      }
+    )
+    );
   }
 
   // Delete Conge
