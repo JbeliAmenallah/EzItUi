@@ -20,6 +20,17 @@ export class CongeService {
     return this.http.get<Conge>(`${this.baseUrl}/${congeId}`);
   }
 
+  getPendingCongeCount(): Observable<number> {
+    const url = `${this.baseUrl}/pending/count`; 
+    return this.http.get<number>(url);
+  }
+
+
+  getCongesPerMonth(): Observable<{ month: string, congesCount: number }[]> {
+    return this.http.get<{ month: string, congesCount: number }[]>(`${this.baseUrl}/per-month`);
+  }
+
+  
   // Update Conge
   updateConge(congeId: number, conge: Conge): Observable<Conge> {
     return this.http.put<Conge>(`${this.baseUrl}/${congeId}`, conge);

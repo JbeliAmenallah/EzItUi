@@ -1,45 +1,130 @@
+<div class="surface-section border-round px-4 py-5 md:px-6 lg:px-8 mb-4 ">
+  <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+    <li>
+      <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']">
+          <i class="pi pi-home mr-0"></i> <!-- Ajoutez cette ligne pour l'icône de maison -->
+          Application
+      </a>
+  </li>
+  
+      <li class="px-2">
+          <i class="pi pi-angle-right text-500 line-height-3"></i>
+      </li>
+      <li>
+         <a [routerLink]="['/employee/deatils']"> <span class="text-900 line-height-3">Analytics</span></a>
+      </li>
+  </ul>
+  <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+      <div>
+          <div class="font-medium text-3xl text-900">Employees</div>
+          <div class="flex align-items-center text-700 flex-wrap">
+              <div class="mr-5 flex align-items-center mt-3">
+                  <i class="pi pi-users mr-2"></i>
+                  <span>{{employeeCount}} Active Users</span>
+              </div>
+          </div>
+      </div>
+      <div class="mt-3 lg:mt-0">
+        <a [routerLink]="['/employee/add']">  <button pButton pRipple label="Add" class="p-button-outlined mr-2" icon="pi pi-user-plus"></button></a>
+      </div>
+  </div>
+</div>
 <div class="grid">
   <div class="col-12 lg:col-6 xl:col-3">
     <div class="card mb-0">
-        <div class="flex justify-content-between mb-3">
-            <div>
-                <span class="block text-500 font-medium mb-3">Employees</span>
-                <div class="text-900 font-medium text-xl">{{ employeeCount }}</div>
-            </div>
-            <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-              <a [routerLink]="['/employee/list']" class="dashboard-nav-item">
-                <i class="pi pi-user text-blue-500 text-xl" style="cursor: pointer;"></i>
-              </a>
-            </div>
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Employees</span>
+          <div class="text-900 font-medium text-xl">{{ employeeCount }}</div>
         </div>
-        <span class="text-green-500 font-medium"> {{ employeeCountThisYear }}-New &nbsp;  </span>
-        <span class="text-400 font-medium">Employees Added This Year <span class="text-red-500 font-bold">{{ sinceYearText }}</span> </span>
+        <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+          [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+          <a [routerLink]="['/employee/list']" class="dashboard-nav-item">
+            <i class="pi pi-user text-blue-500 text-xl" style="cursor: pointer;"></i>
+          </a>
+        </div>
+      </div>
+      <span class="text-green-500 font-medium"> {{ employeeCountThisYear }}-New &nbsp; </span>
+      <span class="text-400 font-medium">Employees Added This Year <span class="text-red-500 font-bold">{{ sinceYearText
+          }}</span> </span>
     </div>
   </div>
-  
+
   <div class="col-12 lg:col-6 xl:col-3">
     <div class="card mb-0">
-        <div class="flex justify-content-between mb-3">
-            <div>
-                <span class="block text-500 font-medium mb-3">Absence Count</span>
-                <div class="text-900 font-medium text-xl">{{ absenceCount }}</div>
-            </div>
-            <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-              <a [routerLink]="['/absence/list']" class="dashboard-nav-item">
-                <i class="pi pi-user-minus text-orange-500 text-xl" style="cursor: pointer;"></i>
-              </a>
-            </div>
-            
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Absence Count</span>
+          <div class="text-900 font-medium text-xl">{{ absenceCount }}</div>
         </div>
-        <span class="text-green-500 font-medium">
-          {{ percentageChange > 0 ? '+' + percentageChange + '%' : (percentageChange < 0 ? percentageChange + '%' : 'No change') }}
-          <span class="text-400 font-medium">{{ changeText }}</span>
-        </span>
-        <span class="text-red-500 font-bold">{{ prevyear }}</span>
+        <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+          [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+          <a [routerLink]="['/absence/list']" class="dashboard-nav-item">
+            <i class="pi pi-user-minus text-orange-500 text-xl" style="cursor: pointer;"></i>
+          </a>
+        </div>
+
+      </div>
+      <span class="text-green-500 font-medium">
+        {{ percentageChange > 0 ? '+' + percentageChange + '%' : (percentageChange < 0 ? percentageChange + '%'
+          : 'No change' ) }} <span class="text-400 font-medium">{{ changeText }}</span>
+      </span>
+      <span class="text-red-500 font-bold">{{ prevyear }}</span>
+    </div>
+  </div>
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Pending Conges</span>
+          <div class="text-900 font-medium text-xl">{{ pendingCongeCount }}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+          [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+          <a [routerLink]="['/conges/list']" class="dashboard-nav-item">
+            <i class="pi pi-calendar text-orange-500 text-xl" style="cursor: pointer;"></i>
+          </a>
+        </div>
+
+      </div>
+      <span class="text-green-500 font-medium">
+          {{pendingCongeCount}} Conges Are still Pending
+      </span>
+    </div>
+  </div>
+
+  <div class="col-12 lg:col-6 xl:col-3">
+    <div class="card mb-0">
+      <div class="flex justify-content-between mb-3">
+        <div>
+          <span class="block text-500 font-medium mb-3">Average Base Salary</span>
+          <div class="text-900 font-medium text-xl">{{ averageBaseSalary | currency:'USD':true:'1.2-2' }}</div>
+        </div>
+        <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+          [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+          <i class="pi pi-money-bill text-orange-500 text-xl"></i>
+        </div>
+      </div>
+      <span class="text-green-500 font-medium">
+        {{averageBaseSalary}} 
+      </span><span class="text-400">Is The Average Salary For </span>
+      
+      <span class="text-red-500 font-bold">{{ sinceYearText }}</span>
     </div>
   </div>
   
+
+  <div class="col-12 xl:col-6">
+    <div class="card ">
+        <p-chart type="bar" [data]="data" [options]="options" />
+    </div>
+  </div>
+  <div class="col-12 xl:col-6">
+    <div class="card">
+      <p-chart type="line" [data]="data" [options]="options" />
+    </div>
+  </div>
+
   
   
 </div>
-

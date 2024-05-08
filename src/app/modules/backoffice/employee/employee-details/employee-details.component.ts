@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../../../../shared/models/employee';
 import { EmployeeService } from '../../../../core/http/employee.service';
 import { Chart } from 'angular-highcharts';
+import { CongeService } from '../../../../core/http/conge.service';
 import { AbsenceService } from '../../../../core/http/absence.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
@@ -21,28 +23,46 @@ export class EmployeeDetailsComponent implements OnInit {
   percentageChange: number;
   changeText: string;
   prevyear: string;
-
+  pendingCongeCount: number;
+  employees: Employee[];
+  averageBaseSalary:number;
+  data: any; // Define data property of type ChartData
+  options: any; // Define options property of type ChartOptions
 
 
 
   constructor(
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
-    private absenceService: AbsenceService // Instantiate the AbsenceService
+    private absenceService: AbsenceService, // Instantiate the AbsenceService
+    private congeService:CongeService
   ) { }
 
   ngOnInit(): void {
     this.employeeCountThisYear = this.fetchEmployeeCountThisYear();
     // Generate the text for "Since {current year}" when component initializes
     this.generateSinceYearText();
-    // Fetch the absence count when the component initializes
     this.fetchAbsenceCount();
+    this.fetchPendingCongeCount();
+    this.fetchAverageBaseSalary();
+    this.loadCongesData();
+    console.log(this.loadCongesData)
     // Get the employee ID from the route parameters
     this.route.paramMap.subscribe(params => {
       this.employeeId = +params.get('id'); // Convert the parameter to a number
       this.fetchEmployee(); // Call the method to fetch the employee
     });
 
+  }
+  fetchAverageBaseSalary(): void {
+    this.employeeService.getAverageBaseSalary().subscribe(
+      (averageBaseSalary: number) => {
+        this.averageBaseSalary = averageBaseSalary;
+      },
+      error => {
+        console.error('Error fetching average base salary:', error);
+      }
+    );
   }
 
   fetchEmployeeCountThisYear(): void {
@@ -57,28 +77,29 @@ export class EmployeeDetailsComponent implements OnInit {
     );
   }
   fetchAbsenceCount(): void {
-    this.absenceService.countAbsencesByYear(new Date().getFullYear() - 1).subscribe(
-      (prevYearCount: number) => {
-        this.absenceService.countAbsencesByYear(new Date().getFullYear()).subscribe(
-          (currYearCount: number) => {
-            this.absenceCount = currYearCount;
-            const diff = currYearCount - prevYearCount;
-            this.percentageChange = Math.round((diff / prevYearCount) * 100);
-            if (diff > 0) {
-              this.changeText = `more than last year `;
-            } else if (diff < 0) {
-              this.changeText = `less than last year `;
-            } else {
-              this.changeText = 'same as last year';
-            }
-          },
-          error => {
-            console.error('Error fetching absence count for current year:', error);
-          }
-        );
+    forkJoin([
+      this.absenceService.countAbsencesByYear(new Date().getFullYear() - 1),
+      this.absenceService.countAbsencesByYear(new Date().getFullYear())
+    ]).subscribe(
+      ([prevYearCount, currYearCount]) => {
+        this.absenceCount = currYearCount;
+        const diff = currYearCount - prevYearCount;
+        if (prevYearCount !== 0) {
+          this.percentageChange = Math.round((diff / prevYearCount) * 100);
+        } else {
+          this.percentageChange = 0; // Handle division by zero
+        }
+        console.log(this.percentageChange)
+        if (diff > 0) {
+          this.changeText = `more than last year `;
+        } else if (diff < 0) {
+          this.changeText = `less than last year `;
+        } else {
+          this.changeText = 'same as last year';
+        }
       },
       error => {
-        console.error('Error fetching absence count for previous year:', error);
+        console.error('Error fetching absence counts:', error);
       }
     );
   }
@@ -129,5 +150,69 @@ export class EmployeeDetailsComponent implements OnInit {
     this.prevyear = `${prevyear}`
   }
 
+  fetchPendingCongeCount(): void {
+    this.congeService.getPendingCongeCount().subscribe(
+      (count: number) => {
+        this.pendingCongeCount = count;
+      },
+      error => {
+        console.error('Error fetching pending congé count:', error);
+      }
+    );
+  }
+  loadCongesData(): void {
+    this.congeService.getCongesPerMonth().subscribe(
+      (congesData: { month: string, year: number, congesCount: number }[]) => {
+        const currentYearData = congesData.filter(data => data.year === new Date().getFullYear());
+        const previousYearData = congesData.filter(data => data.year === new Date().getFullYear() - 1);
+  
+        const currentYearMonths = currentYearData.map(data => data.month);
+        const currentYearCongesCount = currentYearData.map(data => data.congesCount);
+  
+        const previousYearMonths = previousYearData.map(data => data.month);
+        const previousYearCongesCount = previousYearData.map(data => data.congesCount);
+  
+        this.data = {
+          labels: currentYearMonths,
+          datasets: [
+            {
+              label: `${new Date().getFullYear()} Conges Count`,
+              backgroundColor: '#6266F0',
+              borderColor: '#6266F0',
+              data: currentYearCongesCount
+            },
+            {
+              label: `${new Date().getFullYear() - 1} Conges Count`,
+              backgroundColor: '#BCBDF9',
+              borderColor: '#BCBDF9',
+              data: previousYearCongesCount
+            }
+          ]
+        };
+  
+        this.options = {
+          title: {
+            display: true,
+            text: 'Conges Count Per Month',
+            fontSize: 16
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          legend: {
+            display: true
+          }
+        };
+      },
+      error => {
+        console.error('Error fetching conges data:', error);
+      }
+    );
+  }
+  
 
 }

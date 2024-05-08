@@ -6,7 +6,7 @@
   <div class="col-md-6">
   <div class="form-group">
   <label for="startDate">Date et heure de début :</label>
-  <p-calendar formControlName="startDate" id="startDate" class="form-control" [showTime]="true"></p-calendar>
+  <p-calendar formControlName="startDate" id="startDate" class="form-control" [showTime]="true" [showIcon]="true"></p-calendar>
   <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date et heure de début est requise </small>
   </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="col-md-6">
   <div class="form-group">
   <label for="endDate">Date et heure de fin :</label>
-  <p-calendar formControlName="endDate" id="endDate" class="form-control" [showTime]="true"></p-calendar>
+  <p-calendar formControlName="endDate" id="endDate" class="form-control" [showTime]="true" [showIcon]="true"></p-calendar>
   <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date et heure de fin est requise</small>
   </div>
   </div>
