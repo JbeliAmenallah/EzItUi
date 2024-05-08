@@ -32,6 +32,9 @@
 .custom-table {
   min-width: 75rem;
 }
+:host >>> .p-button{
+  margin-bottom: 1%;
+}
 
 .pending-row {
   background-color: #ffecb3; /* Light yellow */

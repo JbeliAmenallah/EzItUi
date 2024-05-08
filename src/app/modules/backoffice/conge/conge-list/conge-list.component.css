@@ -82,4 +82,7 @@
       padding: 4px 8px;
     }
   }
-  
+
+  :host >>> .p-button{
+    margin-bottom: 1%;
+  }

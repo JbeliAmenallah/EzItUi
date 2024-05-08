@@ -1,14 +1,14 @@
 <div class="table-container">
-  <h1 class="gradient-text">Liste des congés</h1>
+  
 
-  <div class="flex justify-content-center" style="display: flex; justify-content: flex-end;">
-    <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" (click)="addConge()"></button>
+  <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
+    <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/conges/add"></button>
     <ng-template #tooltipContent>
-      <div class="flex align-items-center">
-        <span><b>Congés</b></span>
-      </div>
+        <div class="flex align-items-center">
+            <span><b>Ajouter un Conge</b></span>
+        </div>
     </ng-template>
-  </div>
+</div>
 
   <p-table #dt [value]="conges" dataKey="id" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
     [loading]="loading" [paginator]="true" currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
@@ -22,6 +22,22 @@
         <th>Contact ID</th>
         <th>Actions</th>
       </tr>
+      <tr>
+        <th>
+            <p-columnFilter type="text" field="startDate"></p-columnFilter>
+        </th>
+        <th>
+            <p-columnFilter type="text" field="endDate"></p-columnFilter>
+        </th>
+        <th>
+            <p-columnFilter type="text" field="state"></p-columnFilter>
+        </th>
+        <th>
+            <p-columnFilter type="text" field="contactId"></p-columnFilter>
+        </th>
+
+        <th></th>
+    </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-conge>

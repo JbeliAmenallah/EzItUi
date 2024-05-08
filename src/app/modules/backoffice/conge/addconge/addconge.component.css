@@ -154,3 +154,17 @@
   outline: none;
 }
 
+/* Apply focus styles */
+:host >>> .p-dropdown:focus {
+  border: 1px solid blue;
+}
+
+/* Remove default focus outline */
+:host >>> .p-dropdown:focus-visible {
+  outline: none;
+}
+:host >>> .p-button{
+  margin-left: 50%;
+  margin-top: 1%;
+  width: 9%;
+}
