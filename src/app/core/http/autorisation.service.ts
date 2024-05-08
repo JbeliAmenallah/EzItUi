@@ -22,7 +22,18 @@ export class AutorisationService {
 
   updateAutorisation(autorisationId: number, autorisation: Autorisation): Observable<Autorisation> {
     const url = `${this.apiUrl}/${autorisationId}`;
-    return this.http.put<Autorisation>(url, autorisation);
+    return this.http.put<Autorisation>(url, autorisation).pipe(
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      }
+    )
+    );
   }
 
   patchAutorisation(autorisationId: number, autorisation: Partial<Autorisation>): Observable<Autorisation> {

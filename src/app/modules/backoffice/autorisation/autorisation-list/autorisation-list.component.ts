@@ -59,13 +59,14 @@ export class AutorisationListComponent implements OnInit {
         this.hideDialog();
       },
       (error) => {
-        if (error.status === 400 && error.error && error.error.message) {
-          // Handle specific validation errors from the server
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message });
+        if (typeof error === 'object' && error !== null) {
+          // Handle the validation error response
+          for (const [field, message] of Object.entries(error)) {
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: `${field}: ${message}` });
+          }
         } else {
           // Handle other errors
-          console.error('Erreur lors de la mise à jour de l’autorisation :', error);
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de l’autorisation' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error });
         }
       }
     );
