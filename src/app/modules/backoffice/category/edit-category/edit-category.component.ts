@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from '../../../../shared/models/category';
 
@@ -7,7 +7,7 @@ import { Category } from '../../../../shared/models/category';
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.css']
 })
-export class EditCategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit, OnChanges {
   @Input() category: Category;
   @Output() onSave: EventEmitter<Category> = new EventEmitter<Category>();
   @Input() displayEditDialog: boolean = false;
@@ -17,6 +17,12 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['category'] && changes['category'].currentValue) {
+      this.initializeForm();
+    }
   }
 
   initializeForm(): void {

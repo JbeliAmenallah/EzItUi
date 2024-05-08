@@ -1,55 +1,29 @@
-
 <div class="table-container">
-  <!-- Title and Header Section -->
-  <div class="table-header" style="margin-bottom: 30px;">
-    <h2 class="table-title">List des congés</h2>
-    <div class="header-actions">
-      <span class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input
-          #searchInput
-          pInputText
-          type="text"
-          (input)="dt.filterGlobal(searchInput.value, 'contains')"
-          placeholder="Mot-clé de recherche"
-          class="p-inputtext"
-        />
-      </span>
-      <button pButton type="button" icon="pi pi-plus" label="Ajouter congé" class="p-button-primary p-button-rounded" (click)="addConge()"
-      style="margin-left: 10px; ">
-</button>
+  <h1 class="gradient-text">Liste des congés</h1>
 
-    </div>
+  <div class="flex justify-content-center" style="display: flex; justify-content: flex-end;">
+    <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" (click)="addConge()"></button>
+    <ng-template #tooltipContent>
+      <div class="flex align-items-center">
+        <span><b>Congés</b></span>
+      </div>
+    </ng-template>
   </div>
 
-  <!-- Table Component -->
-  <p-table
-    #dt
-    [value]="conges"
-    dataKey="id"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [loading]="loading"
-    [paginator]="true"
-    currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
-    [globalFilterFields]="['startDate', 'endDate', 'state', 'contactId']"
-    [tableStyle]="{ 'min-width': '75rem' }"
-    [scrollable]="true"
-    class="custom-table"
-  >
-    <!-- Header Template -->
+  <p-table #dt [value]="conges" dataKey="id" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading" [paginator]="true" currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
+    [globalFilterFields]="['startDate', 'endDate', 'state', 'contactId']" [tableStyle]="{ 'min-width': '75rem' }">
+
     <ng-template pTemplate="header">
       <tr>
-        <th style="width: 15%;">Date de début</th>
-        <th style="width: 15%;">Date de fin </th>
-        <th style="width: 15%;">État</th>
-        <th style="width: 15%;">Contact ID</th>
-        <th style="width: 15%;">Actions</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>État</th>
+        <th>Contact ID</th>
+        <th>Actions</th>
       </tr>
     </ng-template>
 
-    <!-- Body Template -->
     <ng-template pTemplate="body" let-conge>
       <tr>
         <td>{{ conge.startDate }}</td>
@@ -63,29 +37,30 @@
       </tr>
     </ng-template>
 
-    <!-- Empty Message Template -->
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="5">Aucun conge n’a été trouvé.</td>
+        <td colspan="5">Aucun congé n’a été trouvé.</td>
       </tr>
+    </ng-template>
+
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-end align-items-center">
+        <div class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input #searchInput pInputText type="text" (input)="dt.filterGlobal(searchInput.value, 'contains')"
+            placeholder="Mot-clé de recherche" style="width: 400px;" />
+        </div>
+      </div>
     </ng-template>
   </p-table>
 
-  <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
-  acceptButtonStyleClass="p-button-danger p-button-text"
-  rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
-</p-confirmDialog>
-<p-toast></p-toast>
+  <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
+    acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text"
+    acceptIcon="none" rejectIcon="none">
+  </p-confirmDialog>
 
+  <p-toast></p-toast>
 </div>
 
-
-
-  <!-- Add the EditCongeComponent popup dialog -->
-  <app-edit-conge
-    [displayDialog]="displayDialog"
-    [selectedConge]="selectedConge"
-    (onSave)="saveConge()"
-    (onHide)="hideDialog()"
-  ></app-edit-conge>
-  
+<app-edit-conge [displayDialog]="displayDialog" [selectedConge]="selectedConge" (onSave)="saveConge()"
+  (onHide)="hideDialog()"></app-edit-conge>

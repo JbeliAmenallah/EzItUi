@@ -14,9 +14,11 @@ import { AnneeService } from '../../../../core/http/annee.service';
 export class PrimeFormComponent implements OnInit {
 
   form: FormGroup;
-  contactOptions: any[] = [];
+  employeeOptions: any[] = [];
   typePrimes: any[] = [];
   anneeOptions: Annee[] = [];
+  months: { label: string; value: number; }[] = []; 
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,32 +29,33 @@ export class PrimeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.createForm();
-    this.loadContactOptions();
+    this.loadEmployeeOptions();
     this.fetchTypePrimes();
     this.loadAnnees();
+    this.loadMonths(); 
   
   }
 
   createForm() {
     return this.formBuilder.group({
-      primeId: [null, Validators.required],
-      contact: [null, Validators.required],
+      contactId: [null, Validators.required],
       year: [null, Validators.required],
       month: [null, Validators.required],
       montant: [null, Validators.required],
       motif: [null, Validators.required],
-      typePrime: [null, Validators.required]
+      typePrimeId: [null]
     });
   }
 
-  loadContactOptions() {
+  
+  loadEmployeeOptions() {
     this.absenceService.getEmployeeOptions().subscribe(
       options => {
-        this.contactOptions = options;
-        console.log('Contact Options:', this.contactOptions);
+        this.employeeOptions = options;
+        console.log('Employee Options:', this.employeeOptions); 
       },
       error => {
-        console.error('Error fetching contact options:', error);
+        console.error('Erreur lors de l’extraction des options de l’employée :', error);
       }
     );
   }
@@ -80,13 +83,10 @@ export class PrimeFormComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    if (this.form.valid) {
-      // Implement submission logic here
-      console.log('Form submitted:', this.form.value);
-    } else {
-      // Handle form validation errors if needed
-      console.log('Form invalid');
+  loadMonths() {
+    for (let i = 1; i <= 12; i++) {
+      this.months.push({ label: i.toString(), value: i });
     }
   }
+
 }

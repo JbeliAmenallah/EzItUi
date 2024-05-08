@@ -12,7 +12,7 @@ export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
   loading: boolean = true;
   displayAddDialog: boolean = false;
-  selectedCategory: Category | null = null; // Initialize selectedCategory with null
+  selectedCategory: Category | null = null; l
   displayEditDialog: boolean = false;
 
 
@@ -40,15 +40,17 @@ export class CategoryListComponent implements OnInit {
       }
     );
   }
-  editCategory(category:Category) {
-    // Set selectedGrade and display the EditGradeComponent
-    this.selectedCategory = { ...category }; // Create a copy to avoid modifying original
+  editCategory(category: Category) {
+    this.selectedCategory = { ...category }; 
     this.displayEditDialog = true;
   }
+  
+ 
+  
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this category?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cette catégorie ??',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -58,16 +60,16 @@ export class CategoryListComponent implements OnInit {
         this.categoryService.deleteCategory(id).subscribe(
           () => {
             this.getCategories();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Category deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Catégorie supprimée avec succès' });
           },
           (error) => {
             console.error('Error deleting category:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting category' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de la catégorie' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }
@@ -75,13 +77,13 @@ export class CategoryListComponent implements OnInit {
     if (editedCategory) {
       this.categoryService.updateCategory(editedCategory.id, editedCategory).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Grade updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Grade mis à jour avec succès' });
           this.displayEditDialog = false;
-          this.getCategories(); // Refresh the list
+          this.getCategories(); 
         },
         (error) => {
           console.error('Error updating grade:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating grade' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la note' });
         }
       );
     }
@@ -94,8 +96,8 @@ export class CategoryListComponent implements OnInit {
     this.displayAddDialog = false;
   }
   hideEditDialog() {
-    // Hide the EditGradeComponent dialog
     this.displayEditDialog = false;
+    this.selectedCategory = null;
   }
 
   saveNewCategory(newCategory: Category) {

@@ -56,7 +56,7 @@ export class EditPublicHolidayComponent implements OnChanges {
         this.anneeOptions = annees;
       },
       (error) => {
-        console.error('Error loading Annees:', error);
+        console.error('Erreur lors du chargement des Annees :', error);
       }
     );
   }
@@ -73,7 +73,7 @@ export class EditPublicHolidayComponent implements OnChanges {
       console.log(`This is Public holiday object ${editedPublicHoliday}`)
       this.publicHolidayService.updatePublicHoliday(editedPublicHoliday.id, editedPublicHoliday).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Public Holiday has been successfully updated.' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été mis à jour avec succès.' });
           console.log(editedPublicHoliday)
           this.onSave.emit();
           this.form.reset();
@@ -85,8 +85,8 @@ export class EditPublicHolidayComponent implements OnChanges {
           }, 1000); // Delay of 2 seconds before refreshing
         },
         (error) => {
-          console.error('Error updating Public Holiday:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'An error occurred while updating the Public Holiday.' });
+          console.error('Erreur lors de la mise à jour du jour férié :', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Une erreur s’est produite lors de la mise à jour du jour férié.' });
         }
       );
     } else {

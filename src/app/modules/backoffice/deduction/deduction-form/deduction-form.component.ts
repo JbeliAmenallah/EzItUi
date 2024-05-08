@@ -19,7 +19,10 @@ export class DeductionFormComponent implements OnInit {
 { label: 'Pourcentage', value: 'Pourcentage' },
 { label: 'Valeur', value: 'Valeur' }
   ];
-
+  etatOptions: any[] = [
+    { label: 'Activéé', value: 'Activé' },
+    { label: 'Non activéé', value: 'Non activée' },
+  ];
   constructor(
     private formBuilder: FormBuilder,
     private anneeService: AnneeService

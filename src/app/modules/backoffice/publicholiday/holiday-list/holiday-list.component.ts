@@ -38,8 +38,8 @@ export class PublicHolidayListComponent implements OnInit {
 
   deleteItem(id: number): void {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this public holiday?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûre de vouloir supprimer ce jour férié ??',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -49,16 +49,16 @@ export class PublicHolidayListComponent implements OnInit {
         this.publicHolidayService.deletePublicHoliday(id).subscribe(
           () => {
             this.getList();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Public Holiday deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Jour férié supprimé avec succès' });
           },
           (error) => {
             console.error('Error deleting public holiday:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting public holiday' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d’un jour férié' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'warn', summary: 'Cancelled', detail: 'Deletion cancelled' });
+        this.messageService.add({ severity: 'warn', summary: 'Rejeté', detail: 'Suppression annulée' });
       }
     });
   }

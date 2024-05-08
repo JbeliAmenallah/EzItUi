@@ -45,7 +45,7 @@ export class AddPublicHolidayComponent {
         this.anneeOptions = annees;
       },
       (error) => {
-        console.error('Error loading Annees:', error);
+        console.error('Erreur lors du chargement des Annees :', error);
       }
     );
   }
@@ -62,7 +62,7 @@ export class AddPublicHolidayComponent {
 
       this.publicHolidayService.createPublicHoliday(newPublicHoliday).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The Public Holiday has been successfully added.' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été ajouté avec succès.' });
           this.onSave.emit();
           this.form.reset();
           setTimeout(() => {
@@ -72,8 +72,8 @@ export class AddPublicHolidayComponent {
           }, 1000); // Delay of 2 seconds before refreshing
         },
         (error) => {
-          console.error('Error adding Public Holiday:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'An error occurred while adding the Public Holiday.' });
+          console.error('Erreur lors de l’ajout d’un jour férié :', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Une erreur s’est produite lors de l’ajout du jour férié.' });
         }
       );
     } else {

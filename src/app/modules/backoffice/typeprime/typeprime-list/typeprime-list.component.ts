@@ -5,17 +5,17 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { TypePrimeService } from '../../../../core/http/typeprime.service';
 
 @Component({
-  selector: 'app-typeprime-list', // Adjust selector
-  templateUrl: './typeprime-list.component.html', // Adjust templateUrl
-  styleUrls: ['./typeprime-list.component.css'] // Adjust styleUrls
+  selector: 'app-typeprime-list', 
+  templateUrl: './typeprime-list.component.html', 
+  styleUrls: ['./typeprime-list.component.css'] 
 })
 export class TypePrimeListComponent implements OnInit {
 
-  typePrimes: TypePrime[]; // Adjust type
+  typePrimes: TypePrime[]; 
   loading: boolean = false;
 
   constructor(
-    private typePrimeService: TypePrimeService, // Adjust service
+    private typePrimeService: TypePrimeService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
@@ -41,10 +41,10 @@ export class TypePrimeListComponent implements OnInit {
   }
 
   deleteItem(typePrimeId: number) {
-    console.log("Deleting type prime with typePrimeId:", typePrimeId);
+    console.log("Suppression du type premier avec typePrimeId :", typePrimeId);
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this type prime?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer ce type de nombre premier ??',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
       rejectButtonStyleClass: "p-button-text p-button-text",
@@ -55,17 +55,17 @@ export class TypePrimeListComponent implements OnInit {
           this.typePrimeService.deleteTypePrime(typePrimeId).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Type prime deleted successfully' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Type prime supprimé avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting type prime' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression du type premier' });
             }
           );
         }
         else { console.log(typePrimeId) }
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }

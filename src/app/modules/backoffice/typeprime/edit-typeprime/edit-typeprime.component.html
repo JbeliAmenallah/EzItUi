@@ -1,13 +1,13 @@
 <div class="container">
-    <h1 class="gradient-text">Edit Type Prime</h1>
+    <h1 class="gradient-text">Modifier un  type prime</h1>
 </div>
 
 <app-typeprime-form #form [currentItemForm]="typePrime" *ngIf="typePrime"></app-typeprime-form>
 
 <div class="buttons">
-    <p-button label="Save" icon="pi pi-check" styleClass="custom-save-button" class="btn-save"  (click)="save()"></p-button>
+    <p-button label="Enregistrer" icon="pi pi-check" styleClass="custom-save-button" class="btn-save"  (click)="save()"></p-button>
 </div>
 
-<div class="card">
+<div class="">
     <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
 </div>

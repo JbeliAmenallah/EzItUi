@@ -34,38 +34,44 @@ export class AddPrimeComponent implements OnInit {
   }
 
   save() {
-    const selectedContactIds: number[] = this.primeForm.form.get('contact')?.value;
-    const selectedAnneeId: number = this.primeForm.form.get('year')?.value;
-    const month = new Date(this.primeForm.form.get('month')?.value).getMonth() + 1;
 
-
-    if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId) { 
-      selectedContactIds.forEach(contactId => {
-        const prime = {
-          contactId: contactId,
-          year: selectedAnneeId,
-          month: month,
-          montant: this.primeForm.form.get('montant')?.value,
-          motif: this.primeForm.form.get('motif')?.value,
-          typePrimeId: this.primeForm.form.get('typePrime')?.value
-        };
-    
-        console.log('Prime Object:', prime); 
-    
-        this.primeService.addPrime(prime).subscribe(
-          (data) => {
-            setTimeout(() => {
-              this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been successfully added.' });
-            }, 100);
-            this.router.navigate(['/prime/list']);
-          },
-          (error) => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime.' });
-          }
-        );
-      });
+    if (this.primeForm.form.valid) {
+      console.log('Form is valid.');
+  
+      const selectedContactIds: number[] = this.primeForm.form.get('contactId')?.value;
+      const selectedAnneeId: number = this.primeForm.form.get('year')?.value;
+      const month = new Date(this.primeForm.form.get('month')?.value).getMonth() + 1;
+  
+      if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId) { 
+        selectedContactIds.forEach(contactId => {
+          const prime = {
+            contactId: contactId, 
+            year: selectedAnneeId,
+            month: month,
+            montant: this.primeForm.form.get('montant')?.value,
+            motif: this.primeForm.form.get('motif')?.value,
+            typePrimeId: this.primeForm.form.get('typePrime')?.value
+          };
+      
+          console.log('Prime Object:', prime); 
+      
+          this.primeService.addPrime(prime).subscribe(
+            (data) => {
+              setTimeout(() => {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been successfully added.' });
+              }, 100);
+              this.router.navigate(['/prime/list']);
+            },
+            (error) => {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime.' });
+            }
+          );
+        });
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please select at least one contact.' });
+      }
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please select at least one contact.' });
+      console.log('Form is invalid.');
     }
   }
   
