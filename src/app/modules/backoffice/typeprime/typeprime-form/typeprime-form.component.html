@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label for="libele">Libele:</label>
                     <input type="text" pInputText formControlName="libele" id="libele" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">The libele is required</small>
+                    <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Le libele est requis </small>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="type">Type:</label>
-                    <p-dropdown [options]="types" formControlName="type" id="type" placeholder="Select"></p-dropdown>
+                    <p-dropdown [options]="types" formControlName="type" id="type" ></p-dropdown>
                     <small class="p-error" *ngIf="form.get('type')?.touched && form.get('type')?.hasError('required')">The type is required</small>
                 </div>
             </div>
@@ -32,10 +32,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="abasedesalaire">A base de salaire:</label>
-                    <p-dropdown formControlName="abasedesalaire" id="abasedesalaire" class="form-control">
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </p-dropdown>
+                    <p-dropdown [options]="yesNoOptions" formControlName="abasedesalaire" id="abasedesalaire" ></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('abasedesalaire')?.touched && form.get('abasedesalaire')?.hasError('required')">A base de salaire is required</small>
                 </div>
             </div>
 
@@ -51,16 +49,15 @@
             <!-- Categorie -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="categorie">Categorie:</label>
+                    <label for="categorie">Categorie :</label>
                     <input type="text" pInputText formControlName="categorie" id="categorie" class="form-control"/>
-                    <!-- No error message as it's not required -->
                 </div>
             </div>
 
             <!-- Group -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="grp">Group:</label>
+                    <label for="grp">Groupe :</label>
                     <input type="text" pInputText formControlName="grp" id="grp" class="form-control"/>
                     <!-- No error message as it's not required -->
                 </div>
@@ -69,42 +66,36 @@
             <!-- Grade -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="grade">Grade:</label>
+                    <label for="grade">Grade :</label>
                     <input type="text" pInputText formControlName="grade" id="grade" class="form-control"/>
                     <!-- No error message as it's not required -->
                 </div>
             </div>
 
-<!-- Obligatoire -->
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="obligatoire">Obligatoire:</label>
-        <p-dropdown formControlName="obligatoire" id="obligatoire" class="form-control">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </p-dropdown>
-    </div>
-</div>
+            <!-- Obligatoire -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="obligatoire">Obligatoire :</label>
+                    <p-dropdown [options]="yesNoOptions" formControlName="obligatoire" id="obligatoire" ></p-dropdown>
 
+                </div>
+            </div>
 
             <!-- CNSS -->
-           <!-- CNSS -->
-           <div class="col-md-6">
-            <div class="form-group">
-                <label for="cnss">Cnss:</label>
-                <p-radioButton name="cnss" formControlName="cnss" value="true" label="Yes"></p-radioButton>
-                <p-radioButton name="cnss" formControlName="cnss" value="false" label="No"></p-radioButton>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cnss">Cnss:</label>
+                    <p-dropdown [options]="yesNoOptions" formControlName="cnss" id="cnss"></p-dropdown>
+                </div>
             </div>
-        </div>
 
-        <!-- Impôt -->
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="impo">Impo:</label>
-                <p-radioButton name="impo" formControlName="impo" value="true" label="Yes"></p-radioButton>
-                <p-radioButton name="impo" formControlName="impo" value="false" label="No"></p-radioButton>
+            <!-- Impôt -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="impo">Impo:</label>
+                    <p-dropdown [options]="yesNoOptions" formControlName="impo" id="impo"></p-dropdown>
+                </div>
             </div>
-        </div>
         </div>
     </form>
 </div>

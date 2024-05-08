@@ -166,4 +166,27 @@ select:hover {
   :host >>> .p-dropdown:focus-visible {
     outline: none;
   }
- 
+ /* Apply styles to p-radioButton */
+:host >>> .p-radiobutton {
+    margin-right: 10px; /* Adjust spacing between radio buttons */
+  }
+  
+  /* Apply styles to radio button label */
+  :host >>> .p-radiobutton-label {
+    font-family: Lexend Deca;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  /* Apply styles to radio button input */
+  :host >>> .p-radiobutton-box.p-highlight {
+    border-color: blue; /* Change border color when selected */
+  }
+  
+  /* Apply styles to radio button input when hovered */
+  :host >>> .p-radiobutton-box:hover {
+    border-color: #3B82F6; /* Change border color on hover */
+  }
+  

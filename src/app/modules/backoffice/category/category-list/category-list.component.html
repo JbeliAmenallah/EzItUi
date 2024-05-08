@@ -1,7 +1,7 @@
 <div class="table-container">
-    <h1 class="gradient-text">Category List</h1>
+    <h1 class="gradient-text">Liste des categories</h1>
 
-    <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
+    <div class=" flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+"
           (click)="showAddDialog()"  ></button>
         <ng-template #tooltipContent>
@@ -13,13 +13,13 @@
 
     <p-table #dt3 [value]="categories" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Affichage de {first} à {last} de l’entrée {totalRecords}s"
         [globalFilterFields]="['id','libele']" [tableStyle]="{ 'min-width': '75rem' }">
 
         <ng-template pTemplate="header">
             <tr>
                 <th>ID</th>
-                <th>Libele</th>
+                <th>Libellé</th>
                 <th>Actions</th>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="4">No Categories found.</td>
+                <td colspan="4">Aucune catégorie n’a été trouvée.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">
@@ -54,12 +54,12 @@
                 <div class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')"
-                        placeholder="Search keyword" style="width: 400px;" />
+                        placeholder="Mot-clé de recherche" style="width: 400px;" />
                 </div>
             </div>
         </ng-template>
     </p-table>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
         acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text"
         acceptIcon="none" rejectIcon="none">
     </p-confirmDialog>

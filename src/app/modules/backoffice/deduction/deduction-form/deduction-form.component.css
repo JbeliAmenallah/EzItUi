@@ -118,4 +118,20 @@
     font-weight: 400;
     line-height: normal;
   }
+  :host >>> .p-dropdown {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    color: var(--gris-1-dbarras, #7b777f);
+    font-family: Lexend Deca;
+    font-size: 100px;
+    font-style:normal;
+    font-weight: 400;
+    line-height: normal;
+    appearance: none;
+    background: transparent;
+    position: relative;
+  }
   

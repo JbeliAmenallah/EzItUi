@@ -180,3 +180,30 @@ select::placeholder {
 :host >>> .p-dropdown:focus-visible {
   outline: none;
 }
+/* Apply styles to p-multiSelect */
+:host >>> .p-multiselect {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  appearance: none;
+  background: transparent;
+  position: relative;
+}
+
+/* Apply focus styles */
+:host >>> .p-multiselect:focus {
+  border: 1px solid blue;
+}
+
+/* Remove default focus outline */
+:host >>> .p-multiselect:focus-visible {
+  outline: none;
+}

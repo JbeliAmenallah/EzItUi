@@ -31,7 +31,6 @@ export class AbsenceFormComponent implements OnInit {
   
     console.log('Initial justified value:', this.form.get('justified').value);
   
-    // Pre-select justified field if a value is available
     if (this.form.get('justified').value !== null) {
       const justifiedValue = this.form.get('justified').value;
       console.log('Received justified value:', justifiedValue);
@@ -74,7 +73,7 @@ export class AbsenceFormComponent implements OnInit {
     this.absenceService.getEmployeeOptions().subscribe(
       options => {
         this.employeeOptions = options;
-        console.log('Employee Options:', this.employeeOptions); // Log options for troubleshooting
+        console.log('Employee Options:', this.employeeOptions); 
       },
       error => {
         console.error('Erreur lors de l’extraction des options de l’employée :', error); // Log any errors

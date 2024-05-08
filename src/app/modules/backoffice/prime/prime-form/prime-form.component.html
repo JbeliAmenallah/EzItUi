@@ -5,11 +5,13 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="contact">Employé :</label>
-                    <p-multiSelect [options]="contactOptions" formControlName="contact" [showClear]="true" placeholder="Select Contacts"></p-multiSelect>
-                    <small class="p-error" *ngIf="form.get('contact')?.touched && form.get('contact')?.hasError('required')">Au moins un employé est requis</small>
+                    <label for="contactId">Employé:</label>
+                    <p-multiSelect [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-multiSelect>
+                    <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
                 </div>
             </div>
+            
+            
             
 
             <div class="col-md-6">
@@ -23,11 +25,11 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="month">Mois :</label>
-                    <p-calendar formControlName="month" id="month" [monthNavigator]="true"  [yearNavigator]="false" dateFormat="mm" [showIcon]="true"></p-calendar>
-                    <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">Le mois est requis</small>
+                  <label for="month">Mois :</label>
+                  <p-dropdown formControlName="month" id="month" [options]="months" placeholder="Sélectionner un mois"></p-dropdown>
+                  <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">Le mois est requis</small>
                 </div>
-            </div>
+              </div>
             
 
             <div class="col-md-6">
@@ -48,8 +50,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="typePrimeId">Type primes:</label>
-                    <p-dropdown [options]="typePrimes" formControlName="typePrime" [showClear]="true" placeholder="Select a type prime"></p-dropdown>
-                    <small class="p-error" *ngIf="form.get('typePrimeId')?.touched && form.get('typePrimeId')?.hasError('required')">The type prime is required</small>
+                    <p-dropdown [options]="typePrimes" formControlName="typePrimeId" [showClear]="true" placeholder="Select a type prime"></p-dropdown>
                 </div>
             </div>
 

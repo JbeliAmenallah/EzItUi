@@ -29,10 +29,11 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="etat">Etat :</label>
-              <input type="text" pInputText formControlName="etat" id="etat" class="form-control"/>
+              <p-dropdown formControlName="etat" id="etat" [options]="etatOptions" placeholder="Sélectionner un état" [showClear]="true"></p-dropdown>
               <small class="p-error" *ngIf="formDeduction.get('etat')?.touched && formDeduction.get('etat')?.hasError('required')">Etat est requis</small>
             </div>
           </div>
+          
   
           <div class="col-md-6">
             <div class="form-group">

@@ -1,5 +1,5 @@
 export class Conge {
-    congeId?: number; // Add id property
+    congeId?: number; 
     startDate?: Date;
     endDate?: Date;
     state?: string;

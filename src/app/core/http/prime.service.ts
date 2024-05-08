@@ -39,4 +39,9 @@ export class PrimeService {  private apiUrl = ' http://localhost:8080/primes';
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Prime>(url);
   }
+
+  getContactIdsByPrimeId(primeId: number): Observable<number[]> {
+    const url = `${this.apiUrl}/contact-ids/${primeId};`
+    return this.http.get<number[]>(url);
+  }
 }

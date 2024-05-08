@@ -1,11 +1,11 @@
 <div class="table-container">
-  <h1 class="gradient-text">Public Holiday List</h1>
+  <h1 class="gradient-text">Lists des jours fériés</h1>
 
-    <div class="card flex justify-content-center" style="display: flex; justify-content: flex-end;">
+    <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
       <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" (click)="showAddDialog()" style="margin-bottom: 30px;"></button>
       <ng-template #tooltipContent>
         <div class="flex align-items-center">
-          <span><b>Public Holiday</b></span>
+          <span><b> A jouter jour férié</b></span>
         </div>
       </ng-template>
     </div>
@@ -19,14 +19,14 @@
       [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="loading"
       [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
       [globalFilterFields]="['libele', 'jour', 'mois']"
       [tableStyle]="{ 'min-width': '75rem' }">
   
       <ng-template pTemplate="header">
         <tr>
-          <th>Jour Ferie Id</th>
-          <th>Libele</th>
+          <th>Jour Férié Id</th>
+          <th>Libellée</th>
           <th>Jour</th>
           <th>Mois</th>
           <th>Actions</th>
@@ -63,7 +63,7 @@
   
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="5">No public holidays found.</td>
+          <td colspan="5">Aucun jour férié n’a été trouvé.</td>
         </tr>
       </ng-template>
   
@@ -71,26 +71,26 @@
         <div class="flex justify-content-end align-items-center">
           <div class="p-input-icon-left">
             <i class="pi pi-search"></i>
-            <input #searchInput pInputText type="text" (input)="dt.filterGlobal(searchInput.value, 'contains')" placeholder="Search keyword" style="width: 400px;" />
+            <input #searchInput pInputText type="text" (input)="dt.filterGlobal(searchInput.value, 'contains')" placeholder="Mot-clé de recherche" style="width: 400px;" />
           </div>
         </div>
       </ng-template>
     </p-table>
   
     <!-- Edit Dialog -->
-    <p-dialog header="Edit Public Holiday" [(visible)]="displayEditDialog" [modal]="true" [style]="{ 'width': '50vw' }" (onHide)="hideEditDialog()">
+    <p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{ 'width': '50vw' }" (onHide)="hideEditDialog()">
         <app-edit-publicholiday
           [publicHoliday]="selectedPublicHoliday"
         ></app-edit-publicholiday>
       </p-dialog>
     <!-- Confirm Dialog for delete -->
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
       acceptButtonStyleClass="p-button-danger p-button-text"
       rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">
     </p-confirmDialog>
   
     <!-- Add Dialog for new public holiday -->
-    <p-dialog header="Add Public Holiday" [(visible)]="displayAddDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}">
+    <p-dialog header="Ajouter un jour férié" [(visible)]="displayAddDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}">
         <app-add-publicholiday></app-add-publicholiday>
       </p-dialog>
   

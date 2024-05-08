@@ -16,6 +16,7 @@ export class EditPrimeComponent implements OnInit {
   @Input() prime: Prime;
   primeId: any;
   messages: Message[] = [];
+  contactids:Number[]=[];
 
   constructor(
     private primeService: PrimeService,
@@ -26,6 +27,7 @@ export class EditPrimeComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getContactIds();
   }
 
   initializeForm() {
@@ -49,12 +51,29 @@ export class EditPrimeComponent implements OnInit {
     }
   }
 
+  getContactIds(): void {
+  
+    if (this.route.snapshot.paramMap.has('id')) {
+      this.primeId = +this.route.snapshot.paramMap.get('id'); 
+
+      this.primeService.getContactIdsByPrimeId(this.primeId).subscribe(
+        (contactIds: number[]) => {
+          this.contactids = contactIds;
+          console.log(this.contactids)
+        
+        },
+        (error) => {
+          console.error('Error retrieving contact IDs:', error);
+        }
+      );
+    }
+  }
+
   getPrime() {
   this.primeService.getPrimeById(this.primeId).subscribe({
     next: (item: Prime) => {
       console.log("Retrieved prime:", item);
       this.prime = item;
-      // Assigning the retrieved prime object to the form
       this.patchFormWithPrimeData(item);
     },
     error: (error) => {
@@ -65,10 +84,14 @@ export class EditPrimeComponent implements OnInit {
 }
 
 patchFormWithPrimeData(prime: Prime) {
+
   if (this.primeForm && this.primeForm.form) {
     console.log("Patch form with prime data:", prime);
+
+    const selectedContacts = this.contactids.map(contactId => (console.log(contactId),{ label: contactId.toString(), value: contactId }));
+console.log(selectedContacts)
     this.primeForm.form.patchValue({
-      contactId: prime.contactId,
+      contactId: selectedContacts,
       year: prime.year,
       month: prime.month,
       montant: prime.montant,
@@ -87,7 +110,6 @@ patchFormWithPrimeData(prime: Prime) {
 
   save() {
     if (true) {
-      // Retrieve form values directly from form controls
       const contactId = this.primeForm.form.get('contactId')?.value;
       const year = this.primeForm.form.get('year')?.value;
       const month = this.primeForm.form.get('month')?.value;
@@ -95,7 +117,6 @@ patchFormWithPrimeData(prime: Prime) {
       const motif = this.primeForm.form.get('motif')?.value;
       const typePrimeId = this.primeForm.form.get('typePrimeId')?.value;
   
-      // Update the prime object with form values
       this.prime.contactId = contactId;
       this.prime.year = year;
       this.prime.month = month;
@@ -103,7 +124,6 @@ patchFormWithPrimeData(prime: Prime) {
       this.prime.motif = motif;
       this.prime.typePrimeId = typePrimeId;
   
-      // Call the service to update the prime
       this.primeService.updatePrime(this.primeId, this.prime).subscribe(
         (data) => {
           setTimeout(() => {

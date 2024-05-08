@@ -4,10 +4,10 @@
 
 <app-deduction-form></app-deduction-form>
 
-<div class="buttons">
-    <button type="button" class="p-button p-button-success custom-save-button btn-save" (click)="save()">Enregistrer</button>
+<div class=" p-button">
+    <p-button type="button" label="Enregistrer" class="p-button-success custom-save-button btn-save" (click)="save()"></p-button>
 </div>
 
-<div class="">
+<div class="messages-container">
     <p-messages [(value)]="messages" [closable]="true"></p-messages>
 </div>

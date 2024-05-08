@@ -10,6 +10,11 @@ export class EditCongeComponent {
 
   @Input() displayDialog: boolean;
   @Input() selectedConge: Conge;
+  stateOptions: any[] = [
+    { label: 'Accepté', value: 'accepté' },
+    { label: 'En attente', value: 'enattente' },
+    { label: 'Rejeté', value: 'rejeté' }
+  ];
   
   @Output() onSave: EventEmitter<any> = new EventEmitter();
   @Output() onHide: EventEmitter<any> = new EventEmitter();

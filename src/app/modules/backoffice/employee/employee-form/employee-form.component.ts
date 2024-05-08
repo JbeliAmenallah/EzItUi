@@ -17,8 +17,8 @@ export class EmployeeFormComponent implements OnInit {
   @Input() currentItemForm: Employee;
   entrepriseOptions: any[] = [];
   regimeOptions: any[] = [
-    { label: 'regime1', value: 'regime1' },
-    { label: 'regime2', value: 'regime2' }
+    { label: 'Horaire', value: 'Horaire' },
+    { label: 'Mensuel', value: 'Mensuel' }
   ];
   
   chefOptions: any[] = [

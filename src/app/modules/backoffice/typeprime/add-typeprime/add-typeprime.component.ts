@@ -56,16 +56,16 @@ export class AddTypeprimeComponent implements OnInit {
       this.service.addTypePrime(this.typeprime).subscribe(
         (data) => {
           setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The typeprime has been successfully added.' });
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le typeprime a été ajouté avec succès.' });
           }, 100);
           this.router.navigate(['/typeprime/list']);
         },
         (error) => {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the typeprime.' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement du typeprime.' });
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation', detail: 'Veuillez remplir tous les champs obligatoires.' });
     }
   }
   
