@@ -1,5 +1,5 @@
 export interface Grade {
-    id?: number;
+    grade_id?: number;
     libele: string;
   }
   

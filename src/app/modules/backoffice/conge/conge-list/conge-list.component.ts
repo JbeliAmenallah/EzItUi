@@ -13,12 +13,14 @@ export class CongeListComponent implements OnInit {
 
   conges: Conge[];
   loading: boolean = false;
-
-  // Selected conge for editing
   selectedConge: Conge;
-
-  // Display dialog flag
   displayDialog: boolean = false;
+  stateOptions: any[] = [
+    { label: 'Accepté', value: 'accepté' },
+    { label: 'En attente', value: 'enattente' },
+    { label: 'Rejeté', value: 'rejeté' }
+  ];
+  
 
   constructor(
     private congeService: CongeService,
@@ -44,14 +46,13 @@ export class CongeListComponent implements OnInit {
 
   editItem(conge: Conge) {
     this.selectedConge = { ...conge };
-    console.log('Selected Conge:', this.selectedConge); // Check the selected conge
-    console.log('Selected Conge ID:', this.selectedConge.congeId); // Check the selected conge's ID
+    console.log('Selected Conge:', this.selectedConge); 
+    console.log('Selected Conge ID:', this.selectedConge.congeId); 
     this.displayDialog = true;
 }
 
 
 saveConge() {
-  // Check if selectedConge is defined and has an id
   if (this.selectedConge && this.selectedConge.congeId) {
       this.congeService.updateConge(this.selectedConge.congeId, this.selectedConge).subscribe(
           () => {
@@ -61,12 +62,10 @@ saveConge() {
           },
           (error) => {
             if (typeof error === 'object' && error !== null) {
-              // Handle the validation error response
               for (const [field, message] of Object.entries(error)) {
                 this.messageService.add({ severity: 'error', summary: 'Erreur', detail: `${field}: ${message}` });
               }
             } else {
-              // Handle other errors
               this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error });
             }
           }

@@ -119,5 +119,23 @@ select::placeholder {
   line-height: normal;
 }
 :host >>> .p-button {
-  margin-top: 30px; /* Adjust the padding value as needed */
+  margin-top: 30px;
+  margin-left: 450px;
+  width: auto; 
+}
+:host >>> .p-dropdown {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 100px;
+  font-style:normal;
+  font-weight: 400;
+  line-height: normal;
+  appearance: none;
+  background: transparent;
+  position: relative;
 }

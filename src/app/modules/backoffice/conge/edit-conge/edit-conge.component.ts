@@ -7,16 +7,12 @@ import { Conge } from '../../../../shared/models/conge';
   styleUrls: ['./edit-conge.component.css']
 })
 export class EditCongeComponent {
-
   @Input() displayDialog: boolean;
   @Input() selectedConge: Conge;
-  stateOptions: any[] = [
-    { label: 'Accepté', value: 'accepté' },
-    { label: 'En attente', value: 'enattente' },
-    { label: 'Rejeté', value: 'rejeté' }
-  ];
-  
+  @Input() stateOptions: any[];
+
   @Output() onSave: EventEmitter<any> = new EventEmitter();
+
   @Output() onHide: EventEmitter<any> = new EventEmitter();
 
   saveConge() {

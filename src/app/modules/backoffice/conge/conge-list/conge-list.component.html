@@ -78,5 +78,6 @@
   <p-toast></p-toast>
 </div>
 
-<app-edit-conge [displayDialog]="displayDialog" [selectedConge]="selectedConge" (onSave)="saveConge()"
-  (onHide)="hideDialog()"></app-edit-conge>
+<app-edit-conge [displayDialog]="displayDialog" [selectedConge]="selectedConge" [stateOptions]="stateOptions"
+  (onSave)="saveConge()" (onHide)="hideDialog()"></app-edit-conge>
+

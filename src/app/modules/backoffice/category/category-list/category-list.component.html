@@ -34,13 +34,13 @@
         </ng-template>
         <ng-template pTemplate="body" let-category>
             <tr>
-                <td>{{ category.id }}</td>
+                <td>{{ category.category_id }}</td>
                 <td>{{ category.libele }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)"
                        (click)="editCategory(category)" ></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)"
-                       (click)="deleteItem(category.id)" ></i>
+                       (click)="deleteItem(category.category_id)" ></i>
                 </td>
             </tr>
         </ng-template>

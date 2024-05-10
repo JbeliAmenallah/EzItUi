@@ -1,35 +1,34 @@
 <div class="p-fluid">
-    <form [formGroup]="form" (ngSubmit)="save()">
-      <div class="p-field">
-        <label for="jour">Jour :</label>
-        <input type="number" pInputText formControlName="jour" id="jour" class="p-inputtext" />
-        <small class="p-error" *ngIf="form.get('jour')?.touched && form.get('jour')?.hasError('required')">Le jour est obligatoire</small>
-        <small class="p-error" *ngIf="form.get('jour').hasError('min') || form.get('jour').hasError('max')">Jour doit etre entre 31 et 1 </small>
-      </div>
-  
-      <div class="p-field">
-        <label for="mois">Mois :</label>
-        <input type="number" pInputText formControlName="mois" id="mois" class="p-inputtext" />
-        <small class="p-error" *ngIf="form.get('mois')?.touched && form.get('mois')?.hasError('required')">Mois est obligatoire </small>
-        <small class="p-error" *ngIf="form.get('mois').hasError('min') || form.get('mois').hasError('max')">Mois doit etre entre 12 et 1 </small>
-      </div>
-  
-      <div class="p-field">
-        <label for="libele">Libellé :</label>
-        <input type="text" pInputText formControlName="libele" id="libele" class="p-inputtext" />
-        <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libellé est obligatoire</small>
-      </div>
-  
-      <div class="p-field">
-        <label for="annee">Année :</label>
-        <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="annee" optionLabel="libele" optionValue="id"></p-dropdown>
-        <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">L'année  est obligatoire</small>
-      </div>
-  
-      <div class="p-field">
-        <p-button type="submit" label="Enregistrer"lass="p-button-raised p-button-success"></p-button>
-      </div>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="p-field">
+      <label for="jour">Jour :</label>
+      <input type="number" pInputText formControlName="jour" id="jour" class="p-inputtext" />
+      <small class="p-error" *ngIf="form.get('jour')?.touched && form.get('jour')?.hasError('required')">Le jour est obligatoire</small>
+      <small class="p-error" *ngIf="form.get('jour').hasError('min') || form.get('jour').hasError('max')">Jour doit être entre 31 et 1 </small>
+    </div>
+
+    <div class="p-field">
+      <label for="mois">Mois :</label>
+      <input type="number" pInputText formControlName="mois" id="mois" class="p-inputtext" />
+      <small class="p-error" *ngIf="form.get('mois')?.touched && form.get('mois')?.hasError('required')">Mois est obligatoire </small>
+      <small class="p-error" *ngIf="form.get('mois').hasError('min') || form.get('mois').hasError('max')">Mois doit être entre 12 et 1 </small>
+    </div>
+
+    <div class="p-field">
+      <label for="libele">Libellé :</label>
+      <input type="text" pInputText formControlName="libele" id="libele" class="p-inputtext" />
+      <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libellé est obligatoire</small>
+    </div>
+
+    <div class="p-field">
+      <label for="annee">Année :</label>
+      <p-dropdown [options]="anneeOptions" formControlName="anneeId" id="annee" optionLabel="libele" optionValue="id"></p-dropdown>
+      <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">L'année est obligatoire</small>
+    </div>
+
+    <div class="p-field">
+      <p-button type="submit" label="Enregistrer" class="p-button-raised p-button-success"></p-button>
+    </div>
       
-    </form>
-  </div>
-  
+  </form>
+</div>

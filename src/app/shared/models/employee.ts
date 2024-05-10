@@ -22,6 +22,11 @@ export interface Employee {
   cotisations?: Cotisation[];
   enfants?: Enfant[];
   entreprise?:any;
+  category?:any;
+  grade?:any;
+  groupe?:any;
+
+
 }
 
 interface Absence {
@@ -70,3 +75,4 @@ interface Enfant {
   bourse?: boolean;
   educationGrade?: string;
 }
+

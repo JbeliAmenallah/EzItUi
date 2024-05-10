@@ -39,52 +39,64 @@ export class AddEmployeeComponent implements OnInit {
       salaireDeBASE: null,
       numCompte: '',
       modeDePaiement: '',
-      dateRecrutemnt: null
+      dateRecrutemnt: null,
     };
   }
   save() {
     if (this.employeeForm.form.valid) {
-      this.employee = {
-        name: this.employeeForm.form.get('name')?.value,
-        username: this.employeeForm.form.get('username')?.value,
-        email: this.employeeForm.form.get('email')?.value,
-        location: this.employeeForm.form.get('location')?.value,
-        phone: this.employeeForm.form.get('phone')?.value,
-        fax: this.employeeForm.form.get('fax')?.value,
-        password: this.employeeForm.form.get('password')?.value,
-        roles: this.employeeForm.form.get('roles')?.value,
-        nbEnfant: this.employeeForm.form.get('nbEnfant')?.value,
-        regime: this.employeeForm.form.get('regime')?.value,
-        chefDefamille: this.employeeForm.form.get('chefDefamille')?.value,
-        salaireDeBASE: this.employeeForm.form.get('salaireDeBASE')?.value,
-        numCompte: this.employeeForm.form.get('numCompte')?.value,
-        modeDePaiement: this.employeeForm.form.get('modeDePaiement')?.value,
-        dateRecrutemnt: this.employeeForm.form.get('dateRecrutemnt')?.value,
-        entreprise: { entrepriseId: this.employeeForm.form.get('entrepriseId')?.value } 
+      // Extract form values
+      const formValues = this.employeeForm.form.value;
+  
+      // Create the employee object
+      const employee: Employee = {
+        name: formValues.name,
+        username: formValues.username,
+        email: formValues.email,
+        location: formValues.location,
+        phone: formValues.phone,
+        fax: formValues.fax,
+        password: formValues.password,
+        roles: formValues.roles,
+        nbEnfant: formValues.nbEnfant,
+        regime: formValues.regime,
+        chefDefamille: formValues.chefDefamille,
+        salaireDeBASE: formValues.salaireDeBASE,
+        numCompte: formValues.numCompte,
+        modeDePaiement: formValues.modeDePaiement,
+        dateRecrutemnt: formValues.dateRecrutemnt,
+        entreprise: { entrepriseId: formValues.entrepriseId },
+        category: {category_id:formValues.category},
+        groupe:  {groupe_id:formValues.groupe},
+        grade:  {grade_id:formValues.grade}
       };
-      console.log(this.employee)
-      this.service.addEmployee(this.employee).subscribe(
+  
+      console.log('Employee to save:', employee);
+  
+      this.service.addEmployee(employee).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully added.', life: 1000 });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employé a été ajouté avec succès.', life: 3000 });
+  
+   
           setTimeout(() => {
             this.router.navigate(['/employee/list']);
-          }, 1000); 
+          }, 3000);
         },
         (error) => {
-          console.error('Error saving employee:', error);
+          console.error('Erreur lors de l’enregistrement de l’employé :', error);
           if (Array.isArray(error)) {
             error.forEach(err => {
-              this.messageService.add({ severity: 'error', summary: 'Fields Are not valid', detail: err.message});
+              this.messageService.add({ severity: 'error', summary: 'Les champs ne sont pas valides', detail: err.message });
             });
           } else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to save employee.' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Échec de l’enregistrement de l’employé.' });
           }
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Form is not valid.', life: 1000 });
+      this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'La forme n’est pas valable.', life: 3000 });
     }
   }
+  
   
   
 }

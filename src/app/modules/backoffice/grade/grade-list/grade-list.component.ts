@@ -12,7 +12,7 @@ export class GradeListComponent implements OnInit {
   grades: Grade[] = [];
   loading: boolean = true;
   displayEditDialog: boolean = false;
-  displayAddDialog: boolean = false; // Add this line
+  displayAddDialog: boolean = false; 
   selectedGrade: Grade;
 
   constructor(
@@ -40,55 +40,53 @@ export class GradeListComponent implements OnInit {
   }
 
   editGrade(grade: Grade) {
-    // Set selectedGrade and display the EditGradeComponent
-    this.selectedGrade = { ...grade }; // Create a copy to avoid modifying original
+    this.selectedGrade = { ...grade }; 
     this.displayEditDialog = true;
   }
 
   saveEditedGrade(editedGrade: Grade) {
     if (editedGrade) {
-      this.gradeService.updateGrade(editedGrade.id, editedGrade).subscribe(
+      this.gradeService.updateGrade(editedGrade.grade_id, editedGrade).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Grade updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Grade mis à jour avec succès' });
           this.displayEditDialog = false;
-          this.getGrades(); // Refresh the list
+          this.getGrades(); 
         },
         (error) => {
-          console.error('Error updating grade:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating grade' });
+          console.error('Erreur lors de la mise à jour de la note :', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la note' });
         }
       );
     }
   }
 
   hideEditDialog() {
-    // Hide the EditGradeComponent dialog
     this.displayEditDialog = false;
   }
 
-  deleteItem(id: number) {
+  deleteItem(grade_id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this grade?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer cette note ??',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
       acceptIcon: 'pi pi-check',
       rejectIcon: 'pi pi-times',
       accept: () => {
-        this.gradeService.deleteGrade(id).subscribe(
+        this.gradeService.deleteGrade(grade_id).subscribe(
           () => {
             this.getGrades();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Grade deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'La note a été supprimée avec succès' });
           },
           (error) => {
             console.error('Error deleting grade:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting grade' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de la note' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejecté', detail: 'Vous avez rejeté' });
       }
     });
   }
@@ -105,13 +103,13 @@ export class GradeListComponent implements OnInit {
   saveNewGrade(newGrade: Grade) {
     this.gradeService.createGrade(newGrade).subscribe(
       () => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Grade added successfully' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Ajout réussi de la note' });
         this.hideAddDialog();
         this.getGrades();
       },
       (error) => {
-        console.error('Error creating grade:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error creating grade' });
+        console.error('Erreur lors de la création de la note:', error);
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la création de la note' });
       }
     );
   }

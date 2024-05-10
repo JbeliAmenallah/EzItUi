@@ -47,7 +47,7 @@ export class CategoryListComponent implements OnInit {
   
  
   
-  deleteItem(id: number) {
+  deleteItem(category_id: number) {
     this.confirmationService.confirm({
       message: 'Voulez-vous vraiment supprimer cette catégorie ??',
       header: 'Confirmation de suppression',
@@ -57,7 +57,7 @@ export class CategoryListComponent implements OnInit {
       acceptIcon: 'pi pi-check',
       rejectIcon: 'pi pi-times',
       accept: () => {
-        this.categoryService.deleteCategory(id).subscribe(
+        this.categoryService.deleteCategory(category_id).subscribe(
           () => {
             this.getCategories();
             this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Catégorie supprimée avec succès' });
@@ -75,7 +75,7 @@ export class CategoryListComponent implements OnInit {
   }
   saveEditedCategory(editedCategory:Category) {
     if (editedCategory) {
-      this.categoryService.updateCategory(editedCategory.id, editedCategory).subscribe(
+      this.categoryService.updateCategory(editedCategory.category_id, editedCategory).subscribe(
         () => {
           this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Grade mis à jour avec succès' });
           this.displayEditDialog = false;

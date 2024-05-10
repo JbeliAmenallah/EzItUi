@@ -60,7 +60,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="roles">Roles :</label>
-                    <input type="text" pInputText formControlName="roles" id="roles" class="form-control"/>
+                    <p-dropdown [options]="rolesOptions" formControlName="roles" [style]="{'width':'100%'}" placeholder="Select Roles"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('roles')?.touched && form.get('roles')?.hasError('required')">Le role est obligatoire</small>
                 </div>
             </div>
@@ -131,7 +131,30 @@
                     <small class="p-error" *ngIf="form.get('dateRecrutemnt')?.touched && form.get('dateRecrutemnt')?.hasError('required')">La date de recrutement est obligatoire</small>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label for="category">Catégorie :</label>
+                  <p-dropdown [options]="categoryOptions" formControlName="category" [showClear]="true" placeholder="Sélectionner" class="form-control"></p-dropdown>
+                  <small class="p-error" *ngIf="form.get('category')?.touched && form.get('category')?.hasError('required')">Catégorie est obligatoire</small>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="groupe">Groupe :</label>
+                    <p-dropdown [options]="groupeOptions" formControlName="groupe" id="groupe" [showClear]="true" placeholder="Selectionner" class="form-control"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('groupe')?.touched && form.get('groupe')?.hasError('required')">Groupe est obligatoire</small>
+                </div>
+            </div>
             
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label for="grade">Grade :</label>
+                  <p-dropdown [options]="gradeOptions" formControlName="grade" id="grade" [showClear]="true" placeholder="Sélectionner" class="form-control"></p-dropdown>
+                  <small class="p-error" *ngIf="form.get('grade')?.touched && form.get('grade')?.hasError('required')">Grade est obligatoire</small>
+                </div>
+              </div>
+              
         </div>
     </form>
 </div>
