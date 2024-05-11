@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Conge } from '../../../../shared/models/conge';
+import { Conge } from '../../../../shared/models/conge'; // Ensure correct path to Conge model
 
 @Component({
   selector: 'app-edit-conge',
@@ -12,7 +12,6 @@ export class EditCongeComponent {
   @Input() stateOptions: any[];
 
   @Output() onSave: EventEmitter<any> = new EventEmitter();
-
   @Output() onHide: EventEmitter<any> = new EventEmitter();
 
   saveConge() {
