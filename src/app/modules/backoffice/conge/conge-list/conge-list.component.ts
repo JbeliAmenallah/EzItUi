@@ -4,6 +4,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Conge } from '../../../../shared/models/conge';
 import { CongeService } from '../../../../core/http/conge.service';
 
+
 @Component({
   selector: 'app-conge-list',
   templateUrl: './conge-list.component.html',
@@ -20,13 +21,14 @@ export class CongeListComponent implements OnInit {
     { label: 'En attente', value: 'enattente' },
     { label: 'Rejeté', value: 'rejeté' }
   ];
+
   
 
   constructor(
     private congeService: CongeService,
     private router: Router,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +48,9 @@ export class CongeListComponent implements OnInit {
 
   editItem(conge: Conge) {
     this.selectedConge = { ...conge };
+    this.selectedConge.startDate = new Date(this.selectedConge.startDate);
+    this.selectedConge.endDate = new Date(this.selectedConge.endDate);
+    console.log(this.selectedConge.startDate)
     console.log('Selected Conge:', this.selectedConge); 
     console.log('Selected Conge ID:', this.selectedConge.congeId); 
     this.displayDialog = true;
