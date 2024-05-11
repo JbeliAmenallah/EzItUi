@@ -1,19 +1,20 @@
-<p-dialog header="Add Grade" [(visible)]="displayAddDialog" [modal]="true" [style]="{ 'width': '400px' }">
+<p-dialog header="Ajouter une grade" [(visible)]="displayAddDialog" [modal]="true" [style]="{ 'width': '400px' }">
     <div class="p-fluid">
       <form [formGroup]="form" (ngSubmit)="save()">
         <div class="p-field">
-          <label for="libele">Libele</label>
+          <label for="libele">Libellé</label>
           <input id="libele" type="text" pInputText formControlName="libele"
                  [ngClass]="{ 'p-invalid': form.get('libele').invalid && form.get('libele').touched }" />
           <div class="p-error" *ngIf="form.get('libele').invalid && form.get('libele').touched">
-            Libele is required
+            Libellé est requise
           </div>
         </div>
   
         <div class="p-field">
-          <button type="submit" pButton label="Save" class="p-button-success"></button>
+          <button type="submit" pButton label="Save" class="btn btn-primary mr-2"></button>
         </div>
+        
+        
       </form>
     </div>
   </p-dialog>
-  

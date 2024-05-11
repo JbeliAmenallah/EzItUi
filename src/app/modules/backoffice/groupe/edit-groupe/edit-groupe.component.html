@@ -1,4 +1,4 @@
-<p-dialog header="Edit Groupe" [(visible)]="displayEditDialog" [modal]="true" [style]="{ 'width': '400px' }">
+<p-dialog header="Modifier un groupe" [(visible)]="displayEditDialog" [modal]="true" [style]="{ 'width': '400px' }">
     <div class="p-fluid">
         <form [formGroup]="form" (ngSubmit)="save()">
             <div class="p-field">
@@ -6,12 +6,12 @@
                 <input id="libele" type="text" pInputText formControlName="libele"
                     [ngClass]="{ 'p-invalid': form.get('libele').invalid && form.get('libele').touched }" />
                 <div class="p-error" *ngIf="form.get('libele').invalid && form.get('libele').touched">
-                    Libele is required
+                    Libellé est requis
                 </div>
             </div>
 
             <div class="p-field">
-                <button type="submit" pButton label="Save" class="p-button-success"></button>
+                <button type="submit" pButton label="Enregistrer"class="btn btn-primary mr-2"></button>
             </div>
         </form>
     </div>

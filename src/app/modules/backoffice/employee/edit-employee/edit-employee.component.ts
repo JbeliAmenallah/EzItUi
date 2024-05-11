@@ -5,6 +5,9 @@ import { EmployeeService } from '../../../../core/http/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
 import { Entreprise } from '../../../../shared/models/Entreprise';
+import { Category } from '../../../../shared/models/category';
+import { Grade } from '../../../../shared/models/grade';
+import { Groupe } from '../../../../shared/models/groupe';
 
 @Component({
   selector: 'app-edit-employee',
@@ -35,7 +38,6 @@ export class EditEmployeeComponent implements OnInit {
         } else if (this.router.getCurrentNavigation() != null) {
           const extrasState = this.router.getCurrentNavigation()?.extras.state;
           if (extrasState !== undefined && extrasState['data'] !== undefined) {
-            this.employeeForm = extrasState['data'];
           } else {
             this.router.navigate(['/employees/list']);
           }
@@ -43,18 +45,31 @@ export class EditEmployeeComponent implements OnInit {
       });
     }
   }
+  
 
   ngOnInit(): void {
     this.getEmployee();
   }
-
-
-
+  
   getEmployee() {
     this.service.getEmployeeById(this.contactId).subscribe({
       next: (item: Employee) => {
         this.employee = item;
-        console.log(item);
+        console.log('Employee:', this.employee); 
+  
+      
+        if (this.employee) {
+          const selectedCategoryId = this.employee.category ? this.employee.category.category_id : null;
+          this.employeeForm.form.get('category')?.setValue(selectedCategoryId);
+  
+          const selectedGroupeId = this.employee.groupe ? this.employee.groupe.groupe_id : null;
+          this.employeeForm.form.get('groupe')?.setValue(selectedGroupeId);
+  
+          const selectedGradeId = this.employee.grade ? this.employee.grade.grade_id : null;
+          this.employeeForm.form.get('grade')?.setValue(selectedGradeId);
+        } else {
+          console.error('Employee data is null or undefined.');
+        }
       },
       error: (error) => {
         console.error("Une erreur s’est produite lors de l’obtention de l’employé :", error);
@@ -62,7 +77,6 @@ export class EditEmployeeComponent implements OnInit {
       }
     });
   }
-
   goToList() {
     this.router.navigate(['/employee/list']);
   }
@@ -70,6 +84,8 @@ export class EditEmployeeComponent implements OnInit {
   save() {
     console.log("hellol")
     if (this.employeeForm.form.valid) {
+      const formValues = this.employeeForm.form.value;
+
       this.employee.name = this.employeeForm.form.get('name')?.value;
       this.employee.username = this.employeeForm.form.get('username')?.value;
       this.employee.email = this.employeeForm.form.get('email')?.value;
@@ -85,11 +101,35 @@ export class EditEmployeeComponent implements OnInit {
       this.employee.numCompte = this.employeeForm.form.get('numCompte')?.value;
       this.employee.modeDePaiement = this.employeeForm.form.get('modeDePaiement')?.value;
       this.employee.dateRecrutemnt = this.employeeForm.form.get('dateRecrutemnt')?.value;
+      this.employee.entreprise = { entrepriseId: formValues.entrepriseId };
+
+const selectedCategoryValue = this.employeeForm.form.get('category')?.value;
+const selectedCategory = this.employeeForm.categoryOptions.find(option => option.value === selectedCategoryValue);
+
+if (selectedCategory) {
+    this.employee.category = { category_id: selectedCategory.value };
+} else {
+    console.error('Selected category not found in category options.');
+}
+const selectedGroupeValue = this.employeeForm.form.get('groupe')?.value;
+const selectedGroupe = this.employeeForm.groupeOptions.find(option => option.value === selectedGroupeValue);
+
+if (selectedGroupe) {
+    this.employee.groupe = { groupe_id: selectedGroupe.value };
+} else {
+    console.error('Selected Groupe not found in category options.');
+}
+const selectedGradeValue = this.employeeForm.form.get('grade')?.value;
+const selectedGrade = this.employeeForm.gradeOptions.find(option => option.value === selectedGradeValue);
+
+if (selectedGrade) {
+    this.employee.grade = { grade_id: selectedGrade.value };
+} else {
+    console.error('Selected Grade not found in category options.');
+}
 
 
-      Entreprise :{ entrepriseId: this.employeeForm.form.get('entrepriseId')?.value };
-      console.log(Entreprise)
-      this.employee.entreprise=Entreprise;
+
       console.log(this.employee)
       this.service.updateEmployee(this.contactId, this.employee).subscribe(
         (data) => {

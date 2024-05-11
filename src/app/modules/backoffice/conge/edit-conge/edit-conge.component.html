@@ -1,4 +1,4 @@
-<p-dialog header="Edit Conge" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width.px': '400','heigh.tx': '750' }"
+<p-dialog header="Edit Conge" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width.px': '500','heigh.tx': '900' }"
   [modal]="true" [contentStyle]="{ 'overflow': 'auto' }" (onHide)="hideDialog()">
   <ng-container *ngIf="selectedConge">
     <div class="form-group">
@@ -12,7 +12,6 @@
     <div class="form-group">
       <label for="state">État :</label>
       <p-dropdown id="state" [(ngModel)]="selectedConge.state" class="form-control" placeholder="Sélectionner un état">
-        <option *ngFor="let option of stateOptions" [value]="option.value">{{ option.label }}</option>
       </p-dropdown>
       
     </div>

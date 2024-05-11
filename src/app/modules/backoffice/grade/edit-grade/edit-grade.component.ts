@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Grade } from '../../../../shared/models/grade';
 
@@ -20,8 +20,19 @@ export class EditGradeComponent implements OnInit {
   ngOnInit(): void {
     console.log('Grade received:', this.grade); // Log the grade received
     console.log('Display edit dialog:', this.displayEditDialog); // Log the displayEditDialog value
+    if (this.grade) {
+      this.initializeForm();
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['grade'] && !changes['grade'].firstChange) {
+      console.log('Grade changed:', this.grade); // Log when grade changes
+      this.initializeForm();
+    }
+  }
+  initializeForm(): void {
     this.form.patchValue({
-      libele: this.grade?.libele || ''
+      libele: this.grade ? this.grade.libele || '' : ''
     });
   }
 

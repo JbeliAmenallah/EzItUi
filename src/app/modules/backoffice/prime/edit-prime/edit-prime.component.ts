@@ -84,14 +84,12 @@ export class EditPrimeComponent implements OnInit {
 }
 
 patchFormWithPrimeData(prime: Prime) {
-
   if (this.primeForm && this.primeForm.form) {
     console.log("Patch form with prime data:", prime);
 
-    const selectedContacts = this.contactids.map(contactId => (console.log(contactId),{ label: contactId.toString(), value: contactId }));
-console.log(selectedContacts)
+    // Patch form with prime data
     this.primeForm.form.patchValue({
-      contactId: selectedContacts,
+      contactId: [this.prime ? this.prime.contactId : null],
       year: prime.year,
       month: prime.month,
       montant: prime.montant,
@@ -102,6 +100,8 @@ console.log(selectedContacts)
     console.error("Prime form or form control not available.");
   }
 }
+
+
 
 
   goToList() {

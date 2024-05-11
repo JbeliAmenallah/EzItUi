@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Groupe } from '../../../../shared/models/groupe';
 
@@ -10,23 +10,36 @@ import { Groupe } from '../../../../shared/models/groupe';
 export class EditGroupeComponent implements OnInit {
   @Output() onSave: EventEmitter<Groupe> = new EventEmitter<Groupe>();
   @Input() displayEditDialog: boolean = false;
-  @Input() groupe: Groupe; // Input for the selected Groupe to edit
+  @Input() groupe: Groupe;
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.createForm();
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.createForm();
     this.patchForm();
+    this.initializeForm(); // Ensure form initialization
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['groupe'] && !changes['groupe'].firstChange) {
+      console.log('Groupe changed:', this.groupe); // Log when groupe changes
+      this.initializeForm();
+    }
   }
 
   createForm() {
-    return this.formBuilder.group({
+    this.form = this.formBuilder.group({
       libele: [null, Validators.required]
     });
   }
 
+  initializeForm(): void {
+    this.form.patchValue({
+      libele: this.groupe ? this.groupe.libele || '' : ''
+    });
+  }
+  
   patchForm() {
     if (this.groupe) {
       this.form.patchValue({
@@ -38,7 +51,7 @@ export class EditGroupeComponent implements OnInit {
   save(): void {
     if (this.form.valid) {
       const editedGroupe: Groupe = {
-        id: this.groupe.id,
+        groupe_id: this.groupe.groupe_id,
         libele: this.form.controls['libele'].value
       };
       this.onSave.emit(editedGroupe);

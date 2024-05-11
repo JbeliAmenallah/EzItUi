@@ -1,5 +1,5 @@
 <div class="table-container">
-  <h1 class="gradient-text">Lists des jours fériés</h1>
+  <h1 class="gradient-text">Liste des jours fériés</h1>
 
     <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
       <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" (click)="showAddDialog()" style="margin-bottom: 30px;"></button>
@@ -78,7 +78,7 @@
     </p-table>
   
     <!-- Edit Dialog -->
-    <p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{ 'width': '50vw' }" (onHide)="hideEditDialog()">
+    <p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}"(onHide)="hideEditDialog()">
         <app-edit-publicholiday
           [publicHoliday]="selectedPublicHoliday"
         ></app-edit-publicholiday>

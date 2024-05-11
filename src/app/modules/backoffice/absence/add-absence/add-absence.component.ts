@@ -53,7 +53,7 @@ export class AddAbsenceComponent implements OnInit {
             this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’absence a été ajoutée avec succès.' });
             setTimeout(() => {
                 this.router.navigate(['/absence/list']);
-            }, 100); // Delay navigation by 1 second
+            }, 1000); // Delay navigation by 1 second
         }, 10);
         
         },

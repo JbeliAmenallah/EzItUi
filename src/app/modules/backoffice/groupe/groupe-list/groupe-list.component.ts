@@ -34,61 +34,58 @@ export class GroupeListComponent implements OnInit {
       },
       (error) => {
         this.loading = false;
-        console.error('Error fetching groupes:', error);
+        console.error('Erreur lors de la récupération des groupes :', error);
       }
     );
   }
 
   editGroupe(groupe: Groupe) {
-    // Set selectedGroupe and display the EditGroupeComponent
-    this.selectedGroupe = { ...groupe }; // Create a copy to avoid modifying original
+    this.selectedGroupe = groupe;
     this.displayEditDialog = true;
   }
 
   saveEditedGroupe(editedGroupe: Groupe) {
     if (editedGroupe) {
-      this.groupeService.updateGroupe(editedGroupe.id, editedGroupe).subscribe(
+      this.groupeService.updateGroupe(editedGroupe.groupe_id, editedGroupe).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Groupe updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Groupe mis à jour avec succès' });
           this.displayEditDialog = false;
           this.getGroupes(); // Refresh the list
         },
         (error) => {
           console.error('Error updating groupe:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating groupe' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour du groupe' });
         }
       );
     }
   }
 
   hideEditDialog() {
-    // Hide the EditGroupeComponent dialog
     this.displayEditDialog = false;
   }
-
-  deleteItem(id: number) {
+  deleteItem(groupe_id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this groupe?',
-      header: 'Delete Confirmation',
+      message: 'Voulez-vous vraiment supprimer ce groupe ?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
       acceptIcon: 'pi pi-check',
       rejectIcon: 'pi pi-times',
       accept: () => {
-        this.groupeService.deleteGroupe(id).subscribe(
+        this.groupeService.deleteGroupe(groupe_id).subscribe(
           () => {
             this.getGroupes();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Groupe deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Groupe supprimé avec succès' });
           },
           (error) => {
             console.error('Error deleting groupe:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting groupe' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression du groupe' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejeté', detail: 'Vous avez rejeté' });
       }
     });
   }
@@ -104,13 +101,13 @@ export class GroupeListComponent implements OnInit {
   saveNewGroupe(newGroupe: Groupe) {
     this.groupeService.createGroupe(newGroupe).subscribe(
       () => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Groupe added successfully' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Groupe ajouté avec succès' });
         this.hideAddDialog();
         this.getGroupes();
       },
       (error) => {
         console.error('Error creating groupe:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error creating groupe' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la création du groupe' });
       }
     );
   }

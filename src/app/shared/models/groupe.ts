@@ -1,5 +1,5 @@
 export interface Groupe {
-    id: number;
+    groupe_id: number;
     libele: string;
   }
   

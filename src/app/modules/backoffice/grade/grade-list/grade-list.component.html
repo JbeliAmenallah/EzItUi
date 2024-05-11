@@ -1,25 +1,25 @@
 <div class="table-container">
-    <h1 class="gradient-text">Grades List</h1>
+    <h1 class="gradient-text">Liste des grades </h1>
 
-    <div class="card flex justify-content-center" style=" display: flex; justify-content: flex-end;">
+    <div class=" flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+"
             (click)="showAddDialog()"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Grades</b> </span>
+                <span> <b>Ajoute une grades</b> </span>
             </div>
         </ng-template>
     </div>
 
     <p-table #dt3 [value]="grades" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
         [globalFilterFields]="['id','libele']" [tableStyle]="{ 'min-width': '75rem' }">
 
         <ng-template pTemplate="header">
             <tr>
                 <th>ID</th>
-                <th>Libele</th>
+                <th>Libellé</th>
                 <th>Actions</th>
             </tr>
             <tr>
@@ -34,19 +34,19 @@
         </ng-template>
         <ng-template pTemplate="body" let-grade>
             <tr>
-                <td>{{ grade.id }}</td>
+                <td>{{ grade.grade_id }}</td>
                 <td>{{ grade.libele }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)"
                         (click)="editGrade(grade)"></i>
                     <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)"
-                        (click)="deleteItem(grade.id)"></i>
+                        (click)="deleteItem(grade.grade_id)"></i>
                 </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="4">No grades found.</td>
+                <td colspan="4">Aucune grade n’a été trouvée.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">
@@ -54,12 +54,12 @@
                 <div class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')"
-                        placeholder="Search keyword" style="width: 400px;" />
+                        placeholder="Mot-clé de recherche" style="width: 400px;" />
                 </div>
             </div>
         </ng-template>
     </p-table>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
         acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text"
         acceptIcon="none" rejectIcon="none">
     </p-confirmDialog>
