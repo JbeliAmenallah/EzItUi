@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">Nom et prénom :</label>
-                    <input type="text" pInputText formControlName="name" id="name" class="form-control"/>
+                    <input type="text" pInputText formControlName="name" id="name" class="form-control" placeholder="Name must contain only letters and spaces"/>
                     <small class="p-error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">Le nom est obligatoire</small>
                 </div>
             </div>
@@ -12,7 +12,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="username">Nom d’utilisateur:</label>
-                    <input type="text" pInputText formControlName="username" id="username" class="form-control"/>
+                    <input type="text" pInputText formControlName="username" id="username" class="form-control" placeholder="Username must contain only letters, numbers, and underscores"/>
                     <small class="p-error" *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">Le nom d’utilisateur est obligatoire</small>
                 </div>
             </div>

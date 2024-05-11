@@ -125,7 +125,10 @@
   font-family: Lexend Deca; /* Example font family */
   font-size: 16px; /* Example font size */
 }
-
+.form-control::placeholder {
+  color: #999; /* Adjust the color to your preference */
+  opacity: 0.5; /* Adjust the opacity to make it appear lighter */
+}
 /* Apply styles to p-calendar */
 :host >>> .p-calendar {
   width: 100%;

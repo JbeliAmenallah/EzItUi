@@ -94,7 +94,10 @@ patchFormWithPrimeData(prime: Prime) {
       month: prime.month,
       montant: prime.montant,
       motif: prime.motif,
-      typePrimeId: prime.typePrimeId
+      typePrimeId: prime.typePrimeId,
+      category:prime.category_id,
+      grade:prime.grade_id,
+      groupe:prime.groupe_id
     });
   } else {
     console.error("Prime form or form control not available.");
@@ -110,20 +113,28 @@ patchFormWithPrimeData(prime: Prime) {
 
   save() {
     if (true) {
-      const contactId = this.primeForm.form.get('contactId')?.value;
+      const contactId = this.primeForm.form.get('contactId')?.value[0];
+      console.log(contactId)
       const year = this.primeForm.form.get('year')?.value;
       const month = this.primeForm.form.get('month')?.value;
       const montant = this.primeForm.form.get('montant')?.value;
       const motif = this.primeForm.form.get('motif')?.value;
       const typePrimeId = this.primeForm.form.get('typePrimeId')?.value;
-  
+      const selectedCategoryId: number = this.primeForm.form.get('category')?.value;
+      const selectedGradeId: number = this.primeForm.form.get('grade')?.value;
+      const selectedGroupId: number = this.primeForm.form.get('groupe')?.value;
+
       this.prime.contactId = contactId;
       this.prime.year = year;
       this.prime.month = month;
       this.prime.montant = montant;
       this.prime.motif = motif;
       this.prime.typePrimeId = typePrimeId;
-  
+      this.prime.category_id= selectedCategoryId;
+      this.prime.grade_id= selectedGradeId;
+      this.prime.groupe_id= selectedGroupId
+      
+      console.log(this.prime)
       this.primeService.updatePrime(this.primeId, this.prime).subscribe(
         (data) => {
           setTimeout(() => {

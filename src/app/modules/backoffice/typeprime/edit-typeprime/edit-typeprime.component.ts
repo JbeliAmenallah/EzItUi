@@ -73,9 +73,6 @@ export class EditTypePrimeComponent implements OnInit {
       this.typePrime.montant = this.typePrimeForm.form.get('montant')?.value;
       this.typePrime.type = this.typePrimeForm.form.get('type')?.value;
       this.typePrime.abasedesalaire = this.typePrimeForm.form.get('abasedesalaire')?.value;
-      this.typePrime.categorie = this.typePrimeForm.form.get('categorie')?.value;
-      this.typePrime.grp = this.typePrimeForm.form.get('grp')?.value;
-      this.typePrime.grade = this.typePrimeForm.form.get('grade')?.value;
       this.typePrime.obligatoire = this.typePrimeForm.form.get('obligatoire')?.value;
       
       this.service.updateTypePrime(this.typeId, this.typePrime).subscribe(

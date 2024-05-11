@@ -42,9 +42,6 @@ export class TypePrimeFormComponent implements OnInit {
       montant: [null, Validators.required],
       type: [null, Validators.required],   
       abasedesalaire: [null, this.booleanValidator()], 
-      obligatoire: [null, this.booleanValidator()], 
-      categorie: [],
-      grp: [],
       grade: [],
     });
   }
@@ -58,9 +55,6 @@ export class TypePrimeFormComponent implements OnInit {
       montant: [this.currentItemForm.montant, Validators.required],
       type: [this.currentItemForm.type, Validators.required],
       abasedesalaire: [this.currentItemForm.abasedesalaire || false],
-      categorie: [this.currentItemForm.categorie],
-      grp: [this.currentItemForm.grp],
-      grade: [this.currentItemForm.grade],
       obligatoire: [this.currentItemForm.obligatoire || false],
     });
   }

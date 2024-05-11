@@ -29,20 +29,26 @@ export class AddPrimeComponent implements OnInit {
       month: null,
       montant: null,
       motif: null,
-      typePrimeId: null
+      typePrimeId: null,
+      category_id:null,
+      grade_id:null,
+      groupe_id:null
     };
   }
 
   save() {
-
     if (this.primeForm.form.valid) {
       console.log('Form is valid.');
   
       const selectedContactIds: number[] = this.primeForm.form.get('contactId')?.value;
       const selectedAnneeId: number = this.primeForm.form.get('year')?.value;
       const month = new Date(this.primeForm.form.get('month')?.value).getMonth() + 1;
+      const selectedCategoryId: number = this.primeForm.form.get('category')?.value;
+      const selectedGradeId: number = this.primeForm.form.get('grade')?.value;
+      const selectedGroupId: number = this.primeForm.form.get('groupe')?.value;
   
-      if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId) { 
+      if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId && 
+          (selectedCategoryId || selectedGradeId || selectedGroupId)) {
         selectedContactIds.forEach(contactId => {
           const prime = {
             contactId: contactId, 
@@ -50,15 +56,94 @@ export class AddPrimeComponent implements OnInit {
             month: month,
             montant: this.primeForm.form.get('montant')?.value,
             motif: this.primeForm.form.get('motif')?.value,
-            typePrimeId: this.primeForm.form.get('typePrime')?.value
+            typePrimeId: this.primeForm.form.get('typePrimeId')?.value,
+            category_id: selectedCategoryId,
+            grade_id: selectedGradeId,
+            groupe_id: selectedGroupId
           };
-      
-          console.log('Prime Object:', prime); 
-      
+          
+          console.log('Prime Object:', prime);
+  
+          // Add prime using both methods
           this.primeService.addPrime(prime).subscribe(
             (data) => {
               setTimeout(() => {
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been successfully added.' });
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+              }, 100);
+              this.router.navigate(['/prime/list']);
+            },
+            (error) => {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime using addPrime.' });
+            }
+          );
+  
+          const prime1 = {
+            year: selectedAnneeId,
+            month: month,
+            montant: this.primeForm.form.get('montant')?.value,
+            motif: this.primeForm.form.get('motif')?.value,
+            typePrimeId: this.primeForm.form.get('typePrimeId')?.value,
+            category_id: selectedCategoryId,
+            grade_id: selectedGradeId,
+            groupe_id: selectedGroupId
+          };
+          
+          console.log('Prime DTO:', prime1);
+  
+          this.primeService.addPrimeToEmployeesByCategoryGradeOrGroup(prime1).subscribe(
+            (data) => {
+              setTimeout(() => {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+              }, 100);
+              this.router.navigate(['/prime/list']);
+            },
+            (error) => {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime using addPrimeToEmployeesByCategoryGradeOrGroup.' });
+            }
+          );
+        });
+      } else if ((selectedCategoryId || selectedGradeId || selectedGroupId) && selectedAnneeId) {
+        const primeDTO = {
+          year: selectedAnneeId,
+          month: month,
+          montant: this.primeForm.form.get('montant')?.value,
+          motif: this.primeForm.form.get('motif')?.value,
+          typePrimeId: this.primeForm.form.get('typePrimeId')?.value,
+          category_id: selectedCategoryId,
+          grade_id: selectedGradeId,
+          groupe_id: selectedGroupId
+        };
+        
+        console.log('Prime DTO:', primeDTO);
+  
+        this.primeService.addPrimeToEmployeesByCategoryGradeOrGroup(primeDTO).subscribe(
+          (data) => {
+            setTimeout(() => {
+              this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+            }, 100);
+            this.router.navigate(['/prime/list']);
+          },
+          (error) => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime.' });
+          }
+        );
+      } else if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId) {
+        selectedContactIds.forEach(contactId => {
+          const prime = {
+            contactId: contactId, 
+            year: selectedAnneeId,
+            month: month,
+            montant: this.primeForm.form.get('montant')?.value,
+            motif: this.primeForm.form.get('motif')?.value,
+            typePrimeId: this.primeForm.form.get('typePrimeId')?.value
+          };
+          
+          console.log('Prime Object:', prime);
+  
+          this.primeService.addPrime(prime).subscribe(
+            (data) => {
+              setTimeout(() => {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
               }, 100);
               this.router.navigate(['/prime/list']);
             },
@@ -68,12 +153,13 @@ export class AddPrimeComponent implements OnInit {
           );
         });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please select at least one contact.' });
+        this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please select at least one contact or category/grade/group and year.' });
       }
     } else {
       console.log('Form is invalid.');
     }
   }
+  
   
   
   
