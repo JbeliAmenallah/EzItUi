@@ -5,7 +5,9 @@ import { TypePrimeService } from '../../../../core/http/typeprime.service';
 import { AbsenceService } from '../../../../core/http/absence.service';
 import { Annee } from '../../../../shared/models/annee';
 import { AnneeService } from '../../../../core/http/annee.service';
-
+import { CategoryService } from '../../../../core/http/category.service';
+import { GroupeService } from '../../../../core/http/groupe.service';
+import { GradeService } from '../../../../core/http/grade.service';
 @Component({
   selector: 'app-prime-form',
   templateUrl: './prime-form.component.html',
@@ -18,6 +20,9 @@ export class PrimeFormComponent implements OnInit {
   typePrimes: any[] = [];
   anneeOptions: Annee[] = [];
   months: { label: string; value: number; }[] = []; 
+  categoryOptions: any[] = []; 
+  groupeOptions:any[] = []; 
+  gradeOptions: any[] = [];
 
 
   constructor(
@@ -25,6 +30,9 @@ export class PrimeFormComponent implements OnInit {
     private absenceService: AbsenceService,
     private typePrimeService: TypePrimeService,
     private anneeService: AnneeService,
+    private categoryService: CategoryService ,
+    private groupeService: GroupeService ,
+    private gradeService:GradeService,
   ) { }
 
   ngOnInit(): void {
@@ -33,17 +41,62 @@ export class PrimeFormComponent implements OnInit {
     this.fetchTypePrimes();
     this.loadAnnees();
     this.loadMonths(); 
+    this.loadCategories(); 
+    this.loadGroupeOptions();
+    this.loadGradeOptions();
   
   }
-
+  loadCategories() {
+    this.categoryService.getAllCategories().subscribe(
+      categories => {
+        this.categoryOptions = categories.map(category => ({
+          label: category.libele, 
+          value: category.category_id 
+        }));
+      },
+      error => {
+        console.error('Erreur lors de la récupération des catégories :', error);
+      }
+    );
+  }
+  
+  loadGroupeOptions() {
+    this.groupeService.getAllGroupes().subscribe(
+        options => {
+            this.groupeOptions = options.map(option => ({
+                label: option.libele, 
+                value: option.groupe_id 
+            }));
+        },
+        error => {
+            console.error('Erreur lors de la récupération des options de groupe :', error);
+        }
+    );
+}
+loadGradeOptions() {
+  this.gradeService.getAllGrades().subscribe(
+    grades => {
+      this.gradeOptions = grades.map(grade => ({
+        label: grade.libele, 
+        value: grade.grade_id 
+      }));
+    },
+    error => {
+      console.error('Erreur lors de la récupération des options de grade :', error);
+    }
+  );
+}
   createForm() {
     return this.formBuilder.group({
-      contactId: [null, Validators.required],
+      contactId: [null],
       year: [null, Validators.required],
       month: [null, Validators.required],
       montant: [null, Validators.required],
       motif: [null, Validators.required],
-      typePrimeId: [null]
+      typePrimeId: [null],
+      category: [null],
+      groupe: [null],
+      grade: [null]
     });
   }
 

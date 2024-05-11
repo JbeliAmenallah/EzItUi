@@ -44,4 +44,7 @@ export class PrimeService {  private apiUrl = ' http://localhost:8080/primes';
     const url = `${this.apiUrl}/contact-ids/${primeId};`
     return this.http.get<number[]>(url);
   }
+  addPrimeToEmployeesByCategoryGradeOrGroup(prime: Prime): Observable<Prime[]> {
+    return this.http.post<Prime[]>(`${this.apiUrl}/addByCategoryGradeOrGroup`, prime);
+  }
 }

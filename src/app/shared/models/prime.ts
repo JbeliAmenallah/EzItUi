@@ -7,5 +7,8 @@ export interface Prime {
     montant?: number;
     motif?: string;
     typePrimeId?: number;
+    category_id?:number;
+    groupe_id?:number;
+    grade_id?:number;
 }
 

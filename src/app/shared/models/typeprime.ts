@@ -8,9 +8,6 @@ export interface TypePrime {
   montant?: number;
   type?: string;
   abasedesalaire?: boolean;
-  categorie?: string;
-  grp?: string;
-  grade?: string;
   obligatoire?: boolean;
 }
 

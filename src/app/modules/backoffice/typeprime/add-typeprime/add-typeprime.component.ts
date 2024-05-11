@@ -32,9 +32,6 @@ export class AddTypeprimeComponent implements OnInit {
       montant:null ,
       type: '',
       abasedesalaire: false,
-      categorie: '',
-      grp: '',
-      grade: '',
       obligatoire: false
     };
   }
@@ -48,9 +45,6 @@ export class AddTypeprimeComponent implements OnInit {
       this.typeprime.montant = this.typeprimeForm.form.get('montant')?.value;
       this.typeprime.type = this.typeprimeForm.form.get('type')?.value;
       this.typeprime.abasedesalaire = this.typeprimeForm.form.get('abasedesalaire')?.value === 'true';
-      this.typeprime.categorie = this.typeprimeForm.form.get('categorie')?.value;
-      this.typeprime.grp = this.typeprimeForm.form.get('grp')?.value;
-      this.typeprime.grade = this.typeprimeForm.form.get('grade')?.value;
       this.typeprime.obligatoire = this.typeprimeForm.form.get('obligatoire')?.value === 'true';
   
       this.service.addTypePrime(this.typeprime).subscribe(
