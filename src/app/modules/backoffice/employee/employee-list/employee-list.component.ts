@@ -14,6 +14,8 @@ export class EmployeesListComponent implements OnInit {
   employees: Employee[];
   loading: boolean = false;
   selectedEmployee: Employee;
+  employeeCount: any;
+
 
   constructor(
     private employeeService: EmployeeService,
@@ -24,8 +26,18 @@ export class EmployeesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getList();
+    this.fetchEmployee();
   }
-
+  fetchEmployee():void{
+    this.employeeService.getAllEmployees().subscribe(
+      (employees: Employee[]) => {
+        this.employeeCount = employees.length;
+      },
+      error => {
+        console.error('Error fetching employees:', error);
+      }
+    );
+  }
   getList(): void {
     this.employeeService.getAllEmployees().subscribe(
       (items: Employee[]) => {

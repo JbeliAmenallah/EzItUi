@@ -30,10 +30,12 @@
                     <span class="menu-close">Users</span>
                 </a>
                 <div class='dashboard-nav-dropdown-menu'>
-                    <a href="#" class="dashboard-nav-dropdown-item"> <span class="material-symbols-outlined">
+                    <a [routerLink]="['/employee/add']" class="dashboard-nav-dropdown-item"> <span
+                            class="material-symbols-outlined">
                             add_circle
                         </span>Ajouter user</a>
-                    <a href="#" class="dashboard-nav-dropdown-item"><span class="material-symbols-outlined">
+                    <a [routerLink]="['/employee/list']" class="dashboard-nav-dropdown-item"><span
+                            class="material-symbols-outlined">
                             list
                         </span>liste users</a>
                 </div>
@@ -61,7 +63,8 @@
             <div class="titre-menu ml-4 mb-3">Spaces</div>
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-design">D</span><span>Design</span> </a>
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-dev">V</span><span>développement</span> </a>
-            <a [routerLink]="['employee/details']" class="dashboard-nav-item"> <span class="logo-space-RH">H</span><span>RH</span> </a> <!-- Navigation to Employee Details -->
+            <a [routerLink]="['employee/details']" class="dashboard-nav-item"> <span
+                    class="logo-space-RH">H</span><span>RH</span> </a> <!-- Navigation to Employee Details -->
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-finance">F</span><span>finance</span> </a>
             <a href="#" class="dashboard-nav-item logout"><img src="../assets/log-out.svg" alt=""><span>Logout</span>
             </a>
