@@ -1,27 +1,13 @@
-<<<<<<< HEAD
-<p-dialog header="Edit Conge" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width.px': '500', 'height.px': '900' }"
-  [modal]="true" [contentStyle]="{ 'overflow': 'auto' }" (onHide)="hideDialog()">
-=======
 <p-dialog header="Modifier l’autorisation" [visible]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }"
   [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
->>>>>>> cd35d11c9d67b574e68abeaabef29be91d447e5b
   <ng-container *ngIf="selectedConge">
     <div class="form-group">
       <label for="dateDebut">Date de début</label>
       <p-calendar id="dateDebut" [(ngModel)]="selectedConge.startDate" class="form-control" placeholder="Start Date"></p-calendar>
     </div>
     <div class="form-group">
-<<<<<<< HEAD
-      <label for="endDate">Date de fin :</label>
-      <p-calendar id="endDate" [(ngModel)]="selectedConge.endDate" class="form-control" placeholder="End Date"></p-calendar>
-    </div>
-    <div class="form-group">
-      <label for="state">État :</label>
-      <p-dropdown id="state" [(ngModel)]="selectedConge.state" [options]="stateOptions" optionLabel="label" placeholder="Sélectionner un état"></p-dropdown>
-=======
       <label for="dateFin">Date de fin</label>
       <p-calendar id="dateFin" [(ngModel)]="selectedConge.endDate" class="form-control" placeholder="End Date"></p-calendar>
->>>>>>> cd35d11c9d67b574e68abeaabef29be91d447e5b
     </div>
     <div class="form-group">
       <label for="contactId">Contact ID</label>
