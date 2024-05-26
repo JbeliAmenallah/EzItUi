@@ -77,13 +77,13 @@ export class CategoryListComponent implements OnInit {
     if (editedCategory) {
       this.categoryService.updateCategory(editedCategory.category_id, editedCategory).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Grade mis à jour avec succès' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Catégorie mis à jour avec succès' });
           this.displayEditDialog = false;
           this.getCategories(); 
         },
         (error) => {
-          console.error('Error updating grade:', error);
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la note' });
+          console.error('Error updating category:', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la catégorie' });
         }
       );
     }
@@ -103,13 +103,13 @@ export class CategoryListComponent implements OnInit {
   saveNewCategory(newCategory: Category) {
     this.categoryService.createCategory(newCategory).subscribe(
       () => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category added successfully' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Catégorie ajoutée avec succès' });
         this.hideAddDialog();
         this.getCategories();
       },
       (error) => {
         console.error('Error creating category:', error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error creating category' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la création de la catégorie' });
       }
     );
   }

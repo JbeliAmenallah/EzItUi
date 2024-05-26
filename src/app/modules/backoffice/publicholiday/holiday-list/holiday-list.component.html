@@ -25,16 +25,14 @@
   
       <ng-template pTemplate="header">
         <tr>
-          <th>Jour Férié Id</th>
+         
           <th>Libellée</th>
           <th>Jour</th>
           <th>Mois</th>
           <th>Actions</th>
         </tr>
         <tr>
-          <th>
-            <p-columnFilter type="text" field="JourFerieId"></p-columnFilter>
-          </th>
+     
           <th>
             <p-columnFilter type="text" field="libele"></p-columnFilter>
           </th>
@@ -50,7 +48,7 @@
   
       <ng-template pTemplate="body" let-publicHoliday>
         <tr>
-          <td>{{publicHoliday.id}}</td>
+       
           <td>{{ publicHoliday.libele }}</td>
           <td>{{ publicHoliday.jour }}</td>
           <td>{{ publicHoliday.mois }}</td>

@@ -62,7 +62,7 @@ saveConge() {
       this.congeService.updateConge(this.selectedConge.congeId, this.selectedConge).subscribe(
           () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Conge a été mis à jour avec succès' });
+              this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Congé a été mis à jour avec succès' });
               this.hideDialog();
           },
           (error) => {
@@ -96,7 +96,7 @@ saveConge() {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Voulez-vous vraiment supprimer cet élément ?',
+      message: 'Voulez-vous vraiment supprimer cet congé ?',
       header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",
@@ -108,10 +108,10 @@ saveConge() {
           this.congeService.deleteConge(id).subscribe(
             () => {
               this.getList();
-              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Contact supprimé avec succès' });
+              this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Congé supprimé avec succès' });
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d’un contact' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression d’un congé' });
             }
           );
         }

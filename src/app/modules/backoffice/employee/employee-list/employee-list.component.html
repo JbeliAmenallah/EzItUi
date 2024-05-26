@@ -12,16 +12,16 @@
             <i class="pi pi-angle-right text-500 line-height-3"></i>
         </li>
         <li>
-           <a [routerLink]="['/employee/details']"> <span class="text-900 line-height-3"><i class="pi pi-user"></i> Employees</span></a>
+           <a [routerLink]="['/employee/details']"> <span class="text-900 line-height-3"><i class="pi pi-user"></i> Employés</span></a>
         </li>
     </ul>
     <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
         <div>
-            <div class="font-medium text-3xl text-900">Employees</div>
+            <div class="font-medium text-3xl text-900">Employés</div>
             <div class="flex align-items-center text-700 flex-wrap">
                 <div class="mr-5 flex align-items-center mt-3">
                     <i class='fas fa-user-alt'></i>
-                    <span class="text-green-400"> &nbsp;{{employeeCount}} Employees</span>
+                    <span class="text-green-400"> &nbsp;{{employeeCount}} Employés</span>
                 </div>
                 <div class="mr-5 flex align-items-center mt-3">
                     <i class='fas fa-user-cog'></i>
@@ -51,7 +51,7 @@
     
         <ng-template pTemplate="header">
             <tr>
-                <th>contactId</th>
+              
                 <th>Nom et prénom</th>
                 <th>Nom d’utilisateur</th>
                 <th>Email</th>
@@ -65,9 +65,7 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="contactId"></p-columnFilter>
-                </th>
+               
                 <th>
                     <p-columnFilter type="text" field="name"></p-columnFilter>
                 </th>
@@ -103,7 +101,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-employee>
             <tr>
-                <td>{{ employee.contactId  }}</td>
+              
                 <td>{{ employee.name }}</td>
                 <td>{{ employee.username }}</td>
                 <td>{{ employee.email }}</td>

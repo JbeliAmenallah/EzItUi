@@ -25,9 +25,8 @@
 
         <ng-template pTemplate="header">
             <tr>
-                <th>ID</th>
-                <th>Year</th>
-                <th>Month</th>
+                <th>Année</th>
+                <th>Mois</th>
                 <th>Montant</th>
                 <th>Raison</th>
                 <th>Type Prime Id</th>
@@ -35,9 +34,7 @@
                 <th></th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="primeId"></p-columnFilter>
-                </th>
+             
                 <th>
                     <p-columnFilter type="text" field="year"></p-columnFilter>
                 </th>
@@ -60,7 +57,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-prime>
             <tr>
-                <td>{{ prime.primeId }}</td>
+               
                 <td>{{ prime.year }}</td>
                 <td>{{ prime.month }}</td>
                 <td>{{ prime.montant }}</td>
@@ -87,7 +84,7 @@
             </div>
         </ng-template>
     </p-table>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
         acceptButtonStyleClass="p-button-danger p-button-text"
         rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
     </p-confirmDialog>

@@ -120,7 +120,7 @@ loadGradeOptions() {
         console.log('type prime Options:', this.typePrimes);
       },
       error => {
-        console.error('Error fetching type primes:', error);
+        console.error('Erreur lors de la récupération des nombres premiers de type :', error);
       }
     );
   }
@@ -131,7 +131,7 @@ loadGradeOptions() {
         this.anneeOptions = annees;
       },
       (error) => {
-        console.error('Error loading Annees:', error);
+        console.error('Erreur de chargement des années :', error);
       }
     );
   }

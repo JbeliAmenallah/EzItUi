@@ -65,13 +65,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="nbEnfant">Nombre d'enfants :</label>
-                    <input type="number" pInputText formControlName="nbEnfant" id="nbEnfant" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('nbEnfant')?.touched && form.get('nbEnfant')?.hasError('required')">Le nombre d'enfants est obligatoire</small>
-                </div>
-            </div>
+      
 
           <!-- <div class="col-md-6">
                 <div class="form-group">
@@ -89,7 +83,16 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="chefDefamille">Chef de Famille :</label>
-                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Selectionner " class="form-control"></p-dropdown>
+                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Selectionner " class="form-control" (onChange)="onChefChange($event)"></p-dropdown>
+                </div>
+            </div>
+            
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nbEnfant">Nombre d'enfants :</label>
+                    <input type="number" pInputText formControlName="nbEnfant" id="nbEnfant" class="form-control"/>
+                    <small class="p-error" *ngIf="form.get('nbEnfant')?.touched && form.get('nbEnfant')?.hasError('required')">Le nombre d'enfants est obligatoire</small>
                 </div>
             </div>
             

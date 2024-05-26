@@ -1,10 +1,10 @@
 <div class="table-container">
-    <h1 class="gradient-text">Liste des annees</h1>
+    <h1 class="gradient-text">Liste des années</h1>
     <div class=" flex justify-content-center" style=" display: flex; justify-content: flex-end;">
         <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/annee/add"></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Ajouter une annee</b> </span>
+                <span> <b>Ajouter une année</b> </span>
             </div>
         </ng-template>
     </div>
@@ -24,15 +24,13 @@
 
         <ng-template pTemplate="header">
             <tr>
-                <th>ID</th>
-                <th>Date Debut Exercice</th>
-                <th>Libele</th>
+               
+                <th>Date Début Exercice</th>
+                <th>Libellé</th>
                 <th>Actions</th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="id"></p-columnFilter>
-                </th>
+              
                 <th>
                     <p-columnFilter type="text" field="dateDebutExercice"></p-columnFilter>
                 </th>
@@ -55,7 +53,7 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="4">No annees found.</td>
+                <td colspan="4">Aucune année trouvée.</td>
             </tr>
         </ng-template>
         <ng-template pTemplate="caption">
@@ -67,7 +65,7 @@
             </div>
         </ng-template>
     </p-table>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
     acceptButtonStyleClass="p-button-danger p-button-text"
     rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
 </p-confirmDialog>

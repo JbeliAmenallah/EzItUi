@@ -36,7 +36,7 @@ export class DemandeAutorisationComponent {
             (response) => {
                 console.log('Received response:', response);
                 console.log('Autorisation request submitted successfully:', response);
-                this.messages = [{severity:'success', summary:'Autorisation request submitted successfully', detail: 'State: ' + response.state}];
+                this.messages = [{severity:'success', summary:'Demande d’autorisation soumise avec succès', detail: 'State: ' + response.state}];
                 this.router.navigate(['/autorisations/list']);
             },
             (error) => {

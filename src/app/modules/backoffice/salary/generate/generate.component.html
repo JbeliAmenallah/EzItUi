@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="yearInput">Year:</label>
+          <label for="yearInput">Annee:</label>
           <input id="yearInput" formControlName="yearInput" type="number" class="form-control" placeholder="Enter Year">
         </div>
       </div>
@@ -23,27 +23,44 @@
       </div>
     </div>
 
-    <!-- MultiSelect for Contacts -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="contact">Contacts:</label>
-          <p-multiSelect formControlName="contact" [options]="contactOptions" [style]="{ 'width': '100%' }" defaultLabel="Select Contacts"></p-multiSelect>
-        </div>
-      </div>
+<!-- MultiSelect for Contacts -->
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="contact">Contacts:</label>
+      <p-multiSelect formControlName="contact" [options]="contactOptions" [style]="{ 'width': '100%' }" placeholder="Select Contacts"></p-multiSelect>
     </div>
+  </div>
+</div>
 
-    <!-- Button to Generate Salary -->
+
+    <!-- Button to Generate Salary 
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <button pButton type="button" class="btn btn-primary" (click)="generateSalary()" [disabled]="generateForm.invalid">Generate Salary</button>
         </div>
       </div>
+    </div>-->
+
+    <!-- Button to Generate PDF -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <button pButton type="button" class="btn btn-primary" (click)="generatePDF()">Generate PDF</button>
+        </div>
+      </div>
     </div>
   </form>
+
   <div class="messages-container">
     <p-messages [(value)]="messages" [enableService]="true" [closable]="true"></p-messages>
   </div>
+
+  <!-- Example payslip content -->
+  <div *ngIf="showPDF" class="pdf-content">
+    <app-salary-template [payslipData]="payslipData"></app-salary-template>
+  </div>
   
-</div>
+
+    

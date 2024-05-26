@@ -70,7 +70,7 @@ export class DeductionListComponent implements OnInit {
   deleteItem(id: number): void {
     this.confirmationService.confirm({
       message: 'Voulez-vous vraiment supprimer cette déduction ??',
-      header: 'Supprimer la confirmation',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',

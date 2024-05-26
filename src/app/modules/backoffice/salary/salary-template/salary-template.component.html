@@ -1,0 +1,414 @@
+<div id="payslip">
+    <div id="title">Fiche de paie </div>
+    <div id="scope">
+      <div class="scope-entry">
+        <div class="title">PAY RUN</div>
+        <div class="value">{{ payslipData?.month }},{{ payslipData?.year }}</div>
+      </div>
+      <div class="scope-entry">
+        <div class="title">PAY PERIOD</div>
+        <div class="value">Mar 1 - Mar 15, 2015</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="left-panel">
+        <div id="employee">
+          <div id="name">
+            {{ payslipData?.contactName }}
+          </div>
+          <div id="email">
+            {{ payslipData?.contactEmail }}
+          </div>
+        </div>
+        <div class="details">
+            <div class="entry">
+                <div class="label">Employee ID</div>
+                <div class="value">{{ payslipData?.contactId }}</div>
+              </div>
+              
+          <div class="entry">
+            <div class="label">Fax </div>
+            <div class="value">{{ payslipData?.Fax }}</div>
+          </div>
+          <div class="entry">
+            <div class="label">Hourly Rate</div>
+            <div class="value">???</div>
+          </div>
+            <div class="entry">
+              <div class="label">Company Name</div>
+              <div class="value">{{ payslipData?.entrepriseNom }}</div>
+            </div>
+          <div class="entry">
+            <div class="label">Date de recrutement</div>
+            <div class="value">{{ payslipData?.hireDate }}</div>
+          </div>
+          <div class="entry">
+            <div class="label">Category</div>
+            <div class="value">{{ payslipData?.categoryLibele }}</div>
+          </div>
+          <div class="entry">
+            <div class="label">Grade</div>
+            <div class="value">{{ payslipData?.gradeLibele }}</div>
+          </div>
+    
+          <div class="entry">
+            <div class="label">Groupe</div>
+            <div class="value">{{ payslipData?.groupeLibele }}</div>
+          </div>
+        
+          <div class="entry">
+            <div class="label">Cycle de paie</div>
+            <div class="value">Mensuelle</div>
+          </div>
+          <div class="entry">
+            <div class="label">Cost Center</div>
+            <div class="value">???</div>
+          </div>
+          <div class="entry">
+            <div class="label">TIN</div>
+            <div class="value">123-123-123-123</div>
+          </div>
+          <div class="entry">
+            <div class="label">SSS</div>
+            <div class="value">12-3123123-1</div>
+          </div>
+          <div class="entry">
+            <div class="label">HDMF</div>
+            <div class="value">1231-2312-3123</div>
+          </div>
+          <div class="entry">
+            <div class="label">Philhealth</div>
+            <div class="value">12-312312312-3</div>
+          </div>
+          <div class="entry">
+            <div class="label">Prepared by</div>
+            <div class="value">Piven Himself</div>
+          </div>
+        </div>
+        <div class="gross">
+          <div class="title">Gross Income</div>
+          <div class="entry">
+            <div class="label"></div>
+            <div class="value">92,823.86</div>
+          </div>
+        </div>
+        <div class="contributions">
+          <div class="title">Employer Contribution</div>
+          <div class="entry">
+            <div class="label">SSS</div>
+            <div class="value">1,178.70</div>
+          </div>
+          <div class="entry">
+            <div class="label">SSS EC</div>
+            <div class="value">30.00</div>
+          </div>
+          <div class="entry">
+            <div class="label">HDMF</div>
+            <div class="value">100.00</div>
+          </div>
+          <div class="entry">
+            <div class="label">PhilHealth</div>
+            <div class="value">437.50</div>
+          </div>
+        </div>
+        <div class="ytd">
+          <div class="title">Year To Date Figures</div>
+          <div class="entry">
+            <div class="label">Gross Income</div>
+            <div class="value">92,823.86</div>
+          </div>
+          <div class="entry">
+            <div class="label">Taxable Income</div>
+            <div class="value">82,705.06</div>
+          </div>
+          <div class="entry">
+            <div class="label">Withholding Tax</div>
+            <div class="value">21,548.85</div>
+          </div>
+          <div class="entry">
+            <div class="label">Net Pay</div>
+            <div class="value">69,656.21</div>
+          </div>
+          <div class="entry">
+            <div class="label">Allowance</div>
+            <div class="value">2,500.00</div>
+          </div>
+          <div class="entry">
+            <div class="label">Bonus</div>
+            <div class="value">21,409.34</div>
+          </div>
+          <div class="entry">
+            <div class="label">Commission</div>
+            <div class="value">5,500.00</div>
+          </div>
+          <div class="entry">
+            <div class="label">Deduction</div>
+            <div class="value">500.00</div>
+          </div>
+          <div class="entry">
+            <div class="label">SSS Employer</div>
+            <div class="value">1,178.70</div>
+          </div>
+          <div class="entry">
+            <div class="label">SSS EC Employer</div>
+            <div class="value">30.00</div>
+          </div>
+          <div class="entry">
+            <div class="label">PhilHealth Employer</div>
+            <div class="value">437.50</div>
+          </div>
+          <div class="entry">
+            <div class="label">Pag-ibig Employer</div>
+            <div class="value">100.00</div>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel">
+        <div class="details">
+          <div class="basic-pay">
+            <div class="entry">
+              <div class="label">Basic Pay</div>
+              <div class="detail"></div>
+              <div class="rate">45,000.00/Month</div>
+              <div class="amount">45,000.00</div>
+            </div>
+          </div>
+          <div class="salary">
+            <div class="entry">
+              <div class="label">Salary</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Undertime</div>
+              <div class="rate">128hrs259.62/hr</div>
+              <div class="amount">(33,231.36)</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Unworked Holiday</div>
+              <div class="rate">16hrs259.62/hr</div>
+              <div class="amount">4,153.92</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Regular Holiday Regular Holiday</div>
+              <div class="rate">9hrs778.85/hr</div>
+              <div class="amount">7,009.65</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Regular Holiday Regular Holiday Night</div>
+              <div class="rate">7hrs856.73/hr</div>
+              <div class="amount">5,997.11</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Night</div>
+              <div class="rate">56hrs285.582/hr</div>
+              <div class="amount">15,992.59</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Regular Holiday</div>
+              <div class="rate">9hrs519.23/hr</div>
+              <div class="amount">4,673.07</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Regular Holiday Night</div>
+              <div class="rate">7hrs571.15/hr</div>
+              <div class="amount">3,998.05</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Regular Holiday Night Overtime</div>
+              <div class="rate">2hrs742.50/hr</div>
+              <div class="amount">1,485.00</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Special Holiday</div>
+              <div class="rate">9hrs337.50/hr</div>
+              <div class="amount">3,037.50</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Special Holiday Night</div>
+              <div class="rate">7hrs371.25/hr</div>
+              <div class="amount">2,598.75</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Rest Day</div>
+              <div class="rate">8hrs337.50/hr</div>
+              <div class="amount">2,700.00</div>
+            </div>
+          </div>
+          <div class="leaves">
+            <div class="entry">
+              <div class="label">Leaves</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry paid">
+              <div class="label"></div>
+              <div class="detail">Paid Leave</div>
+              <div class="rate">8hrs259.62/hr</div>
+              <div class="amount">2,076.92</div>
+            </div>
+            <div class="entry unpaid">
+              <div class="label"></div>
+              <div class="detail">Unpaid Leave</div>
+              <div class="rate">8hrs259.62/hr</div>
+              <div class="amount">(2076.96)</div>
+            </div>
+          </div>
+          <div class="taxable_allowance">
+            <div class="entry">
+              <div class="label">Taxable Allowance</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Allowance Name</div>
+              <div class="rate"></div>
+              <div class="amount">1,000.00</div>
+            </div>
+          </div>
+          <div class="taxable_bonus">
+            <div class="entry">
+              <div class="label">Taxable Bonus</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Bonus Name</div>
+              <div class="rate"></div>
+              <div class="amount">19,409.34</div>
+            </div>
+          </div>
+          <div class="taxable_commission"></div>
+          <div class="contributions">
+            <div class="entry">
+              <div class="label">Contributions</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">SSS</div>
+              <div class="rate"></div>
+              <div class="amount">(581.30)</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">HDMF</div>
+              <div class="rate"></div>
+              <div class="amount">(100.00)</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">PhilHealth</div>
+              <div class="rate"></div>
+              <div class="amount">(437.50)</div>
+            </div>
+          </div>
+          <div class="nti">
+            <div class="entry">
+              <div class="label">TAXABLE INCOME</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount">82,705.06</div>
+            </div>
+          </div>
+          <div class="withholding_tax">
+            <div class="entry">
+              <div class="label">Withholding Tax</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount">(21,548.85)</div>
+            </div>
+          </div>
+          <div class="non_taxable_allowance">
+            <div class="entry">
+              <div class="label">Non-Taxable Allowance</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Allowance Name</div>
+              <div class="rate"></div>
+              <div class="amount">1,500.00</div>
+            </div>
+          </div>
+          <div class="non_taxable_bonus">
+            <div class="entry">
+              <div class="label">Non-Taxable Bonus</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Bonus Name</div>
+              <div class="rate"></div>
+              <div class="amount">2,000.00</div>
+            </div>
+          </div>
+          <div class="non_taxable_commission">
+            <div class="entry">
+              <div class="label">Non-Taxable Commission</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Commission Name 1</div>
+              <div class="rate"></div>
+              <div class="amount">3,000.00</div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">Commission Name 2</div>
+              <div class="rate"></div>
+              <div class="amount">2,500.00</div>
+            </div>
+          </div>
+          <div class="deductions">
+            <div class="entry">
+              <div class="label">Deductions</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount"></div>
+            </div>
+            <div class="entry">
+              <div class="label"></div>
+              <div class="detail">HMO</div>
+              <div class="rate"></div>
+              <div class="amount">(500.00)</div>
+            </div>
+          </div>
+          <div class="net_pay">
+            <div class="entry">
+              <div class="label">NET PAY</div>
+              <div class="detail"></div>
+              <div class="rate"></div>
+              <div class="amount">69,656.21</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -109,7 +109,7 @@ const selectedCategory = this.employeeForm.categoryOptions.find(option => option
 if (selectedCategory) {
     this.employee.category = { category_id: selectedCategory.value };
 } else {
-    console.error('Selected category not found in category options.');
+    console.error('Catégorie sélectionnée introuvable dans les options de catégorie.');
 }
 const selectedGroupeValue = this.employeeForm.form.get('groupe')?.value;
 const selectedGroupe = this.employeeForm.groupeOptions.find(option => option.value === selectedGroupeValue);
@@ -117,7 +117,7 @@ const selectedGroupe = this.employeeForm.groupeOptions.find(option => option.val
 if (selectedGroupe) {
     this.employee.groupe = { groupe_id: selectedGroupe.value };
 } else {
-    console.error('Selected Groupe not found in category options.');
+    console.error('Groupe sélectionné introuvable dans les options de catégorie.');
 }
 const selectedGradeValue = this.employeeForm.form.get('grade')?.value;
 const selectedGrade = this.employeeForm.gradeOptions.find(option => option.value === selectedGradeValue);
@@ -125,7 +125,7 @@ const selectedGrade = this.employeeForm.gradeOptions.find(option => option.value
 if (selectedGrade) {
     this.employee.grade = { grade_id: selectedGrade.value };
 } else {
-    console.error('Selected Grade not found in category options.');
+    console.error('Grade sélectionnée introuvable dans les options de catégorie.');
 }
 
 
@@ -133,7 +133,7 @@ if (selectedGrade) {
       console.log(this.employee)
       this.service.updateEmployee(this.contactId, this.employee).subscribe(
         (data) => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The employee has been successfully updated.', life: 3000 });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’employé a été mis à jour avec succès.', life: 3000 });
           setTimeout(() => {
             this.router.navigate(['/employee/list']);
           }, 100);
@@ -143,15 +143,15 @@ if (selectedGrade) {
   
           if (Array.isArray(error)) {
             error.forEach(err => {
-              this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: err.message, life: 3000 });
+              this.messageService.add({ severity: 'error', summary: ' Erreur de validation ', detail: err.message, life: 3000 });
             });
           } else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to update employee.', life: 3000 });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Échec de la mise à jour de l’employé.', life: 3000 });
           }
         }
       );
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please fill in all required fields.',life:1500});
+      this.messageService.add({ severity: 'error', summary: 'Erreur de validation ', detail: 'Veuillez remplir tous les champs obligatoires.',life:1500});
     }
   }
 }

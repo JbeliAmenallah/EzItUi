@@ -15,9 +15,6 @@ import { ChartModule } from 'primeng/chart';
 @NgModule({
   declarations: [
     AppComponent,
-
-
-   
   ],
   imports: [
     BrowserModule,

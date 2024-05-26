@@ -1,4 +1,4 @@
-<p-dialog header="Modifier l’autorisation" [visible]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }"
+<p-dialog header="Modifier un congé" [visible]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }"
   [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
   <ng-container *ngIf="selectedConge">
     <div class="form-group">
@@ -19,7 +19,7 @@
     </div>
   </ng-container>
   <p-footer>
-    <button pButton type="button" label="Save" class="p-button-success" (click)="saveConge()"></button>
-    <button pButton type="button" label="Cancel" class="p-button-secondary" (click)="hideDialog()"></button>
+    <button pButton type="button" label="Enregistrer" class="p-button-success" (click)="saveConge()"></button>
+    <button pButton type="button" label="Annuler" class="p-button-secondary" (click)="hideDialog()"></button>
   </p-footer>
 </p-dialog>

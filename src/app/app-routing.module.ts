@@ -110,6 +110,10 @@ const routes: Routes = [
   {
     path:'deduction',
     loadChildren:()=>import ('./modules/backoffice/deduction/deduction.module').then((m)=>m.DeductionModule)
+  },
+  {
+    path:'kpi',
+    loadChildren:()=>import ('./modules/backoffice/kpi/kpi.module').then((m)=>m.KPIModule)
   }
 ];
 
