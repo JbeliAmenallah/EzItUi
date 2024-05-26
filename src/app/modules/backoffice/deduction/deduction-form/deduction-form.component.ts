@@ -65,7 +65,7 @@ export class DeductionFormComponent implements OnInit {
         this.anneeOptions = annees;
       },
       (error) => {
-        console.error('Erreur de chargement des annees :', error);
+        console.error('Erreur de chargement des années :', error);
       }
     );
   }

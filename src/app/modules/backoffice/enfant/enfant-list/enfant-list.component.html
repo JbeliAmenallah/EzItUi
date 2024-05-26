@@ -25,7 +25,7 @@
 
         <ng-template pTemplate="header">
             <tr>
-                <th>Enfant ID</th>
+               
                 <th>Nom</th>
                 <th>Nom de famille</th>
                 <th>Âge</th>
@@ -36,9 +36,7 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="id"></p-columnFilter>
-                </th>
+             
                 <th>
                     <p-columnFilter type="text" field="name"></p-columnFilter>
                 </th>
@@ -65,7 +63,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-enfant>
             <tr>
-                <td>{{ enfant.id }}</td>
+             
                 <td>{{ enfant.name }}</td>
                 <td>{{ enfant.familyName }}</td>
                 <td>{{ enfant.age }}</td>

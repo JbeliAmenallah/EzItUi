@@ -24,7 +24,7 @@
     
         <ng-template pTemplate="header">
             <tr>
-                <th>entrepriseId</th>
+              
                 <th>Nom</th>
                 <th>Matricule</th>
               <!--   <th>Siege Sociale</th>
@@ -37,9 +37,7 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="entrepriseId"></p-columnFilter>
-                </th>
+              
                 <th>
                     <p-columnFilter type="text" field="nom"></p-columnFilter>
                 </th>
@@ -72,7 +70,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-entreprise>
             <tr>
-                <td>{{ entreprise.entrepriseId  }}</td>
+          
                 <td>{{ entreprise.nom }}</td>
                 <td>{{ entreprise.matricule }}</td>
 

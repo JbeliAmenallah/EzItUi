@@ -25,16 +25,14 @@
 
       <ng-template pTemplate="header">
           <tr>
-              <th>Autorisation ID</th>
+              
               <th>Date de début</th>
               <th>Date de fin</th>
               <th>État</th>
               <th>Actions</th>
           </tr>
           <tr>
-              <th>
-                  <p-columnFilter type="text" field="autorisationId"></p-columnFilter>
-              </th>
+         
               <th>
                   <p-columnFilter type="text" field="startDate"></p-columnFilter>
               </th>
@@ -50,7 +48,7 @@
 
       <ng-template pTemplate="body" let-autorisation>
           <tr>
-              <td>{{ autorisation.autorisationId }}</td>
+             
               <td>{{ autorisation.dateDebut | date:'dd/MM/yyyy HH:mm' }}</td>
               <td>{{ autorisation.dateFin | date:'dd/MM/yyyy HH:mm' }}</td>
               <td>{{ autorisation.state }}</td>
@@ -63,7 +61,7 @@
 
       <ng-template pTemplate="emptymessage">
           <tr>
-              <td colspan="5">No autorisations found.</td>
+              <td colspan="5">Aucune autorisation trouvée.</td>
           </tr>
       </ng-template>
 
@@ -76,7 +74,7 @@
     (onHide)="hideDialog()"
   ></app-edit-autorisation>
   
-  <p-confirmDialog header="Delete Confirmation" icon="pi pi-info-circle"
+  <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
       acceptButtonStyleClass="p-button-danger p-button-text"
       rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
   </p-confirmDialog>

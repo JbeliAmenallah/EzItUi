@@ -26,18 +26,16 @@
 
         <ng-template pTemplate="header">
             <tr>
-                <th>Absence ID</th>
+                
                 <th>Contact ID</th>
-                <th>Date Debut Absence</th>
+                <th>Date Début Absence</th>
                 <th>Date Fin Absence</th>
                 <th>Raison</th>
                 <th>Justifiée</th>
                 <th>Actions</th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="absenceId"></p-columnFilter>
-                </th>
+              
                 <th>
                     <p-columnFilter type="text" field="contactId"></p-columnFilter>
                 </th>
@@ -58,7 +56,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-absence>
             <tr>
-                <td>{{ absence.absenceId }}</td>
+        
                 <td>{{ absence.contactId }}</td>
                 <td>{{ absence.dateDebutAbsence | date:'dd/MM/yyyy HH:mm' }}</td>
                 <td>{{ absence.dateFinAbsence | date:'dd/MM/yyyy HH:mm' }}</td>

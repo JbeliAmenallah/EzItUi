@@ -41,12 +41,12 @@ export class PrimeListComponent implements OnInit {
         console.error('Error fetching primes:', error);
         if (error instanceof HttpErrorResponse) {
           if (error.status === 200) {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unexpected response format from the server' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Format de réponse inattendu du serveur' });
           } else {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error fetching primes' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la récupération des primes' });
           }
         } else {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error fetching primes' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la récupération des primes' });
         }
       }
     );
@@ -63,13 +63,13 @@ export class PrimeListComponent implements OnInit {
     if (this.selectedPrime) {
       this.primeService.updatePrime(this.selectedPrime.primeId, this.selectedPrime).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Prime updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Prime mis à jour avec succès' });
           this.displayEditDialog = false;
           this.getPrimes(); // Refresh the list
         },
         (error) => {
-          console.error('Error updating prime:', error);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error updating prime' });
+          console.error('Erreur lors de la mise à jour de prime:', error);
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de prime' });
         }
       );
     }
@@ -82,8 +82,8 @@ export class PrimeListComponent implements OnInit {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this prime?',
-      header: 'Delete Confirmation',
+      message: 'Êtes-vous sûr de vouloir supprimer ce prime?',
+      header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
       rejectButtonStyleClass: 'p-button-text p-button-text',
@@ -93,16 +93,16 @@ export class PrimeListComponent implements OnInit {
         this.primeService.deletePrime(id).subscribe(
           () => {
             this.getPrimes();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Prime deleted successfully' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'Prime supprimé avec succès' });
           },
           (error) => {
             console.error('Error deleting prime:', error);
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error deleting prime' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de prime' });
           }
         );
       },
       reject: () => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+        this.messageService.add({ severity: 'error', summary: 'Rejeté', detail: 'Vous avez rejeté' });
       }
     });
   }

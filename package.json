@@ -48,9 +48,16 @@
     "express": "^4.18.2",
     "frappe-gantt": "^0.6.1",
     "highcharts": "^11.4.1",
+<<<<<<< HEAD
     "keycloak-angular": "^15.2.1",
     "keycloak-js": "^24.0.4",
+=======
+    "html2canvas": "^1.4.1",
+    "html2pdf.js": "^0.10.1",
+    "jspdf": "^2.5.1",
+>>>>>>> 0343068bfd88089f1ac573ebf623a3dc6570e4cc
     "localstorage-polyfill": "^1.0.1",
+    "pdf-lib": "^1.17.1",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primeng": "^17.12.0",

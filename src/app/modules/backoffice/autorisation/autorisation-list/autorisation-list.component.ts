@@ -79,7 +79,7 @@ export class AutorisationListComponent implements OnInit {
 
   deleteItem(id: number) {
     this.confirmationService.confirm({
-      message: 'Voulez-vous vraiment supprimer cet élément ?',
+      message: 'Voulez-vous vraiment supprimer cette autorisation  ?',
       header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: "p-button-danger p-button-text",

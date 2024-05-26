@@ -40,6 +40,7 @@ rolesOptions: any[] = [
   { label: 'User', value: 'user' },
   { label: 'Admin', value: 'admin' }
 ];
+
   constructor(
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
@@ -62,6 +63,19 @@ rolesOptions: any[] = [
     this.loadGroupeOptions();
     this.loadGradeOptions();
   }
+  
+  onChefChange(event: any) {
+    const selectedValue = event.value;
+    const nbEnfantControl = this.form.get('nbEnfant');
+    
+    if (selectedValue === false) {
+        nbEnfantControl.setValue(0); // Set default value to 0
+        nbEnfantControl.disable(); // Disable the field
+    } else {
+        nbEnfantControl.enable(); // Enable the field
+    }
+}
+
 
   loadEntrepriseOptions() {
     this.entrepriseService.getAllEntreprises().subscribe(

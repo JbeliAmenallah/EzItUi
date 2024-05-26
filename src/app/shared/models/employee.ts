@@ -19,7 +19,7 @@ export interface Employee {
   primes?: Prime[];
   autorisations?: Autorisation[];
   conges?: Conge[];
-  cotisations?: Cotisation[];
+  //cotisations?: Cotisation[];
   enfants?: Enfant[];
   entreprise?:any;
   category?:any;
@@ -59,12 +59,12 @@ interface Conge {
   state: string;
 }
 
-interface Cotisation {
+/*interface Cotisation {
   cotisationId?: number;
   libele?: string;
   annee?: number;
   taux?: number;
-}
+}*/
 
 interface Enfant {
   id?: number;

@@ -6,7 +6,7 @@
           (click)="showAddDialog()"  ></button>
         <ng-template #tooltipContent>
             <div class="flex align-items-center">
-                <span> <b>Categories</b> </span>
+                <span> <b>Ajouter une categorie</b> </span>
             </div>
         </ng-template>
     </div>
@@ -18,14 +18,12 @@
 
         <ng-template pTemplate="header">
             <tr>
-                <th>ID</th>
+               
                 <th>Libellé</th>
                 <th>Actions</th>
             </tr>
             <tr>
-                <th>
-                    <p-columnFilter type="text" field="id"></p-columnFilter>
-                </th>
+             
                 <th>
                     <p-columnFilter type="text" field="libele"></p-columnFilter>
                 </th>
@@ -34,7 +32,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-category>
             <tr>
-                <td>{{ category.category_id }}</td>
+                
                 <td>{{ category.libele }}</td>
                 <td>
                     <i class="pi pi-pencil" style="font-size: 1.9rem; color: rgb(98, 0, 255)"

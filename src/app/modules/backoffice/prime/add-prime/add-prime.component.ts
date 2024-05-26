@@ -68,12 +68,12 @@ export class AddPrimeComponent implements OnInit {
           this.primeService.addPrime(prime).subscribe(
             (data) => {
               setTimeout(() => {
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+                this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le prime a été ajouté avec succès' });
               }, 100);
               this.router.navigate(['/prime/list']);
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime using addPrime.' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement du prime .' });
             }
           );
   
@@ -93,12 +93,12 @@ export class AddPrimeComponent implements OnInit {
           this.primeService.addPrimeToEmployeesByCategoryGradeOrGroup(prime1).subscribe(
             (data) => {
               setTimeout(() => {
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+                this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le prime a été ajouté avec succès.' });
               }, 100);
               this.router.navigate(['/prime/list']);
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime using addPrimeToEmployeesByCategoryGradeOrGroup.' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement du prime .' });
             }
           );
         });
@@ -119,12 +119,12 @@ export class AddPrimeComponent implements OnInit {
         this.primeService.addPrimeToEmployeesByCategoryGradeOrGroup(primeDTO).subscribe(
           (data) => {
             setTimeout(() => {
-              this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+              this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le prime a été ajouté avec succès.' });
             }, 100);
             this.router.navigate(['/prime/list']);
           },
           (error) => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime.' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement du prime .' });
           }
         );
       } else if (selectedContactIds && selectedContactIds.length > 0 && selectedAnneeId) {
@@ -143,17 +143,17 @@ export class AddPrimeComponent implements OnInit {
           this.primeService.addPrime(prime).subscribe(
             (data) => {
               setTimeout(() => {
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The prime has been added.' });
+                this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le prime a été ajouté avec succès.' });
               }, 100);
               this.router.navigate(['/prime/list']);
             },
             (error) => {
-              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message || 'An error occurred while saving the prime.' });
+              this.messageService.add({ severity: 'error', summary: 'Erreur', detail: error.error.message || 'Une erreur s’est produite lors de l’enregistrement du prime .' });
             }
           );
         });
       } else {
-        this.messageService.add({ severity: 'error', summary: 'Validation Error', detail: 'Please select at least one contact or category/grade/group and year.' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur de validation ', detail: 'Veuillez sélectionner au moins un contact ou une catégorie/niveau/groupe et année.' });
       }
     } else {
       console.log('Form is invalid.');

@@ -126,9 +126,15 @@ const routes: Routes = [
     path:'deduction',
     loadChildren:()=>import ('./modules/backoffice/deduction/deduction.module').then((m)=>m.DeductionModule)
   },
+<<<<<<< HEAD
    {
      path:'not-allowed',
      component:NotallowedComponent,
+=======
+  {
+    path:'kpi',
+    loadChildren:()=>import ('./modules/backoffice/kpi/kpi.module').then((m)=>m.KPIModule)
+>>>>>>> 0343068bfd88089f1ac573ebf623a3dc6570e4cc
   }
 
 ];

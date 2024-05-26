@@ -1,12 +1,12 @@
-<p-dialog header="Edit Annee" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }" [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
+<p-dialog header="Modifier une année" [(visible)]="displayDialog" [responsive]="true" [style]="{ 'width': '600px', 'height': '700px' }" [modal]="true" [contentStyle]="{ 'overflow': 'auto' }">
   <ng-template pTemplate="content">
     <div class="form-group">
       <label for="dateDebutExercice">Date de début de l’exercice</label>
-      <p-calendar id="dateDebutExercice" [(ngModel)]="selectedAnnee.dateDebutExercice" class="form-control" placeholder="Start Date of Exercise" dateFormat="yy-mm-dd"></p-calendar>
+      <p-calendar id="dateDebutExercice" [(ngModel)]="selectedAnnee.dateDebutExercice" class="form-control" placeholder="Start Date of Exercise" dateFormat="dd/MM/yy"></p-calendar>
     </div>
 
     <div class="form-group">
-      <label for="libele">Libele</label>
+      <label for="libele">Libellé</label>
       <input id="libele" pInputText type="text" [(ngModel)]="selectedAnnee.libele" class="form-control" placeholder="Libele" />
     </div>
   </ng-template>

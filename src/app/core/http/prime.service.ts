@@ -47,4 +47,9 @@ export class PrimeService {  private apiUrl = ' http://localhost:8080/primes';
   addPrimeToEmployeesByCategoryGradeOrGroup(prime: Prime): Observable<Prime[]> {
     return this.http.post<Prime[]>(`${this.apiUrl}/addByCategoryGradeOrGroup`, prime);
   }
+    // Add the new method to fetch primes by contactId
+    getPrimesByContactId(contactId: number): Observable<Prime[]> {
+      const url = `${this.apiUrl}/contact/${contactId}/primes`; // Adjust the API endpoint as per your backend route
+      return this.http.get<Prime[]>(url);
+    }
 }

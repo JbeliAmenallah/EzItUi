@@ -1,24 +1,13 @@
 <div class="container mt-5">
     <form [formGroup]="form" class="form">
         <div class="row">
-            
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="contactId">Employé:</label>
-                    <p-multiSelect [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-multiSelect>
-                    <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
-                </div>
-            </div>
-            
-            
-            
-
+    
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="year">Année :</label>
                     <p-dropdown [options]="anneeOptions" formControlName="year" id="year" optionLabel="libele" optionValue="id" placeholder="Selectionner une année"></p-dropdown>
-                    <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">L'année est obligatoire</small>
+                    <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">L'année est requise</small>
                   </div>
             </div>
             
@@ -42,40 +31,49 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="motif">Raison:</label>
+                    <label for="motif">Raison :</label>
                     <input type="text" pInputText formControlName="motif" id="motif" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('motif')?.touched && form.get('motif')?.hasError('required')">La raison est requise</small>
                 </div>
             </div>
+    
+
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="typePrimeId">Type primes:</label>
-                    <p-dropdown [options]="typePrimes" formControlName="typePrimeId" [showClear]="true" placeholder="Select a type prime"></p-dropdown>
+                    <label for="contactId">Employé :</label>
+                    <p-multiSelect [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-multiSelect>
+                    <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
                 </div>
             </div>
+            
             <div class="col-md-6">
                 <div class="form-group">
                   <label for="category">Catégorie :</label>
-                  <p-dropdown [options]="categoryOptions" formControlName="category" [showClear]="true" placeholder="Sélectionner" class="form-control"></p-dropdown>
-                  <small class="p-error" *ngIf="form.get('category')?.touched && form.get('category')?.hasError('required')">Catégorie est obligatoire</small>
+                  <p-dropdown [options]="categoryOptions" formControlName="category" [showClear]="true" placeholder="Sélectionner une Catégorie"class="form-control"></p-dropdown>
                 </div>
               </div>
               
               <div class="col-md-6">
                 <div class="form-group">
                     <label for="groupe">Groupe :</label>
-                    <p-dropdown [options]="groupeOptions" formControlName="groupe" id="groupe" [showClear]="true" placeholder="Selectionner" class="form-control"></p-dropdown>
-                    <small class="p-error" *ngIf="form.get('groupe')?.touched && form.get('groupe')?.hasError('required')">Groupe est obligatoire</small>
+                    <p-dropdown [options]="groupeOptions" formControlName="groupe" id="groupe" [showClear]="true" placeholder="Selectionner un groupe" class="form-control"></p-dropdown>
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="form-group">
                   <label for="grade">Grade :</label>
-                  <p-dropdown [options]="gradeOptions" formControlName="grade" id="grade" [showClear]="true" placeholder="Sélectionner" class="form-control"></p-dropdown>
-                  <small class="p-error" *ngIf="form.get('grade')?.touched && form.get('grade')?.hasError('required')">Grade est obligatoire</small>
+                  <p-dropdown [options]="gradeOptions" formControlName="grade" id="grade" [showClear]="true" placeholder="Sélectionner une grade " class="form-control"></p-dropdown>
                 </div>
               </div>
+
+              
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="typePrimeId">Type primes:</label>
+                    <p-dropdown [options]="typePrimes" formControlName="typePrimeId" [showClear]="true" placeholder="Select a type prime"></p-dropdown>
+                </div>
+            </div>
 
         </div>
     </form>

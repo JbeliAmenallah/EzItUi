@@ -54,7 +54,7 @@ export class GradeListComponent implements OnInit {
         },
         (error) => {
           console.error('Erreur lors de la mise à jour de la note :', error);
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la note' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour de la grade' });
         }
       );
     }
@@ -66,7 +66,7 @@ export class GradeListComponent implements OnInit {
 
   deleteItem(grade_id: number) {
     this.confirmationService.confirm({
-      message: 'Voulez-vous vraiment supprimer cette note ??',
+      message: 'Voulez-vous vraiment supprimer cette grade ??',
       header: 'Confirmation de suppression',
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-text',
@@ -77,11 +77,11 @@ export class GradeListComponent implements OnInit {
         this.gradeService.deleteGrade(grade_id).subscribe(
           () => {
             this.getGrades();
-            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'La note a été supprimée avec succès' });
+            this.messageService.add({ severity: 'success', summary: 'Confirmation', detail: 'La grade a été supprimée avec succès' });
           },
           (error) => {
             console.error('Error deleting grade:', error);
-            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de la note' });
+            this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la suppression de la grade' });
           }
         );
       },
@@ -103,13 +103,13 @@ export class GradeListComponent implements OnInit {
   saveNewGrade(newGrade: Grade) {
     this.gradeService.createGrade(newGrade).subscribe(
       () => {
-        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Ajout réussi de la note' });
+        this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Ajout réussi de la grade' });
         this.hideAddDialog();
         this.getGrades();
       },
       (error) => {
         console.error('Erreur lors de la création de la note:', error);
-        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la création de la note' });
+        this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la création de la grade' });
       }
     );
   }

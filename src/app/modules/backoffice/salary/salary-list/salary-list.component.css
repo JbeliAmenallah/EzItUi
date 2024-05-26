@@ -1,0 +1,18 @@
+.hidden-template {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden;
+  }
+  .visible-template {
+    position: static;
+    visibility: visible;
+  }
+  .hidden-template {
+    display: none;
+  }
+  
+  .visible-template {
+    display: block;
+  }
+  

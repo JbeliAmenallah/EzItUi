@@ -52,13 +52,13 @@ export class AnneeListComponent implements OnInit {
     if (this.selectedAnnee) {
       this.anneeService.updateAnnee(this.selectedAnnee.id, this.selectedAnnee).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Annee a été mise à jour avec succès' });
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Année a été mise à jour avec succès' });
           this.displayEditDialog = false;
           this.getAnnees(); // Refresh the list
         },
         (error) => {
           console.error('Erreur lors de la mise à jour de l’année :', error);
-          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour d’annee' });
+          this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Erreur lors de la mise à jour d’année' });
         }
       );
     }

@@ -1,8 +1,8 @@
-<p-dialog header="Add A New Category" [(visible)]="displayAddDialog" [modal]="true" [style]="{ 'width': '400px' }" (onHide)="hideDialog()">
+<p-dialog header="AAjouter une nouvelle catégorie" [(visible)]="displayAddDialog" [modal]="true" [style]="{ 'width': '400px' }" (onHide)="hideDialog()">
   <form [formGroup]="form" class="form">
     <div class="form-group">
       <label for="libele">Libellé</label>
-      <input id="libele" type="text"  formControlName="libele" class="form-control" placeholder="Add The Category Libele"/>
+      <input id="libele" type="text"  formControlName="libele" class="form-control" placeholder="Ajouter la catégorie Libele"/>
       <div class="p-error" *ngIf="form.get('libele').invalid && form.get('libele').touched">
         Libellé est requis
       </div>

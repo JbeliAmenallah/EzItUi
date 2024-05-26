@@ -43,7 +43,6 @@ export class CongeService {
   }
 
   
-  // Update Conge
   updateConge(congeId: number, conge: Conge): Observable<Conge> {
     return this.http.put<Conge>(`${this.baseUrl}/${congeId}`, conge).pipe(
       catchError((error) => {
@@ -54,10 +53,10 @@ export class CongeService {
           // Handle other errors
           return throwError('Une erreur ');
         }
-      }
-    )
+      })
     );
   }
+  
 
   // Delete Conge
   deleteConge(congeId: number): Observable<any> {
