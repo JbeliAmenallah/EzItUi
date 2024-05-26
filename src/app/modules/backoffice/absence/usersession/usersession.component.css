@@ -1,0 +1,25 @@
+.justif-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .justif {
+    background-color: #001aff; /* blue */
+    color: white;
+  }
+  
+  .not-justif {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
+  .margin-top-20 {
+    margin-top: 20px;
+  }
+  .hover-scale:hover {
+    transform: scale(1.05); /* Increase size by 5% */
+    box-shadow: 0 4px 6px rgba(0, 0, 0.3, 0.5); /* Add subtle shadow */
+    background: transparent;
+  }

@@ -1,7 +1,25 @@
 <div class="container mt-5">
-    <h2 class="table-title">Demande de congés</h2>
-
-    <form [formGroup]="form" class="form">    
+    <form [formGroup]="form" class="form">   
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+            <li>
+              <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+                  <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+                  Espace Rh
+              </a>
+          </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                  <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+              </li>
+              <li>
+                 <a [routerLink]="['/employee/conges']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Conges</span></a>
+              </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+              <li>
+                     &nbsp;<a [routerLink]="['/conges/demande']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">demande</span></a>
+             </li>
+          </ul> 
         <div class="form-group">
             <label for="startDate">Date de début :</label>
             <p-calendar formControlName="startDate" id="startDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd"></p-calendar>
@@ -14,14 +32,13 @@
             <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date de fin est requise</small>
         </div>
 
-        <div class="text-right">
-            <button type="button" pButton class="btn btn-primary mt-3" (click)="submitLeaveRequest()" label="Submit"></button>
-        </div>
+        <div class="flex justify-center mt-3">
+            <button type="button" pButton class="btn btn-primary" icon="pi pi-check" iconPos="left" (click)="submitLeaveRequest()" label="Submit"></button>
+          </div>
+          
     </form>
 </div>
 
 <div class="messages-container">
-    <div class="">
-        <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
-    </div>
+    <p-messages [(value)]="messages"  [enableService]="true" [closable]="true"></p-messages>
 </div>

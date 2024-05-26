@@ -1,0 +1,43 @@
+.hover-scale:hover {
+    transform: scale(1.05); /* Increase size by 5% */
+    box-shadow: 0 4px 6px rgba(0, 0, 0.3, 0.5); /* Add subtle shadow */
+    background: transparent;
+  }
+  :root {
+    --fc-border-color: blue;
+    --fc-daygrid-event-dot-width: 1px;
+  }
+
+  .container {
+    display: flex;
+    font-size: 14px;
+  }
+  
+  .events-list {
+    flex: 1;
+    margin-top: 20%;
+    color: blue;
+    font-size: 16px;
+    
+  }
+  ul {
+    margin: 0;
+    padding: 0 0 0 1.5em;
+  }
+  
+  li {
+    margin: 1.5em 0;
+    padding: 0;
+  }
+  .calendar-container {
+    flex: 3;
+  }
+  .custom-dialog {
+    background-color: blue;
+    /* Add any other custom styles here */
+  }
+  ::ng-deep .ui-dialog .ui-dialog-content {
+    background-color: blue !important;
+  }
+  
+  

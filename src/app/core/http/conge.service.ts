@@ -80,5 +80,19 @@ export class CongeService {
     return this.http.post<any>(`${this.baseUrl}/demande`, formData);
   }
   
+  getCongesByUsername(username: string): Observable<Conge[]> {
+    const url = `${this.baseUrl}/by-username/${username}`; // Corrected URL
+    return this.http.get<Conge[]>(url).pipe(
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      })
+    );
+  }
 
 }

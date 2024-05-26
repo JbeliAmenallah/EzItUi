@@ -12,6 +12,11 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { StyleClassModule } from 'primeng/styleclass';
 import { ChartModule } from 'primeng/chart';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { EmployeeSessionComponent } from './employee-session/employee-session.component';
+
+
+
 
 
 
@@ -23,16 +28,17 @@ import { ChartModule } from 'primeng/chart';
     AddEmployeeComponent,
     EmployeeFormComponent,
     EditEmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    EmployeeSessionComponent
   ],
   imports: [
     CommonModule,
     EmployeeRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    ChartModule,
     StyleClassModule,
-    ChartModule
+    ChartModule,
+    FullCalendarModule
   ],
   providers: [
     ConfirmationService, 

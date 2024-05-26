@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.show = !this.show;
   }
 
-  login() {
+ /* login() {
     let credentials = {
       email: this.form.get("email")?.value,
       password: this.form.get("password")?.value,
@@ -46,5 +46,5 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/categories"]);
 
     });
-  }
+  }*/
 }

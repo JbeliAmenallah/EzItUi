@@ -1,16 +1,11 @@
-<div class="container">
-    <h1 class="gradient-text">Ajouter un employé</h1>
-</div>
 
 <app-employee-form #form> </app-employee-form>
 
 <div class="buttons">
-    <p-button label="Enregistrer"icon="pi pi-check" styleClass="custom-save-button" class="btn-save"  (click)="save()"></p-button>
+    <button pButton label="Enregistrer"icon="pi pi-check"  class="btn-save hover-scale"  (click)="save()"></button>
 </div>
 
 <div class="messages-container">
-
      <p-messages [(value)]="messages"  [enableService]="true" [closable]="true"></p-messages>
-
 </div>
 

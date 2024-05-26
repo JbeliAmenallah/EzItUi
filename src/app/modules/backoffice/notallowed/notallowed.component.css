@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Bungee");
+
+:host {
+  display: block;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: "Bungee", cursive;
+  margin-top: 50px;
+  background: #ffffff;
+  border-radius: 15px;
+}
+
+a {
+  color: #2aa7cc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(255, 0, 0);
+}
+
+svg {
+  width: 80%;
+  height: 90%;
+}
+
+.lightblue {
+  fill: #b9b9b9;
+}
+
+.eye {
+  cx: calc(115px + 30px * var(--mouse-x));
+  cy: calc(50px + 30px * var(--mouse-y));
+}
+
+#eye-wrap {
+  overflow: hidden;
+}
+
+.error-text {
+  font-size: 120px;
+  margin-bottom: 20%;
+}
+
+.alarm {
+  animation: alarmOn 0.7s infinite;
+}
+
+@keyframes alarmOn {
+  to {
+    fill: rgb(175, 76, 76);
+  }
+}

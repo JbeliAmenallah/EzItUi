@@ -9,6 +9,7 @@ import { AbsenceFormComponent } from './absence-form/absence-form.component';
 import { ConfirmationService,MessageService } from 'primeng/api';
 import { AddAbsenceComponent } from './add-absence/add-absence.component';
 import { EditAbsenceComponent } from './edit-absence/edit-absence.component';
+import { UsersessionComponent } from './usersession/usersession.component';
 
 
 
@@ -17,7 +18,8 @@ import { EditAbsenceComponent } from './edit-absence/edit-absence.component';
     AbsenceListComponent,
     AbsenceFormComponent,
     AddAbsenceComponent,
-    EditAbsenceComponent
+    EditAbsenceComponent,
+    UsersessionComponent
   ],
   imports: [
     CommonModule,

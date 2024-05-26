@@ -1,30 +1,50 @@
-<div class='dashboard'>
-    <div class="dashboard-nav">
+<div class='dashboard dark:bg-slate-700'>
+    <div class="dashboard-nav ">
         <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"> <img
                     src="../assets/logo-createch-light.png" alt="" width="150px"></a></header>
         <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"> <span class="material-symbols-outlined">
                     home
                 </span>
                 <span class="menu-close">Home</span> </a>
-            <a href="#" class="dashboard-nav-item">
+            <!-- <a href="#" class="dashboard-nav-item">
                 <span class="material-symbols-outlined">
                     mail
                 </span>
                 <span class="menu-close">Boite
                     de reception</span>
-            </a>
-            <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
-                        task
+            </a> -->
+            <div class='dashboard-nav-dropdown'>
+                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+                        fact_check
                     </span>
-                    <span class="menu-close">Taches </span> </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-                        href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
-                        class="dashboard-nav-dropdown-item">Images</a><a href="#"
-                        class="dashboard-nav-dropdown-item">Video</a></div>
+                    <span class="menu-close">Autorisations</span>
+                </div>
+                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">Mes
+                        Autorisations</a><a href="#" class="dashboard-nav-dropdown-item">Demande Autorisation</a>
+                </div>
             </div>
-            <div class='dashboard-nav-dropdown'><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span
-                        class="material-symbols-outlined">
+            <div class='dashboard-nav-dropdown'>
+                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+                    event_busy
+                    </span>
+                    <span class="menu-close">Absences</span>
+                </div>
+                <div class='dashboard-nav-dropdown-menu'><a [routerLink]="['/absence/session']" class="dashboard-nav-dropdown-item">Mes
+                        Absences</a><a  class="dashboard-nav-dropdown-item">Demande Absence</a>
+                </div>
+            </div>
+            <div class='dashboard-nav-dropdown'>
+                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+                    event_available
+                    </span>
+                    <span class="menu-close">Conges</span>
+                </div>
+                <div class='dashboard-nav-dropdown-menu'><a [routerLink]="['/employee/conges']" class="dashboard-nav-dropdown-item">Mes
+                        Conges</a><a [routerLink]="['/conges/demande']"  class="dashboard-nav-dropdown-item">Demande Conges</a>
+                </div>
+            </div>
+            <div class='dashboard-nav-dropdown'><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+                    *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">
                         group
                     </span>
                     <span class="menu-close">Users</span>
@@ -40,8 +60,9 @@
                         </span>liste users</a>
                 </div>
             </div>
-            <div class='dashboard-nav-dropdown'><a href="#!"
-                    class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+
+            <!-- <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+                    *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">
                         fact_check
                     </span>
                     <span class="menu-close">Project</span> </a>
@@ -49,13 +70,14 @@
                         href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
                         class="dashboard-nav-dropdown-item"> Projections</a>
                 </div>
-            </div>
-            <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
+            </div> -->
+            <!-- <a href="#" class="dashboard-nav-item" *ngIf="authService.hasRoleIn(['USER'])"><span
+                    class="material-symbols-outlined">
                     settings
                 </span> <span class="menu-close">Settings </span></a>
             <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
                     timer
-                </span><span class="menu-close">Chronomètre</span> </a>
+                </span><span class="menu-close">Chronomètre</span> </a> -->
             <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
                     person
                 </span> <span class="menu-close">Profile</span> </a>
@@ -66,7 +88,8 @@
             <a [routerLink]="['employee/details']" class="dashboard-nav-item"> <span
                     class="logo-space-RH">H</span><span>RH</span> </a> <!-- Navigation to Employee Details -->
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-finance">F</span><span>finance</span> </a>
-            <a href="#" class="dashboard-nav-item logout"><img src="../assets/log-out.svg" alt=""><span>Logout</span>
+            <a class="dashboard-nav-item logout" (click)="logout()"><img src="../assets/log-out.svg"
+                    alt=""><span>Logout</span>
             </a>
         </nav>
     </div>
@@ -74,28 +97,44 @@
         <header class='dashboard-toolbar'><a class="menu-toggle"><i class="fas fa-bars"></i></a>
 
             <div class="icons-left">
-                <div class="icon mr-2"><img src="../assets/bell.svg" alt=""></div>
+                <!-- <div class="icon mr-2"><img src="../assets/bell.svg" alt=""></div>
 
-                <div class="icon mr-2"><img src="../assets/mail.svg" alt=""></div>
+                <div class="icon mr-2"><img src="../assets/mail.svg" alt=""></div> -->
 
+                <!-- <div class="icon mr-2 "><Button (click)="darkMode.set(!darkMode())"
+                        style="border: 0px;background: none;cursor: pointer;"><span *ngIf="!darkMode()"
+                            class="material-icons hover-scale">dark_mode</span><span *ngIf="darkMode()"
+                            class="material-icons hover-scale">light_mode</span></Button>
+                </div> -->
+                <div class="icon mr-0">
+                    <img [src]="'../assets/' + weatherIcon + '.svg'" alt="Weather Icon"
+                        style="width: 100%; height: 100%; margin-top: 3px;cursor: pointer;" [title]="weatherTooltip">
+                </div>
                 <div class="popup" id="popup">
                     Contenu du popup
                 </div>
-                <div class="profile-dropdown">
-                    <div class="icon mr-2"> <img src="../assets/user.png" alt="" width="30px"></div>
+                <div class="profile-dropdown"
+                    [attr.data-tooltip]="authService.isUserOnline ? authService.getAuthenticatedUsername() + ' Online' : ''">
+                    <div class="icon mr-2">
+                        <img src="../assets/user.png" alt="Session's Username" width="30px">
+                        <div class="status-dot"
+                            [ngClass]="{ 'online': authService.isUserOnline, 'offline': !authService.isUserOnline }"
+                            [attr.data-tooltip]="authService.isUserOnline ? authService.getAuthenticatedUsername() + ' Online' : ''">
+                        </div>
+                    </div>
                     <!-- Profile Dropdown -->
                     <div class="dropdown-content">
                         <!-- Your profile dropdown items go here -->
                         <a href="#"><i class="fa fa-user"></i> Profile</a>
                         <a href="#"><i class="fa fa-cog"></i> Settings</a>
-                        <a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+                        <a (click)="logout()"><i class="fa fa-sign-out" (click)="logout()"></i> Logout</a>
                     </div>
                 </div>
             </div>
 
         </header>
-        <div class='dashboard-content'>
-            <div class='container'>
+        <div class='dashboard-content dark:bg-slate-700'>
+            <div class='container '>
                 <router-outlet></router-outlet>
             </div>
         </div>

@@ -4,6 +4,7 @@ import { AbsenceListComponent } from './absence-list/absence-list.component';
 import { AbsenceFormComponent } from './absence-form/absence-form.component';
 import { AddAbsenceComponent } from './add-absence/add-absence.component';
 import { EditAbsenceComponent } from './edit-absence/edit-absence.component';
+import { UsersessionComponent } from './usersession/usersession.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   { path: 'edit/:id',
    component: EditAbsenceComponent 
   },
+  {
+    path:'session',
+    component:UsersessionComponent
+  }
 
 
 ];

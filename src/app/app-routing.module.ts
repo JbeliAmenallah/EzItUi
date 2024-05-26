@@ -1,11 +1,25 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, inject } from '@angular/core';
+import { CanActivateFn, RouterModule, Routes } from '@angular/router';
 import path from 'path';
+import { AuthGuard } from './core/guards/auth.guard';
+import { BrowserModule } from '@angular/platform-browser';
+import { title } from 'process';
+import { NotallowedComponent } from './modules/backoffice/notallowed/notallowed.component';
+
+
+const isAuthenticated: CanActivateFn = (route, state) => {
+  return inject(AuthGuard).isAccessAllowed(route, state);
+};
 
 const routes: Routes = [
+  { 
+    path: '',  
+    redirectTo: 'employee/details', pathMatch: 'full',
+  },
   {
     path: 'auth',
-    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)
+    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
+    data:{title:'Authentication'}
   },
 
   {
@@ -56,8 +70,9 @@ const routes: Routes = [
     loadChildren:()=>import('./modules/backoffice/autorisation/autorisation.module').then((m)=>m.AutorisationModule)
   },
   {
-    path:'employee',
-    loadChildren:()=>import('./modules/backoffice/employee/employee.module').then((m)=>m.EmployeeModule)
+    path:'employee',    canActivate:[isAuthenticated],
+    loadChildren:()=>import('./modules/backoffice/employee/employee.module').then((m)=>m.EmployeeModule),
+    // data:{title:'Employees',roles: ['ADMIN']}
   },
   {
     path:'absence',
@@ -110,11 +125,16 @@ const routes: Routes = [
   {
     path:'deduction',
     loadChildren:()=>import ('./modules/backoffice/deduction/deduction.module').then((m)=>m.DeductionModule)
+  },
+   {
+     path:'not-allowed',
+     component:NotallowedComponent,
   }
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),BrowserModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

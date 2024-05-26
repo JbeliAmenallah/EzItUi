@@ -25,12 +25,7 @@ export class CategoryHttpService {
         return this.httpClient.post(`${this.url}/${this.endpoint}`, data)
     }
 
-    public update(category: Category): Observable<Category> {
-        return this.httpClient.put<Category>(
-            `${this.url}/${this.endpoint}/${category.id}`,
-            category,
-        )
-    }
+
 
     read(id: number): Observable<Category> {
         return this.httpClient.get<Category>(`${this.url}/${this.endpoint}/${id}`)

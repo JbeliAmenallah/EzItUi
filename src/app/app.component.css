@@ -441,10 +441,11 @@ a.dashboard-nav-item:hover {
   padding: 8px 27px;
   position: fixed;
   top: 0;
-  right: 0;
+  right: 3px;
   left: 0;
   z-index: 1000;
   justify-content: space-between;
+  height: 60px;
 }
 .icons-left {
   display: flex;
@@ -614,5 +615,44 @@ a.dashboard-nav-item:hover {
   display: block;
 }
 
+/* Add this to your CSS file */
+.status-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #ccc; /* Default color */
+  position: absolute;
+  bottom: 0px;
+  right: 22px;
+  cursor: pointer;
+}
 
+.online {
+  background-color: rgb(110, 228, 110);
+}
+.offline {
+  background-color: red;
+}
+
+
+.profile-dropdown{
+  cursor: pointer;
+}
+.profile-dropdown:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-70%);
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.hover-scale:hover {
+  transform: scale(1.08); /* Increase size by 5% */
+
+}
 

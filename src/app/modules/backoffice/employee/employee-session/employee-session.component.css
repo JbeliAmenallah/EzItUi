@@ -1,0 +1,26 @@
+.state-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .state-accepted {
+    background-color: #4caf50; /* Green */
+    color: white;
+  }
+  
+  .state-rejected {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
+  
+  .state-pending {
+    background-color: #FF9800; /* Orange */
+    color: white;
+  }
+  .custom-chart-height {
+    height: 200px; /* or whatever height you prefer */
+  }
+  

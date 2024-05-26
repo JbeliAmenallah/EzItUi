@@ -1,0 +1,13 @@
+:host >>> .p-button{
+    margin-bottom: 1%;
+  }
+  .table-container {
+    border-radius: 10px; /* Adjust the radius as per your preference */
+    overflow: hidden; /* This is important to ensure the border-radius is applied properly */
+    background-color: white;
+}
+
+/* If you want to apply padding to the table itself */
+.table-container p-table {
+    padding: 20px; /* Adjust the padding as per your preference */
+}

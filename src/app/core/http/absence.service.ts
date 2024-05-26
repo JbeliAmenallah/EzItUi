@@ -31,6 +31,20 @@ export class AbsenceService {
       catchError(this.handleError)
     );
   }
+  getAbsencesByUsername(username: string): Observable<Absence[]> {
+    const url = `${this.apiUrl}/by-username/${username}`; // Corrected URL
+    return this.http.get<Absence[]>(url).pipe(
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      })
+    );
+  }
 
 
   getAllAbsences(): Observable<Absence[]> {
