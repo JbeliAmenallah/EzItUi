@@ -4,6 +4,7 @@ import { AddcongeComponent } from './addconge/addconge.component';
 import { CongeListComponent } from './conge-list/conge-list.component';
 import { DemandeCongeComponent } from './demande-conge/demande-conge.component';
 import { EditCongeComponent } from './edit-conge/edit-conge.component';
+import { CongeFormComponent } from './conge-form/conge-form.component';
 
 const routes: Routes = [{
   path:"add",
@@ -19,8 +20,10 @@ const routes: Routes = [{
 }, 
  { path: 'edit/:id',
   component: EditCongeComponent
+ },
+ {path:'form',component:CongeFormComponent
  }
-
+ 
 
 ];
 

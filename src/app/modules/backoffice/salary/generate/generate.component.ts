@@ -58,77 +58,7 @@ export class GenerateComponent implements OnInit {
       }
     );
   }
- /*
-  generateSalary() {
-    if (this.generateForm.invalid) {
-      console.error('Form is invalid.');
-      this.markFormGroupTouched(this.generateForm);
-      this.messages = [{ severity: 'error', summary: 'Error', detail: 'Form is invalid. Please fill in all required fields.', life: 3000 }];
-      return;
-    }
   
-    const year = this.generateForm.get('yearInput').value;
-    const month = this.generateForm.get('monthInput').value;
-    const selectedContacts = this.generateForm.get('contact').value;
-  
-    // Ensure there is at least one selected contact
-    if (!selectedContacts || selectedContacts.length === 0) {
-      console.error('Please select at least one contact.');
-      this.messages = [{ severity: 'error', summary: 'Error', detail: 'Please select at least one contact.', life: 3000 }];
-      return;
-    }
-  
-    let contactId;
-    if (selectedContacts.length === 1) {
-      // Only one contact selected, extract its ID
-      contactId = selectedContacts[0];
-    } else {
-      // Multiple contacts selected, set contactId to null
-      contactId = null;
-    }
-  
-    // Construct the payload object
-    const payload = {
-      contactId: contactId,
-      year: year,
-      month: month,
-      filePath: 'filePath'
-    };
-  
-    // Generate salary
-    if (contactId !== null) {
-      this.salaryService.generateSalaryForContact(payload).subscribe(
-        () => {
-          console.log('Salary generated for selected contact!');
-          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Salary generated for selected contact!', life: 3000 }];
-          // Set showPDF to true after generating salary
-          this.showPDF = true;
-          // Navigate to the list component after success
-          this.router.navigate(['/salary/list']);
-        },
-        (error) => {
-          console.error('Error generating salary for selected contact:', error);
-          this.messages = [{ severity: 'error', summary: 'Error', detail: 'Error generating salary for selected contact!', life: 3000 }];
-        }
-      );
-    } else {
-      this.salaryService.generateSalaryForAllContacts(year, month).subscribe(
-        () => {
-          console.log('Salary generated for all selected contacts!');
-          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Salary generated for all selected contacts!', life: 3000 }];
-          // Set showPDF to true after generating salary
-          this.showPDF = true;
-          // Navigate to the list component after success
-          this.router.navigate(['/salary/list']);
-        },
-        (error) => {
-          console.error('Error generating salary for all selected contacts:', error);
-          this.messages = [{ severity: 'error', summary: 'Error', detail: 'Error generating salary for all selected contacts!', life: 3000 }];
-        }
-      );
-    }
-  }*/
-
   generatePDF() {
     if (this.generateForm.invalid) {
       console.error('Form is invalid.');
@@ -215,5 +145,76 @@ export class GenerateComponent implements OnInit {
       }
     });
   }
+
+ /*
+  generateSalary() {
+    if (this.generateForm.invalid) {
+      console.error('Form is invalid.');
+      this.markFormGroupTouched(this.generateForm);
+      this.messages = [{ severity: 'error', summary: 'Error', detail: 'Form is invalid. Please fill in all required fields.', life: 3000 }];
+      return;
+    }
+  
+    const year = this.generateForm.get('yearInput').value;
+    const month = this.generateForm.get('monthInput').value;
+    const selectedContacts = this.generateForm.get('contact').value;
+  
+    // Ensure there is at least one selected contact
+    if (!selectedContacts || selectedContacts.length === 0) {
+      console.error('Please select at least one contact.');
+      this.messages = [{ severity: 'error', summary: 'Error', detail: 'Please select at least one contact.', life: 3000 }];
+      return;
+    }
+  
+    let contactId;
+    if (selectedContacts.length === 1) {
+      // Only one contact selected, extract its ID
+      contactId = selectedContacts[0];
+    } else {
+      // Multiple contacts selected, set contactId to null
+      contactId = null;
+    }
+  
+    // Construct the payload object
+    const payload = {
+      contactId: contactId,
+      year: year,
+      month: month,
+      filePath: 'filePath'
+    };
+  
+    // Generate salary
+    if (contactId !== null) {
+      this.salaryService.generateSalaryForContact(payload).subscribe(
+        () => {
+          console.log('Salary generated for selected contact!');
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Salary generated for selected contact!', life: 3000 }];
+          // Set showPDF to true after generating salary
+          this.showPDF = true;
+          // Navigate to the list component after success
+          this.router.navigate(['/salary/list']);
+        },
+        (error) => {
+          console.error('Error generating salary for selected contact:', error);
+          this.messages = [{ severity: 'error', summary: 'Error', detail: 'Error generating salary for selected contact!', life: 3000 }];
+        }
+      );
+    } else {
+      this.salaryService.generateSalaryForAllContacts(year, month).subscribe(
+        () => {
+          console.log('Salary generated for all selected contacts!');
+          this.messages = [{ severity: 'success', summary: 'Success', detail: 'Salary generated for all selected contacts!', life: 3000 }];
+          // Set showPDF to true after generating salary
+          this.showPDF = true;
+          // Navigate to the list component after success
+          this.router.navigate(['/salary/list']);
+        },
+        (error) => {
+          console.error('Error generating salary for all selected contacts:', error);
+          this.messages = [{ severity: 'error', summary: 'Error', detail: 'Error generating salary for all selected contacts!', life: 3000 }];
+        }
+      );
+    }
+  }*/
 
 }

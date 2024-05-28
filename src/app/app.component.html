@@ -17,7 +17,7 @@
                 <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
                         fact_check
                     </span>
-                    <span class="menu-close">Autorisations</span>
+                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Autorisations</span>
                 </div>
                 <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">Mes
                         Autorisations</a><a href="#" class="dashboard-nav-dropdown-item">Demande Autorisation</a>
@@ -25,22 +25,37 @@
             </div>
             <div class='dashboard-nav-dropdown'>
                 <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
-                    event_busy
+                        event_busy
                     </span>
-                    <span class="menu-close">Absences</span>
+                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Absences</span>
                 </div>
-                <div class='dashboard-nav-dropdown-menu'><a [routerLink]="['/absence/session']" class="dashboard-nav-dropdown-item">Mes
-                        Absences</a><a  class="dashboard-nav-dropdown-item">Demande Absence</a>
+                <div class='dashboard-nav-dropdown-menu'><a [routerLink]="['/absence/session']"
+                        class="dashboard-nav-dropdown-item">Mes
+                        Absences</a><a class="dashboard-nav-dropdown-item">Demande Absence</a>
                 </div>
             </div>
             <div class='dashboard-nav-dropdown'>
-                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
-                    event_available
+                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle" ><span class="material-symbols-outlined">
+                        event_available
                     </span>
-                    <span class="menu-close">Conges</span>
+                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Conges</span>
                 </div>
-                <div class='dashboard-nav-dropdown-menu'><a [routerLink]="['/employee/conges']" class="dashboard-nav-dropdown-item">Mes
-                        Conges</a><a [routerLink]="['/conges/demande']"  class="dashboard-nav-dropdown-item">Demande Conges</a>
+                <div class='dashboard-nav-dropdown-menu' ><a [routerLink]="['/employee/conges']"
+                        class="dashboard-nav-dropdown-item">Mes
+                        Conges</a><a [routerLink]="['/conges/demande']" class="dashboard-nav-dropdown-item">Demande
+                        Conges</a>
+                </div>
+            </div>
+            <div class='dashboard-nav-dropdown' >
+                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
+                        event_available
+                    </span>
+                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Fiche De Paie</span>
+                </div>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a  [routerLink]="['/salary/user-session']"
+                        class="dashboard-nav-dropdown-item">Mes
+                        Fiches De Paie</a>
                 </div>
             </div>
             <div class='dashboard-nav-dropdown'><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
@@ -61,23 +76,23 @@
                 </div>
             </div>
 
-            <!-- <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"
-                    *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">
+             <div class='dashboard-nav-dropdown' ><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+                    ><span class="material-symbols-outlined" >
                         fact_check
                     </span>
-                    <span class="menu-close">Project</span> </a>
+                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Project</span> </a>
                 <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-                        href="#" class="dashboard-nav-dropdown-item">Recent</a><a href="#"
+                        href="#" class="dashboard-nav-dropdown-item" >Recent</a><a href="#"
                         class="dashboard-nav-dropdown-item"> Projections</a>
                 </div>
-            </div> -->
-            <!-- <a href="#" class="dashboard-nav-item" *ngIf="authService.hasRoleIn(['USER'])"><span
+            </div> 
+             <a href="#" class="dashboard-nav-item" *ngIf="authService.hasRoleIn(['USER'])"><span
                     class="material-symbols-outlined">
                     settings
                 </span> <span class="menu-close">Settings </span></a>
             <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
                     timer
-                </span><span class="menu-close">Chronomètre</span> </a> -->
+                </span><span class="menu-close">Chronomètre</span> </a> 
             <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
                     person
                 </span> <span class="menu-close">Profile</span> </a>
@@ -116,7 +131,8 @@
                 <div class="profile-dropdown"
                     [attr.data-tooltip]="authService.isUserOnline ? authService.getAuthenticatedUsername() + ' Online' : ''">
                     <div class="icon mr-2">
-                        <img src="../assets/user.png" alt="Session's Username" width="30px">
+                        <img [src]="'https://avatar.iran.liara.run/username?username='+username"
+                            alt="Session's Username" width="30px">
                         <div class="status-dot"
                             [ngClass]="{ 'online': authService.isUserOnline, 'offline': !authService.isUserOnline }"
                             [attr.data-tooltip]="authService.isUserOnline ? authService.getAuthenticatedUsername() + ' Online' : ''">
@@ -125,7 +141,7 @@
                     <!-- Profile Dropdown -->
                     <div class="dropdown-content">
                         <!-- Your profile dropdown items go here -->
-                        <a href="#"><i class="fa fa-user"></i> Profile</a>
+                        <a [routerLink]='["/employee/profile"]'><i class="fa fa-user"></i> Profile</a>
                         <a href="#"><i class="fa fa-cog"></i> Settings</a>
                         <a (click)="logout()"><i class="fa fa-sign-out" (click)="logout()"></i> Logout</a>
                     </div>

@@ -31,6 +31,10 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AccordionModule } from 'primeng/accordion';
+import { TagModule } from 'primeng/tag';
+
+import { CarouselModule } from 'primeng/carousel';
+
 
 
 @NgModule({
@@ -77,7 +81,9 @@ import { AccordionModule } from 'primeng/accordion';
     ConfirmDialogModule,
     SpeedDialModule,
     InputTextareaModule,
-    AccordionModule
+    AccordionModule,
+    CarouselModule,
+    TagModule
   ]
 })
 export class SharedModule {}

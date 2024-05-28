@@ -1,0 +1,35 @@
+<div class="card">
+    <!-- Loading message -->
+    <div *ngIf="loading">Loading...</div>
+
+    <!-- Salaries content or empty message -->
+    <div *ngIf="!loading">
+        <!-- Show the message if salaries array is empty -->
+        <div *ngIf="salaries.length === 0" class="empty-message">
+            Vous n'avez pas aucun fiche de paie.
+        </div>
+
+        <!-- Show the cards if salaries array is not empty -->
+        <div *ngIf="salaries.length > 0" class="card-row">
+            <div *ngFor="let salary of salaries">
+                <p-card header="Fiche De Paie" [style]="{ width: '260px' }" class="rounded-card">
+                    <ng-template pTemplate="header">
+                        <div>
+                            <img alt="Card" class="pdf"
+                                src="https://play-lh.googleusercontent.com/exNzDTL0Wnl9jFvvw6NJXSsH11lzW_N1-6DpsVsbi7jzR3TCBkVhaVV3_9IWEodNOsE" />
+                        </div>
+                    </ng-template>
+                    <p>
+                        <span class="text-800 font-semibold">Genérée le : </span><span class="text-red-500 font-bold"> 0{{ salary.month }}/{{ salary.year }}</span><br>
+                        <span class="text-800 font-semibold">Salaire Net : </span><span class="text-red-500 font-bold">{{ salary.salaireNet }}</span><span class="text-800 font-semibold"> DT</span>
+                    </p>
+                    <ng-template pTemplate="footer">
+                        <div class="flex gap-1 mt-0 button-container">
+                            <p-button label="télécharger" class="w-full" styleClass="w-full" icon="pi pi-download" ></p-button>
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>

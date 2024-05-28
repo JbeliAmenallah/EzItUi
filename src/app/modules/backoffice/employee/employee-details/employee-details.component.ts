@@ -50,7 +50,7 @@ export class EmployeeDetailsComponent implements OnInit {
   selectedEvent: any;
   motivationalQuote:any;
   weatherData: any;
-
+  ActiveUsers:any[];
   displayMotivationalQuoteDialog: boolean = false;
 
 
@@ -114,6 +114,7 @@ export class EmployeeDetailsComponent implements OnInit {
     this.loadCongesData();
     this.getListPublicHoliday();
     this.fetchMotivationalQuote();
+    this.ActiveUsers=this.authservice.ActiveRealmUsers;
     // this.authservice.fetchMotivationalQuote();
     // Get the employee ID from the route parameters
     // this.route.paramMap.subscribe(params => {

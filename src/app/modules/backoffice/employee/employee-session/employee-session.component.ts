@@ -88,8 +88,8 @@ export class EmployeeSessionComponent {
 
     // Calculate pending, accepted, and rejected conges count
     this.pendingCongesCount = this.conges.filter(conge => conge.state === 'En attente').length;
-    this.acceptedCongesCount = this.conges.filter(conge => conge.state === 'Accepted').length;
-    this.rejectedCongesCount = this.conges.filter(conge => conge.state === 'Rejected').length;
+    this.acceptedCongesCount = this.conges.filter(conge => conge.state === 'Accepté').length;
+    this.rejectedCongesCount = this.conges.filter(conge => conge.state === 'Rejecté').length;
   }
 
   // Method to get the count of pending conges
@@ -118,9 +118,9 @@ export class EmployeeSessionComponent {
           pending: 0
         };
       }
-      if (conge.state === 'Accepted') {
+      if (conge.state === 'Accepté' ) {
         acc[yearMonth].accepted++;
-      } else if (conge.state === 'Rejected') {
+      } else if (conge.state === 'Rejecté') {
         acc[yearMonth].rejected++;
       } else {
         acc[yearMonth].pending++;

@@ -15,6 +15,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DialogModule } from 'primeng/dialog';
 import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
+
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
@@ -33,10 +34,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
   declarations: [
     AppComponent,
-    NotallowedComponent,
-
-
-   
+    NotallowedComponent
   ],
   imports: [
     BrowserModule,

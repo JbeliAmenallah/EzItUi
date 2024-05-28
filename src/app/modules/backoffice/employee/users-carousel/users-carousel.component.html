@@ -1,0 +1,32 @@
+<div class="carousel-container">
+    <p-carousel [value]="allRealmUsers" [numVisible]="7" [numScroll]="3" [circular]="true" autoplayInterval="3000"
+        [responsiveOptions]="responsiveOptions" [style]="{'max-width': '1630px'}">
+        <ng-template let-user pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 p-1 ">
+                <div class="mb-2">
+                    <div class="relative mx-auto">
+                        <img [src]="'https://avatar.iran.liara.run/username?username='+user.username"
+                            class="avatar-image mt-2" />
+                            <p-tag [value]="isUserActive(user) ? 'Online' : 'Oflline'"
+                            [severity]="isUserActive(user) ? 'success' : 'warning'"
+                            class="absolute" [ngStyle]="{ 'left.px': 7, 'top.px': 7 }"></p-tag>
+                    </div>
+                </div>
+                <div class="mb-1 font-medium">
+                    {{ user.username }}
+                </div>
+                <div class="">
+                    <div class="mt-0 text-500">
+                        {{ user.username }}
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <span class="mt-4">
+                        <p-button icon="pi pi-envelope" severity="secondary" [outlined]="true" styleClass="ml-2 p-button-sm" />
+                        <p-button icon="pi pi-comments" styleClass="ml-2 p-button-sm" />
+                    </span>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

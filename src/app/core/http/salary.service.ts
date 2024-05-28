@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -28,6 +28,22 @@ export class SalaryService {
     // Use HttpClient to make a request to download the PDF for the specified salary ID
     const url = `${this.url}/${salaryId}`;
     return this.http.get(url, { responseType: 'blob' });
+  }
+
+  
+  getPayslipByUsername(username: string): Observable<any[]> {
+    const url = `${this.url}/by-username/${username}`; // Corrected URL
+    return this.http.get<any[]>(url).pipe(
+      catchError((error) => {
+        if (error.status === 400 && error.error) {
+          // Handle the validation error response
+          return throwError(error.error);
+        } else {
+          // Handle other errors
+          return throwError('Une erreur ');
+        }
+      })
+    );
   }
     // Example method to fetch payslip data based on contactId
     getPayslipData(contactId: string): Observable<any> {
