@@ -29,7 +29,7 @@ import { EmployeeSessionComponent } from './employee-session/employee-session.co
     EmployeeFormComponent,
     EditEmployeeComponent,
     EmployeeDetailsComponent,
-    EmployeeSessionComponent
+    EmployeeSessionComponent,
   ],
   imports: [
     CommonModule,

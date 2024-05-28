@@ -3,7 +3,7 @@ import { SalaryService } from '../../../../core/http/salary.service';
 import html2pdf from 'html2pdf.js';
 import { MessageService } from 'primeng/api';
 import { EmployeeService } from '../../../../core/http/employee.service';
-import { catchError, forkJoin, map, of, switchMap, tap } from 'rxjs';
+import { catchError, forkJoin, map, of, switchMap } from 'rxjs';
 import { EntrepriseService } from '../../../../core/http/entreprise.service';
 
 @Component({
@@ -16,20 +16,18 @@ export class SalaryListComponent implements OnInit {
   selectedSalaries: any[] = [];
   loading: boolean = true;
   @Input() payslipData: any;
-  
-
 
   constructor(
     private salaryService: SalaryService,
     private messageService: MessageService,
     private employeeService: EmployeeService,
-    private entrepriseService:EntrepriseService,
+    private entrepriseService: EntrepriseService
   ) { }
 
   ngOnInit() {
     this.loadSalaries();
   }
-  
+
   loadSalaries() {
     this.loading = true;
     this.salaryService.getSalaries().subscribe(
@@ -45,7 +43,9 @@ export class SalaryListComponent implements OnInit {
                 grade: { libele: 'Unknown Grade' },
                 groupe: { libele: 'Unknown Groupe' },
                 category: { libele: 'Unknown Category' },
-                dateRecrutemnt: 'Unknown Date'  
+                dateRecrutemnt: 'Unknown Date',
+                regime: 'Unknown Regime',
+                salaireDeBASE: '',
               });
             }),
             switchMap(employee => {
@@ -69,11 +69,12 @@ export class SalaryListComponent implements OnInit {
             })
           );
         });
-  
+
         forkJoin(fetchEmployeeDetails).subscribe(
           (results: any[]) => {
             this.salaries = salaries.map((salary, index) => {
               const result = results[index];
+              const salaireBrute = parseFloat(result.salaireDeBASE) + parseFloat(result.prime || 0);
               return {
                 ...salary,
                 contactName: result.name,
@@ -82,8 +83,13 @@ export class SalaryListComponent implements OnInit {
                 gradeLibele: result.grade?.libele,
                 groupeLibele: result.groupe?.libele,
                 categoryLibele: result.category?.libele,
-                hireDate: result.dateRecrutemnt ,
-                Fax:result.fax,
+                hireDate: result.dateRecrutemnt,
+                Fax: result.fax,
+                Regime: result.regime,
+                salairedebase: result.salaireDeBASE,
+                hourlyRate: this.calculateHourlyRate(result.salaireDeBASE),
+                Sommeprimes :result.prime,
+                SalaireBrute: salaireBrute,//this.calculateGrossSalary(result.salaireDeBASE, result.prime),               
               };
             });
             this.loading = false;
@@ -112,9 +118,38 @@ export class SalaryListComponent implements OnInit {
       }
     );
   }
-  
-  
-  
+
+  calculateHourlyRate(monthlySalary: string): number {
+    const salaryNumber = parseFloat(monthlySalary);
+    if (isNaN(salaryNumber) || salaryNumber <= 0) {
+      return 0; 
+    }
+
+    const weeklyWorkingHours = 56; 
+    const weeksPerMonth = 4.33; 
+
+    const monthlyWorkingHours = weeklyWorkingHours * weeksPerMonth;
+    let hourlyRate = salaryNumber / monthlyWorkingHours;
+
+    hourlyRate = parseFloat(hourlyRate.toFixed(2));
+
+    return hourlyRate;
+}
+/*calculateGrossSalary(salaireDeBASE: number, Sommeprimes: number): number {
+  if (isNaN(salaireDeBASE) || salaireDeBASE <= 0 || isNaN(Sommeprimes) || Sommeprimes < 0) {
+    console.error("Invalid input values for calculating gross salary");
+    return 0; 
+  }
+
+  const salaireBrute = salaireDeBASE + Sommeprimes;
+
+  return salaireBrute;
+}*/
+
+
+
+
+
 
   downloadPDF(contactId: number) {
     this.salaryService.downloadPDF(contactId).subscribe(
@@ -149,7 +184,7 @@ export class SalaryListComponent implements OnInit {
 
   generatePayslipPDF(salary: any) {
     console.log('Generating PDF for salary:', salary);
-  
+
     const payload = {
       contactId: salary.contactId,
       contactName: salary.contactName,
@@ -158,28 +193,31 @@ export class SalaryListComponent implements OnInit {
       gradeLibele: salary.gradeLibele,
       groupeLibele: salary.groupeLibele,
       categoryLibele: salary.categoryLibele,
-      hireDate: salary.hireDate,  
-      Fax:salary.Fax,
+      hireDate: salary.hireDate,
+      Fax: salary.Fax,
       year: salary.year,
       month: salary.month,
-      filePath: 'filePath' 
+      Regime: salary.Regime,
+      salairedebase: salary.salairedebase,
+      hourlyRate: salary.hourlyRate,
+      Sommeprimes:salary.prime,
+      salaireBrute: salary.SalaireBrute, 
+      filePath: 'filePath'
     };
-  
-    console.log('Payload for PDF generation:', payload); 
-  
-    // Assign the payload to the payslipData
+
+    console.log('Payload for PDF generation:', payload);
+
     this.payslipData = { ...payload };
-  
+
     this.salaryService.generateSalaryForContact(payload).subscribe(
       () => {
         const element = document.getElementById('payslip-template');
         console.log('Payslip template element:', element);
-       
+
         if (element) {
-          // Temporarily show the template for PDF generation
           element.classList.remove('hidden-template');
           element.classList.add('visible-template');
-  
+
           const opt = {
             margin: 1,
             filename: `payslip_${salary.contactId}.pdf`,
@@ -187,11 +225,10 @@ export class SalaryListComponent implements OnInit {
             html2canvas: { scale: 2 },
             jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
           };
-  
+
           html2pdf().from(element).set(opt).save().then(() => {
             console.log(`PDF generated for contact ${salary.contactId}!`);
             this.messageService.add({ severity: 'success', summary: 'Success', detail: `PDF generated for contact ${payload.contactId}!`, life: 1000 });
-            // Hide the template again after PDF generation
             element.classList.remove('visible-template');
             element.classList.add('hidden-template');
           }).catch(error => {
@@ -208,5 +245,4 @@ export class SalaryListComponent implements OnInit {
       }
     );
   }
-  
 }

@@ -41,7 +41,8 @@ const routes: Routes = [
     path: 'details',
     component: EmployeeDetailsComponent,
     data: { title: 'Employees Details', roles: ['ADMIN'] }
-  }
+  },
+
 ];
 
 @NgModule({

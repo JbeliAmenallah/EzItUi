@@ -31,8 +31,8 @@
             <div class="value">{{ payslipData?.Fax }}</div>
           </div>
           <div class="entry">
-            <div class="label">Hourly Rate</div>
-            <div class="value">???</div>
+            <div class="label">Taux horaire</div>
+            <div class="value">{{ payslipData?.hourlyRate }}%</div>
           </div>
             <div class="entry">
               <div class="label">Company Name</div>
@@ -61,8 +61,8 @@
             <div class="value">Mensuelle</div>
           </div>
           <div class="entry">
-            <div class="label">Cost Center</div>
-            <div class="value">???</div>
+            <div class="label">Régime </div>
+            <div class="value">{{ payslipData?.Regime }}</div>
           </div>
           <div class="entry">
             <div class="label">TIN</div>
@@ -86,10 +86,10 @@
           </div>
         </div>
         <div class="gross">
-          <div class="title">Gross Income</div>
+          <div class="title">Salaire brute</div>
           <div class="entry">
             <div class="label"></div>
-            <div class="value">92,823.86</div>
+            <div class="value">{{ payslipData?.salaireBrute }}</div>
           </div>
         </div>
         <div class="contributions">
@@ -114,8 +114,8 @@
         <div class="ytd">
           <div class="title">Year To Date Figures</div>
           <div class="entry">
-            <div class="label">Gross Income</div>
-            <div class="value">92,823.86</div>
+            <div class="label">Salaire brute</div>
+            <div class="value">{{ payslipData?.salaireBrute }}</div>
           </div>
           <div class="entry">
             <div class="label">Taxable Income</div>
@@ -134,7 +134,7 @@
             <div class="value">2,500.00</div>
           </div>
           <div class="entry">
-            <div class="label">Bonus</div>
+            <div class="label">Prime</div>
             <div class="value">21,409.34</div>
           </div>
           <div class="entry">
@@ -167,10 +167,10 @@
         <div class="details">
           <div class="basic-pay">
             <div class="entry">
-              <div class="label">Basic Pay</div>
+              <div class="label">Salaire de base </div>
               <div class="detail"></div>
-              <div class="rate">45,000.00/Month</div>
-              <div class="amount">45,000.00</div>
+              <div class="rate">{{ payslipData?.salairedebase }}/Month</div>
+              <div class="amount">{{ payslipData?.salairedebase }}</div>
             </div>
           </div>
           <div class="salary">
@@ -290,9 +290,9 @@
             </div>
             <div class="entry">
               <div class="label"></div>
-              <div class="detail">Bonus Name</div>
-              <div class="rate"></div>
-              <div class="amount">19,409.34</div>
+              <div class="detail">Somme primes </div>
+              <div class="rate">{{ payslipData?.Sommeprimes }}</div>
+              <div class="amount">{{ payslipData?.Sommeprimes }}</div>
             </div>
           </div>
           <div class="taxable_commission"></div>

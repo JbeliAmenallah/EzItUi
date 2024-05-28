@@ -26,7 +26,6 @@ export class EmployeeFormComponent implements OnInit {
  
 
 
-
   regimeOptions: any[] = [
     { label: 'Horaire', value: 'Horaire' },
     { label: 'Mensuel', value: 'Mensuel' }
