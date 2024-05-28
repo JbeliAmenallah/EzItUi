@@ -83,6 +83,7 @@
     }
   }
 
-  :host >>> .p-button{
+  :host ::ng-deep .p-button {
     margin-bottom: 1%;
   }
+  

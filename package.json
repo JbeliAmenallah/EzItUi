@@ -53,6 +53,7 @@
     "keycloak-angular": "^15.2.1",
     "keycloak-js": "^24.0.4",
     "localstorage-polyfill": "^1.0.1",
+    "ngx-slick-carousel": "^17.0.0",
     "pdf-lib": "^1.17.1",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",

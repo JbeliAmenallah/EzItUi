@@ -1,0 +1,24 @@
+// .card {
+//   text-align: center !important;
+//   margin-top: 20px; /* Adjust margin-top as needed */
+// }
+
+.avatar-image {
+  width: 30%; /* Adjust the width as needed */
+  height: 30%; /* Maintain aspect ratio */
+}
+// .carousel-container {
+//   display: flex;
+//   justify-content: center;
+// }
+.carousel-container {
+  text-align: center;
+  background-color: white;
+  margin-top: 2px; /* Adjust margin-top as needed */
+  border-radius: 10px;
+}
+
+.p-button-sm {
+  font-size: 0.55rem; /* Adjust the font size as needed */
+  padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+}

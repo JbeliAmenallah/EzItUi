@@ -253,7 +253,7 @@ export class AddEmployeeComponent implements OnInit {
                                         <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
 
                                             <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:22px;text-align:left;color:#555;">
-                                                Hello ${hamadi}!<br></br>
+                                                Hello {{hamadi}}!<br></br>
                                                 Thank you for signing up for {{ product }}. We're really happy to have you! Click the link below to login to your account:
                                             </div>
 
@@ -300,8 +300,6 @@ export class AddEmployeeComponent implements OnInit {
 
 
         <div style="Margin:0px auto;max-width:600px;">
-
-< align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
                 <tbody>
                     <tr>
                         <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;">

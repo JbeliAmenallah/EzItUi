@@ -1,0 +1,31 @@
+/* Add this CSS to your component stylesheet */
+
+::ng-deep .rounded-card .p-card {
+    border-radius: 15px; /* Adjust the radius as needed */
+    overflow: hidden; /* Ensure content does not overflow the rounded corners */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
+    position: relative; /* Ensure the hover effects work correctly */
+}
+
+::ng-deep .rounded-card .p-card:hover {
+    transform: scale(1.05); /* Slightly increase the size on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+}
+
+.pdf {
+    height: 200px;
+    transition: filter 0.3s ease-in-out; /* Smooth transition for blur effect */
+}
+
+
+
+.rounded-card:hover .pdf {
+    filter: blur(4px); /* Apply blur effect on hover */
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap; /* Ensure cards wrap to the next line if they exceed the container width */
+    gap: 16px; /* Adjust the gap between cards */
+    margin-top: 16px;
+}

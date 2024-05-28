@@ -37,48 +37,50 @@ input {
   background: transparent;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-  /* Apply styles to dropdown items */
-  :host >>> .ui-dropdown-item {
-    font-family: Lexend Deca; /* Example font family */
-    font-size: 16px; /* Example font size */
-  }
-  
-  /* Apply styles to p-calendar */
-  :host >>> .p-calendar {
-    width: 100%;
-    height: 60px;
-    text-align: left;
-    border-radius: 6px;
-    margin-bottom: 30px;
-    color: var(--gris-1-dbarras, #7b777f);
-    font-family: Lexend Deca;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    appearance: none;
-    background: transparent;
-    position: relative;
-  }
-  
-  /* Apply focus styles */
-  :host >>> .p-dropdown:focus,
-  :host >>> .p-calendar:focus {
-    border: 1px solid blue;
-  }
-  
-  /* Remove default focus outline */
-  :host >>> .p-dropdown:focus-visible,
-  :host >>> .p-calendar:focus-visible {
-    outline: none;
-  }
-.col-md-12{
+/* Apply styles to dropdown items */
+:host ::ng-deep .ui-dropdown-item {
+  font-family: Lexend Deca; /* Example font family */
+  font-size: 16px; /* Example font size */
+}
+
+/* Apply styles to p-calendar */
+:host ::ng-deep .p-calendar {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  appearance: none;
+  background: transparent;
+  position: relative;
+}
+
+/* Apply focus styles */
+:host ::ng-deep .p-dropdown:focus,
+:host ::ng-deep .p-calendar:focus {
+  border: 1px solid blue;
+}
+
+/* Remove default focus outline */
+:host ::ng-deep .p-dropdown:focus-visible,
+:host ::ng-deep .p-calendar:focus-visible {
+  outline: none;
+}
+.col-md-12 {
   width: 100%;
 }
-input:hover{
-  border:1px solid #3B82F6}
-  select:hover{
-    border:1px solid #3B82F6}
+input:hover {
+  border: 1px solid #3B82F6;
+}
+select:hover {
+  border: 1px solid #3B82F6;
+}
 select {
   width: 100%;
   height: 60px;
@@ -105,7 +107,7 @@ label {
   margin-bottom: 10px;
   font-weight: 500;
 }
-.projectName{
+.projectName {
   margin-top: 20px;
   font-weight: 500;
 }
@@ -125,7 +127,6 @@ input:focus-visible {
 textarea:focus {
   border: 1px solid blue;
 }
-
 input::placeholder {
   font-family: roboto;
 }
@@ -146,10 +147,26 @@ select::placeholder {
   font-weight: 400;
   line-height: normal;
 }
-.inputNumber{
+.inputNumber {
   font-family: Lexend Deca;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+:host ::ng-deep .p-dropdown {
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  color: var(--gris-1-dbarras, #7b777f);
+  font-family: Lexend Deca;
+  font-size: 100px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  appearance: none;
+  background: transparent;
+  position: relative;
 }

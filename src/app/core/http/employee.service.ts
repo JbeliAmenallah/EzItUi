@@ -36,6 +36,14 @@ export class EmployeeService {
       );
   }
 
+  getEmployeeByUsername(username:string): Observable<Employee> {
+    const url = `${this.apiUrl}/by-username/${username}`;
+    return this.http.get<Employee>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   addEmployee(employee: Employee): Observable<Employee> {
     return this.http.post<Employee>(this.apiUrl, employee)
       .pipe(

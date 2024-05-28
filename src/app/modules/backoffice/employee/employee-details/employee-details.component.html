@@ -1,5 +1,8 @@
-<div class="surface-section border-round px-4 py-5 md:px-6 lg:px-8 mb-3 ">
-  <ul class="list-none p-0 mt-0 mb-0 flex align-items-center font-medium ">
+<div class="mb-2">
+  <app-users-carousel></app-users-carousel>
+</div>
+<div class="surface-section border-round px-2 py-3 md:px-6 lg:px-8 mb-3  ">
+  <ul class="list-none p-0 mt-0 mb-0 flex align-items-center font-medium " style="margin-bottom: 0px !important;">
     <li>
       <a class="text-500 no-underline  cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
         <!-- <i class="pi pi-home text-500 " style="font-size: 1.1em;"></i> Ajoutez cette ligne pour l'icône de maison -->
@@ -17,11 +20,11 @@
   </ul>
   <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
     <div>
-      <div class="font-medium text-3xl text-900 mt-0">Employees</div>
+      <div class="font-medium text-3xl text-900 " style="margin-top: 0px !important;">Employees</div>
       <div class="flex align-items-center text-700 flex-wrap">
-        <div class="mr-5 flex align-items-center mt-3">
+        <div class="mr-5 flex align-items-center mt-1">
           <i class="pi pi-users mr-2"></i>
-          <span>{{employeeCount}} Active Users</span>
+          <span>{{this.ActiveUsers.length}} Active Users</span>
         </div>
       </div>
     </div>

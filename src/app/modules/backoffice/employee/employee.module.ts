@@ -14,6 +14,10 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { ChartModule } from 'primeng/chart';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { EmployeeSessionComponent } from './employee-session/employee-session.component';
+import { UsersCarouselComponent } from './users-carousel/users-carousel.component';
+import { CarouselModule } from 'primeng/carousel';
+import { TagModule } from 'primeng/tag';
+import { EmployeeProfileComponent } from '../employee-profile/employee-profile.component';
 
 
 
@@ -30,6 +34,8 @@ import { EmployeeSessionComponent } from './employee-session/employee-session.co
     EditEmployeeComponent,
     EmployeeDetailsComponent,
     EmployeeSessionComponent,
+    UsersCarouselComponent,
+    EmployeeProfileComponent
   ],
   imports: [
     CommonModule,
@@ -38,11 +44,16 @@ import { EmployeeSessionComponent } from './employee-session/employee-session.co
     ReactiveFormsModule,
     StyleClassModule,
     ChartModule,
-    FullCalendarModule
+    FullCalendarModule,
+    CarouselModule,
+    TagModule
   ],
   providers: [
     ConfirmationService, 
     MessageService 
+  ],
+  exports:[
+    UsersCarouselComponent
   ]
 })
 export class EmployeeModule { }
