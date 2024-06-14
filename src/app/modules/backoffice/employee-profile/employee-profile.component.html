@@ -1,1 +1,79 @@
-<p>employee-profile works!</p>
+<div class="container-xl px-4 mt-4">
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <!-- Left panel (Profile Picture and Email/Password Info) -->
+        <div class="col-xl-4">
+            <!-- Profile Picture Card -->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-body text-center">
+                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                </div>
+            </div>
+
+            <!-- Email and Password Card -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <form [formGroup]="employeeForm" class="">
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Adresse E-mail</label>
+                            <input class="form-control" id="inputEmailAddress" formControlName="email" type="email" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputPassword">Password</label>
+                            <input class="form-control" id="inputPassword" formControlName="password" type="password" readonly>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right panel (Account Details) -->
+        <div class="col-xl-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form [formGroup]="employeeForm" class="">
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Nom d'utilisateur</label>
+                            <input class="form-control" id="inputUsername" formControlName="username" type="text" readonly>
+                        </div>
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Prénom</label>
+                                <input class="form-control" id="inputFirstName" formControlName="firstName" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Nom</label>
+                                <input class="form-control" id="inputLastName" formControlName="lastName" type="text">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputLocation">Adresse</label>
+                            <input class="form-control" id="inputLocation" formControlName="location" type="text">
+                        </div>
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Numéro de Téléphone</label>
+                                <input class="form-control" id="inputPhone" formControlName="phone" type="tel">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFax">FAX</label>
+                                <input class="form-control" id="inputFax" formControlName="fax" type="text">
+                            </div>
+                        </div>
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputModeDePaiement">Mode de paiement</label>
+                                <input class="form-control" id="inputModeDePaiement" formControlName="modeDePaiement" type="text">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputNumCompte">Numéro de compte</label>
+                                <input class="form-control" id="inputNumCompte" formControlName="numCompte" type="text">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="button" (click)="patchEmployee()">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

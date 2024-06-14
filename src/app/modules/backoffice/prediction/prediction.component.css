@@ -1,0 +1,106 @@
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-item {
+    margin-right: 10px; /* Adjust this as needed for spacing */
+}
+.button-group {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+.button-group button {
+    flex: 1;
+}
+.button-container {
+    margin-top: 20px; /* Adjust the top margin as needed */
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+  }
+  
+  .button-container button {
+    flex: 1;
+  }
+  :host ::ng-deep .p-dropdown {
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    color: var(--gris-1-dbarras, #7b777f);
+    font-family: Lexend Deca;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    appearance: none;
+    background: transparent;
+    position: relative;
+  }
+  .kpirh-table {
+    margin-top: 20px;
+  }
+  
+  .kpirh-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .kpirh-table th, .kpirh-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .kpirh-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  .kpirh-table {
+    margin-top: 20px;
+}
+
+.kpirh-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.kpirh-table th, .kpirh-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.kpirh-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.prediction-table {
+    margin-top: 20px; /* Add margin-top between tables */
+}
+
+.prediction-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prediction-table th, .prediction-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.prediction-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+.prediction-explanation {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+  
+  

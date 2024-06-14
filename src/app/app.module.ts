@@ -23,6 +23,9 @@ import { PublicHolidayCalendarComponent } from './modules/backoffice/public-holi
 import { TimeAgoPipe } from './modules/pipes/time-ago.pipe';
 
 
+import { PredictionComponent } from './modules/backoffice/prediction/prediction.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -47,6 +50,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     PublicHolidayCalendarComponent,
     TimeAgoPipe,
 
+    NotallowedComponent,
+    PredictionComponent
   ],
   imports: [
  
@@ -62,7 +67,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
     ChartModule ,
     KeycloakAngularModule,
     FullCalendarModule,MessageModule,
-    FontAwesomeModule // Include ChartModule in imports array
+    FontAwesomeModule,
+    ReactiveFormsModule, 
+    SharedModule,
 
   ],
   providers: [
