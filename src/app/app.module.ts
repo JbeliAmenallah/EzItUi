@@ -15,6 +15,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DialogModule } from 'primeng/dialog';
 import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
+import { PredictionComponent } from './modules/backoffice/prediction/prediction.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -34,7 +37,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
   declarations: [
     AppComponent,
-    NotallowedComponent
+    NotallowedComponent,
+    PredictionComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
     ChartModule ,
     KeycloakAngularModule,
     FullCalendarModule,MessageModule,
-    FontAwesomeModule // Include ChartModule in imports array
+    FontAwesomeModule,
+    ReactiveFormsModule, 
+    SharedModule,
 
   ],
   providers: [

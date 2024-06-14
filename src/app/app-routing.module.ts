@@ -5,6 +5,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { title } from 'process';
 import { NotallowedComponent } from './modules/backoffice/notallowed/notallowed.component';
+import { PredictionComponent } from './modules/backoffice/prediction/prediction.component';
 
 
 const isAuthenticated: CanActivateFn = (route, state) => {
@@ -130,11 +131,15 @@ const routes: Routes = [
      path:'not-allowed',canActivate:[isAuthenticated],
      component:NotallowedComponent,
    },
-  {
-    path:'kpi',canActivate:[isAuthenticated],
-    loadChildren:()=>import ('./modules/backoffice/kpi/kpi.module').then((m)=>m.KPIModule)
-  }
+   {
+    path:'prediction',component:PredictionComponent,
+   },
+   {
+    path:'policies',
+    loadChildren:()=>import ('./modules/backoffice/policies/policies.module').then((m)=>m.PoliciesModule)
+  },
 
+ 
 ];
 
 @NgModule({

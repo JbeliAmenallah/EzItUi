@@ -64,6 +64,16 @@ export class AbsenceService {
     );
   }
 
+  getEmployeesOptions(): Observable<any[]> {
+    return this.http.get<any[]>(this.contactUrl).pipe(
+      map((contacts: any[]) => {
+        return contacts.map(contact => {
+          return { label: contact.name, value: contact.username };
+        });
+      }),
+      catchError(this.handleError)
+    );
+  }
   addAbsence(absence: Absence): Observable<Absence> {
     return this.http.post<Absence>(this.apiUrl, absence).pipe(
       catchError((error) => {

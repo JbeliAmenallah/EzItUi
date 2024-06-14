@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KPIDashComponent } from './kpi-dash.component';
+import { AddPolicyComponent } from './add-policy.component';
 
-describe('KPIDashComponent', () => {
-  let component: KPIDashComponent;
-  let fixture: ComponentFixture<KPIDashComponent>;
+describe('AddPolicyComponent', () => {
+  let component: AddPolicyComponent;
+  let fixture: ComponentFixture<AddPolicyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [KPIDashComponent]
+      declarations: [AddPolicyComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(KPIDashComponent);
+    fixture = TestBed.createComponent(AddPolicyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

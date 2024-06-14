@@ -1,0 +1,111 @@
+<h2>Prédire l'augmentation du salaire :</h2>
+<div class="card">
+  <div class="p-d-flex p-ai-center p-jc-center">
+    <form [formGroup]="form" class="form">
+      <div class="p-m-2"></div>
+      <div class="p-m-2">
+        <p-dropdown
+          [options]="employeeOptions"
+          formControlName="contactUserName"
+          [showClear]="true"
+          placeholder="Sélectionner un employé"
+        ></p-dropdown>
+      </div>
+      <div class="p-m-2 button-container">
+        <button
+          pButton
+          type="button"
+          label="Générer KpiRh"
+          (click)="generateKpiRh()"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Générer Prédiction"
+          (click)="generatePrediction()"
+        ></button>
+      </div>
+      <!-- Tableau pour afficher les données KpiRh -->
+      <div *ngIf="kpiRh" class="kpirh-table">
+        <h3>Données KpiRh</h3>
+        <table>
+          <tr>
+            <th>Champ</th>
+            <th>Valeur</th>
+          </tr>
+          <!-- <tr>
+            <td>ID KpiRh</td>
+            <td>{{ kpiRh.kpiRhId }}</td>
+          </tr> -->
+          <!-- <tr>
+            <td>Nom d'utilisateur</td>
+            <td>{{ kpiRh.username }}</td>
+          </tr> -->
+          <tr>
+            <td>Nombre d'absences</td>
+            <td>{{ kpiRh.nbAbsences }}</td>
+          </tr>
+          <tr>
+            <td>Nombre de congés</td>
+            <td>{{ kpiRh.nbConges }}</td>
+          </tr>
+          <tr>
+            <td>Date de création</td>
+            <td>{{ kpiRh.createdDate }}</td>
+          </tr>
+          <!-- <tr>
+            <td>ID Projet Kpi</td>
+            <td>{{ kpiRh.kpiProject.kpi_project_Id }}</td>
+          </tr> -->
+          <!-- <tr>
+            <td>Nombre de projets</td>
+            <td>{{ kpiRh.kpiProject.nb_prjt_res }}</td>
+          </tr> -->
+        </table>
+      </div>
+
+      <!-- Tableau pour afficher les données de prédiction -->
+      <div *ngIf="prediction" class="prediction-table">
+        <h3>Données de Prédiction</h3>
+        <table>
+          <tr>
+            <th>Champ</th>
+            <th>Valeur</th>
+          </tr>
+          <!-- <tr>
+            <td>ID Prédiction</td>
+            <td>{{ prediction.id }}</td>
+          </tr> -->
+          <tr>
+            <td>Nom d'utilisateur</td>
+            <td>{{ prediction.username }}</td>
+          </tr>
+          <!-- <tr>
+            <td>ID Contact</td>
+            <td>{{ prediction.contactid }}</td>
+          </tr> -->
+          <tr>
+            <td>Année</td>
+            <td>{{ prediction.year }}</td>
+          </tr>
+          <tr>
+            <td>Salaire de base</td>
+            <td>{{ prediction.basesalary }}</td>
+          </tr>
+          <tr>
+            <td>Salaire prédit</td>
+            <td>{{ prediction.predictedsalary }}</td>
+          </tr>
+          <tr>
+            <td>Augmentation de salaire en pourcentage</td>
+            <td>{{ prediction.predictionAugmentation }}</td>
+          </tr>
+        </table>
+
+        <h3>Intérpretation :</h3>
+          <p class="prediction-explanation">Le salaire prédit pour l'utilisateur {{ prediction.username }} en {{ prediction.year }} est de {{ prediction.predictedsalary }}. Cela représente une augmentation de salaire de {{ prediction.predictionAugmentation }} par rapport au salaire de base de {{ prediction.basesalary }}.</p>
+
+      </div>
+    </form>
+  </div>
+</div>

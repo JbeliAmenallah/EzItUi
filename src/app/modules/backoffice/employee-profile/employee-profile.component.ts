@@ -4,6 +4,7 @@ import { AuthService } from '../../../core/auth/auth.service';
 import { Employee } from '../../../shared/models/employee';
 import { EmployeeService } from '../../../core/http/employee.service';
 
+
 @Component({
     selector: 'app-employee-profile',
     templateUrl: './employee-profile.component.html',
