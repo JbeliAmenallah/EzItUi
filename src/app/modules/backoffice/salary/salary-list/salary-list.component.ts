@@ -3,7 +3,7 @@ import { SalaryService } from '../../../../core/http/salary.service';
 import html2pdf from 'html2pdf.js';
 import { MessageService } from 'primeng/api';
 import { EmployeeService } from '../../../../core/http/employee.service';
-import { catchError, forkJoin, map, of, switchMap } from 'rxjs';
+import { catchError, forkJoin, map, of, switchMap, tap } from 'rxjs';
 import { EntrepriseService } from '../../../../core/http/entreprise.service';
 import { PublicHolidayService } from '../../../../core/http/publicholiday.service';
 import { PrimeService } from '../../../../core/http/prime.service';
@@ -27,13 +27,15 @@ export class SalaryListComponent implements OnInit {
     private messageService: MessageService,
     private employeeService: EmployeeService,
     private entrepriseService:EntrepriseService,
+    private publicHolidayService:PublicHolidayService,
+    private primeService: PrimeService // Inject PrimeService
   ) { }
 
   ngOnInit() {
     this.loadSalaries();
     this.loadPublicHolidays();
   }
-
+  
   loadSalaries() {
     this.loading = true;
     this.salaryService.getSalaries().subscribe(
@@ -54,7 +56,8 @@ export class SalaryListComponent implements OnInit {
                 grade: { libele: 'Unknown Grade' },
                 groupe: { libele: 'Unknown Groupe' },
                 category: { libele: 'Unknown Category' },
-                dateRecrutemnt: 'Unknown Date'  
+                dateRecrutemnt: 'Unknown Date' 
+                
               });
             }),
             switchMap(employee => {
@@ -86,12 +89,11 @@ export class SalaryListComponent implements OnInit {
             })
           );
         });
-  
+        
         forkJoin(fetchEmployeeDetails).subscribe(
           (results: any[]) => {
             this.salaries = salaries.map((salary, index) => {
               const result = results[index];
-              const salaireBrute = parseFloat(result.salaireDeBASE) + parseFloat(result.prime || 0);
               return {
                 ...salary,
                 contactName: result.name,
@@ -140,8 +142,22 @@ export class SalaryListComponent implements OnInit {
     );
   }
   
+  countCurrentYearSalaries() {
+    this.currentYearSalariesCount = this.countSalariesForCurrentYear();
+  }
+
   
   
+  countSalariesForCurrentYear(): number {
+    const currentYear = new Date().getFullYear();
+    return this.salaries.filter(salary => salary.year === currentYear).length;
+  }
+  
+  
+  // countCurrentYearSalaries() {
+  //   this.currentYearSalariesCount = this.countSalariesForCurrentYear();
+  // }
+
 
   downloadPDF(contactId: number) {
     this.salaryService.downloadPDF(contactId).subscribe(

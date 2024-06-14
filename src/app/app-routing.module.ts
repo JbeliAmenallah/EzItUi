@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { title } from 'process';
 import { NotallowedComponent } from './modules/backoffice/notallowed/notallowed.component';
 import { MessageComponent } from './modules/backoffice/message/message.component';
-
+import { PredictionComponent } from './modules/backoffice/prediction/prediction.component';
 const isAuthenticated: CanActivateFn = (route, state) => {
   return inject(AuthGuard).isAccessAllowed(route, state);
 };
