@@ -327,7 +327,6 @@
                     <div class="dropdown-content">
                         <!-- Your profile dropdown items go here -->
                         <a [routerLink]='["/employee/profile"]'><i class="fa fa-user"></i> Profile</a>
-                        <a href="#"><i class="fa fa-cog"></i> Settings</a>
                         <a (click)="logout()"><i class="fa fa-sign-out" (click)="logout()"></i> Logout</a>
 
                     </div>
@@ -337,8 +336,12 @@
         </header>
         <div class='dashboard-content dark:bg-slate-700'>
             <div class='container '>
-                <router-outlet></router-outlet>
+                <router-outlet> </router-outlet>
             </div>
+            
+            <a [routerLink]="['/Chat']" class="float">
+                <i class="fa-solid fa-comments my-float"></i>
+            </a>
         </div>
     </div>
 </div>

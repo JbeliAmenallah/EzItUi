@@ -53,7 +53,7 @@ export class AddEntrepriseComponent implements OnInit {
         (data) => {
           setTimeout(() => {
             this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'L’entreprise a été ajoutée avec succès.' });
-          }, 100);
+          }, 300);
           this.router.navigate(['/entreprise/list']);
         },
         (error) => {

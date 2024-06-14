@@ -49,7 +49,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
     MessageComponent,
     PublicHolidayCalendarComponent,
     TimeAgoPipe,
-
     NotallowedComponent,
     PredictionComponent
   ],

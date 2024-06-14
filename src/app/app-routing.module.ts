@@ -131,7 +131,7 @@ const routes: Routes = [
      component:NotallowedComponent,
    },
    {
-    path:'prediction',component:PredictionComponent,
+    path:'prediction',canActivate:[isAuthenticated],component:PredictionComponent,
    },
    {
     path:'policies',

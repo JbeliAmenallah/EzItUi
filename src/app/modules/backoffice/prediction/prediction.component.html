@@ -1,7 +1,27 @@
-<h2>Prédire l'augmentation du salaire :</h2>
+
 <div class="card">
   <div class="p-d-flex p-ai-center p-jc-center">
     <form [formGroup]="form" class="form">
+      <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+        <li>
+          <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+              <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+              Espace Rh
+          </a>
+      </li>
+          <li class="px-2" style="font-size: 1.5em;">
+              <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+          </li>
+          <li>
+             <a [routerLink]="['/entreprise/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Employés</span></a>
+          </li>
+          <li class="px-2" style="font-size: 1.5em;">
+            <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+        </li>
+          <li>
+                 &nbsp;<a ><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">Prediction </span></a>
+         </li>
+      </ul>
       <div class="p-m-2"></div>
       <div class="p-m-2">
         <p-dropdown

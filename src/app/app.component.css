@@ -703,3 +703,41 @@ a.dashboard-nav-item:hover {
 
 }
 
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: rgb(55, 169, 235);
+  color: #FFF;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999999;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.float:hover {
+  background-color: #afd7ee; /* Adjusted hover color */
+}
+
+.float i {
+  font-size: 24px; /* Increased icon size */
+  line-height: 60px; /* Center icon vertically */
+}
+
+@keyframes float-animation {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+.float:hover {
+  animation: float-animation 1s ease-in-out infinite; /* Add animation on hover */
+}
