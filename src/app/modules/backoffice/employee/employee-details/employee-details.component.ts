@@ -251,11 +251,11 @@ fetchAbsenceCount(): void {
       }
       console.log(`Percentage Change: ${this.percentageChange}`);
       if (diff > 0) {
-        this.changeText = `more than last year `;
+        this.changeText = `plus que l'année dernière`;
       } else if (diff < 0) {
-        this.changeText = `less than last year `;
+        this.changeText = `moins que l'année dernière`;
       } else {
-        this.changeText = 'same as last year';
+        this.changeText = 'pareil que l\'année dernière';
       }
     },
     error => {
@@ -312,13 +312,13 @@ fetchAbsenceCount(): void {
           labels: currentYearMonths,
           datasets: [
             {
-              label: `${new Date().getFullYear()} Conges Count`,
+              label: `${new Date().getFullYear()} Nombre Congés`,
               backgroundColor: '#6266F0',
               borderColor: '#6266F0',
               data: currentYearCongesCount
             },
             {
-              label: `${new Date().getFullYear() - 1} Conges Count`,
+              label: `${new Date().getFullYear() - 1} Nombre Congés`,
               backgroundColor: '#BCBDF9',
               borderColor: '#BCBDF9',
               data: previousYearCongesCount
@@ -329,7 +329,7 @@ fetchAbsenceCount(): void {
         this.options = {
           title: {
             display: true,
-            text: 'Conges Count Per Month',
+            text: 'Nombre Congés Par mois',
             fontSize: 16
           },
           scales: {

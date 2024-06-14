@@ -186,6 +186,36 @@ h1,
   background-color: #fcfcfc;
   transition: ease-out 0.5s;
 }
+.notification-list {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 9999;
+  max-height: 200px; /* Limit the height of the notification list */
+  overflow-y: auto; /* Add scroll if necessary */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better appearance */
+}
+
+.notification-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notification-list ul li {
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.notification-list ul li:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
 .dashboard-nav {
   background-color: #fcfcfc;
 }
@@ -217,7 +247,19 @@ h1,
   -ms-flex-align: center;
   align-items: center;
 }
+p-dialog .ui-dialog-content {
+  overflow: hidden; /* Prevents scrollbar inside the dialog */
+}
 
+.calendar-container {
+  height: 100%; /* Ensures the calendar takes up full height */
+  overflow-y: auto; /* Adds scrollbar if content overflows */
+}
+
+.events-list {
+  max-height: 200px; /* Limits the height of the events list */
+  overflow-y: auto; /* Adds scrollbar if list overflows */
+}
 .dashboard-nav header .menu-toggle {
   display: none;
   margin-right: auto;
@@ -284,6 +326,7 @@ h1,
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .dashboard-nav-item {
@@ -299,6 +342,7 @@ h1,
   align-items: center;
   letter-spacing: 0.02em;
   transition: ease-out 0.5s;
+  cursor: pointer;
 }
 a.dashboard-nav-item:hover {
   background-color: #e8eaed;
@@ -327,6 +371,7 @@ a.dashboard-nav-item:hover {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .dashboard-nav-dropdown.show {
@@ -375,15 +420,17 @@ a.dashboard-nav-item:hover {
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
+  cursor: pointer;
   flex-direction: column;
 }
 
 .dashboard-nav-dropdown-item {
   min-height: 40px;
-  padding: 8px 20px 8px 70px;
+  padding: 8px 20px 8px 30px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
+  cursor: pointer;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;

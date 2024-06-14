@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { Conge } from '../../shared/models/conge';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -74,11 +75,20 @@ export class CongeService {
     return this.http.get<Conge[]>(`${this.baseUrl}/byContact/${contactId}`);
   }
 
-  //Submit Leave Request
   submitLeaveRequest(formData: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/demande`, formData);
+    // Format dates to ISO 8601 format
+    const formattedStartDate = this.formatDate(formData.startDate);
+    const formattedEndDate = this.formatDate(formData.endDate);
+
+    // Construct HttpParams with formatted dates and keycloakUserId
+    let params = new HttpParams()
+      .set('startDate', formattedStartDate)
+      .set('endDate', formattedEndDate)
+      .set('keycloakUserId', formData.keycloakUserId);
+
+    // Make HTTP POST request with query parameters and empty body
+    return this.http.post<any>(`${this.baseUrl}/demande`, {}, { params: params });
   }
-  
   getCongesByUsername(username: string): Observable<Conge[]> {
     const url = `${this.baseUrl}/by-username/${username}`; // Corrected URL
     return this.http.get<Conge[]>(url).pipe(
@@ -93,5 +103,8 @@ export class CongeService {
       })
     );
   }
-
+  private formatDate(date: Date): string {
+    const datePipe = new DatePipe('en-US');
+    return datePipe.transform(date, 'yyyy-MM-dd') || '';
+  }
 }

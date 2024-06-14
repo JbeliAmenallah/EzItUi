@@ -16,6 +16,13 @@
 .form-group {
   display: grid;
 }
+.input-label i {
+  color: rgb(28, 143, 238);
+  margin-right: 5px;
+}
+.input-label{
+font-weight: bold;
+}
 input {
   width: 100%;
   height: 60px;

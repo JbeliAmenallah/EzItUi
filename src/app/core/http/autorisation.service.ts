@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
 import { Autorisation } from '../../shared/models/autorisation';
 import { throwError } from 'rxjs';
@@ -60,24 +60,23 @@ export class AutorisationService {
     const url = `${this.apiUrl}/autorisations/${id}`;
     return this.http.get<Autorisation>(url);
   }
-
-
   submitAutorisationRequest(formData: any): Observable<any> {
-    const formattedData = {
-      dateDebut: formData.startDate,
-      dateFin: formData.endDate,
-      contactId: formData.contactId
-    };
+    // Format dates to ISO 8601 format
+    const formattedStartDate = this.formatDate(formData.startDate);
+    const formattedEndDate = this.formatDate(formData.endDate);
 
-    console.log('Sending request:', formattedData); // Log the data being sent
+    // Construct HttpParams with formatted dates and keycloakUserId
+    let params = new HttpParams()
+      .set('startDate', formattedStartDate)
+      .set('endDate', formattedEndDate)
+      .set('keycloakUserId', formData.keycloakUserId);
 
-    return this.http.post<any>(`${this.apiUrl}/demande`, formattedData).pipe(
-      tap(response => console.log('Received response:', response)), // Log the response
-      catchError(error => {
-        console.error('Error submitting autorisation request:', error); // Log any errors
-        throw error; // Rethrow the error
-      })
-    );
+    // Make HTTP POST request with query parameters and empty body
+    return this.http.post<any>(`${this.apiUrl}/demande`, {}, { params: params });
+  }
+
+  private formatDate(date: Date): string {
+    return date.toISOString(); // Convert date to ISO string
   }
   
   

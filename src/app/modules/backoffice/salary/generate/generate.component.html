@@ -1,56 +1,63 @@
 <div class="container mt-5">
-  <h2 class="gradient-text">Salary Generation</h2>
-
   <form [formGroup]="generateForm" class="form">
+    <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+      <li>
+        <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+            <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+            Espace Rh
+        </a>
+    </li>
+        <li class="px-2" style="font-size: 1.5em;">
+            <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+        </li>
+        <li>
+           <a [routerLink]="['/salary/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Fiches de paie</span></a>
+        </li>
+        <li class="px-2" style="font-size: 1.5em;">
+          <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+      </li>
+        <li>
+               &nbsp;<a [routerLink]="['/employee/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Calculer </span></a>
+       </li>
+    </ul>
 
-    <!-- Year Input -->
     <div class="row">
+      <!-- Year Input -->
       <div class="col-md-6">
-        <div class="form-group">
-          <label for="yearInput">Annee:</label>
+        <div class="form-group input-group">
+          <label for="yearInput" class="input-group-prepend"><i class="fa fa-calendar"></i> Year:</label>
           <input id="yearInput" formControlName="yearInput" type="number" class="form-control" placeholder="Enter Year">
         </div>
       </div>
-    </div>
 
-    <!-- Month Input -->
-    <div class="row">
+      <!-- Month Input -->
       <div class="col-md-6">
-        <div class="form-group">
-          <label for="monthInput">Month:</label>
+        <div class="form-group input-group">
+          <label for="monthInput" class="input-group-prepend"><i class="fa fa-calendar"></i> Month:</label>
           <input id="monthInput" formControlName="monthInput" type="number" class="form-control" placeholder="Enter Month">
         </div>
       </div>
     </div>
 
-<!-- MultiSelect for Contacts -->
-<div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-      <label for="contact">Contacts:</label>
-      <p-multiSelect formControlName="contact" [options]="contactOptions" [style]="{ 'width': '100%' }" placeholder="Select Contacts"></p-multiSelect>
-    </div>
-  </div>
-</div>
-
-
-    <!-- Button to Generate Salary 
+    <!-- MultiSelect for Contacts -->
     <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <button pButton type="button" class="btn btn-primary" (click)="generateSalary()" [disabled]="generateForm.invalid">Generate Salary</button>
+      <div class="col-md-12">
+        <div class="form-group input-group">
+          <label for="contact" class="input-group-prepend"><i class="fa fa-users"></i> Contacts:</label>
+          <p-multiSelect formControlName="contact" [options]="contactOptions" [style]="{ 'width': '100%' }" placeholder="Select Contacts"></p-multiSelect>
         </div>
       </div>
-    </div>-->
+    </div>
 
     <!-- Button to Generate PDF -->
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="form-group">
-          <button pButton type="button" class="btn btn-primary" (click)="generatePDF()">Generate PDF</button>
+          <button pButton type="button" class="btn btn-primary" (click)="generatePDF()">Cacluler Salaire</button>
         </div>
       </div>
     </div>
+
   </form>
 
   <div class="messages-container">
@@ -61,6 +68,4 @@
   <div *ngIf="showPDF" class="pdf-content">
     <app-salary-template [payslipData]="payslipData"></app-salary-template>
   </div>
-  
-
-    
+</div>

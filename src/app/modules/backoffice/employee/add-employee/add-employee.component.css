@@ -8,3 +8,21 @@
     transform: scale(1.05); /* Increase size by 5% */
     box-shadow: 0 4px 6px rgba(0, 0, 0.3, 0.5); /* Add subtle shadow */
   }
+  :host >>> .p-button {
+    width: 150px;
+    margin-left: 40%;
+    margin-top: 10px;
+  }
+  .boxed-button {
+    border: 2px solid #007bff; /* Blue border */
+    padding: 10px 20px;        /* Adjust padding as needed */
+    border-radius: 5px;        /* Optional: Rounded corners */
+    background-color: white;   /* Optional: Button background color */
+    color: #007bff;            /* Text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.boxed-button:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: white;              /* Text color on hover */
+}

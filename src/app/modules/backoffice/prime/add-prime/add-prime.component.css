@@ -119,3 +119,8 @@
     background: transparent;
     position: relative;
   }
+  :host >>> .p-button {
+    width: 150px;
+    margin-left: 40%;
+    margin-top: 10px;
+  }

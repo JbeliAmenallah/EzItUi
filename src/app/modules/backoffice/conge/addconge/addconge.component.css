@@ -119,11 +119,11 @@ select::placeholder {
   line-height: normal;
 }
 :host ::ng-deep .p-dropdown {
-  width: 100%;
-  height: 60px;
-  text-align: left;
-  border-radius: 6px;
-  margin-bottom: 30px;
+  width: 100% !important;
+  height: 60px !important;
+  text-align: left !important;
+  border-radius: 6px !important;
+  margin-bottom: 30px !important;
   color: var(--gris-1-dbarras, #7b777f);
   font-family: Lexend Deca;
   font-size: 100px;
@@ -134,3 +134,11 @@ select::placeholder {
   background: transparent;
   position: relative;
 }
+
+:host ::ng-deep .p-button {
+  width: 150px;
+  margin-left: 40%;
+  margin-top: 10px;
+}
+
+

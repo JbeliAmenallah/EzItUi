@@ -16,6 +16,12 @@
 .form-group {
   display: grid;
 }
+
+:host >>> .p-button {
+  width: 150px;
+  margin-left: 40%;
+  margin-top: 10px;
+}
 input {
   width: 100%;
   height: 60px;

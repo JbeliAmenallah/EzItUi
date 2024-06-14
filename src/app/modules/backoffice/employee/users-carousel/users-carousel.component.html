@@ -1,4 +1,4 @@
-<div class="carousel-container">
+<div class="carousel-container"  *ngIf="activeRealmUsers">
     <p-carousel [value]="allRealmUsers" [numVisible]="7" [numScroll]="3" [circular]="true" autoplayInterval="3000"
         [responsiveOptions]="responsiveOptions" [style]="{'max-width': '1630px'}">
         <ng-template let-user pTemplate="item">
@@ -7,7 +7,7 @@
                     <div class="relative mx-auto">
                         <img [src]="'https://avatar.iran.liara.run/username?username='+user.username"
                             class="avatar-image mt-2" />
-                            <p-tag [value]="isUserActive(user) ? 'Online' : 'Oflline'"
+                            <p-tag [value]="isUserActive(user) ? 'Online' : 'Offline'"
                             [severity]="isUserActive(user) ? 'success' : 'warning'"
                             class="absolute" [ngStyle]="{ 'left.px': 7, 'top.px': 7 }"></p-tag>
                     </div>
@@ -17,8 +17,8 @@
                 </div>
                 <div class="">
                     <div class="mt-0 text-500">
-                        {{ user.username }}
-                    </div>
+                        {{ hasAdminRole(user) ? 'Admin' : 'User' }}
+                      </div>
                 </div>
                 <div class="mt-4">
                     <span class="mt-4">

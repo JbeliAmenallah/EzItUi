@@ -14,6 +14,7 @@ export class AbsenceListComponent implements OnInit {
   loading: boolean = true;
   displayEditDialog: boolean = false;
   selectedAbsence: Absence;
+  currentYear=new Date().getFullYear();
 
   constructor(
     private absenceService: AbsenceService,

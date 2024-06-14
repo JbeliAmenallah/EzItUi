@@ -4,3 +4,21 @@
     right: 20px;
     z-index: 1000; /* Ensure it's on top of other elements */
 }
+:host >>> .p-button {
+    width: 150px;
+    margin-left: 40%;
+    margin-top: 10px;
+  }
+  .boxed-button {
+    border: 2px solid #007bff; /* Blue border */
+    padding: 10px 20px;        /* Adjust padding as needed */
+    border-radius: 5px;        /* Optional: Rounded corners */
+    background-color: white;   /* Optional: Button background color */
+    color: #007bff;            /* Text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.boxed-button:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: white;              /* Text color on hover */
+}

@@ -1,104 +1,121 @@
-<div class="table-container">
-    <h1 class="gradient-text">Liste des fiches de paie</h1>
-  
-    <!-- Add button to navigate to salary generation -->
-    <div class="flex justify-content-center" style="display: flex; justify-content: flex-end;">
-      <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" routerLink="/salary/salary"></button>
-      <ng-template #tooltipContent>
-        <div class="flex align-items-center">
-          <span><b>Générer une fiche de paie</b></span>
-        </div>
-      </ng-template>
-    </div>
-  
-    <!-- Table to display salaries -->
-    <p-table
-      #dt3
-      [value]="salaries"
-      dataKey="id"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]"
-      [loading]="loading"
-      [paginator]="true"
-      currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
-      [globalFilterFields]="['contactName', 'month', 'year' ]"
-      [tableStyle]="{ 'min-width': '75rem' }"
-      [(selection)]="selectedSalaries" selectionMode="multiple">
-  
-      <!-- Table header -->
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Nom d'employé</th>
-          <th>Mois</th>
-          <th>Année </th>
-          <th style="width: 3rem">
-            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <p-columnFilter type="text" field="contactName"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="month"></p-columnFilter>
-          </th>
-          <th>
-            <p-columnFilter type="text" field="year"></p-columnFilter>
-          </th>
-          <th></th>
-        </tr>
-      </ng-template>
-  
-      <!-- Table body -->
-      <ng-template pTemplate="body" let-salary>
-        <tr [pSelectableRow]="salary">
-          <td>{{ salary.contactName }}</td>
-          <td>{{ salary.month }}</td>
-          <td>{{ salary.year }}</td>
-          <td>
-            <p-tableCheckbox [value]="salary"></p-tableCheckbox>
-          </td>
-        </tr>
-      </ng-template>
-  
-      <!-- Empty message -->
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="4">Aucune fiche de paie n'a été trouvée.</td>
-        </tr>
-      </ng-template>
-  
-      <!-- Search input -->
-      <ng-template pTemplate="caption">
-        <div class="flex justify-content-end align-items-center">
-          <div class="p-input-icon-left">
-            <i class="pi pi-search"></i>
-            <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Mot-clé de recherche" style="width: 400px;" />
-          </div>
-        </div>
-      </ng-template>
-    </p-table>
-  
-    <!-- Button to download selected PDFs -->
-    <div class="flex justify-content-end" style="margin-top: 10px;">
-      <button pButton icon="pi pi-download" label="Télécharger sélection" (click)="downloadSelectedPDFs()" [disabled]="!selectedSalaries || selectedSalaries.length === 0"></button>
-    </div>
-  
-     <!-- Confirmation dialog for deletion -->
-  <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
-  acceptButtonStyleClass="p-button-danger p-button-text"
-  rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="none" rejectIcon="none">
-</p-confirmDialog>
+<div class="surface-section border-round px-4 py-5 md:px-6 lg:px-8 mb-4 ">
+  <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+    <li>
+      <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/employee/details']">
+        <i class="pi pi-home mr-0"></i> <!-- Ajoutez cette ligne pour l'icône de maison -->
+        Application
+      </a>
+    </li>
 
-<!-- Toast for notifications -->
-<p-toast></p-toast>
+    <li class="px-2">
+      <i class="pi pi-angle-right text-500 line-height-3"></i>
+    </li>
+    <li>
+      <a [routerLink]="['/employee/details']"> <span class="text-900 line-height-3"><i class="pi pi-wallet"></i>
+       Fiches de paie</span></a>
+    </li>
+  </ul>
+  <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+    <div>
+      <div class="font-medium text-3xl text-900">Liste des fiches de paie</div>
+      <div class="flex align-items-center text-700 flex-wrap">
+        <div class="mr-5 flex align-items-center mt-3">
+          <i class='pi pi-wallet'></i>
+          <span class="text-green-400"> &nbsp; {{currentYearSalariesCount}} </span>&nbsp; &nbsp;Fiches calculées dans <span class="text-red-400"> &nbsp;{{currentyear}} &nbsp; </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3 lg:mt-0">
+      <a [routerLink]="['/salary/salary']"> <button pButton pRipple label="+ Ajouter" class="p-button-outlined mr-2"
+          icon="pi pi-wallet"></button></a>
+    </div>
   </div>
- <!-- Template for Payslip -->
+</div>
+<div class="table-container">
+
+  <!-- Table to display salaries -->
+  <p-table #dt3 [value]="salaries" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+    currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
+    [globalFilterFields]="['contactName', 'month', 'year' ]" [tableStyle]="{ 'min-width': '75rem' }"
+    [(selection)]="selectedSalaries" selectionMode="multiple">
+
+    <!-- Table header -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nom d'employé</th>
+        <th>Mois</th>
+        <th>Année </th>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="contactName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="month"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="year"></p-columnFilter>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+
+    <!-- Table body -->
+    <ng-template pTemplate="body" let-salary>
+      <tr [pSelectableRow]="salary">
+        <td>{{ salary.contactName }}</td>
+        <td>{{ salary.month }}</td>
+        <td>{{ salary.year }}</td>
+        <td>
+          <p-tableCheckbox [value]="salary"></p-tableCheckbox>
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- Empty message -->
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="4">Aucune fiche de paie n'a été trouvée.</td>
+      </tr>
+    </ng-template>
+
+    <!-- Search input -->
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-end align-items-center">
+        <div class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')"
+            placeholder="Mot-clé de recherche" style="width: 400px;" />
+        </div>
+      </div>
+    </ng-template>
+  </p-table>
+
+  <!-- Button to download selected PDFs -->
+  <div class="center-button-container">
+    <button pButton icon="pi pi-download" label="Télécharger sélection" (click)="downloadSelectedPDFs()"
+      [disabled]="!selectedSalaries || selectedSalaries.length === 0"></button>
+  </div>
+  
+
+  <!-- Confirmation dialog for deletion -->
+  <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
+    acceptButtonStyleClass="p-button-danger p-button-text" rejectButtonStyleClass="p-button-text p-button-text"
+    acceptIcon="none" rejectIcon="none">
+  </p-confirmDialog>
+
+  <!-- Toast for notifications -->
+  <p-toast></p-toast>
+</div>
+
+<!-- Template for Payslip -->
 <div id="payslip-template" class="hidden-template">
-  <app-salary-template [payslipData]="payslipData"></app-salary-template>
+  <app-salary-template [payslipData]="payslipData"/>
 </div>
 
 
-
-  

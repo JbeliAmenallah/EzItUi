@@ -15,7 +15,7 @@ export class AutorisationListComponent implements OnInit {
   loading: boolean = false;
   selectedAutorisation: Autorisation;
   displayDialog: boolean = false;
-
+  currentyear = new Date().getFullYear();
   constructor(
     private autorisationService: AutorisationService,
     private router: Router,

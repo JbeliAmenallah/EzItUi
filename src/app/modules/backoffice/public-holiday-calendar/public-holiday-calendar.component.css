@@ -1,0 +1,30 @@
+/* public-holiday-calendar.component.css */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .events-list {
+    flex: 0 1 150px; /* Reduced height for events list */
+    overflow-y: auto; /* Scroll if content overflows */
+    margin-bottom: 1rem; /* Space between events list and calendar */
+  }
+  
+  .calendar-container {
+    flex: 3;
+  }
+  
+  .custom-dialog .event-details {
+    background-color: rgba(172, 144, 248, 0.226);
+    border-radius: 5px;
+    padding: 1rem;
+  }
+  

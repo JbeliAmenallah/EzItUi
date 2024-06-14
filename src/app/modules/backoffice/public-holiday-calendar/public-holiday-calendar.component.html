@@ -1,0 +1,27 @@
+
+<div class="card">
+    <div class="container">
+      <!-- List of events -->
+      <div class="events-list">
+        <ul>
+          <li *ngFor="let event of publicHolidays">
+            <b>{{ event.libele }}</b> - {{ formatDate(event.jour, event.mois) }}
+          </li>
+        </ul>
+      </div>
+      <!-- Full calendar -->
+      <div class="calendar-container" style="height: 1000px!important;">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+      </div>
+    </div>
+  </div>
+
+  <p-dialog header="Event Details" [(visible)]="displayEventDialog" [style]="{ 'width': '25rem' }" [styleClass]="'custom-dialog'">
+    <ng-template pTemplate>
+      <div class="event-details">
+        <p>{{ selectedEvent.title }}</p>
+        <p>Date: {{ formatDate(selectedEvent.start.getDate(), selectedEvent.start.getMonth() + 1) }}</p>
+      </div>
+    </ng-template>
+  </p-dialog>
+  

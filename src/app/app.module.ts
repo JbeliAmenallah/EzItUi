@@ -15,6 +15,14 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DialogModule } from 'primeng/dialog';
 import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
+import { BadgeModule } from 'primeng/badge';
+import { MessageComponent } from './modules/backoffice/message/message.component';
+import { SharedModule } from './shared/shared.module';
+import { ImageModule } from 'primeng/image';
+import { PublicHolidayCalendarComponent } from './modules/backoffice/public-holiday-calendar/public-holiday-calendar.component';
+import { TimeAgoPipe } from './modules/pipes/time-ago.pipe';
+
+
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -34,9 +42,17 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
   declarations: [
     AppComponent,
-    NotallowedComponent
+    NotallowedComponent,
+    MessageComponent,
+    PublicHolidayCalendarComponent,
+    TimeAgoPipe,
+
   ],
   imports: [
+ 
+    ImageModule,
+    SharedModule,
+    BadgeModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

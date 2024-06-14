@@ -1,9 +1,31 @@
+
 <div class="container mt-5">
     <form [formGroup]="form" class="form">
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+            <li>
+              <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+                  <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+                  Espace Rh
+              </a>
+          </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                  <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+              </li>
+              <li>
+                 <a [routerLink]="['/enfant/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Enfants</span></a>
+              </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+              <li>
+                     &nbsp;<a [routerLink]="['/enfant/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+             </li>
+          </ul>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Nom : </label>
+                    <label for="name"class="input-label">
+                        <i class="fas fa-user"></i>Nom : </label>
                     <input type="text" pInputText formControlName="name" id="name" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">Le nom est requis</small>
                 </div>
@@ -11,7 +33,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="familyName">Nom de famille : </label>
+                    <label for="familyName"class="input-label">
+                        <i class="fas fa-user"></i>Nom de famille : </label>
                     <input type="text" pInputText formControlName="familyName" id="familyName" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('familyName')?.touched && form.get('familyName')?.hasError('required')">Le nom de famille est requis</small>
                 </div>
@@ -19,7 +42,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="age">Âge :</label>
+                    <label for="age"class="input-label"><i class="fas fa-birthday-cake"></i>Âge :</label>
                     <input type="number" pInputText formControlName="age" id="age" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('age')?.touched && form.get('age')?.hasError('required')">L'Âge est requis</small>
                 </div>
@@ -27,7 +50,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="educationGrade">Niveau d’éducation :</label>
+                    <label for="educationGrade"class="input-label">
+                        <i class="fas fa-university"></i>Niveau d’éducation :</label>
                     <input type="text" pInputText formControlName="educationGrade" id="educationGrade" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('educationGrade')?.touched && form.get('educationGrade')?.hasError('required')">La note d’éducation est requise</small>
                 </div>
@@ -35,14 +59,14 @@
             
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="disabled">Handicapé :</label>
+                    <label for="disabled"class="input-label"><i class="fas fa-wheelchair"></i>Handicapé :</label>
                     <p-dropdown [options]="disabledOptions" formControlName="disabled" [showClear]="true" placeholder="Selectionner"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('disabled')?.touched && form.get('disabled')?.hasError('required')">Veuillez sélectionner le champ handicapé</small>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="bourse">Bourse:</label>
+                    <label for="bourse" class="input-label"><i class="fas fa-graduation-cap"></i>Bourse:</label>
                     <p-dropdown [options]="disabledOptions" formControlName="bourse" [showClear]="true" placeholder="Select"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('bourse')?.touched && form.get('bourse')?.hasError('required')">Veuillez sélectionner le champ bourse</small>
                 </div>
@@ -52,7 +76,7 @@
             <!-- Add Employee Dropdown -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="contactId">Employé :</label>
+                    <label for="contactId"class="input-label"><i class="fas fa-users-cog"></i> Employé :</label>
                     <p-dropdown [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Select an Employee"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Veuillez lectionner un employé</small>
                 </div>

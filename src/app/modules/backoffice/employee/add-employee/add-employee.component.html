@@ -1,11 +1,9 @@
-
-<app-employee-form #form> </app-employee-form>
-
-<div class="buttons">
-    <button pButton label="Enregistrer"icon="pi pi-check"  class="btn-save hover-scale"  (click)="save()"></button>
+<app-employee-form #form></app-employee-form>
+<div class="">
+    <div class="buttons">
+        <button pButton label="Enregistrer" icon="pi pi-check" class="btn-save hover-scale boxed-button" (click)="save()"></button>
+    </div>
 </div>
-
 <div class="messages-container">
-     <p-messages [(value)]="messages"  [enableService]="true" [closable]="true"></p-messages>
+    <p-messages [(value)]="messages" [enableService]="true" [closable]="true"></p-messages>
 </div>
-

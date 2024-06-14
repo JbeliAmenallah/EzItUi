@@ -1,4 +1,4 @@
-<div class="mb-2">
+<div class="mb-2" *ngIf="ActiveUsers">
   <app-users-carousel></app-users-carousel>
 </div>
 <div class="surface-section border-round px-2 py-3 md:px-6 lg:px-8 mb-3  ">
@@ -20,16 +20,16 @@
   </ul>
   <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
     <div>
-      <div class="font-medium text-3xl text-900 " style="margin-top: 0px !important;">Employees</div>
+      <div class="font-medium text-3xl text-900 " style="margin-top: 0px !important;">Employés</div>
       <div class="flex align-items-center text-700 flex-wrap">
         <div class="mr-5 flex align-items-center mt-1">
           <i class="pi pi-users mr-2"></i>
-          <span>{{this.ActiveUsers.length}} Active Users</span>
+          <span>{{this.ActiveUsers.length}} Utilisateurs Actifs</span>
         </div>
       </div>
     </div>
     <div class="mt-3 lg:mt-0">
-      <a [routerLink]="['/employee/add']"> <button pButton pRipple label="Add"
+      <a [routerLink]="['/employee/add']"> <button pButton pRipple label="+ Ajouter"
           class="p-button-outlined mr-2 hover-scale" icon="pi pi-user-plus"></button></a>
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
         <div>
-          <span class="block text-500 font-medium mb-3">Employees</span>
+          <span class="block text-500 font-medium mb-3">Employés</span>
           <div class="text-900 font-medium text-xl">{{employeeCountThisYear }} </div>
         </div>
         <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
@@ -49,8 +49,8 @@
           </a>
         </div>
       </div>
-      <span class="text-green-500 font-medium"> {{ employeeCountThisYear }}-New &nbsp; </span>
-      <span class="text-400 font-medium">Employees Added This Year <span class="text-red-500 font-bold">{{ sinceYearText
+      <span class="text-green-500 font-medium"> {{ employeeCountThisYear }}-Nouveau &nbsp; </span>
+      <span class="text-400 font-medium">Employés Ajoutés cette année <span class="text-red-500 font-bold">{{ sinceYearText
           }}</span> </span>
     </div>
   </div>
@@ -59,7 +59,7 @@
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
         <div>
-          <span class="block text-500 font-medium mb-3">Absence Count</span>
+          <span class="block text-500 font-medium mb-3">Nombre Des Absences</span>
           <div class="text-900 font-medium text-xl">{{ absenceCount }}</div>
         </div>
         <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
@@ -81,7 +81,7 @@
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
         <div>
-          <span class="block text-500 font-medium mb-3">Pending Conges</span>
+          <span class="block text-500 font-medium mb-3">Conges En Attente</span>
           <div class="text-900 font-medium text-xl">{{ pendingCongeCount }}</div>
         </div>
         <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
@@ -93,7 +93,7 @@
 
       </div>
       <span class="text-green-500 font-medium">
-        {{pendingCongeCount}} Conges Are still Pending
+        {{pendingCongeCount}} demeure en attente
       </span>
     </div>
   </div>
@@ -102,7 +102,7 @@
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
         <div>
-          <span class="block text-500 font-medium mb-3">Average Base Salary</span>
+          <span class="block text-500 font-medium mb-3">Moyenne des Salaire Base</span>
           <div class="text-900 font-medium text-xl">{{ averageBaseSalary | currency:'USD':true:'1.2-2' }}</div>
         </div>
         <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
@@ -112,7 +112,7 @@
       </div>
       <span class="text-green-500 font-medium">
         {{ averageBaseSalary | currency:'USD':true:'1.2-2' }}
-      </span><span class="text-400">Is The Average Salary For </span>
+      </span><span class="text-400">est La Salaire Moyenne Pour </span>
 
       <span class="text-red-500 font-bold">{{ sinceYearText }}</span>
     </div>

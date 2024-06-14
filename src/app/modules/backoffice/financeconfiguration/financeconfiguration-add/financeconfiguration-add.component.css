@@ -4,3 +4,8 @@
     right: 20px;
     z-index: 1000;
   }
+  :host >>> .p-button {
+    width: 150px;
+    margin-left: 40%;
+    margin-top: 10px;
+  }

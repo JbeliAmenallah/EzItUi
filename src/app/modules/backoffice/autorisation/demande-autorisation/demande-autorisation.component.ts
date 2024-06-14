@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { AutorisationService } from '../../../../core/http/autorisation.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-demande-autorisation',
@@ -13,12 +14,13 @@ import { Router } from '@angular/router';
 export class DemandeAutorisationComponent {
   form: FormGroup;
   messages: any[] = []; 
-  router: Router;
 
   constructor(
     private formBuilder: FormBuilder,
     private autorisationService: AutorisationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router,
+    private authService: AuthService
   ) {
     this.form = this.formBuilder.group({
       startDate: ['', Validators.required],
@@ -31,26 +33,44 @@ export class DemandeAutorisationComponent {
     this.markFormGroupTouched(this.form);
   
     if (this.form.valid) {
-        console.log('Form is valid. Making HTTP request...');
-        this.autorisationService.submitAutorisationRequest(this.form.value).subscribe(
-            (response) => {
-                console.log('Received response:', response);
-                console.log('Autorisation request submitted successfully:', response);
-                this.messages = [{severity:'success', summary:'Demande d’autorisation soumise avec succès', detail: 'State: ' + response.state}];
-                this.router.navigate(['/autorisations/list']);
-            },
-            (error) => {
-                console.error('Erreur lors de l’envoi de la demande d’autorisation :', error);
-                this.messages = [{severity:'error', summary:'Erreur lors de l’envoi de la demande d’autorisation', detail: error.message || 'Erreur inconnue'}];
-            }
-        );
+      console.log('Form is valid. Making HTTP request...');
+
+      // Replace 'keycloakUserId' with the actual value or retrieve dynamically if needed
+      const keycloakUserId = this.authService.getAuthenticatedUserId(); 
+
+      this.autorisationService.submitAutorisationRequest({
+        startDate: this.form.value.startDate,
+        endDate: this.form.value.endDate,
+        keycloakUserId: keycloakUserId
+      }).subscribe(
+        (response) => {
+          console.log('Received response:', response);
+          console.log('Autorisation request submitted successfully:', response);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Demande d autorisation soumise avec succès',
+            detail: 'État: ' + response.state,
+            life: 3000
+          });
+          setTimeout(() => {
+            this.router.navigate(['/employee/conges']);
+          }, 3000);
+        },
+        (error) => {
+          console.error('Erreur lors de l’envoi de la demande d’autorisation :', error);
+          this.messages = [{
+            severity: 'error',
+            summary: 'Erreur lors de l’envoi de la demande d’autorisation',
+            detail: error.message || 'Erreur inconnue'
+          }];
+        }
+      );
     } else {
-        console.log('Form is not valid.');
+      console.log('Form is not valid.');
     }
-}
+  }
 
-
-markFormGroupTouched(formGroup: FormGroup) {
+  markFormGroupTouched(formGroup: FormGroup) {
     console.log('Marking form group as touched...');
     Object.values(formGroup.controls).forEach(control => {
         control.markAsTouched();
@@ -58,6 +78,5 @@ markFormGroupTouched(formGroup: FormGroup) {
             this.markFormGroupTouched(control);
         }
     });
-}
-
+  }
 }

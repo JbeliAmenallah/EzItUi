@@ -155,11 +155,11 @@ select::placeholder {
   line-height: normal;
 }
 :host ::ng-deep .p-dropdown {
-  width: 100%;
-  height: 60px;
-  text-align: left;
-  border-radius: 6px;
-  margin-bottom: 30px;
+  width: 100% !important;
+  height: 60px !important;
+  text-align: left !important;
+  border-radius: 6px !important;
+  margin-bottom: 30px !important;
   color: var(--gris-1-dbarras, #7b777f);
   font-family: Lexend Deca;
   font-size: 100px;
@@ -168,5 +168,14 @@ select::placeholder {
   line-height: normal;
   appearance: none;
   background: transparent;
-  position: relative;
+  position: relative !important;
+}
+.input-label{
+  font-weight: bold;
+}
+.input-label i {
+  color: rgb(28, 143, 238);
+  margin-right: 5px;
+  font-weight: bold;
+  
 }
