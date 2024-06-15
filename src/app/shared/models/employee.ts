@@ -1,5 +1,6 @@
 export interface Employee {
   contactId?: number;
+  keycloakUserId?:string;
   name?: string;
   username?: string;
   email?: string;

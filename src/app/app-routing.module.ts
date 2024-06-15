@@ -5,9 +5,8 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { title } from 'process';
 import { NotallowedComponent } from './modules/backoffice/notallowed/notallowed.component';
+import { MessageComponent } from './modules/backoffice/message/message.component';
 import { PredictionComponent } from './modules/backoffice/prediction/prediction.component';
-
-
 const isAuthenticated: CanActivateFn = (route, state) => {
   return inject(AuthGuard).isAccessAllowed(route, state);
 };
@@ -73,7 +72,7 @@ const routes: Routes = [
   {
     path:'employee',    canActivate:[isAuthenticated],
     loadChildren:()=>import('./modules/backoffice/employee/employee.module').then((m)=>m.EmployeeModule),
-    // data:{title:'Employees',roles: ['ADMIN']}
+     data:{title:'Employees'}
   },
   {
     path:'absence',canActivate:[isAuthenticated],
@@ -132,13 +131,16 @@ const routes: Routes = [
      component:NotallowedComponent,
    },
    {
-    path:'prediction',component:PredictionComponent,
+    path:'prediction',canActivate:[isAuthenticated],component:PredictionComponent,
    },
    {
     path:'policies',
     loadChildren:()=>import ('./modules/backoffice/policies/policies.module').then((m)=>m.PoliciesModule)
   },
-
+,{
+    path:'Chat',canActivate:[isAuthenticated],
+    component:MessageComponent
+  },
  
 ];
 

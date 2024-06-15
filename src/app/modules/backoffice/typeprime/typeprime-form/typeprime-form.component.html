@@ -1,10 +1,31 @@
 <div class="container mt-5">
     <form [formGroup]="form" class="form">
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+            <li>
+              <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+                  <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+                  Espace Rh
+              </a>
+          </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                  <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+              </li>
+              <li>
+                 <a [routerLink]="['/typeprime/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Types Primes</span></a>
+              </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+              <li>
+                     &nbsp;<a [routerLink]="['/typeprime/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+             </li>
+          </ul>
         <div class="row">
             <!-- Code -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="code">Code:</label>
+                    <label for="code"class="input-label">
+                        <i class="fas fa-barcode"></i>Code:</label>
                     <input type="text" pInputText formControlName="code" id="code" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('code')?.touched && form.get('code')?.hasError('required')">The code is required</small>
                 </div>
@@ -13,7 +34,8 @@
             <!-- Libele -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="libele">Libele:</label>
+                    <label for="libele"class="input-label">
+                        <i class="fas fa-tag"></i>Libele:</label>
                     <input type="text" pInputText formControlName="libele" id="libele" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Le libele est requis </small>
                 </div>
@@ -22,7 +44,8 @@
             <!-- Type -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="type">Type:</label>
+                    <label for="type"class="input-label">
+                        <i class="fas fa-list"></i>Type:</label>
                     <p-dropdown [options]="types" formControlName="type" id="type" ></p-dropdown>
                     <small class="p-error" *ngIf="form.get('type')?.touched && form.get('type')?.hasError('required')">The type is required</small>
                 </div>
@@ -31,7 +54,8 @@
             <!-- A base de salaire -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="abasedesalaire">A base de salaire:</label>
+                    <label for="abasedesalaire"class="input-label">
+                        <i class="fas fa-money-bill"></i>A base de salaire:</label>
                     <p-dropdown [options]="yesNoOptions" formControlName="abasedesalaire" id="abasedesalaire" ></p-dropdown>
                     <small class="p-error" *ngIf="form.get('abasedesalaire')?.touched && form.get('abasedesalaire')?.hasError('required')">A base de salaire is required</small>
                 </div>
@@ -40,7 +64,8 @@
             <!-- Montant -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="montant">Montant:</label>
+                    <label for="montant"class="input-label">
+                        <i class="fas fa-dollar-sign"></i>Montant:</label>
                     <input type="number" pInputText formControlName="montant" id="montant" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">The montant is required</small>
                 </div>
@@ -50,7 +75,8 @@
             <!-- Obligatoire -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="obligatoire">Obligatoire :</label>
+                    <label for="obligatoire"class="input-label">
+                        <i class="fas fa-exclamation-circle"></i> Obligatoire :</label>
                     <p-dropdown [options]="yesNoOptions" formControlName="obligatoire" id="obligatoire" ></p-dropdown>
 
                 </div>
@@ -59,7 +85,8 @@
             <!-- CNSS -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="cnss">Cnss:</label>
+                    <label for="cnss"class="input-label">
+                        <i class="fas fa-hands-helping"></i>Cnss:</label>
                     <p-dropdown [options]="yesNoOptions" formControlName="cnss" id="cnss"></p-dropdown>
                 </div>
             </div>
@@ -67,7 +94,8 @@
             <!-- Impôt -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="impo">Impo:</label>
+                    <label for="impo"class="input-label">
+                        <i class="fas fa-file-invoice-dollar"></i>Impo:</label>
                     <p-dropdown [options]="yesNoOptions" formControlName="impo" id="impo"></p-dropdown>
                 </div>
             </div>

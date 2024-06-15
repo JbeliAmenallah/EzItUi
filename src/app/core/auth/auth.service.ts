@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   init() {
-    this.fetchActiveSessions('29385548-8490-4496-9c51-956ffef43732');
+    this.fetchActiveSessions('4f39511e-5de2-4cea-bcda-e92c647a5767');
     this.fetchAllUsersWithRoles();
     const storedProfile = localStorage.getItem('profile');
     if (storedProfile) {
@@ -80,9 +80,11 @@ export class AuthService {
     return this.profile?.username;
   }
 
-  public async getAuthenticatedUserId(): Promise<string | undefined> {
-    await this.init();
+  public  getAuthenticatedUserId(): any {
+    
+    
     return this.profile?.id;
+    
   }
 
   public hasRoleIn(roles: string[]): boolean {

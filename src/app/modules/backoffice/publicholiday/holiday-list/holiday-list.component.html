@@ -1,15 +1,42 @@
-<div class="table-container">
-  <h1 class="gradient-text">Liste des jours fériés</h1>
 
-    <div class=" flex justify-content-center" style="display: flex; justify-content: flex-end;">
-      <button pButton [pTooltip]="tooltipContent" tooltipPosition="bottom" label="+" (click)="showAddDialog()" style="margin-bottom: 30px;"></button>
-      <ng-template #tooltipContent>
-        <div class="flex align-items-center">
-          <span><b> A jouter jour férié</b></span>
-        </div>
-      </ng-template>
-    </div>
-  
+<div class="surface-section border-round px-4 py-5 md:px-6 lg:px-8 mb-4 ">
+  <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-3">
+      <li>
+          <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/employee/details']">
+              <i class="pi pi-home mr-0"></i> <!-- Ajoutez cette ligne pour l'icône de maison -->
+              Application
+          </a>
+      </li>
+
+      <li class="px-2">
+          <i class="pi pi-angle-right text-500 line-height-3"></i>
+      </li>
+      <li>
+          <a [routerLink]="['/entreprise/list']"> <span class="text-900 line-height-3"><i class="pi pi-calendar
+              "></i>
+                  Public Holidays</span></a>
+      </li>
+  </ul>
+  <div class="flex align-items-start flex-column lg:justify-content-between lg:flex-row">
+      <div>
+          <div class="font-medium text-3xl text-900">Liste des Jours Feriés</div>
+          <div class="flex align-items-center text-700 flex-wrap">
+              <div class="mr-5 flex align-items-center mt-3">
+                  <i class='pi pi-calendar'></i>
+                  <span class="text-green-400"> &nbsp;{{publicHolidays.length}}</span>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="mt-3 lg:mt-0">
+          <a [routerLink]="['/publicholiday/add']"> <button pButton pRipple label="+ Ajouter"
+                  class="p-button-outlined mr-2" icon="pi pi-calendar-plus"></button></a>
+      </div>
+  </div>
+</div>
+<div class="table-container">
+
     <p-table
       #dt
       [value]="publicHolidays"

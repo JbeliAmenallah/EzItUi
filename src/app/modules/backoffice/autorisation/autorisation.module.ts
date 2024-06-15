@@ -19,7 +19,7 @@ import { EditAutorisationComponent } from './edit-autorisation/edit-autorisation
 import { AddAutorisationComponent } from './add-autorisation/add-autorisation.component';
 import { DemandeAutorisationComponent } from './demande-autorisation/demande-autorisation.component';
 import { UsersessionComponent } from './usersession/usersession.component'; 
-
+import { SpeedDialModule } from 'primeng/speeddial';
 @NgModule({
   declarations: [
     AutorisationListComponent,
@@ -29,6 +29,7 @@ import { UsersessionComponent } from './usersession/usersession.component';
     UsersessionComponent
   ],
   imports: [
+    SpeedDialModule,
     CommonModule,
     AutorisationRoutingModule,
     CommonModule,

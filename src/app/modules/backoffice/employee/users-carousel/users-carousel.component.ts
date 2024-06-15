@@ -24,7 +24,7 @@ export class UsersCarouselComponent implements OnInit {
     ];
     // Fetch data from the service
     this.authService.fetchAllUsersWithRoles();
-    const clientId = '29385548-8490-4496-9c51-956ffef43732';
+    const clientId = '4f39511e-5de2-4cea-bcda-e92c647a5767';
     this.authService.fetchActiveSessions(clientId);
     // Assign the service lists to component properties for template access
     this.allRealmUsers = this.authService.AllRealmUsers;
@@ -35,8 +35,14 @@ export class UsersCarouselComponent implements OnInit {
   }
     // Function to check if a user is active
     isUserActive(user: UserWithRoles): boolean {
+      console.log(user)
       return this.activeRealmUsers.includes(user.username);
     }
+      // Function to check if user has Admin role
+  hasAdminRole(user: UserWithRoles): boolean {
+    const roles = user.roles.map(role => role.toUpperCase());
+    return roles.includes('ADMIN');
+  }
  
 }
 

@@ -1,27 +1,46 @@
 <div class="container mt-5">
-    <h2 class="table-title">Demande d'autorisation</h2>
     <form [formGroup]="form" class="form">
-        
-        <div class="form-group">
-            <label for="startDate">Date de début :</label>
-            <p-calendar formControlName="startDate" id="startDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd" [showTime]="true"></p-calendar>
-            <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date de début est requise </small>
-        </div>
-
-        <div class="form-group">
-            <label for="endDate">Date fin :</label>
-            <p-calendar formControlName="endDate" id="endDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd" [showTime]="true"></p-calendar>
-            <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date fin est requise</small>
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+            <li>
+                <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+                    <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+                    Espace Rh
+                </a>
+            </li>
+            <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+            <li>
+                <a [routerLink]="['/employee/conges']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Autorisations</span></a>
+            </li>
+            <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+            <li>
+                &nbsp;<a [routerLink]="['/autorisations/demande']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">demande</span></a>
+            </li>
+        </ul> 
+        <div class="form-group row">
+            <div class="col-md-6">
+                <label for="startDate"class="input-label"><i class="fas fa-calendar-alt"></i>Date de début :</label>
+                <p-calendar formControlName="startDate" id="startDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd" [showTime]="true"></p-calendar>
+                <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date de début est requise</small>
+            </div>
+            <div class="col-md-6">
+                <label for="endDate"class="input-label"><i class="fas fa-calendar-alt"></i>Date fin :</label>
+                <p-calendar formControlName="endDate" id="endDate" class="form-control" [showIcon]="true" dateFormat="yy-mm-dd" [showTime]="true"></p-calendar>
+                <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date fin est requise</small>
+            </div>
         </div>
 
         <div class="text-center">
-            <button type="button" pButton class="btn btn-primary mt-3" (click)="submitAutorisationRequest()" label="Envoyer"></button>
+            <button type="button" pButton class="btn btn-primary mt-3 " (click)="submitAutorisationRequest()" label="Envoyer"></button>
         </div>
     </form>
 </div>
 
 <div class="messages-container">
     <div class="">
-        <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+        <p-messages [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
     </div>
 </div>

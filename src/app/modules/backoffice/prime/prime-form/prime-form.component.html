@@ -1,11 +1,32 @@
 <div class="container mt-5">
     <form [formGroup]="form" class="form">
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+            <li>
+              <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+                  <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+                  Espace Rh
+              </a>
+          </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                  <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+              </li>
+              <li>
+                 <a [routerLink]="['/prime/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Primes</span></a>
+              </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+              <li>
+                     &nbsp;<a [routerLink]="['/prime/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+             </li>
+          </ul>
         <div class="row">
 
     
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="year">Année :</label>
+                    <label for="year"class="input-label">
+                        <i class="fa fa-calendar"></i>Année :</label>
                     <p-dropdown [options]="anneeOptions" formControlName="year" id="year" optionLabel="libele" optionValue="id" placeholder="Selectionner une année"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('anneeId')?.touched && form.get('anneeId')?.hasError('required')">L'année est requise</small>
                   </div>
@@ -14,7 +35,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                  <label for="month">Mois :</label>
+                  <label for="month"class="input-label">
+                    <i class="fa fa-calendar-alt"></i>Mois :</label>
                   <p-dropdown formControlName="month" id="month" [options]="months" placeholder="Sélectionner un mois"></p-dropdown>
                   <small class="p-error" *ngIf="form.get('month')?.touched && form.get('month')?.hasError('required')">Le mois est requis</small>
                 </div>
@@ -23,7 +45,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="montant">Montant :</label>
+                    <label for="montant"class="input-label">
+                        <i class="fa fa-money-bill"></i> Montant :</label>
                     <input type="number" pInputText formControlName="montant" id="montant" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('montant')?.touched && form.get('montant')?.hasError('required')">Le montant est requis</small>
                 </div>
@@ -31,7 +54,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="motif">Raison :</label>
+                    <label for="motif"class="input-label">
+                        <i class="fa fa-pencil-alt"></i>Raison :</label>
                     <input type="text" pInputText formControlName="motif" id="motif" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('motif')?.touched && form.get('motif')?.hasError('required')">La raison est requise</small>
                 </div>
@@ -40,7 +64,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="contactId">Employé :</label>
+                    <label for="contactId" class="input-label">
+                        <i class="fa fa-user"></i>Employé :</label>
                     <p-multiSelect [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-multiSelect>
                     <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
                 </div>
@@ -48,21 +73,24 @@
             
             <div class="col-md-6">
                 <div class="form-group">
-                  <label for="category">Catégorie :</label>
+                  <label for="category"class="input-label">
+                    <i class="fa fa-list"></i>Catégorie :</label>
                   <p-dropdown [options]="categoryOptions" formControlName="category" [showClear]="true" placeholder="Sélectionner une Catégorie"class="form-control"></p-dropdown>
                 </div>
               </div>
               
               <div class="col-md-6">
                 <div class="form-group">
-                    <label for="groupe">Groupe :</label>
+                    <label for="groupe" class="input-label">
+                        <i class="fa fa-users"></i>Groupe :</label>
                     <p-dropdown [options]="groupeOptions" formControlName="groupe" id="groupe" [showClear]="true" placeholder="Selectionner un groupe" class="form-control"></p-dropdown>
                 </div>
             </div>
             
             <div class="col-md-6">
                 <div class="form-group">
-                  <label for="grade">Grade :</label>
+                  <label for="grade"class="input-label">
+                    <i class="fa fa-chart-line"></i>Grade :</label>
                   <p-dropdown [options]="gradeOptions" formControlName="grade" id="grade" [showClear]="true" placeholder="Sélectionner une grade " class="form-control"></p-dropdown>
                 </div>
               </div>
@@ -70,7 +98,8 @@
               
               <div class="col-md-6">
                 <div class="form-group">
-                    <label for="typePrimeId">Type primes:</label>
+                    <label for="typePrimeId"class="input-label">
+                        <i class="fa fa-gift"></i>Type primes:</label>
                     <p-dropdown [options]="typePrimes" formControlName="typePrimeId" [showClear]="true" placeholder="Select a type prime"></p-dropdown>
                 </div>
             </div>

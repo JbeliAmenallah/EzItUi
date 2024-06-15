@@ -1,12 +1,32 @@
 <form [formGroup]="form" class="form">
+  <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+    <li>
+      <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+          <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+          Espace Rh
+      </a>
+  </li>
+      <li class="px-2" style="font-size: 1.5em;">
+          <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+      </li>
+      <li>
+         <a [routerLink]="['/annee/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Annee</span></a>
+      </li>
+      <li class="px-2" style="font-size: 1.5em;">
+        <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+    </li>
+      <li>
+             &nbsp;<a [routerLink]="['/annee/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+     </li>
+  </ul>
   <div class="form-group">
-    <label for="dateDebutExercice">Date Début Exercice:</label>
+    <label for="dateDebutExercice"class="input-label" style="font-weight: bold;"><i class="fas fa-calendar-alt"></i>Date Début Exercice:</label>
     <p-calendar formControlName="dateDebutExercice" id="dateDebutExercice" class="form-control" dateFormat="dd/mm/yy"></p-calendar>
     <small class="p-error" *ngIf="form.get('dateDebutExercice')?.touched && form.get('dateDebutExercice')?.hasError('required')">Date Début Exercice est requise</small>
   </div>
 
   <div class="form-group">
-    <label for="libele">Libellé:</label>
+    <label for="libele"class="input-label" style="font-weight: bold;"><i class="fas fa-user-alt"></i>Libellé:</label>
     <input type="text" formControlName="libele" id="libele" class="form-control"/>
     <small class="p-error" *ngIf="form.get('libele')?.touched && form.get('libele')?.hasError('required')">Libellé est requis</small>
   </div>

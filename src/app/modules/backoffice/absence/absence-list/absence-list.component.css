@@ -1,3 +1,12 @@
 :host ::ng-deep .p-button {
   margin-bottom: 1%;
 }
+.table-container {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.table-container p-table {
+  padding: 20px;
+}

@@ -1,9 +1,30 @@
 <div class="container mt-5">
   <form [formGroup]="form" class="form">
+    <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+        <li>
+          <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+              <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+              Espace Rh
+          </a>
+      </li>
+          <li class="px-2" style="font-size: 1.5em;">
+              <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+          </li>
+          <li>
+             <a [routerLink]="['/absence/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Absences</span></a>
+          </li>
+          <li class="px-2" style="font-size: 1.5em;">
+            <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+        </li>
+          <li>
+                 &nbsp;<a [routerLink]="['/absences/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+         </li>
+      </ul>
       <div class="row">
+        
           <div class="col-md-6">
               <div class="form-group">
-                  <label for="contactId">Employé:</label>
+                  <label for="contactId"class="input-label"> <i class="fa-solid fa-users"></i>Employé:</label>
                   <p-dropdown [options]="employeeOptions" formControlName="contactId" [showClear]="true" placeholder="Selectionner un employé"></p-dropdown>
                   <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">L'employé est requis</small>
               </div>
@@ -11,14 +32,15 @@
           
           <div class="col-md-6">
             <div class="form-group">
-                <label for="reason">Raison:</label>
+                <label for="reason" class="input-label"> <i class="fa-solid fa-align-justify"></i>Raison:</label>
                 <input type="text" pInputText formControlName="reason" id="reason" class="form-control"/>
                 <small class="p-error" *ngIf="form.get('reason')?.touched && form.get('reason')?.hasError('required')">La raison est requise</small>
             </div>
         </div>
           <div class="col-md-6">
             <div class="form-group">
-                <label for="dateDebutAbsence">Date de début de l’absence :</label>
+                <label for="dateDebutAbsence"class="input-label">
+                    <i class="fas fa-calendar-alt"></i>Date de début de l’absence :</label>
                 <p-calendar formControlName="dateDebutAbsence" id="dateDebutAbsence" [showIcon]="true"  [showTime]="true " dateFormat="dd/mm/yy" class="form-control"></p-calendar>
                 <small class="p-error" *ngIf="form.get('dateDebutAbsence')?.touched && form.get('dateDebutAbsence')?.hasError('required')">La date de début de l’absence est requise</small>
             </div>
@@ -26,7 +48,8 @@
         
         <div class="col-md-6">
             <div class="form-group">
-                <label for="dateFinAbsence">Date de fin de l’absence :</label>
+                <label for="dateFinAbsence"class="input-label">
+                    <i class="fas fa-calendar-alt"></i>Date de fin de l’absence :</label>
                 <p-calendar formControlName="dateFinAbsence" id="dateFinAbsence" [showIcon]="true" [showTime]="true " dateFormat="dd/mm/yy" class="form-control"></p-calendar>
                 <small class="p-error" *ngIf="form.get('dateFinAbsence')?.touched && form.get('dateFinAbsence')?.hasError('required')">La date de fin d’absence est requise</small>
             </div>
@@ -35,7 +58,8 @@
 
           <div class="col-md-6">
             <div class="form-group">
-                <label for="justified">Justifiée :</label>
+                <label for="justified"class="input-label">
+                    <i class="fa-solid fa-clipboard-check"></i>Justifiée :</label>
                 <p-dropdown [options]="justifiedOptions" formControlName="justified" [showClear]="true" placeholder="Select Justified"></p-dropdown>
                 <small class="p-error" *ngIf="form.get('justified')?.touched && form.get('justified')?.hasError('required')">La justification est requise</small>
             </div>

@@ -15,6 +15,15 @@
   margin: 0;
 }
 
+.table-container {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.table-container p-table {
+  padding: 20px;
+}
 .header-actions {
   display: flex;
   align-items: center;

@@ -16,6 +16,7 @@ export class CongeListComponent implements OnInit {
   loading: boolean = false;
   selectedConge: Conge;
   displayDialog: boolean = false;
+  currentYear=new Date().getFullYear();
   stateOptions: any[] = [
     { label: 'Accepté', value: 'accepté' },
     { label: 'En attente', value: 'enattente' },

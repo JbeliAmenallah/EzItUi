@@ -1,8 +1,10 @@
 <div class='dashboard dark:bg-slate-700'>
     <div class="dashboard-nav ">
-        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"> <img
-                    src="../assets/logo-createch-light.png" alt="" width="150px"></a></header>
-        <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"> <span class="material-symbols-outlined">
+        <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo">         <video width="100" height="100" autoplay loop muted>
+            <source src="../assets/videologo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video></a></header>
+        <nav class="dashboard-nav-list"><a [routerLink]="['/employee/details']" class="dashboard-nav-item"> <span class="material-symbols-outlined">
                     home
                 </span>
                 <span class="menu-close">Home</span> </a>
@@ -13,108 +15,291 @@
                 <span class="menu-close">Boite
                     de reception</span>
             </a> -->
-            <div class='dashboard-nav-dropdown'>
-                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
-                        fact_check
-                    </span>
-                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Autorisations</span>
-                </div>
-                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">Mes
-                        Autorisations</a><a href="#" class="dashboard-nav-dropdown-item">Demande Autorisation</a>
-                </div>
-            </div>
-            <div class='dashboard-nav-dropdown'>
-                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
-                        event_busy
-                    </span>
-                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Absences</span>
-                </div>
-                <div class='dashboard-nav-dropdown-menu'><a [routerLink]="['/absence/session']"
-                        class="dashboard-nav-dropdown-item">Mes
-                        Absences</a><a class="dashboard-nav-dropdown-item">Demande Absence</a>
-                </div>
-            </div>
-            <div class='dashboard-nav-dropdown'>
-                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle" ><span class="material-symbols-outlined">
-                        event_available
-                    </span>
-                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Conges</span>
-                </div>
-                <div class='dashboard-nav-dropdown-menu' ><a [routerLink]="['/employee/conges']"
-                        class="dashboard-nav-dropdown-item">Mes
-                        Conges</a><a [routerLink]="['/conges/demande']" class="dashboard-nav-dropdown-item">Demande
-                        Conges</a>
-                </div>
-            </div>
-            <div class='dashboard-nav-dropdown' >
-                <div class="dashboard-nav-item dashboard-nav-dropdown-toggle"><span class="material-symbols-outlined">
-                        event_available
-                    </span>
-                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Fiche De Paie</span>
-                </div>
-                <div class='dashboard-nav-dropdown-menu'>
-                    <a  [routerLink]="['/salary/user-session']"
-                        class="dashboard-nav-dropdown-item">Mes
-                        Fiches De Paie</a>
-                </div>
-            </div>
-            <div class='dashboard-nav-dropdown'><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
-                    *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">
-                        group
-                    </span>
-                    <span class="menu-close">Users</span>
-                </a>
-                <div class='dashboard-nav-dropdown-menu'>
-                    <a [routerLink]="['/employee/add']" class="dashboard-nav-dropdown-item"> <span
-                            class="material-symbols-outlined">
-                            add_circle
-                        </span>Ajouter user</a>
-                    <a [routerLink]="['/employee/list']" class="dashboard-nav-dropdown-item"><span
-                            class="material-symbols-outlined">
-                            list
-                        </span>liste users</a>
-                </div>
-            </div>
+            <div >
+                
+        </div>
 
-             <div class='dashboard-nav-dropdown' ><a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
-                    ><span class="material-symbols-outlined" >
-                        fact_check
-                    </span>
-                    <span class="menu-close" *ngIf="authService.hasRoleIn(['USER'])">Project</span> </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#" class="dashboard-nav-dropdown-item">All</a><a
-                        href="#" class="dashboard-nav-dropdown-item" >Recent</a><a href="#"
-                        class="dashboard-nav-dropdown-item"> Projections</a>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">apartment</span>
+                        <span class="menu-close">Entreprise</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/entreprise/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter Entreprise
+                        </a>
+                        <a [routerLink]="['/entreprise/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Entreprises
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">work_history</span>
+                        <span class="menu-close">Année</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/annee/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter année
+                        </a>
+                        <a [routerLink]="['/annee/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Années
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">calendar_add_on</span>
+                        <span class="menu-close">Jours Feriés</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/publicholiday/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter Jour Ferié
+                        </a>
+                        <a [routerLink]="['/publicholiday/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Jours Feriés
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">calendar_add_on</span>
+                        <span class="menu-close">Loi Financiere</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/financeconfiguration/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter Config
+                        </a>
+                        <a [routerLink]="['/financeconfiguration/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Configurations
+                        </a>
+                    </div>
                 </div>
             </div> 
-             <a href="#" class="dashboard-nav-item" *ngIf="authService.hasRoleIn(['USER'])"><span
-                    class="material-symbols-outlined">
-                    settings
-                </span> <span class="menu-close">Settings </span></a>
-            <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
-                    timer
-                </span><span class="menu-close">Chronomètre</span> </a> 
-            <a href="#" class="dashboard-nav-item"><span class="material-symbols-outlined">
-                    person
-                </span> <span class="menu-close">Profile</span> </a>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">group</span>
+                        <span class="menu-close">Employés</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/employee/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter Employé
+                        </a>
+                        <a [routerLink]="['/employee/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Employés
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined"> family_restroom</span>
+                        <span class="menu-close">Enfants</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/enfant/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter Enfant
+                        </a>
+                        <a [routerLink]="['/enfant/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Enfant
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">redeem</span>
+                        <span class="menu-close">Primes</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/prime/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter Primes
+                        </a>
+                        <a [routerLink]="['/prime/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Primes
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">featured_seasonal_and_gifts</span>
+                        <span class="menu-close">Type Primes</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/typeprime/add']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">add_circle</span> Ajouter des types Primes
+                        </a>
+                        <a [routerLink]="['/typeprime/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Types Primes
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">free_cancellation</span>
+                        <span class="menu-close">Absences</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                       
+                            <a  [routerLink]="['/absence/session']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['USER'])"><span class="material-symbols-outlined">remove_road</span>Mes Absences</a>
+                        
+                            <a  [routerLink]="['/absence/add']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">add_circle</span>Ajouter Absence</a>
+                            <a  [routerLink]="['/absence/list']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">list</span>Liste Absences</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">free_cancellation</span>
+                        <span class="menu-close">Conges</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                       
+                            <a  [routerLink]="['/employee/conges']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['USER'])"><span class="material-symbols-outlined">remove_road</span>Mes Conges</a>
+                        
+                            <a  [routerLink]="['/conges/add']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">add_circle</span>Ajouter Conge</a>
+                            <a  [routerLink]="['/conges/list']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">list</span>Liste Absences</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">free_cancellation</span>
+                        <span class="menu-close">Autorisations</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                       
+                            <a  [routerLink]="['/autorisations/demande']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['USER'])"><span class="material-symbols-outlined">add_circle</span>Demande</a>
+                                <a  [routerLink]="['/absence/session']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['USER'])"><span class="material-symbols-outlined">remove_road</span>Mes Autorizations</a>
+                            <a  [routerLink]="['/autorisations/add']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">add_circle</span>Ajouter Autorization</a>
+                            <a  [routerLink]="['/autorisations/list']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">list</span>Liste Autorization</a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                        <span class="menu-close">Groupe</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/groupe/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste groupes
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">arrow_and_edge</span>
+                        <span class="menu-close">Grade</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/grades/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste grades
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="authService.hasRoleIn(['ADMIN'])">
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">category</span>
+                        <span class="menu-close">Categorie</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                        <a [routerLink]="['/category/list']" class="dashboard-nav-dropdown-item">
+                            <span class="material-symbols-outlined">list</span> Liste Categories
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class='dashboard-nav-dropdown'>
+                    <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="material-symbols-outlined">account_balance</span>
+                        <span class="menu-close">Fiche de paie</span>
+                    </a>
+                    <div class='dashboard-nav-dropdown-menu'>
+                       
+                            <a  [routerLink]="['/salary/user-session']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['USER'])"><span class="material-symbols-outlined">picture_as_pdf</span>Mes Fiches de paie</a>
+                            <a  [routerLink]="['/salary/salary']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">calculate</span>Calculer Salaire</a>
+                            <a  [routerLink]="['/salary/list']"
+                                class="dashboard-nav-dropdown-item" *ngIf="authService.hasRoleIn(['ADMIN'])"><span class="material-symbols-outlined">list</span>Liste Fiches de paie</a>
+                    </div>
+                </div>
+            </div>
             <div class="nav-item-divider"></div>
-            <div class="titre-menu ml-4 mb-3">Spaces</div>
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-design">D</span><span>Design</span> </a>
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-dev">V</span><span>développement</span> </a>
             <a [routerLink]="['employee/details']" class="dashboard-nav-item"> <span
                     class="logo-space-RH">H</span><span>RH</span> </a> <!-- Navigation to Employee Details -->
             <a href="#" class="dashboard-nav-item"> <span class="logo-space-finance">F</span><span>finance</span> </a>
+            <a href="#" class="dashboard-nav-item logout" ><span class="material-symbols-outlined">
+                person
+            </span> <span class="menu-close"></span> </a>
             <a class="dashboard-nav-item logout" (click)="logout()"><img src="../assets/log-out.svg"
-                    alt=""><span>Logout</span>
+                    alt="">
             </a>
+ 
         </nav>
     </div>
     <div class='dashboard-app'>
         <header class='dashboard-toolbar'><a class="menu-toggle"><i class="fas fa-bars"></i></a>
 
             <div class="icons-left">
-                <!-- <div class="icon mr-2"><img src="../assets/bell.svg" alt=""></div>
+     
+                <div class="icon mr-2" (click)="toggleNotificationList()">
+                    <i class="pi pi-bell text-2xl" pBadge [value]="notificationBadge" severity="danger"></i>
+                </div>
+                <div class="notification-list" *ngIf="showNotificationList">
+                    <ul>
+                        <li *ngFor="let notification of notificationList" >{{ notification }}</li>
+                    </ul>
+                </div>
+                
+                <div class="icon mr-2" style="margin-left: 10px;" (click)="toggleCalendarPopup()">
+                    <i class="pi pi-calendar" pBadge value={{calendarBadge}} style="font-size: 1.5rem" severity="info"></i>
+                  </div>
+                
+             
+                
+                  <p-dialog header="Public Holidays Calendar" [(visible)]="showCalendarPopup" [style]="{ 'width': '50vw', 'max-width': '800px', 'height': '85vh' }" [modal]="true" [resizable]="true" [closable]="true">
+                    <app-public-holiday-calendar></app-public-holiday-calendar>
+                  </p-dialog>
+                  
 
-                <div class="icon mr-2"><img src="../assets/mail.svg" alt=""></div> -->
+                <!--<div class="icon mr-2"><img src="../assets/mail.svg" alt=""></div> -->
 
                 <!-- <div class="icon mr-2 "><Button (click)="darkMode.set(!darkMode())"
                         style="border: 0px;background: none;cursor: pointer;"><span *ngIf="!darkMode()"
@@ -131,7 +316,7 @@
                 <div class="profile-dropdown"
                     [attr.data-tooltip]="authService.isUserOnline ? authService.getAuthenticatedUsername() + ' Online' : ''">
                     <div class="icon mr-2">
-                        <img [src]="'https://avatar.iran.liara.run/username?username='+username"
+                        <img [src]="'https://avatar.iran.liara.run/username?username='+profile.firstName"
                             alt="Session's Username" width="30px">
                         <div class="status-dot"
                             [ngClass]="{ 'online': authService.isUserOnline, 'offline': !authService.isUserOnline }"
@@ -142,8 +327,8 @@
                     <div class="dropdown-content">
                         <!-- Your profile dropdown items go here -->
                         <a [routerLink]='["/employee/profile"]'><i class="fa fa-user"></i> Profile</a>
-                        <a href="#"><i class="fa fa-cog"></i> Settings</a>
                         <a (click)="logout()"><i class="fa fa-sign-out" (click)="logout()"></i> Logout</a>
+
                     </div>
                 </div>
             </div>
@@ -151,8 +336,12 @@
         </header>
         <div class='dashboard-content dark:bg-slate-700'>
             <div class='container '>
-                <router-outlet></router-outlet>
+                <router-outlet> </router-outlet>
             </div>
+            
+            <a [routerLink]="['/Chat']" class="float">
+                <i class="fa-solid fa-comments my-float"></i>
+            </a>
         </div>
     </div>
 </div>

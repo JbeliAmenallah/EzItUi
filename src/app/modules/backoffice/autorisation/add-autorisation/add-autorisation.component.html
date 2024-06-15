@@ -1,11 +1,30 @@
 <div class="container mt-5">
-  <h1 class="gradient-text">Ajouter une autorisation </h1>
-
   <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+      <li>
+        <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+            <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+            Espace Rh
+        </a>
+    </li>
+        <li class="px-2" style="font-size: 1.5em;">
+            <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+        </li>
+        <li>
+           <a [routerLink]="['/autorisations/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Autorisations</span></a>
+        </li>
+        <li class="px-2" style="font-size: 1.5em;">
+          <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+      </li>
+        <li>
+               &nbsp;<a [routerLink]="['/autorisations/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+       </li>
+    </ul>
   <div class="row">
   <div class="col-md-6">
   <div class="form-group">
-  <label for="startDate">Date et heure de début :</label>
+  <label for="startDate"class="input-label">
+    <i class="fas fa-calendar-alt"></i>Date et heure de début :</label>
   <p-calendar formControlName="startDate" id="startDate" class="form-control" [showTime]="true" [showIcon]="true"></p-calendar>
   <small class="p-error" *ngIf="form.get('startDate')?.touched && form.get('startDate')?.hasError('required')">Date et heure de début est requise </small>
   </div>
@@ -13,7 +32,8 @@
   
   <div class="col-md-6">
   <div class="form-group">
-  <label for="endDate">Date et heure de fin :</label>
+  <label for="endDate"class="input-label">
+    <i class="fas fa-calendar-alt"></i>Date et heure de fin :</label>
   <p-calendar formControlName="endDate" id="endDate" class="form-control" [showTime]="true" [showIcon]="true"></p-calendar>
   <small class="p-error" *ngIf="form.get('endDate')?.touched && form.get('endDate')?.hasError('required')">Date et heure de fin est requise</small>
   </div>
@@ -21,7 +41,7 @@
   
   <div class="col-md-6">
   <div class="form-group">
-  <label for="state">État:</label>
+  <label for="state" class="input-label"><i class="fa-solid fa-bars"></i>État:</label>
   <p-dropdown formControlName="state" id="state" [options]="stateOptions" optionLabel="label" placeholder="Selectionner un état " class="form-control"></p-dropdown>
   <small class="p-error" *ngIf="form.get('state')?.touched && form.get('state')?.hasError('required')">État est requis</small>
   </div>
@@ -30,7 +50,7 @@
   
   <div class="col-md-6">
   <div class="form-group">
-  <label for="employee">Employé:</label>
+  <label for="employee" class="input-label"> <i class="fa-solid fa-users"></i>Employé:</label>
   <p-dropdown formControlName="contactId" [options]="employeeOptions" optionLabel="label" placeholder="Selectionner un employé" [showClear]="true" appendTo="body"></p-dropdown>
   <small class="p-error" *ngIf="form.get('contactId')?.touched && form.get('contactId')?.hasError('required')">Employé est requis</small>
   </div>

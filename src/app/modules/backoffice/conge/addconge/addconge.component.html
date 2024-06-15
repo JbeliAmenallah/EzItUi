@@ -1,13 +1,11 @@
-<div class="container">
-    <h1 class="gradient-text">Ajouter un congé</h1>
-</div>
+
 
 <app-conge-form #form (onSubmit)="save($event)"></app-conge-form>
-
+<div>
 <div class="buttons">
-    <p-button label="Enregistrer" icon="pi pi-check" styleClass="custom-save-button" class="btn-save"  (click)="form.submitForm()"></p-button>
+    <p-button label="Enregistrer" icon="pi pi-check" styleClass="custom-save-button" class="btn-save hover-scale boxed-button"  (click)="form.submitForm()"></p-button>
 </div>
-
+</div>
 <div>
     
     <p-toast></p-toast>

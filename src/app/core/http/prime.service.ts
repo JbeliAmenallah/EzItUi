@@ -49,7 +49,7 @@ export class PrimeService {  private apiUrl = ' http://localhost:8080/primes';
   }
     // Add the new method to fetch primes by contactId
     getPrimesByContactId(contactId: number): Observable<Prime[]> {
-      const url = `${this.apiUrl}/contact/${contactId}/primes`; // Adjust the API endpoint as per your backend route
+      const url = `${this.apiUrl}/by-contact/${contactId}`; // Adjust the API endpoint as per your backend route
       return this.http.get<Prime[]>(url);
     }
 }

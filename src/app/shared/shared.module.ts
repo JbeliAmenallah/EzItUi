@@ -32,6 +32,8 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AccordionModule } from 'primeng/accordion';
 import { TagModule } from 'primeng/tag';
+import { Badge, BadgeModule } from 'primeng/badge';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { CarouselModule } from 'primeng/carousel';
 
 
@@ -40,7 +42,8 @@ import { CarouselModule } from 'primeng/carousel';
   declarations: [],
   imports: [],
   exports: [
-
+    FullCalendarModule,
+    BadgeModule,
     FloatLabelModule,
     CheckboxModule,
     RippleModule,

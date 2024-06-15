@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Employee } from '../../../shared/models/employee';
 import { EmployeeService } from '../../../core/http/employee.service';
+import { KeycloakProfile } from 'keycloak-js';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class EmployeeProfileComponent implements OnInit {
 
     employeeForm: FormGroup;
     user: Employee;
+    public profile: KeycloakProfile | undefined;
 
     constructor(
         private fb: FormBuilder,
@@ -22,6 +24,7 @@ export class EmployeeProfileComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.profile=this.authService.profile;
         // Initialize the form and fetch employee data
         this.initializeForm();
         const username = this.authService.getAuthenticatedUsername();

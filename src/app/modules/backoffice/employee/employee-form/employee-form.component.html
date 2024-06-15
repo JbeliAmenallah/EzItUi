@@ -11,7 +11,7 @@
                   <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
               </li>
               <li>
-                 <a [routerLink]="['/employee/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Employee</span></a>
+                 <a [routerLink]="['/employee/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Employé</span></a>
               </li>
               <li class="px-2" style="font-size: 1.5em;">
                 <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
@@ -23,140 +23,164 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Nom et prénom :</label>
-                    <input type="text" pInputText formControlName="name" id="name" class="form-control" placeholder="Name must contain only letters and spaces"/>
+                    <label for="name" class="input-label">
+                        <i class="fas fa-user"></i> Nom et prénom :
+                    </label>
+                    <input type="text" pInputText formControlName="name" id="name" class="form-control" placeholder="Entrez le nom et prénom"/>
                     <small class="p-error" *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">Le nom est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="username">Nom d’utilisateur:</label>
-                    <input type="text" pInputText formControlName="username" id="username" class="form-control" placeholder="Username must contain only letters, numbers, and underscores"/>
+                    <label for="username" class="input-label">
+                        <i class="fas fa-user"></i> Nom d’utilisateur:
+                    </label>
+                    <input type="text" pInputText formControlName="username" id="username" class="form-control" placeholder="Entrez le nom d’utilisateur"/>
                     <small class="p-error" *ngIf="form.get('username')?.touched && form.get('username')?.hasError('required')">Le nom d’utilisateur est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Email :</label>
-                    <input type="email" pInputText formControlName="email" id="email" class="form-control"/>
+                    <label for="email" class="input-label">
+                        <i class="fas fa-envelope"></i> Email :
+                    </label>
+                    <input type="email" pInputText formControlName="email" id="email" class="form-control" placeholder="Entrez l’adresse e-mail"/>
                     <small class="p-error" *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')">L’adresse e-mail est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="location">Emplacement:</label>
-                    <input type="text" pInputText formControlName="location" id="location" class="form-control"/>
+                    <label for="location" class="input-label">
+                        <i class="fas fa-map-marker-alt"></i> Emplacement:
+                    </label>
+                    <input type="text" pInputText formControlName="location" id="location" class="form-control" placeholder="Entrez l’emplacement"/>
                     <small class="p-error" *ngIf="form.get('location')?.touched && form.get('location')?.hasError('required')">L’emplacement est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="phone">Numéro de téléphone:</label>
-                    <input type="tel" pInputText formControlName="phone" id="phone" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">Le Numéro de téléphone est obligatoire</small>
+                    <label for="phone" class="input-label">
+                        <i class="fas fa-phone"></i> Numéro de téléphone:
+                    </label>
+                    <input type="tel" pInputText formControlName="phone" id="phone" class="form-control" placeholder="Entrez le numéro de téléphone"/>
+                    <small class="p-error" *ngIf="form.get('phone')?.touched && form.get('phone')?.hasError('required')">Le numéro de téléphone est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="fax">Fax :</label>
-                    <input type="text" pInputText formControlName="fax" id="fax" class="form-control"/>
+                    <label for="fax" class="input-label">
+                        <i class="fas fa-fax"></i> Fax :
+                    </label>
+                    <input type="text" pInputText formControlName="fax" id="fax" class="form-control" placeholder="Entrez le fax"/>
                     <small class="p-error" *ngIf="form.get('fax')?.touched && form.get('fax')?.hasError('required')">Le fax est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="password">Mot de passe :</label>
-                    <input type="password" pInputText formControlName="password" id="password" class="form-control"/>
+                    <label for="password" class="input-label">
+                        <i class="fas fa-lock"></i> Mot de passe :
+                    </label>
+                    <input type="password" pInputText formControlName="password" id="password" class="form-control" placeholder="Entrez le mot de passe"/>
                     <small class="p-error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">Le mot de passe est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="roles">Roles :</label>
-                    <p-dropdown [options]="rolesOptions" formControlName="roles" [style]="{'width':'100%'}" placeholder="Select Roles"></p-dropdown>
-                    <small class="p-error" *ngIf="form.get('roles')?.touched && form.get('roles')?.hasError('required')">Le role est obligatoire</small>
+                    <label for="roles" class="input-label">
+                        <i class="fas fa-users-cog"></i> Roles :
+                    </label>
+                    <p-dropdown [options]="rolesOptions" formControlName="roles" [style]="{'width':'100%'}" placeholder="Sélectionnez un rôle"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('roles')?.touched && form.get('roles')?.hasError('required')">Le rôle est obligatoire</small>
                 </div>
             </div>
 
-      
-
-          <!-- <div class="col-md-6">
-                <div class="form-group">
-                    <label for="regime">Regime:</label>
-                    <input type="text" pInputText formControlName="regime" id="regime" class="form-control"/>
-                    <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">The regime is required</small>
-                </div>
-            </div>--> 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="entrepriseId">Entreprise :</label>
-                    <p-dropdown [options]="entrepriseOptions" formControlName="entrepriseId"[showClear]="true" placeholder="Selectionner une entreprise"optionLabel="nom" optionValue="entrepriseId" ></p-dropdown>
+                    <label for="entrepriseId" class="input-label">
+                        <i class="fas fa-building"></i> Entreprise :
+                    </label>
+                    <p-dropdown [options]="entrepriseOptions" formControlName="entrepriseId" [showClear]="true" placeholder="Sélectionnez une entreprise" optionLabel="nom" optionValue="entrepriseId"></p-dropdown>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="chefDefamille">Chef de Famille :</label>
-                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Selectionner " class="form-control" (onChange)="onChefChange($event)"></p-dropdown>
+                    <label for="chefDefamille" class="input-label">
+                        <i class="fas fa-user-tie"></i> Chef de Famille :
+                    </label>
+                    <p-dropdown formControlName="chefDefamille" id="chefDefamille" [options]="chefOptions" optionLabel="label" optionValue="value" placeholder="Sélectionnez un chef de famille" class="form-control" (onChange)="onChefChange($event)"></p-dropdown>
                 </div>
             </div>
-            
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nbEnfant">Nombre d'enfants :</label>
-                    <input type="number" pInputText formControlName="nbEnfant" id="nbEnfant" class="form-control"/>
+                    <label for="nbEnfant" class="input-label">
+                        <i class="fas fa-child"></i> Nombre d'enfants :
+                    </label>
+                    <input type="number" pInputText formControlName="nbEnfant" id="nbEnfant" class="form-control" placeholder="Entrez le nombre d'enfants"/>
                     <small class="p-error" *ngIf="form.get('nbEnfant')?.touched && form.get('nbEnfant')?.hasError('required')">Le nombre d'enfants est obligatoire</small>
                 </div>
             </div>
-            
+
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="regime">Regime :</label>
-                    <p-dropdown [options]="regimeOptions" formControlName="regime" id="regime" [showClear]="true" placeholder="Selectionner" class="form-control"></p-dropdown>
-                    <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">Regime est obligatoire</small>
+                    <label for="regime" class="input-label">
+                        <i class="fas fa-balance-scale"></i> Regime :
+                    </label>
+                    <p-dropdown [options]="regimeOptions" formControlName="regime" id="regime" [showClear]="true" placeholder="Sélectionnez un régime" class="form-control"></p-dropdown>
+                    <small class="p-error" *ngIf="form.get('regime')?.touched && form.get('regime')?.hasError('required')">Le régime est obligatoire</small>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="salaireDeBASE">Salaire de base :</label>
-                    <input type="number" pInputText formControlName="salaireDeBASE" id="salaireDeBASE" class="form-control"/>
+                    <label for="salaireDeBASE" class="input-label">
+                        <i class="fas fa-dollar-sign"></i> Salaire de base :
+                    </label>
+                    <input type="number" pInputText formControlName="salaireDeBASE" id="salaireDeBASE" class="form-control" placeholder="Entrez le salaire de base"/>
                     <small class="p-error" *ngIf="form.get('salaireDeBASE')?.touched && form.get('salaireDeBASE')?.hasError('required')">Le salaire de base est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="numCompte">Numéro de compte: </label>
-                    <input type="text" pInputText formControlName="numCompte" id="numCompte" class="form-control"/>
+                    <label for="numCompte" class="input-label">
+                        <i class="fas fa-university"></i> Numéro de compte:
+                    </label>
+                    <input type="text" pInputText formControlName="numCompte" id="numCompte" class="form-control" placeholder="Entrez le numéro de compte"/>
                     <small class="p-error" *ngIf="form.get('numCompte')?.touched && form.get('numCompte')?.hasError('required')">Le numéro de compte est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="modeDePaiement">Mode de paiement:</label>
+                    <label for="modeDePaiement" class="input-label">
+                        <i class="fas fa-credit-card"></i> Mode de paiement:
+                    </label>
                     <input type="text" pInputText formControlName="modeDePaiement" id="modeDePaiement" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('modeDePaiement')?.touched && form.get('modeDePaiement')?.hasError('required')">Le mode de paiement est obligatoire</small>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="dateRecrutemnt">Date de recrutement :</label>
+                <div class="form-group">                   
+                     <label for="dateRecrutemnt" class="input-label">
+                    <i class="fas fa-calendar-alt"></i> Date de recrutement :
+                 </label>
                     <p-calendar formControlName="dateRecrutemnt" id="dateRecrutemnt" [showIcon]="true" [inputStyleClass]="'form-control'"></p-calendar>
                     <small class="p-error" *ngIf="form.get('dateRecrutemnt')?.touched && form.get('dateRecrutemnt')?.hasError('required')">La date de recrutement est obligatoire</small>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                  <label for="category">Catégorie :</label>
+                    <label for="category" class="input-label">
+                        <i class="fas fa-list"></i> Catégorie :
+                    </label>
                   <p-dropdown [options]="categoryOptions" formControlName="category" [showClear]="true" placeholder="Sélectionner" class="form-control"></p-dropdown>
                   <small class="p-error" *ngIf="form.get('category')?.touched && form.get('category')?.hasError('required')">Catégorie est obligatoire</small>
                 </div>
@@ -164,7 +188,9 @@
               
               <div class="col-md-6">
                 <div class="form-group">
-                    <label for="groupe">Groupe :</label>
+                    <label for="groupe" class="input-label">
+                        <i class="fas fa-users"></i> Groupe :
+                    </label>
                     <p-dropdown [options]="groupeOptions" formControlName="groupe" id="groupe" [showClear]="true" placeholder="Selectionner" class="form-control"></p-dropdown>
                     <small class="p-error" *ngIf="form.get('groupe')?.touched && form.get('groupe')?.hasError('required')">Groupe est obligatoire</small>
                 </div>
@@ -172,7 +198,9 @@
             
             <div class="col-md-6">
                 <div class="form-group">
-                  <label for="grade">Grade :</label>
+                    <label for="grade" class="input-label">
+                        <i class="fas fa-star"></i> Grade :
+                    </label>
                   <p-dropdown [options]="gradeOptions" formControlName="grade" id="grade" [showClear]="true" placeholder="Sélectionner" class="form-control"></p-dropdown>
                   <small class="p-error" *ngIf="form.get('grade')?.touched && form.get('grade')?.hasError('required')">Grade est obligatoire</small>
                 </div>

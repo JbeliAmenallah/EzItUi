@@ -14,6 +14,7 @@ export class CongeFormComponent implements OnInit {
   form: FormGroup;
   employeeOptions: any[] = []; // Array to store employee options
   stateOptions: any[] = []; // Array to store state options
+  
 
   constructor(private formBuilder: FormBuilder, private absenceService: AbsenceService) {
     this.form = this.formBuilder.group({

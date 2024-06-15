@@ -1,9 +1,29 @@
 <div class="container mt-5">
     <form [formGroup]="form" class="form">
+        <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+            <li>
+              <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+                  <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+                  Espace Rh
+              </a>
+          </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                  <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+              </li>
+              <li>
+                 <a [routerLink]="['/entreprise/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Entreprise</span></a>
+              </li>
+              <li class="px-2" style="font-size: 1.5em;">
+                <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+            </li>
+              <li>
+                     &nbsp;<a [routerLink]="['/entreprise/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+             </li>
+          </ul>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nom">Nom:</label>
+                    <label for="nom"  class="input-label"><i class="fas fa-user"></i>Nom:</label>
                     <input type="text" pInputText formControlName="nom" id="nom" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('nom')?.touched && form.get('nom')?.hasError('required')">Le nom est requis</small>
                 </div>
@@ -11,7 +31,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="matricule">Matricule:</label>
+                    <label for="matricule"  class="input-label"><i class="fas fa-id-badge" ></i>Matricule:</label>
                     <input type="text" pInputText formControlName="matricule" id="matricule" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('matricule')?.touched && form.get('matricule')?.hasError('required')">Le matricule est requis</small>
                 </div>
@@ -19,7 +39,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="siegesociale">Siège sociale:</label>
+                    <label for="siegesociale"  class="input-label"><i class="fas fa-building" ></i>Siège sociale:</label>
                     <input type="text" pInputText formControlName="siegesociale" id="siegesociale" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('siegesociale')?.touched && form.get('siegesociale')?.hasError('required')">Le siège sociale est requis</small>
                 </div>
@@ -27,7 +47,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="raisonSociale">Raison Sociale:</label>
+                    <label for="raisonSociale"  class="input-label"><i class="fas fa-briefcase" ></i>Raison Sociale:</label>
                     <input type="text" pInputText formControlName="raisonSociale" id="raisonSociale" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('raisonSociale')?.touched && form.get('raisonSociale')?.hasError('required')">La raison sociale est requise</small>
                 </div>
@@ -35,7 +55,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="adresseDeSiege">Adresse de Siège:</label>
+                    <label for="adresseDeSiege"  class="input-label"><i class="fas fa-map-marker-alt" ></i>Adresse de Siège:</label>
                     <input type="text" pInputText formControlName="adresseDeSiege" id="adresseDeSiege" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('adresseDeSiege')?.touched && form.get('adresseDeSiege')?.hasError('required')">L'adresse de siège est requise</small>
                 </div>
@@ -43,7 +63,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="matriculeFiscale">Matricule Fiscale:</label>
+                    <label for="matriculeFiscale"  class="input-label"><i class="fas fa-file-invoice-dollar" ></i>Matricule Fiscale:</label>
                     <input type="text" pInputText formControlName="matriculeFiscale" id="matriculeFiscale" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('matriculeFiscale')?.touched && form.get('matriculeFiscale')?.hasError('required')">Le matricule fiscale est requis</small>
                 </div>
@@ -51,7 +71,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="numCnss">Numéro CNSS:</label>
+                    <label for="numCnss"  class="input-label"><i class="fas fa-id-card" ></i>Numéro CNSS:</label>
                     <input type="text" pInputText formControlName="numCnss" id="numCnss" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('numCnss')?.touched && form.get('numCnss')?.hasError('required')">Le numéro CNSS est requis</small>
                 </div>
@@ -59,7 +79,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="regimeSalariale">Régime Salariale:</label>
+                    <label for="regimeSalariale"  class="input-label"><i class="fas fa-money-bill" ></i>Régime Salariale:</label>
                     <input type="text" pInputText formControlName="regimeSalariale" id="regimeSalariale" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('regimeSalariale')?.touched && form.get('regimeSalariale')?.hasError('required')">Le régime salariale est requis</small>
                 </div>
@@ -67,7 +87,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nbrJourConge">Nombre de Jours Congé Par ans:</label>
+                    <label for="nbrJourConge" class="input-label"><i class="fas fa-calendar-alt"></i>Nombre de Jours Congé Par ans:</label>
                     <input type="number" pInputText formControlName="nbrJourConge" id="nbrJourConge" class="form-control"/>
                     <small class="p-error" *ngIf="form.get('nbrJourConge')?.touched && form.get('nbrJourConge')?.hasError('required')">Le nombre de jours de congé est requis</small>
                 </div>

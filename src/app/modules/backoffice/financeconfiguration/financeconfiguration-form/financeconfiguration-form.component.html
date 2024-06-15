@@ -1,8 +1,27 @@
 <div class="container mt-5">
   <div class="section">
     <form [formGroup]="formFinance" class="form">
+      <ul class="list-none p-0 m-0 flex align-items-center font-medium mb-7">
+        <li>
+          <a class="text-500 no-underline line-height-3 cursor-pointer" [routerLink]="['/']" style="font-size: 1.3em;">
+              <i class="fa-solid fa-house" style="font-size: 1.3em;padding-right: 3px;"></i>
+              Espace Rh
+          </a>
+      </li>
+          <li class="px-2" style="font-size: 1.5em;">
+              <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+          </li>
+          <li>
+             <a [routerLink]="['/financeconfiguration/list']"><span class="text-500 line-height-3 " style="font-size: 1.3em;">Finance Configuration</span></a>
+          </li>
+          <li class="px-2" style="font-size: 1.5em;">
+            <i class="pi pi-angle-right text-500 line-height-3" style="font-size: 1.1em;"></i>
+        </li>
+          <li>
+                 &nbsp;<a [routerLink]="['/publicholiday/add']"><span class="text-blue-400 line-height-3 " style="font-size: 1.3em;">+ Ajouter </span></a>
+         </li>
+      </ul>
       <div class="row">
-
         <div class="col-md-6">
           <div class="form-group">
             <label for="anneeId">Année :</label>
