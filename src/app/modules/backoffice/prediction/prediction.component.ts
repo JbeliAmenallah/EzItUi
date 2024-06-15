@@ -5,10 +5,10 @@ import { AuthService } from '../../../core/auth/auth.service';
 import { AbsenceService } from '../../../core/http/absence.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { KpiRhService } from '../../../core/http/Kpi_RH';
-import { KpiRh } from '../../../shared/models/KpiRH';
 import { cl } from '@fullcalendar/core/internal-common';
 import { PredictionService } from '../../../core/http/prediction.service';
 import { Prediction } from '../../../shared/models/prediction';
+import { KpiRh } from '../../../shared/models/KpiRh';
 
 
 @Component({

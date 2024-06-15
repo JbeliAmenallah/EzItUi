@@ -1,1 +1,28 @@
-<p>policy-list works!</p>
+<div>
+    <h2>Policy List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Policy ID</th>
+          <th>Entreprise ID</th>
+          <th>Conge Policy Description</th>
+          <th>Autorisations Policy Description</th>
+          <th>Absense Policy Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of policies">
+          <td>{{ policy.policyId }}</td>
+          <td>{{ policy.entrepriseId }}</td>
+          <td>{{ policy.congePolicyDescription }}</td>
+          <td>{{ policy.autorisationsPolicyDescription }}</td>
+          <td>{{ policy.absensePolicyDescription }}</td>
+          <td>
+            <button (click)="deletePolicy(policy.policyId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PoliciesRoutingModule } from './policies-routing.module';
 import { AddPolicyComponent } from './add-policy/add-policy.component';
 import { PolicyListComponent } from './policy-list/policy-list.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -14,6 +15,10 @@ import { PolicyListComponent } from './policy-list/policy-list.component';
   imports: [
     CommonModule,
     PoliciesRoutingModule
+  ],
+  providers:[
+    MessageService,
+    ConfirmationService
   ]
 })
 export class PoliciesModule { }
