@@ -5,16 +5,17 @@ import { PoliciesRoutingModule } from './policies-routing.module';
 import { AddPolicyComponent } from './add-policy/add-policy.component';
 import { PolicyListComponent } from './policy-list/policy-list.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
-
+import { SharedModule } from '../../../shared/shared.module';
 
 @NgModule({
   declarations: [
     AddPolicyComponent,
-    PolicyListComponent
+    PolicyListComponent,
   ],
   imports: [
     CommonModule,
-    PoliciesRoutingModule
+    PoliciesRoutingModule,
+    SharedModule
   ],
   providers:[
     MessageService,

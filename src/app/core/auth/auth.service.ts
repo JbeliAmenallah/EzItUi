@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   init() {
-    this.fetchActiveSessions('4f39511e-5de2-4cea-bcda-e92c647a5767');
+    this.fetchActiveSessions('b91eccdd-8bf6-4c4e-9f35-561abaef3742');
     this.fetchAllUsersWithRoles();
     const storedProfile = localStorage.getItem('profile');
     if (storedProfile) {

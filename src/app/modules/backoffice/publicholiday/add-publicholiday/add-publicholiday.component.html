@@ -59,15 +59,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <!-- Placeholder for future fields -->
-      </div>
-
-      <div class="col-md-6">
-        <!-- Placeholder for future fields -->
-      </div>
-    </div>
 
     <div class="p-field">
       <p-button type="submit" label="Enregistrer" class="p-button-raised p-button-success"></p-button>
@@ -75,3 +66,8 @@
 
   </form>
 </div>
+
+<div class="">
+  <p-messages [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
+</div>
+

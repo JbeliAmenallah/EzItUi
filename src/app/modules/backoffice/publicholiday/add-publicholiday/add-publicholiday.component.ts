@@ -62,14 +62,13 @@ export class AddPublicHolidayComponent {
 
       this.publicHolidayService.createPublicHoliday(newPublicHoliday).subscribe(
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été ajouté avec succès.' });
+   
           this.onSave.emit();
-          this.form.reset();
           setTimeout(() => {
-            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-              this.router.navigate(['/publicholiday/list']);
-            });
-          }, 1000); // Delay of 2 seconds before refreshing
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été ajouté avec succès.' });
+          }, 100);
+          this.router.navigate(['/publicholiday/list']);
+          // Delay of 2 seconds before refreshing
         },
         (error) => {
           console.error('Erreur lors de l’ajout d’un jour férié :', error);

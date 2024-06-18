@@ -63,13 +63,13 @@ export class PublicHolidayListComponent implements OnInit {
     });
   }
 
-  showAddDialog(): void {
-    this.displayAddDialog = true;
-  }
+  // showAddDialog(): void {
+  //   this.displayAddDialog = true;
+  // }
 
-  hideAddDialog(): void {
-    this.displayAddDialog = false;
-  }
+  // hideAddDialog(): void {
+  //   this.displayAddDialog = false;
+  // }
 
   editItem(publicHoliday: PublicHoliday): void {
     this.selectedPublicHoliday = { ...publicHoliday }; // Clone the object
@@ -81,6 +81,7 @@ export class PublicHolidayListComponent implements OnInit {
   }
 
   saveEditedPublicHoliday(updatedPublicHoliday: PublicHoliday): void {
+
 
   }  
 

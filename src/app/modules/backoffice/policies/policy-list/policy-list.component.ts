@@ -30,6 +30,7 @@ export class PolicyListComponent implements OnInit {
     this.policiesService.getPolicies().subscribe(
       (policies: Policies[]) => {
         this.policies = policies.reverse(); // Reverse the array if needed
+        console.log("tge policies ",this.policies)
         this.loading = false;
       },
       error => {

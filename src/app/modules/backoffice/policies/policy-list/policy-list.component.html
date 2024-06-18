@@ -1,28 +1,64 @@
-<div>
-    <h2>Policy List</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Policy ID</th>
-          <th>Entreprise ID</th>
-          <th>Conge Policy Description</th>
-          <th>Autorisations Policy Description</th>
-          <th>Absense Policy Description</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let policy of policies">
-          <td>{{ policy.policyId }}</td>
-          <td>{{ policy.entrepriseId }}</td>
-          <td>{{ policy.congePolicyDescription }}</td>
-          <td>{{ policy.autorisationsPolicyDescription }}</td>
-          <td>{{ policy.absensePolicyDescription }}</td>
-          <td>
-            <button (click)="deletePolicy(policy.policyId)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="table-container">
+
+  <p-table
+      #dt3
+      [value]="policies"
+      dataKey="policyId"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [loading]="loading"
+      [paginator]="true"
+      currentPageReportTemplate="Affichage de {first} à {last} des entrées {totalRecords}"
+      [globalFilterFields]="['policyId','entrepriseId', 'congePolicyDescription', 'absensePolicyDescription']"
+      [tableStyle]="{ 'min-width': '75rem' }">
   
+      <ng-template pTemplate="header">
+          <tr>
+    
+              <th>Identifiant Entreprise</th>
+              <th>Description de la Politique de Congé</th>
+              <th>Description de la Politique d'Absence</th>
+              <th>Actions</th>
+          </tr>
+          <tr>
+       
+              <th>
+                  <p-columnFilter type="text" field="entrepriseId"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="congePolicyDescription"></p-columnFilter>
+              </th>
+              <th>
+                <p-columnFilter type="text" field="absensePolicyDescription"></p-columnFilter>
+              </th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-policy>
+          <tr>
+      
+              <td>{{ policy.entrepriseId }}</td>
+              <td>{{ policy.congePolicyDescription }}</td>
+              <td>{{ policy.absensePolicyDescription }}</td>
+              <td>
+                  <i class="pi pi-trash" style="font-size: 1.9rem; color: rgb(255, 72, 0)" (click)="deletePolicy(policy.policyId)"></i>
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="5">Aucune entreprise trouvée.</td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="caption">
+          <div class="flex justify-content-end align-items-center">
+              <div class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input #searchInput pInputText type="text" (input)="dt3.filterGlobal(searchInput.value, 'contains')" placeholder="Mot-clé de recherche" style="width: 400px;" />
+              </div>
+          </div>
+      </ng-template>
+  </p-table>
+
+</div>

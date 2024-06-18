@@ -24,7 +24,8 @@ export class UsersCarouselComponent implements OnInit {
     ];
     // Fetch data from the service
     this.authService.fetchAllUsersWithRoles();
-    const clientId = '4f39511e-5de2-4cea-bcda-e92c647a5767';
+    const clientId = 'b91eccdd-8bf6-4c4e-9f35-561abaef3742';
+    
     this.authService.fetchActiveSessions(clientId);
     // Assign the service lists to component properties for template access
     this.allRealmUsers = this.authService.AllRealmUsers;

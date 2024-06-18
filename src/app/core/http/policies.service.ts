@@ -8,7 +8,7 @@ import { Policies } from '../../shared/models/policies';
 })
 export class PoliciesService  {
 
-  private baseUrl = '/api/policies';
+  private baseUrl = 'http://localhost:8080/api/policies';
 
   constructor(private http: HttpClient) { }
 

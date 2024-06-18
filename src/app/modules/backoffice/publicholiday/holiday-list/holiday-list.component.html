@@ -102,25 +102,19 @@
       </ng-template>
     </p-table>
   
-    <!-- Edit Dialog -->
-    <p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}"(onHide)="hideEditDialog()">
-        <app-edit-publicholiday
-          [publicHoliday]="selectedPublicHoliday"
-        ></app-edit-publicholiday>
-      </p-dialog>
-    <!-- Confirm Dialog for delete -->
-    <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
-      acceptButtonStyleClass="p-button-danger p-button-text"
-      rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">
-    </p-confirmDialog>
-  
-    <!-- Add Dialog for new public holiday -->
-    <p-dialog header="Ajouter un jour férié" [(visible)]="displayAddDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}">
-        <app-add-publicholiday></app-add-publicholiday>
-      </p-dialog>
-  
-    <!-- Toast messages for notifications -->
-    <p-toast></p-toast>
-  
-  </div>
+<!-- Edit Dialog -->
+<p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}"(onHide)="hideEditDialog()">
+  <app-edit-publicholiday [publicHoliday]="selectedPublicHoliday"></app-edit-publicholiday>
+</p-dialog>
+
+<!-- Confirm Dialog for delete -->
+<p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"
+  acceptButtonStyleClass="p-button-danger p-button-text"
+  rejectButtonStyleClass="p-button-text p-button-text" acceptIcon="pi pi-check" rejectIcon="pi pi-times">
+</p-confirmDialog>
+
+<!-- Toast messages for notifications -->
+<p-toast></p-toast>
+
+</div>
   

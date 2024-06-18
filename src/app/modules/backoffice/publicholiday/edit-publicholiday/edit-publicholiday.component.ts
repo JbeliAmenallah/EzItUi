@@ -72,17 +72,16 @@ export class EditPublicHolidayComponent implements OnChanges {
       };
       console.log(`This is Public holiday object ${editedPublicHoliday}`)
       this.publicHolidayService.updatePublicHoliday(editedPublicHoliday.id, editedPublicHoliday).subscribe(
+        
         () => {
-          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été mis à jour avec succès.' });
           console.log(editedPublicHoliday)
           this.onSave.emit();
-          this.form.reset();
-          this.hideDialog();
+          
           setTimeout(() => {
-            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été mis à jour avec succès.' });
               this.router.navigate(['/publicholiday/list']);
-            });
-          }, 1000); // Delay of 2 seconds before refreshing
+          }, 1000);
+
         },
         (error) => {
           console.error('Erreur lors de la mise à jour du jour férié :', error);
