@@ -70,18 +70,12 @@ export class EditPublicHolidayComponent implements OnChanges {
         libele: this.form.controls['libele'].value,
         anneeId: this.form.controls['anneeId'].value
       };
-      console.log(`This is Public holiday object ${editedPublicHoliday}`)
-      this.publicHolidayService.updatePublicHoliday(editedPublicHoliday.id, editedPublicHoliday).subscribe(
-        
-        () => {
-          console.log(editedPublicHoliday)
-          this.onSave.emit();
-          
-          setTimeout(() => {
-            this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été mis à jour avec succès.' });
-              this.router.navigate(['/publicholiday/list']);
-          }, 1000);
 
+      this.publicHolidayService.updatePublicHoliday(editedPublicHoliday.id, editedPublicHoliday).subscribe(
+        () => {
+          this.onSave.emit();
+          this.messageService.add({ severity: 'success', summary: 'Succès', detail: 'Le jour férié a été mis à jour avec succès.' });
+          this.router.navigate(['/publicholiday/list']);
         },
         (error) => {
           console.error('Erreur lors de la mise à jour du jour férié :', error);
@@ -89,7 +83,6 @@ export class EditPublicHolidayComponent implements OnChanges {
         }
       );
     } else {
-      // Form is invalid, display validation errors
       this.markFormGroupTouched(this.form);
     }
   }

@@ -275,6 +275,7 @@ export class SalaryListComponent implements OnInit {
             console.log('Payslip template element:', element);
 
             if (element) {
+            
               // Temporarily show the template for PDF generation
               element.classList.remove('hidden-template');
 
@@ -299,6 +300,7 @@ export class SalaryListComponent implements OnInit {
             } else {
               this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Payslip template not found.', life: 1000 });
             }
+
           },
           (error) => {
             console.error(`Error generating PDF for contact ${salary.contactId}:`, error);

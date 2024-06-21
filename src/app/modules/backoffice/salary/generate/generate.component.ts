@@ -113,9 +113,13 @@ export class GenerateComponent implements OnInit {
           };
           
           html2pdf().from(element).set(opt).save();
-          this.showPDF = true; // Display PDF content
+          this.showPDF = false; // Display PDF content
           console.log(`PDF generated for contact ${contactId}!`);
           this.messages.push({ severity: 'success', summary: 'Success', detail: `PDF generated for contact ${contactId}!`, life: 3000 });
+          setTimeout(() => {
+            this.router.navigate(['/salary/list']); // Navigate to the salary/list route
+          }, 1000); // Example: Navigate after 2 seconds (2000 milliseconds)
+        
           this.updateMessages();
           
           this.payslipData = { ...payload }; 

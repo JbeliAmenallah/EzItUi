@@ -103,9 +103,12 @@
     </p-table>
   
 <!-- Edit Dialog -->
-<p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}"(onHide)="hideEditDialog()">
-  <app-edit-publicholiday [publicHoliday]="selectedPublicHoliday"></app-edit-publicholiday>
+
+<p-dialog header="Modifier le jour férié" [(visible)]="displayEditDialog" [modal]="true" [style]="{'max-width.px': '600', 'width.px': '800'}" (onHide)="hideEditDialog()">
+  <app-edit-publicholiday [publicHoliday]="selectedPublicHoliday" (onSave)="onSave()"></app-edit-publicholiday>
 </p-dialog>
+
+<!-- Other template code -->
 
 <!-- Confirm Dialog for delete -->
 <p-confirmDialog header="Confirmation de suppression" icon="pi pi-info-circle"

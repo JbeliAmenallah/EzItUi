@@ -84,5 +84,9 @@ export class PublicHolidayListComponent implements OnInit {
 
 
   }  
+  onSave(): void {
+    this.hideEditDialog();
+    this.getList();
+  }
 
 }

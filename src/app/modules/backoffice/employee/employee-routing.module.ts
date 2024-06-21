@@ -20,7 +20,8 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddEmployeeComponent,
-    data: { title: 'Employees +', roles: ['ADMIN'] }
+    canActivate: [AuthGuard],
+    data: { title: 'Employees add', roles: ['ADMIN'] }
   },
   {
     path: 'form',
@@ -36,12 +37,14 @@ const routes: Routes = [
 
   {
     path: 'conges',
-    component: EmployeeSessionComponent
+    component: EmployeeSessionComponent,
+
   }
   ,
   {
     path: 'details',
     component: EmployeeDetailsComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Employees Details', roles: ['ADMIN'] }
   },{
     path:'contacts',
